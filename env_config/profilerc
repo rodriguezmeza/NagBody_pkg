@@ -1,0 +1,11 @@
+
+# NagBody activation environment:
+
+test -r $HOME/NagBody_pkg/env_config/compilersrc && . $HOME/NagBody_pkg/env_config/compilersrc
+test -r $HOME/NagBody_pkg/env_config/utilsrc && . $HOME/NagBody_pkg/env_config/utilsrc
+test -r $HOME/NagBody_pkg/env_config/gadgetrc && . $HOME/NagBody_pkg/env_config/gadgetrc
+test -r $HOME/NagBody_pkg/env_config/nagbodyrc && . $HOME/NagBody_pkg/env_config/nagbodyrc
+test -r $HOME/NagBody_pkg/env_config/zenorc && . $HOME/NagBody_pkg/env_config/zenorc
+test -r $HOME/NagBody_pkg/env_config/nemorc && . $HOME/NagBody_pkg/env_config/nemorc
+test -r $HOME/NagBody_pkg/env_config/lammpsrc && . $HOME/NagBody_pkg/env_config/lammpsrc
+

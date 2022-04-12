@@ -1,0 +1,53 @@
+
+###################################################################
+# UTILITIES  ENVIRONMENT
+#
+
+##############################################################################
+# PARA ACTIVAR FINK ACTIVAMOS LA SIGUIENTE LINEA:
+#test -r /sw/bin/init.sh && . /sw/bin/init.sh
+
+##############################################################################
+# PARA ACTIVAR MACPORTS ACTIVAMOS SU PATH Y SU MANPATH QUE ESTAN ENSEGUIDA
+##
+# Your previous /Users/mar/.profile file was backed up as /Users/mar/.profile.macports-saved_2010-06-29_at_09:04:56
+##
+
+#
+# LAS LINEAS DE ACTIVACION DE MACPORTS FUERON PUESTAS EN EL .profile en el HOME... mejor se regresaron aqui ...
+#
+# MacPorts Installer addition on 2010-06-29_at_09:04:56: adding an appropriate PATH variable for use with MacPorts.
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# MacPorts Installer addition on 2010-06-29_at_09:04:56: adding an appropriate MANPATH variable for use with MacPorts.
+#export MANPATH=/opt/local/share/man:$MANPATH
+# Finished adapting your MANPATH environment variable for use with MacPorts.
+##############################################################################
+
+# MacPorts Installer addition on 2013-11-05_at_19:45:17: adding an appropriate PATH variable for use with MacPorts.
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+#export MANPATH=/opt/local/share/man:$MANPATH
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+# swig (used by plplot):
+#export PATH=$HOME/NagBody_pkg/local/swig/bin:$PATH
+#export MANPATH=$HOME/NagBody_pkg/local/swig/share/man:$MANPATH
+
+# libLASi (used by plplot):
+#export MANPATH=$HOME/NagBody_pkg/local/LASi/share/man:$MANPATH
+#export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/LASi/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/LASi/lib:${LD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/LASi/lib:${DYLD_LIBRARY_PATH}
+
+# freetype (used by swig):
+#export PATH=$HOME/NagBody_pkg/local/freetype/bin:${PATH}
+#export MANPATH=$HOME/NagBody_pkg/local/freetype/share/man:${MANPATH}
+#export PKG_CONFIG_PATH=$HOME/NagBody_pkg/local/freetype/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export DYLD_LIBRARY_PATH=$HOME/NagBody_pkg/local/freetype/lib:${DYLD_LIBRARY_PATH}
+
+# Librerias numericas Blas y Lapack (necesarias para CAMB y CosmoMC)
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/lapack/lib:${LD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/lapack/lib:${DYLD_LIBRARY_PATH}
+
+
