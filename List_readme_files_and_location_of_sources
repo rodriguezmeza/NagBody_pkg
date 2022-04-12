@@ -1,0 +1,82 @@
+
+Introduction to the N-body problem using NagBody codes
+Mario A. Rodriguez-Meza
+
+Numerical codes list:
+
+I. Sources and installation command (you must be in NagBody_pkg directory:
+(Remember to execute: make -f NagBody install_dirs to create several necessary directories)
+
+Gravitation, add names below to: NagBody_sources/gravitation/
+1. nbody_n2		: make -f NagBody install_nbody_n2
+2. model		: make -f NagBody install_model
+3. gbsph		: make -f NagBody install_gbsph
+4. analysis_grav	: make -f NagBody install_analysis_grav
+5. analysis_galaxy	: make -f NagBody install_analysis_galaxy
+7. galaxy_starscream	: make -f NagBody install_galaxy_starscream
+
+
+Cmplxfluids, , add names below to: NagBody_sources/cmplxfluids/
+1. md_blj_n2		: make -f NagBody install_
+2. analysis_md		: make -f NagBody install_
+3. md_blj		: make -f NagBody install_
+4. md_ic_model		: make -f NagBody install_
+
+
+Gadget derived codes (Volker Springel codes)
+9. gdgt207cluster	: make -f NagBody install_gdgt207cluster
+10. gdgt207galaxy	: make -f NagBody install_gdgt207galaxy
+11. gdgt207gassphere	: make -f NagBody install_gdgt207gassphere
+12. gdgt207lcdm		: make -f NagBody install_gdgt207lcdm
+13. n-genic		: make -f NagBody install_n-genic
+14. galic		: make -f NagBody install_galic
+
+COLA type of codes (Several authors)
+1. cola			: make -f NagBody install_cola
+2. plcola		: make -f NagBody install_plcola
+3. mgplcola		: make -f NagBody install_mgplcola
+
+
+Perturbations
+1. mgpt			: make -f NagBody install_mgpt
+
+CLASS type of codes (based on Julien Lesgourges team CLASS, HI_CLASS and Montepython)
+1. class		: make -f NagBody install_class
+2. hiclass		: make -f NagBody install_class
+3. class_mgpt		: make -f NagBody install_class
+4. hiclass_mgpt		: make -f NagBody install_class
+5. montepython		: make -f NagBody install_montepython
+6. planck2018		: make -f NagBody install_planck2018
+
+Analysis cosmo codes (by several authors)
+1. powmes		: make -f NagBody install_powmes
+2. rockstar		: make -f NagBody install_
+
+
+Templates
+1. templateBessel	: make -f NagBody install_templateBessel
+
+Visualization
+1. nplot2d		: make -f NagBody install_nplot2d
+
+
+II. To clean a code use:
+
+make -f NagBody clean_CODENAME
+
+where CODENAME is one of the code names above.
+
+
+III. Readme install files are under directory Readmes, it is used the same directory structure.
+
+
+IV. You can extract and pack an individual code using
+
+$ make -f NagBody packing_CODENAME
+
+The zip file is created in the zip directory.
+
+
+V. Documentation of the numerical code are in the corresponding doc directory. There you will find man pages and/or docs and/or papers.
+
+VI. Tests. In each of the individual directory there is a tests directory to try the corresponding code. In some cases there are initial conditions and parameters files, Jupiter notebooks or another material.

@@ -1,0 +1,54 @@
+NagBody: Installation steps details for linux Ubuntu
+
+cd NagBody_lectures/NagBody_pkg
+
+make -f NagBody install_dirs
+
+To install nplot2d do:
+
+sudo apt-get install libx11-dev
+sudo apt-get install gnuplot
+sudo apt-get install xorg-dev
+sudo apt-get install liblasi-dev
+sudo apt-get install swig
+sudo apt-get install tcl
+
+(REFER also to NagBody_lectures/NagBody_pkg/Readmes/additional_libs/Readme_Install_plplot)
+
+cd NagBody_lectures/NagBody_pkg/NagBody_sources/additional_libs/plplot-5.15.0
+
+mkdir build_dir 
+cd build_dir
+
+cmake -DCMAKE_INSTALL_PREFIX=$HOME/NagBody_lectures/NagBody_pkg/local -DENABLE_DYNDRIVERS=OFF -DPLD_psttfc=OFF -DPLD_plmeta=OFF .. >& cmake.out
+
+make >& make.out
+make install >& make_install.out
+
+
+Edit NagBody_pkg/NagBody_sources/nagbody_plplots/nplot2d/src/Makefile
+
+Look for line starting with "OPT7". Change it to
+
+OPT7    =  -I $(HOME)/NagBody_lectures/NagBody_pkg/local/include/plplot/
+
+Then look for line starting with "PKG_CONFIG_ENV = ". Change it to
+
+PKG_CONFIG_ENV = PKG_CONFIG_PATH=$(HOME)/NagBody_lectures/NagBody_pkg/local/lib/pkgconfig
+
+Make sure that environment variables "CFLAGS" and "LDFLAGS" are set to
+
+CFLAGS = $(OPTIONS)
+LDFLAGS = $(LIBS)
+
+Then do:
+
+make -f NagBody install_nplot2d
+
+To test it
+
+cd tests
+../bin/nplot2d
+
+
+

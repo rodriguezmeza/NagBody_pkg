@@ -1,0 +1,39 @@
+
+Introduction to the N-body problem using NagBody codes
+Mario A. Rodriguez-Meza
+
+Numerical codes list:
+
+Gravitation
+1. nbody_n2		: code to evolve an N-body system (PP method)
+2. model		: code to generate several N-body initial condition using Monte Carlo
+3. gbsph		: code to evolve an N-body system (tree method)
+4. analysis_grav	: code to analyse output of the nbody_n2 (gbsph)
+5. analysis_galaxy	: code to analyse output of the galaxy
+7. galaxy_starscream	: set two galaxy in parabolic initial condition to collide
+
+Cmplxfluids
+1. md_blj_n2		: molecular dynamics code, to simulate binary systems (PP method)
+2. analysis_md		: code to analyse output of the md_blj_n2
+3. md_blj		: molecular dynamics code to simulate binary systems using various methods to compute the force among particles
+4. md_ic_model		: code to generate initial conditions for molecular dynamics simulations
+
+
+Gadget derived codes (Volker Springel codes)
+9. gdgt207cluster	: code to make cosmological simulations using vacuum boundary conditions
+10. gdgt207galaxy	: code to evolve N-body galaxies
+11. gdgt207gassphere	: code to evolve a gas sphere using SPH method
+12. gdgt207lcdm		: code to make cosmological simulations
+13. n-genic		: cgenerates initial conditions using Zeldovich's approximation.
+14. galic		: generates galaxy initial condition
+
+Perturbations
+1. mgpt			: Modified gravity perturbation theory code
+
+Templates
+1. templateBessel	: template that evaluate Bessel function, to show the programming simple structure of NagBody package.
+
+Visualization
+1. nplot2d		: plotting code (2D plots, data in columns format)
+
+
