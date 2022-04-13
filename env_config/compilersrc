@@ -1,0 +1,161 @@
+#
+#To solve some configuration problems related to zsh visit:
+#https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/
+#
+###################################################################
+# STANDARD COMPILERS  ENVIRONMENT
+#
+#
+#
+#
+#
+###################################################################
+#
+# Compilador gcc-mp-6.3 compilado con gfortran para CosmoMC
+# Verificar si se necesitan sus librerias e includes.
+#
+#export PATH="/Users/mar/NagBody_pkg/local/gcc/bin:$PATH"
+
+###################################################################
+#
+# PYTHONPATH
+#
+#export PYTHONPATH=${HOME}/anaconda/lib/python2.7/site-packages:${PYTHONPATH}
+#export PYTHONPATH=${HOME}/anaconda/lib:${PYTHONPATH}
+#export PYTHONPATH=${HOME}/anaconda/lib/python2.7/site-packages/PySide:${PYTHONPATH}
+#export PYTHONPATH=${HOME}/anaconda/lib/python2.7/site-packages/PySide-1.2.4-py2.7-macosx-10.5-x86_64.egg/PySide:${PYTHONPATH}
+
+# Building and installing paths of CLASS: useful to register in PYTHONPATH:
+#copying build/lib.macosx-10.6-x86_64-2.7/classy.so -> /Users/mar/.local/lib/python2.7/site-packages
+#running install_egg_info
+#Removing /Users/mar/.local/lib/python2.7/site-packages/classy-2.6.3-py2.7.egg-info
+#Writing /Users/mar/.local/lib/python2.7/site-packages/classy-2.6.3-py2.7.egg-info
+#
+
+
+###################################################################
+###################################################################
+#
+# ROOT
+#
+#source $HOME/NagBody_pkg/local/root/bin/thisroot.sh
+
+#
+# BAT :: Bayesian analysis toolkit
+#export PATH="/Users/mar/NagBody_pkg/local/BAT/bin:$PATH"
+#export LD_LIBRARY_PATH="/Users/mar/NagBody_pkg/local/BAT/lib:$LD_LIBRARY_PATH"
+#export CPATH="/Users/mar/NagBody_pkg/local/BAT/include:$CPATH"
+#export PKG_CONFIG_PATH="/Users/mar/NagBody_pkg/local/BAT/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# GreAT (Needed by CLUMPY)
+#export GREAT=/Users/mar/NagBody_pkg/local/GreAT
+#export LD_LIBRARY_PATH=${GREAT}/lib:${LD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${GREAT}/lib:${DYLD_LIBRARY_PATH}  
+##*[Mac OSX only]*
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/NagBody_sources/mcmc/great/GreAT/Manager/:${LD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/NagBody_sources/mcmc/great/GreAT/MCMC/:${LD_LIBRARY_PATH}
+
+# CLUMPY 
+#export CLUMPY=/Users/mar/NagBody_pkg/local/CLUMPY
+#export PATH=${CLUMPY}/bin:${PATH}
+#export LD_LIBRARY_PATH=${CLUMPY}/lib:${LD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${CLUMPY}/lib:${DYLD_LIBRARY_PATH}
+##*[Mac OS only]*
+
+
+
+###################################################################
+###################################################################
+# VARIABLES DE AMBIENTE PARA LOCALIZAR HEADERS Y LIBRERIAS ESTANDAR
+# NO FUNCIONAN ... BORRAR 
+#export PATH=/opt/Xcode/bin:${PATH}
+#export INCLUDE=/opt/Xcode/include:${INCLUDE}
+
+###################################################################
+###################################################################
+# Variables de ambiente para Python ...
+#
+# NO sirve con Anaconda 2.7
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages/scipy:${PYTHONPATH}
+#
+# Con estas variables de ambiente se evita el error
+# ÒValueError: unknown locale: UTF-8Ó
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+###################################################################
+###################################################################
+# Variables de ambiente para los compiladores de intel ...
+#
+# YA ESTAN ACCESIBLES EN LA LINEA DE COMANDOS DE SNOW LEOPARD
+#
+#source /opt/intel/composerxe/bin/compilervars.sh intel64
+#
+#
+
+###################################################################
+# Trayectoria para que pueda compilar setup de montepython en el directorio class
+# NO SIRVEN
+#export DYLD_LIBRARY_PATH=/opt/local/lib/gcc49:${DYLD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=/opt/local/lib/gcc49:${LD_LIBRARY_PATH}
+
+
+###################################################################
+# OPENMPI (SE GENERARON DOS VERSIONES UNA gcc-4.2 y gfortran y otra intel):
+#  USARLAS ACTIVANDO LA LIGA CORRESPONDIENTE ...
+#
+# INSTALADO CON PORT ... pero no se instalo mpif90 ... mejor se genero con gcc-mp-4.4 ...
+#
+# Ya se instalo con PORT ... checar que todo esta bien ... en particular con CosmoMC y POWMES ...
+#
+#export PATH=${HOME}/NagBody_pkg/local/openmpi/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/openmpi/share/man:${MANPATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/openmpi/lib:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/openmpi/lib/openmpi:${DYLD_LIBRARY_PATH}
+#
+# Deactivited
+#export PATH=/opt/local/libexec/openmpi-mp:${PATH}
+#export MANPATH=/opt/local/share/man:${MANPATH}
+#export DYLD_LIBRARY_PATH=/opt/local/lib/openmpi-mp:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=/opt/local/lib/openmpi-mp/openmpi:${DYLD_LIBRARY_PATH}
+
+# INTEL: DONDE openmpi es un link a la distribuci—n de intel
+#export PATH=${HOME}/NagBody_pkg/local/openmpi/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/openmpi/share/man:${MANPATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/openmpi/lib:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/openmpi/lib/openmpi:${DYLD_LIBRARY_PATH}
+
+
+
+###################################################################
+#MPICH 1 y 2
+#MPICH2:
+#export PATH=${HOME}/NagBody_pkg/local/mpich2/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/mpich2/share/man:${MANPATH}
+#export PKG_CONFIG_PATH=${HOME}/local/mpich2/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export LD_LIBRARY_PATH=${HOME}/local/mpich2/lib:${LD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/mpich2/lib:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/mpich2/lib/mpich:${DYLD_LIBRARY_PATH}
+##export DYLD_LIBRARY_PATH=${HOME}/local/mpich2/lib/trace_rlog:${DYLD_LIBRARY_PATH}
+
+# MPICH: (Puede tener conflicto con OpenMPI, en tal caso comentar uno de los dos ambientes de MPI)
+
+
+###################################################################
+# CUDA
+#export PATH=${HOME}/NagBody_pkg/local/cuda/bin:${PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/cuda/lib:${LD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/cuda/lib:${DYLD_LIBRARY_PATH}
+
+###################################################################
+
+###################################################################
+#
+# MATHLINK (MATHEMATICA)
+export PATH=${HOME}/NagBody_pkg/local/mathlink:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/openmpi/share/man:${MANPATH}
+export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/mathlink:${DYLD_LIBRARY_PATH}
+export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/mathlink/mathlink.framework/Versions/4.25/:${DYLD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/mathlink:${LD_LIBRARY_PATH}
+
+

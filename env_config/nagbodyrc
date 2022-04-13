@@ -1,0 +1,130 @@
+#
+# TO ACTIVATE THIS CONFIG FILE DO:
+# $ test -r $HOME/NagBody_pkg/env_config/nagbodyrc && . $HOME/NagBody_pkg/env_config/nagbodyrc
+#
+# OR ADD IT TO THE .profile file (or the corresponding config shell file)
+# 
+#To solve some configuration problems related to zsh visit:
+#https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/
+#
+#
+# NagBody Defintion of variables ...
+
+# To activate nnbodykit environment (added to load notebooks in jupyter, doesnot work)
+#source /anaconda2/bin/activate /anaconda2/envs/nbodykit-env/
+
+# NagBody:
+export PATH=${HOME}/NagBody_pkg/bin:${PATH}
+export MANPATH=${HOME}/NagBody_pkg/man:${MANPATH}
+
+# NagBody (/usr/local):
+export PATH=/usr/local/nagbody/bin:${PATH}
+export MANPATH=/usr/local/nagbody/share/man:${MANPATH}
+
+
+# MontePython: (NO FUNCIONA TODAVIA)
+#export PATH=${HOME}/NagBody_pkg/NagBody_sources/class/montepython/src/:${PATH}
+#export PYTHONPATH=${HOME}/NagBody_pkg/NagBody_sources/class/montepython/src/:${PYTHONPATH}
+
+# PLPLOT-5.9.7:
+# OLD VERSION:
+#export PATH=${HOME}/local/plplot/bin:${PATH}
+#export MANPATH=${HOME}/local/plplot/share/man:${MANPATH}
+#export PKG_CONFIG_PATH=${HOME}/local/plplot/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/local/plplot/lib:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/local/plplot/lib/plplot5.9.7/driversd:${DYLD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${HOME}/local/plplot/lib:${LD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${HOME}/local/plplot/lib/plplot5.9.7/driversd:${LD_LIBRARY_PATH}
+#
+# NEW VERSION
+#export PATH=${HOME}/NagBody_pkg/local/plplot/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/plplot/share/man:${MANPATH}
+#export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/plplot/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib/plplot5.9.7/driversd:${DYLD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib:${LD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib/plplot5.9.7/driversd:${LD_LIBRARY_PATH}
+
+# NEW VERSION (To use with CLASS) (version 5.10 in /opt/local/lib/plplot510) working with a link in NagBody_pkg/local
+#export PATH=${PATH}:${HOME}/NagBody_pkg/local/plplot/bin
+#export MANPATH=${MANPATH}:${HOME}/NagBody_pkg/local/plplot/share/man
+#export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${HOME}/NagBody_pkg/local/plplot/lib/pkgconfig
+#export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:${HOME}/NagBody_pkg/local/plplot/lib
+#export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:${HOME}/NagBody_pkg/local/plplot/lib/plplot5.9.7/driversd
+#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${HOME}/NagBody_pkg/local/plplot/lib
+#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${HOME}/NagBody_pkg/local/plplot/lib/plplot5.9.7/driversd
+
+# NEW VERSION:: PLPLOT-5.9.10 (swig and libLASi required)
+#export PATH=${HOME}/NagBody_pkg/local/plplot/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/plplot/share/man:${MANPATH}
+#export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/plplot/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib/plplot5.9.10/driversd:${DYLD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib:${LD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib/plplot5.9.10/driversd:${LD_LIBRARY_PATH}
+
+# NEW NEW VERSION (To use with CLASS) (version 5.10 in /opt/local/lib/plplot510)
+# Deactivated
+#export PATH=${PATH}:/opt/local/lib/plplot510/bin
+#export MANPATH=${MANPATH}:/opt/local/lib/plplot510/share/man
+#export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/opt/local/lib/plplot510/lib/pkgconfig
+#export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:/opt/local/lib/plplot510/lib
+#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/local/lib/plplot510/lib
+
+
+# CMAKE:
+# INSTALADO CON PORT ...
+#export PATH=${HOME}/NagBody_pkg/local/cmake/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/cmake/man:${MANPATH}
+
+# OPENMPI:
+#export PATH=${HOME}/NagBody_pkg/local/openmpi/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/openmpi/share/man:${MANPATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/openmpi/lib:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/openmpi/lib/openmpi:${DYLD_LIBRARY_PATH}
+
+# MPICH: (Puede tener conflicto con OpenMPI, en tal caso comentar uno de los dos ambientes de MPI)
+#export PATH=${HOME}/NagBody_pkg/local/mpich/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/mpich/share/man:${MANPATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/mpich/lib:${DYLD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/mpich/lib/mpich:${DYLD_LIBRARY_PATH}
+
+# FFTW-2:
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/fftw2/lib:${DYLD_LIBRARY_PATH}
+
+# CFITSIO (NEEDED BY CAMB):
+export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/cfitsio/lib/pkgconfig:${PKG_CONFIG_PATH}
+export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/cfitsio/lib:${DYLD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/cfitsio/lib:${LD_LIBRARY_PATH}
+
+# LAPACK (Instalada con ports en Mac):
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/lapack/lib:${LD_LIBRARY_PATH}
+
+# GSL:
+# INSTALADO CON PORT ...
+#export PATH=${HOME}/NagBody_pkg/local/gsl/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/gsl/share/man:${MANPATH}
+#export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/gsl/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gsl/lib:${LD_LIBRARY_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gsl/lib:${DYLD_LIBRARY_PATH}
+#
+#export PATH=${HOME}/NagBody_pkg/local/gsl/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/gsl/share/man:${MANPATH}
+#export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/gsl/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gsl/lib:${LD_LIBRARY_PATH}
+#
+# ACTIVATING THIS LINE CAUSE PROBLEMS COMPILING NEMO4
+# Can´t finde _iconv_open objet in the /opt/local/lib/libiconv.x.etc library
+#export DYLD_LIBRARY_PATH=/opt/local/lib:${DYLD_LIBRARY_PATH}
+
+# CMAKE:
+#export PATH=${HOME}/NagBody_pkg/local/cmake/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/cmake/man:${MANPATH}
+
+# gv:
+#export PATH=${HOME}/NagBody_pkg/local/gv/bin:${PATH}
+#export MANPATH=${HOME}/NagBody_pkg/local/gv/share/man:${MANPATH}
+#export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/gv/lib/pkgconfig:${PKG_CONFIG_PATH}
+#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gv/lib:${DYLD_LIBRARY_PATH}
+#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gv/lib:${LD_LIBRARY_PATH}
+

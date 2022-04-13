@@ -1,0 +1,55 @@
+
+Introduction to the N-body problem using NagBody codes
+Mario A. Rodriguez-Meza
+
+Useful material and papers of some of the numerical codes included in NagBody package.
+
+
+References:
+
+1. B.W. Kernighan and D.M. Ritchie, The C Programming Language. Second Edition. (Prentice Hall, Englewood Cliffs, 1988).
+
+2. Kyle Loudon Mastering algorithms with C
+
+3. W.H. Press, S.A. Teukolsky, W.T. Vetterling, and B.P. Flannery, Numerical Recipes, third edition. (Cambridge University Press, New York, 1992).
+
+4. Forsythe G E, Malcolm M A, and Moler C B 1977 Computer Methods for Mathematical Computations. (Englewood Cliffs, N. J.: Prentice Hall).
+
+5. D. Kahaner, C. Moler, and S. Nash, Numerical Methods and Software. (Prentice Hall, Engelwood Cliffs, 1989).
+
+6. R.W. Hockney and J.W. Eastwood, Computer Simulation Using Particles. (McGraw-Hill, 1981).
+
+7. S. Pfalzner and P. Gibbon, Many-Body Tree Methods in Physics. (Cambridge University Press, New York, 1996).
+
+8.  M.P. Allen and D.J. Tildesley, {\em Computer Simulation of Liquids}. (Oxford University, New York, 1993).
+
+9. D. C. Rapaport, The art of molecular dynamic simulation, 2nd edition. Cambridge University Press.
+
+10. Mark Lutz, Learing python.
+
+11. Wes McKinney, Python for data analysis.
+
+12. Juan Nunez-Iglesias, Stéfan van der Walt and Harriet Dashnow, Elegant SciPy: The art of scientific python. 
+
+13. Mario A. Rodríguez-Meza, El método del SPH y sus aplicaciones. Informe técnico CB-014/2002, ININ, 2002.
+
+
+Easy readings:
+
+1. Aristides S. Bouras and Loukia V. Ainarozidou, Python for tweens and Teens
+
+2. Mario A. Rodríguez-Meza, Método de N-cuerpos en astrofísica.
+https://www.researchgate.net/publication/316582859_Metodo_de_N-Cuerpos_en_Astrofisica
+
+3. Mario A. Rodríguez-Meza, La estructura a gran escala en el universo: simulaciones numéricas.
+https://www.researchgate.net/publication/316582400_La_estructura_a_gran_escala_del_universo_simulaciones_numericas
+
+
+%%%%%%%%%%%%%%%%%%
+
+Other useful links:
+https://github.com/rodriguezmeza
+
+git clone https://github.com/rodriguezmeza/NagBody_lectures.git
+
+
