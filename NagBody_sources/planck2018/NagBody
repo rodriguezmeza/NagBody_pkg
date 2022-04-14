@@ -1,0 +1,87 @@
+# NagBody install file - planck2018 code
+# Copyright (c) 2006-2022  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+CODE_NAME = planck2018
+PARENT_CODE_NAME = class
+
+INSTALL_PATH = ../../../..
+
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) binaries..."
+	(cd src/code/plc_3.0/plc-3.01; ./waf --cfitsio_include=$(HOME)/NagBody_pkg/local/cfitsio/include --cfitsio_lib=$(HOME)/NagBody_pkg/local/cfitsio/lib configure; ./waf install; cp bin/* ../../../$(INSTALL_PATH)/bin/.)
+
+# Using make:
+#	(cd src/code/plc_3.0/plc-3.01; make; make install; make install_python; cp bin/* ../../../$(INSTALL_PATH)/bin/.)
+
+#	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.; \ 
+#	make $(CODE_NAME)_fits; cp $(CODE_NAME)_fits $(INSTALL_PATH)/bin/.)
+
+# ==================================================================
+# Install $(CODE_NAME) man page
+
+install_man:
+	@echo " "
+	@echo "Copying $(CODE_NAME) man page..."
+	(cd doc; cp $(CODE_NAME).m $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir, binaries and man page files..."
+	(cd src/code/plc_3.0/plc-3.01; ./waf uninstall; ./waf clean; ./waf distclean; $(MAKE) clean; \
+	rm -f ../../../$(INSTALL_PATH)/bin/clik* \
+	rm -f ../../../$(INSTALL_PATH)/bin/prepare_wmap \
+	rm -f ../../../$(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+# Using only make:
+#	(cd src/code/plc_3.0/plc-3.01; $(MAKE) clean; \
+
+# Deprecated
+#clean_dir:
+#	@echo " "
+#	@echo "Cleaning $(CODE_NAME) source dir..."
+#	(cd src/plc-2.0; $(MAKE) clean)
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/src/code \
+		$(PACK_CODE_DIR)/data \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/{compilersrc,gadgetrc,nagbodyrc,profilerc,utilsrc} \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Makefiles/$(PARENT_CODE_NAME)/NagBody_$(CODE_NAME) \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Machines \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Readmes/$(PARENT_CODE_NAME)/Readme-Install_$(CODE_NAME).txt; \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+
