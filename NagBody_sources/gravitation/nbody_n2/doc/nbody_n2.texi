@@ -1,0 +1,62 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename nbody_n2.info
+@settitle nbody_n2 1.0.0
+@c %**end of header
+     
+@copying
+Manual for nbody_n2 version 1.0.0
+@end copying
+     
+@titlepage
+@title nbody_n2 Manual
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+     
+@c Output the table of the contents at the beginning.
+@contents
+     
+@ifnottex
+@node Top
+@top nbody_n2
+     
+@insertcopying
+@end ifnottex
+     
+@menu
+* Introduction:: Summary of features
+* Install:: How to install the code
+* Input parameters:: Numerical parameters, etc.
+* Output results:: CMB results.
+@end menu
+
+
+@node Introduction
+@chapter Introduction
+ 
+ nbody_n2 is a code to evolve a gravitating system by Mario A. Rodriguez-Meza.
+
+@node Install
+@chapter Install
+
+./configure
+
+make
+
+make install
+
+
+@node Input parameters
+@chapter Input parameters
+
+See documentation in doc/gravitation/nbody_n2 directory.
+
+
+@node Output results
+@chapter Output results
+
+See documentation in doc/gravitation/nbody_n2 directory.
+
+@bye

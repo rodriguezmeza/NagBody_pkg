@@ -1,0 +1,10 @@
+MODELS - Readme
+
+Code to generate several kind of initial conditions
+to be used in simulation codes of NagBody.
+
+To compile and link properly 
+edit the files switches.h and Makefile.
+
+Also see the file 'machine.inc' in directory '$HOME_Codigos/machines'.
+

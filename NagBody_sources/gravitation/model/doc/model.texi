@@ -1,0 +1,62 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename model.info
+@settitle model 1.0.0
+@c %**end of header
+     
+@copying
+Manual for model version 1.0.0
+@end copying
+     
+@titlepage
+@title model Manual
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+     
+@c Output the table of the contents at the beginning.
+@contents
+     
+@ifnottex
+@node Top
+@top model
+     
+@insertcopying
+@end ifnottex
+     
+@menu
+* Introduction:: Summary of features
+* Install:: How to install the code
+* Input parameters:: Numerical parameters, etc.
+* Output results:: CMB results.
+@end menu
+
+
+@node Introduction
+@chapter Introduction
+ 
+ model is a code to generate initial condition of a selfgravitating system by Mario A. Rodriguez-Meza.
+
+@node Install
+@chapter Install
+
+./configure
+
+make
+
+make install
+
+
+@node Input parameters
+@chapter Input parameters
+
+See documentation in doc/gravitation/model directory.
+
+
+@node Output results
+@chapter Output results
+
+See documentation in doc/gravitation/model directory.
+
+@bye

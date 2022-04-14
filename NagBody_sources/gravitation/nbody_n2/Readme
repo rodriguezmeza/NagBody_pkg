@@ -1,0 +1,17 @@
+Use 
+
+$ man ./doc/nbody_n2.1
+
+to see the manual.
+
+
+
+Codigo en C para simular el problema de N-cuerpos
+con el calculo de la fuerza realizado de manera
+directa. La complejidad del código es N^2.
+
+La idea es simplificar al maximo este código y
+estudiar su paralelización, bajo diferentes
+esquemas (Ver la página y curso de Sutman). 
+
+
