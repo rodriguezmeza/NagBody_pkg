@@ -1,0 +1,155 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+md_blj_n2 icModel=6 nbodyprop=1/1 o=snap d=0.8 tstop=1000 > output &
+echo > stop
+nplot2d in=thermo.dat uc=2:4
+md_blj_n2 restorefile=stop-state t=1.5 > output &
+echo > stop
+nplot2d in=thermo.dat uc=2:4
+md_blj_n2 restorefile=stop-state t=0.5 > output &
+echo > stop
+nplot2d in=thermo.dat uc=2:4
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true 
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+echo > stop
+md_blj_n2 restorefile=stop-state t=0.1 > output &
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+echo > stop
+md_blj_n2 restorefile=stop-state t=1 > output &
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+echo > stop
+
+md_blj_n2 icModel=6 nbodyprop=1/1 o=snap d=0.5 tstop=1000 > output &
+analysis_md in=snap xr=-5:5 yr=-5:5 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-5:5 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+echo > stop
+md_blj_n2 restorefile=stop-state t=0.1 > output &
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type
+echo > stop
+md_blj_n2 restorefile=stop-state t=1. > output &
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+echo > stop
+md_blj_n2 restorefile=stop-state t=0.1 > output &
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
+
+
+md_blj_n2 uC=10:10 nbodyprop=1/1 o=snap tstop=1000 > output &
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
+echo > stop
+md_blj_n2 restorefile=stop-state t=1. > output &
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
+echo > stop
+md_blj_n2 restorefile=stop-state t=0.1 > output &
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
+echo > stop
+
+Copy all lines below and paste in the terminal:
+md_blj_n2 uC=20:20 nbodyprop=1/1 o=snap tstop=1000 > output &
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5
+echo > stop
+md_blj_n2 restorefile=stop-state t=0.1 > output &
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-anim
+echo > stop
+md_blj_n2 restorefile=stop-state t=1.0 > output &
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-anim
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=snap-anim
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=snap-anim
+echo > stop
+md_blj_n2 restorefile=stop-state t=1.0 > output &
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory withsymbols=false wd=true
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory withsymbols=false wd=true
+echo > stop
+
+md_blj_n2 uC=20:20 nbodyprop=1/1 o=snap tstop=1000 > output &
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=bodies-anim bodiesID=1,2,3
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=bodies-anim bodiesID=1,2,3
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3 withsymbols=false wd=true
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3,5,6,7,8 withsymbols=false wd=true
+analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3,5,6,7,8 withsymbols=false wd=true
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+STOPPING THE CODE
+       Once the md_blj_n2 is running you may always stop it by executing the command
+
+       echo > stop
+
+       You must be in the same directory were the process were lunched.  A file named 'stop-state' is saved containing
+       the state of the simulation run. This option permits us to stop the simulation and change some numerical and/or
+       physical parameters such as temperature or density.
+
+EXAMPLES
+       Executing
+
+       md_blj_n2
+
+       will run the default simulation which is consistent with the experimental data reported in: J.L. Yarnell, et al,
+       "Structure factor and radial distribution function for liquid Argon at 85 K", Phys. Rev. A7 (1972) 2130.
+       Parameter eps in the Lennard-Jones potential that fit the experimental data is eps/kB = 119 K.
+
+       With the command: md_blj_n2 nbody=4096 out=snap%03d dtout=2/256
+
+       we run a simulation with 4096 bodies and save snap data every other time step.
+
+       With the command: md_blj_n2 statefile=state
+
+       we run a simulation were a state file is saved every dtout/dtime steps. If for some reasons the simulation run
+       is interrupted you may always restart the run ejecuting the command:
+
+       md_blj_n2 restorefile=state
+
+       Or if you stop it the run using the command 'echo > stop' you may restart the run with the command:
+
+       md_blj_n2 restorefile=stop-state
+
+       Ejecuting the command:
+
+       md_blj_n2 icModel=6 nbodyprop=2/2 tstop=100 d=0.8 o=snap stepvAvg=30 > output &
+
+       a run is launched in the background using an FCC initial condition whose basic cell has 2/2 bodies proportion
+       with a density=0.8, snaps will be saved every 5 time steps and properties will be computed every 30 steps.
+
+       Now, we may stop the simulation using 'echo > stop', then we re-launch the simulation using the command:
+
+       md_blj_n2 restore=stop-state stepAvg=70 > output01 & Therefore, properties are now computed every 70 time steps
+
+
+ANIMATIONS
+       You may run the analysis_md code to see animation plots.  Run a simulation using, for example, the command:
+
+       md_blj_n2 icModel=6 nbodyprop=2/2 tstop=100 d=0.8 o=snap > output &
+       then, use the command:
+
+       analysis_md in=snap analysis_type=snap-anim
+
+       to see the animation of the simulation. Instead of <snap-anim> you may use <snap-animtrajectory> to see the
+       trajectories of the particles.  If you want to distiguish the type of particles use also options=<types>.
+
+       The x and y ranges may change according to particle positions during simulation, then, can be useful to set
+       xrange=<xmin:xmax> and xrange=<ymin:ymax>.
+
+       Then you may execute the command:
+
+       analysis_md in=snap analysis_type=snap-animtrajectory options=type withsymbols=false wd=true xr=-4.5:4.5
+       yr=-4.5:4.5 fsnap=20
+
+       to see trajectory animation distinguishing particles types with a x and y ranges fix and showning up to 20 snaps
+       in total.
