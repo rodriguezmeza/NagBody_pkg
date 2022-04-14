@@ -1,0 +1,28 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2012  M.A. Rodriguez-Meza, Mexico, D.F.
+
+# ==================================================================
+# CMPLXFLUIDS
+# ==================================================================
+# md_ic_model code:
+
+MD_IC_MODEL_DIR = NagBody_sources/Cmplxfluids/md_ic_model
+
+install_md_ic_model: md_ic_model md_ic_model_man
+
+md_ic_model:
+	(cd $(MD_IC_MODEL_DIR);	$(MAKE) -f NagBody install)
+
+md_ic_model_man:
+	(cd $(MD_IC_MODEL_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_md_ic_model:
+	(cd $(MD_IC_MODEL_DIR);	$(MAKE) -f NagBody clean)
+
+clean_md_ic_model_dir:
+	(cd $(MD_IC_MODEL_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_md_ic_model:
+	(cd $(MD_IC_MODEL_DIR);	$(MAKE) -f NagBody packing_sources)
+
+

@@ -1,0 +1,46 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2020  Mario A. Rodriguez-Meza, Mexico, D.F.
+
+# ==================================================================
+# INFLUENZA
+# ==================================================================
+# md_blj_n2_sird code:
+
+CODE_DIR = NagBody_sources/influenza/md_blj_n2_sird
+
+install_md_blj_n2_sird: md_blj_n2_sird md_blj_n2_sird_man
+
+md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+md_blj_n2_sird_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_md_blj_n2_sird_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_md_blj_n2_sird:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)
+
+

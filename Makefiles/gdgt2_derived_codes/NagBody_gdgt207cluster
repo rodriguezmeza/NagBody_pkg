@@ -1,0 +1,44 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2018  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+# ==================================================================
+# GADGET DERIVED CODE
+# ==================================================================
+# gdgt207cluster code:
+
+CODE_DIR = NagBody_sources/gdgt2_derived_codes/gdgt207cluster
+
+install_gdgt207cluster: gdgt207cluster gdgt207cluster_man
+
+gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+gdgt207cluster_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_gdgt207cluster_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_gdgt207cluster:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)

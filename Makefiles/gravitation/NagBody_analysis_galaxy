@@ -1,0 +1,45 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2018  Mario A. Rodriguez-Meza, Mexico, D.F.
+
+# ==================================================================
+# GRAVITATION
+# ==================================================================
+# analysis_galaxy code:
+
+CODE_DIR = NagBody_sources/Gravitation/analysis_galaxy
+
+install_analysis_galaxy: analysis_galaxy analysis_galaxy_man
+
+analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+analysis_galaxy_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_analysis_galaxy_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_analysis_galaxy:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)
+

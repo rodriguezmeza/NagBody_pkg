@@ -1,0 +1,28 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2011  M.A. Rodriguez-Meza, Mexico, D.F.
+
+# ==================================================================
+# TEMPLATES
+# ==================================================================
+# templateBessel code:
+
+TEMPLATEBESSEL_DIR = NagBody_sources/templates/templateBessel
+
+install_templateBessel: templateBessel templateBessel_man
+
+templateBessel:
+	(cd $(TEMPLATEBESSEL_DIR);	$(MAKE) -f NagBody install)
+
+templateBessel_man:
+	(cd $(TEMPLATEBESSEL_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_templateBessel:
+	(cd $(TEMPLATEBESSEL_DIR);	$(MAKE) -f NagBody clean)
+
+clean_templateBessel_dir:
+	(cd $(TEMPLATEBESSEL_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_templateBessel:
+	(cd $(TEMPLATEBESSEL_DIR);	$(MAKE) -f NagBody packing_sources)
+
+

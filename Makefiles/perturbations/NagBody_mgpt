@@ -1,0 +1,46 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2018  M.A. Rodriguez-Meza, Mexico, D.F.
+
+# ==================================================================
+# PERTURBATIONS
+# ==================================================================
+# mgpt code:
+
+CODE_DIR = NagBody_sources/perturbations/mgpt
+
+install_mgpt: mgpt mgpt_man
+
+mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+mgpt_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_mgpt_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_mgpt:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)
+
+

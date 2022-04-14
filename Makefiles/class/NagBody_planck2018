@@ -1,0 +1,45 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2019  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+# ==================================================================
+# GRAVITATION
+# ==================================================================
+# planck cmb data:
+
+CODE_DIR = NagBody_sources/class/planck2018
+
+install_planck: planck planck_man
+
+planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+planck_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_planck_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_planck:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)
+

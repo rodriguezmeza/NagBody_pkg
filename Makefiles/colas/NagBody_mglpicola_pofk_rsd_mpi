@@ -1,0 +1,45 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2019  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+# ==================================================================
+# COLAS
+# ==================================================================
+# mglpicola_pofk_rsd_mpi code:
+
+CODE_DIR = NagBody_sources/colas/mglpicola_pofk_rsd_mpi
+
+install_mglpicola_pofk_rsd_mpi: mglpicola_pofk_rsd_mpi mglpicola_pofk_rsd_mpi_man
+
+mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+mglpicola_pofk_rsd_mpi_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_mglpicola_pofk_rsd_mpi_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_mglpicola_pofk_rsd_mpi:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)
+

@@ -1,0 +1,45 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2019  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+# ==================================================================
+# COSMO_ANALYSIS
+# ==================================================================
+# rockstar code:
+
+CODE_DIR = NagBody_sources/Cosmo_analysis/rockstar
+
+install_rockstar: rockstar rockstar_man
+
+rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+rockstar_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_rockstar_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_rockstar:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)
+

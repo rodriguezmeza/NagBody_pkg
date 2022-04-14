@@ -1,0 +1,28 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2011  M.A. Rodriguez-Meza, Mexico, D.F.
+
+# ==================================================================
+# CMPLXFLUIDS
+# ==================================================================
+# md_lj_tree code:
+
+MD_LJ_TREE_DIR = NagBody_sources/cmplxfluids/md_lj_tree
+
+install_md_lj_tree: md_lj_tree md_lj_tree_man
+
+md_lj_tree:
+	(cd $(MD_LJ_TREE_DIR);	$(MAKE) -f NagBody install)
+
+md_lj_tree_man:
+	(cd $(MD_LJ_TREE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_md_lj_tree:
+	(cd $(MD_LJ_TREE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_md_lj_tree_dir:
+	(cd $(MD_LJ_TREE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_md_lj_tree:
+	(cd $(MD_LJ_TREE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+

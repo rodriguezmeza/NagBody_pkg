@@ -1,0 +1,45 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2019  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+# ==================================================================
+# mcmc
+# ==================================================================
+# MathematicaMCMC:
+
+CODE_DIR = NagBody_sources/mcmc/MathematicaMCMC
+
+install_MathematicaMCMC: MathematicaMCMC MathematicaMCMC_man
+
+MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+MathematicaMCMC_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_MathematicaMCMC_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_MathematicaMCMC:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)
+

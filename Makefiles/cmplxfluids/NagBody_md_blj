@@ -1,0 +1,46 @@
+# NagBody install file - Makefiles directory
+# Copyright (c) 2006-2018  Mario A. Rodriguez-Meza, Mexico, D.F.
+
+# ==================================================================
+# CMPLXFLUIDS
+# ==================================================================
+# md_blj code:
+
+CODE_DIR = NagBody_sources/cmplxfluids/md_blj
+
+install_md_blj: md_blj md_blj_man
+
+md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install)
+
+md_blj_man:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean)
+
+clean_md_blj_dir:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+packing_md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+packing_gnu_md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_gnu_sources)
+
+packing_nagbody_gnu_md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody packing_nagbody_gnu_sources)
+
+install_gnu_dirs_md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_gnu_dirs)
+
+install_nagbody_gnu_dirs_md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody install_nagbody_gnu_dirs)
+
+clean_gnu_md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_gnu)
+
+clean_nagbody_gnu_md_blj:
+	(cd $(CODE_DIR);	$(MAKE) -f NagBody clean_nagbody_gnu)
+
+
