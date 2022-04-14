@@ -4,6 +4,17 @@ Mario A. Rodriguez-Meza
 
 Numerical codes list:
 
+class
+
+cmplxflds
+
+cosmo_analysis
+
+cosmos_background
+
+Influenza
+
+
 Gravitation
 1. nbody_n2		: code to evolve an N-body system (PP method)
 2. model		: code to generate several N-body initial condition using Monte Carlo
