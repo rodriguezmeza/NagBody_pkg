@@ -1,0 +1,203 @@
+# ----- MAKE FILE FOR nbody_n2 CODE -----
+# Copyright (c) 2006-2010  M.A. Rodriguez-Meza, Mexico, D.F.
+#
+# Se define el directorio en donde estan las
+# definiciones de las arquitecturas particulares.
+MACHINES_DIR = ../../../../Machines/
+include $(MACHINES_DIR)machine.inc
+
+# Se definen opciones locales de este codigo
+# 	OPT1 -- OPT10
+# La serie de opciones OPT11 -- OPT20 y OPTIMIZE son para la arquitectura 
+# particular y estan en el archivo machine.inc o pmachine.inc
+#
+#OPT1    =  -DOPTIONNAME
+#OPT2    =  -DOPTIONNAME
+#OPT3    =  -DOPTIONNAME
+#OPT4    =  -DOPTIONNAME
+#OPT5    =  -DOPTIONNAME
+OPT6    =  -DNDIM=3
+
+#OPT7    =  -I $(HOME)/plplot/include/plplot/
+
+OPT8    =  -DDOUBLEPREC
+#OPT8    =  -DMIXEDPREC
+OPT9    =  -DGRAVITY
+OPT10   =  -DMACOSX
+
+OPTIONS =  $(OPTIMIZE) \
+	   $(OPT1) $(OPT2) $(OPT3) $(OPT4) $(OPT5) $(OPT6) $(OPT7) $(OPT8) \
+	   $(OPT9) $(OPT10) $(OPT11) $(OPT12) $(OPT13) $(OPT14) $(OPT15) \
+           $(OPT16) $(OPT17) $(OPT18) $(OPT19) $(OPT20)
+
+CCFLAGS = $(OPTIONS)
+LDFLAGS = $(LIBS)
+
+#PRECISION = DOUBLEPREC
+
+H_PATH = ../../../General_libs/
+ZENO_PATH = $(H_PATH)zeno/
+
+EXEC = sphz
+
+OBJS	= sphcode.o sph.o sphio.o kdtree.o smooth.o sphload.o sphgrav.o \
+	$(ZENO_PATH)clib/getparam.o $(ZENO_PATH)clib/mathfns.o \
+	$(ZENO_PATH)clib/burststring.o $(ZENO_PATH)clib/vectmath.o \
+	$(ZENO_PATH)clib/allocate.o $(ZENO_PATH)clib/cputime.o \
+	$(ZENO_PATH)clib/error.o $(ZENO_PATH)clib/history.o \
+	$(ZENO_PATH)clib/scanopt.o $(ZENO_PATH)clib/stropen.o \
+	$(ZENO_PATH)clib/extstring.o $(ZENO_PATH)clib/filestruct.o \
+	$(ZENO_PATH)clib/strset.o $(ZENO_PATH)clib/datatypes.o \
+	$(ZENO_PATH)clib/phatstruct.o $(ZENO_PATH)clib/within.o \
+	$(ZENO_PATH)libnbody/phatbody.o $(ZENO_PATH)libnbody/bodyio.o
+
+INCL	= sphcode.h sphdefs.h kdtree.h smooth.h \
+	globaldefs.h cmdline_defs.h protodefs.h switches.h \
+	$(ZENO_PATH)clib/getparam.h \
+	$(ZENO_PATH)clib/mathfns.h $(ZENO_PATH)clib/stdinc.h \
+	$(ZENO_PATH)clib/vectdefs.h $(ZENO_PATH)clib/vectmath.h \
+	$(ZENO_PATH)clib/datatypes.h $(ZENO_PATH)clib/gsp.h \
+	$(ZENO_PATH)clib/strset.h $(ZENO_PATH)clib/phatstruct.h \
+	$(ZENO_PATH)clib/filestruct.h $(ZENO_PATH)libnbody/bodytags.h \
+	$(ZENO_PATH)libnbody/phatbody.h $(ZENO_PATH)libnbody/fixbody.h 
+
+
+$(EXEC): $(OBJS) 
+	$(CC) $(OBJS) $(LIBS) -o $(EXEC)
+
+#$(OBJS): $(INCL) 
+
+########################################################################
+# Build individual object files.
+
+sphcode.o: sphcode.c sphcode.h sphdefs.h cmdline_defs.h protodefs.h switches.h
+	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
+	   -o sphcode.o -c sphcode.c
+
+sph.o: sph.c sphcode.h sphdefs.h globaldefs.h protodefs.h switches.h
+	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
+	   -o sph.o -c sph.c
+
+sphio.o: sphio.c sphcode.h sphdefs.h $(ZENO_PATH)libnbody/fixbody.h
+	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
+	   -o sphio.o -c sphio.c
+
+kdtree.o: kdtree.c kdtree.h sphdefs.h
+	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
+	   -o kdtree.o -c kdtree.c
+
+smooth.o: smooth.c smooth.h kdtree.h sphdefs.h
+	$(CC) $(CCFLAGS) $(OPT) $(FSF) $(FLAGS) \
+	    -o smooth.o -c smooth.c
+
+sphload.o: sphload.c sphdefs.h
+	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
+	   -o sphload.o -c sphload.c
+
+sphgrav.o: sphgrav.c sphdefs.h
+	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
+	   -o sphgrav.o -c sphgrav.c
+
+$(ZENO_PATH)clib/getparam.o: $(ZENO_PATH)clib/getparam.c $(ZENO_PATH)clib/getparam.h \
+	$(ZENO_PATH)clib/stdinc.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/getparam.o -c $(ZENO_PATH)clib/getparam.c
+
+$(ZENO_PATH)clib/mathfns.o: $(ZENO_PATH)clib/mathfns.c $(ZENO_PATH)clib/mathfns.h \
+	$(ZENO_PATH)clib/stdinc.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/mathfns.o -c $(ZENO_PATH)clib/mathfns.c
+
+$(ZENO_PATH)clib/burststring.o: $(ZENO_PATH)clib/burststring.c \
+	$(ZENO_PATH)clib/stdinc.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/burststring.o -c $(ZENO_PATH)clib/burststring.c
+
+$(ZENO_PATH)clib/vectmath.o: $(ZENO_PATH)clib/vectmath.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/mathfns.h $(ZENO_PATH)clib/vectdefs.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/vectmath.o -c $(ZENO_PATH)clib/vectmath.c
+
+$(ZENO_PATH)clib/allocate.o: $(ZENO_PATH)clib/allocate.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/getparam.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/allocate.o -c $(ZENO_PATH)clib/allocate.c
+
+$(ZENO_PATH)clib/cputime.o: $(ZENO_PATH)clib/cputime.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/getparam.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/cputime.o -c $(ZENO_PATH)clib/cputime.c
+
+$(ZENO_PATH)clib/error.o: $(ZENO_PATH)clib/error.c \
+	$(ZENO_PATH)clib/stdinc.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/error.o -c $(ZENO_PATH)clib/error.c
+
+$(ZENO_PATH)clib/history.o: $(ZENO_PATH)clib/history.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/getparam.h \
+	$(ZENO_PATH)clib/filestruct.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/history.o -c $(ZENO_PATH)clib/history.c
+
+$(ZENO_PATH)clib/scanopt.o: $(ZENO_PATH)clib/scanopt.c \
+	$(ZENO_PATH)clib/stdinc.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/scanopt.o -c $(ZENO_PATH)clib/scanopt.c
+
+$(ZENO_PATH)clib/stropen.o: $(ZENO_PATH)clib/stropen.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/getparam.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/stropen.o -c $(ZENO_PATH)clib/stropen.c
+
+$(ZENO_PATH)clib/extstring.o: $(ZENO_PATH)clib/extstring.c \
+	$(ZENO_PATH)clib/stdinc.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/extstring.o -c $(ZENO_PATH)clib/extstring.c
+
+$(ZENO_PATH)clib/filestruct.o: $(ZENO_PATH)clib/filestruct.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/filestruct.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/filestruct.o -c $(ZENO_PATH)clib/filestruct.c
+
+$(ZENO_PATH)clib/strset.o: $(ZENO_PATH)clib/strset.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/strset.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/strset.o -c $(ZENO_PATH)clib/strset.c
+
+$(ZENO_PATH)clib/datatypes.o: $(ZENO_PATH)clib/datatypes.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/getparam.h \
+	$(ZENO_PATH)clib/datatypes.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/datatypes.o -c $(ZENO_PATH)clib/datatypes.c
+
+$(ZENO_PATH)clib/phatstruct.o: $(ZENO_PATH)clib/phatstruct.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/phatstruct.h \
+	$(ZENO_PATH)clib/datatypes.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/phatstruct.o -c $(ZENO_PATH)clib/phatstruct.c
+
+$(ZENO_PATH)clib/within.o: $(ZENO_PATH)clib/within.c \
+	$(ZENO_PATH)clib/stdinc.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)clib/within.o -c $(ZENO_PATH)clib/within.c
+
+$(ZENO_PATH)libnbody/phatbody.o: $(ZENO_PATH)libnbody/phatbody.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/getparam.h \
+	$(ZENO_PATH)clib/datatypes.h \
+	$(ZENO_PATH)libnbody/bodytags.h $(ZENO_PATH)libnbody/phatbody.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)libnbody/phatbody.o -c $(ZENO_PATH)libnbody/phatbody.c
+
+$(ZENO_PATH)libnbody/bodyio.o: $(ZENO_PATH)libnbody/bodyio.c \
+	$(ZENO_PATH)clib/stdinc.h $(ZENO_PATH)clib/filestruct.h \
+	$(ZENO_PATH)clib/vectdefs.h \
+	$(ZENO_PATH)libnbody/phatbody.h
+	$(CC) $(CCFLAGS) \
+	   -o $(ZENO_PATH)libnbody/bodyio.o -c $(ZENO_PATH)libnbody/bodyio.c
+
+########################################################################
+
+.PHONY : clean
+clean:
+	rm -f $(OBJS) $(EXEC)
+
