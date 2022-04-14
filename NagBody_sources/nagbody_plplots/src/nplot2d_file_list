@@ -1,0 +1,32 @@
+TEMPLATE para Codigo en C.
+
+Lista de archivos necesarios (21):
+
+c - files (locales):
+1. main.c
+2. start_run.c
+3. template.c
+4. template_io.c
+
+c - files (general_c):
+1. clib.c
+2. getparam.c
+3. lic.c
+4. mathfns.c
+5. numrec.c
+
+h - files (Locales):
+1. cmdline_defs.h
+2. data_struc_defs.h
+3. global_defs.h
+4. proto_defs.h
+
+h - files (general_c):
+1. getparam.h
+2. lic.h
+3. machines.h
+4. mathfns.h
+5. numrec.h
+6. precision.h
+7. stdinc.h
+8. vectdefs.h

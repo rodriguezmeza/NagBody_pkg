@@ -1,0 +1,287 @@
+# NagBody install file - nplot2d code
+# Copyright (c) 2006-2018  Mario A. Rodriguez-Meza, Mexico, D.F.
+
+CODE_NAME = nplot2d
+PARENT_CODE_NAME = nagbody_plplots
+
+INSTALL_PATH = ../../../..
+
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) binary..."
+	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
+
+# ==================================================================
+# Install $(CODE_NAME) man page
+
+install_man:
+	@echo " "
+	@echo "Copying $(CODE_NAME) man page..."
+	(cd doc; cp $(CODE_NAME).m $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
+	(cd src; $(MAKE) clean; \
+	rm -f $(INSTALL_PATH)/bin/$(CODE_NAME) \
+	rm -f $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+clean_dir:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir..."
+	(cd src; $(MAKE) clean)
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GENERAL_LIBS_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/General_libs
+PACK_NEMO_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/General_libs/nemo
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/src/{Makefile,*.h,*.c} \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/{compilersrc,gadgetrc,nagbodyrc,profilerc,utilsrc} \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Makefiles/$(PARENT_CODE_NAME)/NagBody_$(CODE_NAME) \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Machines \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_Tests/$(PARENT_CODE_NAME)/$(CODE_NAME)/readme \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Readmes/$(PARENT_CODE_NAME)/Readme-Install_$(CODE_NAME) \
+		$(PACK_GENERAL_LIBS_DIR)/general/{precision.h,stdinc.h} \
+		$(PACK_GENERAL_LIBS_DIR)/general/{times.h,switchs.h,lic.h} \
+		$(PACK_GENERAL_LIBS_DIR)/general/{clib.c,getparam.c,lic.c} \
+		$(PACK_GENERAL_LIBS_DIR)/general/{getparam.h,machines.h} \
+		$(PACK_GENERAL_LIBS_DIR)/math/{vectmath.h,mathfns.c,numrec.c} \
+		$(PACK_GENERAL_LIBS_DIR)/math/{mathfns.h,numrec.h,vectdefs.h} \
+		$(PACK_GENERAL_LIBS_DIR)/NagBody/{nagbody.h,nagbody_struct.h,nagbody_proto.h} \
+		$(PACK_GENERAL_LIBS_DIR)/visual/pldefs.h \
+		$(PACK_GENERAL_LIBS_DIR)/io/{inout.c,inout.h}; \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+
+#####################################
+#####################################
+# PACKING (GNU)
+#
+PACK_GNU_GNU_DEFAULT_DIR = gnu_starting_files
+PACK_GNU_GENERAL_LIBS_DIR = ../../General_libs
+PACK_GNU_CODE_DIR = ../../../NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GNU_CODE_GNU_DIR = gnu_pack
+#PACK_GNU_CODE_GNU_DIR_SRC = $(PACK_GNU_CODE_GNU_DIR)/src
+#PACK_GNU_CODE_GNU_DIR_DOC = $(PACK_GNU_CODE_GNU_DIR)/doc
+#PACK_GNU_CODE_GNU_DIR_TESTS = $(PACK_GNU_CODE_GNU_DIR)/tests
+
+
+INSTALLDIRS_GNU = $(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/doc \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/general_libs \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/io \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/math \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/NagBody \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/visual \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/m4 \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/tests \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/tests/$(PARENT_CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)
+
+install_gnu_dirs:
+	-@for i in $(INSTALLDIRS_GNU) ; do \
+        (if [ ! -d $$i ]; then \
+            echo DIR $$i created; \
+            mkdir $$i; \
+        fi); done
+
+clean_gnu:
+	rm -rf $(PACK_GNU_CODE_GNU_DIR)/*
+
+packing_gnu_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) GNU sources..."
+	@echo " "
+	( cp src/*.h 							$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/; \
+	cp src/*.c 							$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/; \
+	cp doc/$(CODE_NAME).m 						$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/$(CODE_NAME).1; \
+	cp doc/$(CODE_NAME).texi 					$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/AUTHORS 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/ChangeLog 					$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/configure.ac 					$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/COPYING 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/INSTALL 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/INSTALL_DEPENDENCIES 				$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/Makefile.am 					$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/NEWS 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/README 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/m4/gsl.m4 					$(PACK_GNU_CODE_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/m4/gv_find_library.m4 				$(PACK_GNU_CODE_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/doc/Makefile.am 					$(PACK_GNU_CODE_GNU_DIR)/doc/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/doc/$(PARENT_CODE_NAME)/Makefile.am 		$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/general_libs/Makefile.am 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/general_libs/general/Makefile.am 		$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/general_libs/io/Makefile.am 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/io/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/general_libs/math/Makefile.am 		$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/Makefile.am 					$(PACK_GNU_CODE_GNU_DIR)/src/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/$(PARENT_CODE_NAME)/Makefile.am 		$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/clib.c 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/getparam.c 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/lic.c 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/lic.h 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/precision.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/getparam.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/machines.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/switchs.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/general/stdinc.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/math/numrec.c 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/math/mathfns.c 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/math/vectdefs.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/math/vectmath.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/math/numrec.h 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/math/mathfns.h 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/NagBody/nagbody.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/NagBody/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/NagBody/nagbody_struct.h 		$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/NagBody/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/NagBody/nagbody_proto.h 		$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/NagBody/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/visual/pldefs.h 			$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/visual/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/io/inout.c 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/io/; \
+	cp $(PACK_GNU_GENERAL_LIBS_DIR)/io/inout.h 				$(PACK_GNU_CODE_GNU_DIR)/src/general_libs/io/; )
+
+
+
+#####################################
+#####################################
+# PACKING (GNU NAGBODY)
+
+PACK_GNU_NAGBODY_PARENT_DIR = ../../../
+PACK_GNU_NAGBODY_GNU_DEFAULT_DIR = NagBody_pkg_gnu/starting_files
+PACK_GNU_NAGBODY_GNU_DIR = NagBody_pkg_gnu/NagBody_pkg_gnu_pack
+PACK_GNU_NAGBODY_GNU_DIR_CODE_SRC = NagBody_pkg_gnu/NagBody_pkg_gnu_pack/src/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC = NagBody_pkg_gnu/NagBody_pkg_gnu_pack/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GNU_NAGBODY_GNU_DIR_CODE_TESTS = NagBody_pkg_gnu/NagBody_pkg_gnu_pack/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GNU_NAGBODY_CODE_DIR_SRC = NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)/src
+PACK_GNU_NAGBODY_CODE_DIR_DOC = NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)/doc
+PACK_GNU_NAGBODY_CODE_DIR_TESTS = NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)/tests
+PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC = NagBody_sources/General_libs
+PACK_GNU_NAGBODY_DIR_GNU_DEFAULT = NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)/gnu_starting_files
+
+
+INSTALLDIRS = $(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/doc \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/doc/$(PARENT_CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/GNU \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/io \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/math \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/NagBody \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/visual \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/$(PARENT_CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/m4 \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/tests \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/tests/$(PARENT_CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)
+
+install_nagbody_gnu_dirs:
+	-@for i in $(INSTALLDIRS) ; do \
+        (if [ ! -d $$i ]; then \
+            echo DIR $$i created; \
+            mkdir $$i; \
+        fi); done
+
+clean_nagbody_gnu:
+	rm -rf $(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/*
+
+
+packing_nagbody_gnu_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) NagBody GNU sources..."
+	@echo " "
+	(cd $(PACK_GNU_NAGBODY_PARENT_DIR); \
+	cp $(PACK_GNU_NAGBODY_CODE_DIR_SRC)/*.h 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_SRC)/; \
+	cp $(PACK_GNU_NAGBODY_CODE_DIR_SRC)/*.c 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_SRC)/; \
+	cp $(PACK_GNU_NAGBODY_CODE_DIR_DOC)/$(CODE_NAME).m 					$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/$(CODE_NAME).1; \
+	cp $(PACK_GNU_NAGBODY_CODE_DIR_DOC)/$(CODE_NAME).texi 					$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_NAGBODY_GNU_DIR_CODE_SRC)/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/AUTHORS 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/ChangeLog 					$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/COPYING 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/INSTALL 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/INSTALL_DEPENDENCIES				$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/NEWS 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/README 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/AUTHORS 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/ChangeLog 					$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/configure.ac 					$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/COPYING 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/INSTALL 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/INSTALL_DEPENDENCIES 				$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/Makefile.am 					$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/NEWS 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/README 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/m4/gsl.m4 					$(PACK_GNU_NAGBODY_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/m4/gv_find_library.m4 					$(PACK_GNU_NAGBODY_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/doc/Makefile.am 					$(PACK_GNU_NAGBODY_GNU_DIR)/doc/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/doc/$(PARENT_CODE_NAME)/Makefile.am 		$(PACK_GNU_NAGBODY_GNU_DIR)/doc/$(PARENT_CODE_NAME)/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/src/general_libs/Makefile.am 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/src/general_libs/general/Makefile.am 		$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/src/general_libs/io/Makefile.am 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/io/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/src/general_libs/math/Makefile.am 		$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/src/$(PARENT_CODE_NAME)/Makefile.am 		$(PACK_GNU_NAGBODY_GNU_DIR)/src/$(PARENT_CODE_NAME)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/src/Makefile.am 					$(PACK_GNU_NAGBODY_GNU_DIR)/src/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/clib.c 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/getparam.c 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/lic.c 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/lic.h	 		$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/precision.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/getparam.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/machines.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/switchs.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/general/stdinc.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/general/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/math/numrec.c 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/math/mathfns.c 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/math/vectdefs.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/math/vectmath.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/math/numrec.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/math/mathfns.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/math/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/NagBody/nagbody.h 			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/NagBody/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/NagBody/nagbody_struct.h 		$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/NagBody/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/NagBody/nagbody_proto.h 		$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/NagBody/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/visual/pldefs.h			$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/visual/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/io/inout.c 				$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/io/; \
+	cp $(PACK_GNU_NAGBODY_GENERAL_LIBS_DIR_SRC)/io/inout.h 				$(PACK_GNU_NAGBODY_GNU_DIR)/src/general_libs/io/; )
+
+
+#	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_NAGBODY_GNU_DIR_CODE_TESTS)/.; \
+
