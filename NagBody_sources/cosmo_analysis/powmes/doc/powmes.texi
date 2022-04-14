@@ -1,0 +1,64 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename powmes.info
+@settitle powmes 1.0.0
+@c %**end of header
+     
+@copying
+Manual for powmes version 1.0.0
+@end copying
+     
+@titlepage
+@title powmes Manual
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+     
+@c Output the table of the contents at the beginning.
+@contents
+     
+@ifnottex
+@node Top
+@top powmes
+     
+@insertcopying
+@end ifnottex
+     
+@menu
+* Introduction:: Summary of features
+* Install:: How to install the code
+* Input parameters:: Numerical parameters, etc.
+* Output results:: CMB results.
+@end menu
+
+
+@node Introduction
+@chapter Introduction
+ 
+powmes - This programs measures the power spectrum in a 3D simulation using Fourier Taylor expansion of some order on the cosine and sine transforms. 
+
+
+
+@node Install
+@chapter Install
+
+./configure
+
+make
+
+make install
+
+
+@node Input parameters
+@chapter Input parameters
+
+See documentation in doc/cosmo_analysis/powmes directory.
+
+
+@node Output results
+@chapter Output results
+
+See documentation in doc/cosmo_analysis/powmes directory.
+
+@bye
