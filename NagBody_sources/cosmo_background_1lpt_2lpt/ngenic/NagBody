@@ -1,0 +1,216 @@
+# NagBody install file - ngenic code by V. Springel
+# Copyright (c) 2006-2018  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+CODE_NAME = ngenic
+PARENT_CODE_NAME = cosmo_background_1lpt_2lpt
+
+INSTALL_PATH = ../../../..
+
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) binary..."
+	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
+
+# ==================================================================
+# Install $(CODE_NAME) man page
+
+install_man:
+	@echo " "
+	@echo "Copying $(CODE_NAME) man page..."
+	(cd doc; cp $(CODE_NAME).m $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
+	(cd src; $(MAKE) clean; \
+	rm -f $(INSTALL_PATH)/bin/$(CODE_NAME) \
+	rm -f $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+clean_dir:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir..."
+	(cd src; $(MAKE) clean)
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/src/{Makefile,*.h,*.c} \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/{compilersrc,gadgetrc,nagbodyrc,profilerc,utilsrc} \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Makefiles/$(PARENT_CODE_NAME)/NagBody_$(CODE_NAME) \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Machines \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_Tests/$(PARENT_CODE_NAME)/$(CODE_NAME)/readme \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Readmes/$(PARENT_CODE_NAME)/Readme-Install_$(CODE_NAME); \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+
+#####################################
+#####################################
+# PACKING (GNU)
+#
+PACK_GNU_GNU_DEFAULT_DIR = gnu_starting_files
+PACK_GNU_GENERAL_LIBS_DIR = ../../General_libs
+PACK_GNU_CODE_DIR = ../../../NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GNU_CODE_GNU_DIR = gnu_pack
+#PACK_GNU_CODE_GNU_DIR_SRC = $(PACK_GNU_CODE_GNU_DIR)/src
+#PACK_GNU_CODE_GNU_DIR_DOC = $(PACK_GNU_CODE_GNU_DIR)/doc
+#PACK_GNU_CODE_GNU_DIR_TESTS = $(PACK_GNU_CODE_GNU_DIR)/tests
+
+
+INSTALLDIRS_GNU = $(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/doc \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/m4 \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/tests \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/tests/$(PARENT_CODE_NAME) \
+$(PACK_GNU_CODE_DIR)/$(PACK_GNU_CODE_GNU_DIR)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+
+install_gnu_dirs:
+	-@for i in $(INSTALLDIRS_GNU) ; do \
+        (if [ ! -d $$i ]; then \
+            echo DIR $$i created; \
+            mkdir $$i; \
+        fi); done
+
+clean_gnu:
+	rm -rf $(PACK_GNU_CODE_GNU_DIR)/*
+
+packing_gnu_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) GNU sources..."
+	@echo " "
+	( cp src/*.h 							$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/; \
+	cp src/*.c 							$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/; \
+	cp doc/$(CODE_NAME).m 						$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/$(CODE_NAME).1; \
+	cp doc/$(CODE_NAME).texi 					$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)/* 	$(PACK_GNU_CODE_GNU_DIR)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/AUTHORS 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/ChangeLog 					$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/configure.ac 					$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/COPYING 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/INSTALL 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/INSTALL_DEPENDENCIES 				$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/Makefile.am 					$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/NEWS 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/README 						$(PACK_GNU_CODE_GNU_DIR)/.; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/m4/gsl.m4 					$(PACK_GNU_CODE_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/m4/acx_mpi.m4 					$(PACK_GNU_CODE_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/doc/Makefile.am 					$(PACK_GNU_CODE_GNU_DIR)/doc/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/doc/$(PARENT_CODE_NAME)/Makefile.am 		$(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_CODE_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/Makefile.am 					$(PACK_GNU_CODE_GNU_DIR)/src/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/$(PARENT_CODE_NAME)/Makefile.am 		$(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/; \
+	cp $(PACK_GNU_GNU_DEFAULT_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_CODE_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/; )
+
+
+
+#####################################
+#####################################
+# PACKING (GNU NAGBODY)
+
+PACK_GNU_NAGBODY_PARENT_DIR = ../../../
+PACK_GNU_NAGBODY_GNU_DEFAULT_DIR = NagBody_pkg_gnu/starting_files
+PACK_GNU_NAGBODY_GNU_DIR = NagBody_pkg_gnu/NagBody_pkg_gnu_pack
+PACK_GNU_NAGBODY_GNU_DIR_CODE_SRC = NagBody_pkg_gnu/NagBody_pkg_gnu_pack/src/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC = NagBody_pkg_gnu/NagBody_pkg_gnu_pack/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GNU_NAGBODY_GNU_DIR_CODE_TESTS = NagBody_pkg_gnu/NagBody_pkg_gnu_pack/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_GNU_NAGBODY_CODE_DIR_SRC = NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)/src
+PACK_GNU_NAGBODY_CODE_DIR_DOC = NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)/doc
+PACK_GNU_NAGBODY_CODE_DIR_TESTS = NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)/tests
+PACK_GNU_NAGBODY_DIR_GNU_DEFAULT = NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)/gnu_starting_files
+
+
+INSTALLDIRS = $(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/doc \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/doc/$(PARENT_CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/GNU \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/$(PARENT_CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/src/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/m4 \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/tests \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/tests/$(PARENT_CODE_NAME) \
+$(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)
+
+
+install_nagbody_gnu_dirs:
+	-@for i in $(INSTALLDIRS) ; do \
+        (if [ ! -d $$i ]; then \
+            echo DIR $$i created; \
+            mkdir $$i; \
+        fi); done
+
+clean_nagbody_gnu:
+	rm -rf $(PACK_GNU_NAGBODY_PARENT_DIR)/$(PACK_GNU_NAGBODY_GNU_DIR)/*
+
+packing_nagbody_gnu_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) NagBody GNU sources..."
+	@echo " "
+	(cd $(PACK_GNU_NAGBODY_PARENT_DIR); \
+	cp $(PACK_GNU_NAGBODY_CODE_DIR_SRC)/*.h 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_SRC)/; \
+	cp $(PACK_GNU_NAGBODY_CODE_DIR_SRC)/*.c 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_SRC)/; \
+	cp $(PACK_GNU_NAGBODY_CODE_DIR_DOC)/$(CODE_NAME).m 					$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/$(CODE_NAME).1; \
+	cp $(PACK_GNU_NAGBODY_CODE_DIR_DOC)/$(CODE_NAME).texi 					$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/src/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_NAGBODY_GNU_DIR_CODE_SRC)/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/doc/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)/* 	$(PACK_GNU_NAGBODY_GNU_DIR_CODE_TESTS)/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/AUTHORS 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/ChangeLog 					$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/COPYING 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/INSTALL 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/INSTALL_DEPENDENCIES				$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/NEWS 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/README 						$(PACK_GNU_NAGBODY_GNU_DIR_CODE_DOC)/GNU/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/AUTHORS 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/ChangeLog 					$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/configure.ac 					$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/COPYING 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/INSTALL 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/INSTALL_DEPENDENCIES 				$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/Makefile.am 					$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/NEWS 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/README 						$(PACK_GNU_NAGBODY_GNU_DIR)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/m4/gsl.m4 					$(PACK_GNU_NAGBODY_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/m4/gv_find_library.m4 				$(PACK_GNU_NAGBODY_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/m4/acx_mpi.m4 					$(PACK_GNU_NAGBODY_GNU_DIR)/m4/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/doc/Makefile.am 					$(PACK_GNU_NAGBODY_GNU_DIR)/doc/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/doc/$(PARENT_CODE_NAME)/Makefile.am 		$(PACK_GNU_NAGBODY_GNU_DIR)/doc/$(PARENT_CODE_NAME)/; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/src/$(PARENT_CODE_NAME)/Makefile.am 		$(PACK_GNU_NAGBODY_GNU_DIR)/src/$(PARENT_CODE_NAME)/.; \
+	cp $(PACK_GNU_NAGBODY_GNU_DEFAULT_DIR)/src/Makefile.am 					$(PACK_GNU_NAGBODY_GNU_DIR)/src/; )
+
+
+#	cp $(PACK_GNU_NAGBODY_DIR_GNU_DEFAULT)/tests/$(PARENT_CODE_NAME)/$(CODE_NAME)/Makefile.am $(PACK_GNU_NAGBODY_GNU_DIR_CODE_TESTS)/.; \
