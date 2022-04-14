@@ -1,0 +1,75 @@
+# NagBody install file - montepython code
+# Copyright (c) 2006-2019  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+CODE_NAME = montepython
+PARENT_CODE_NAME = class
+
+INSTALL_PATH = ../../../..
+
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+# Dummy install
+#install:
+#	@echo " "
+#	@echo "Creating $(CODE_NAME) binary..."
+#	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
+
+# ==================================================================
+# Install $(CODE_NAME) man page
+
+#install_man:
+#	@echo " "
+#	@echo "Copying $(CODE_NAME) man page..."
+#	(cd doc; cp $(CODE_NAME).m $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+#clean:
+#	@echo " "
+#	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
+#	(cd src; $(MAKE) clean; \
+#	rm -f $(INSTALL_PATH)/bin/$(CODE_NAME) \
+#	rm -f $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+#clean_dir:
+#	@echo " "
+#	@echo "Cleaning $(CODE_NAME) source dir..."
+#	(cd src; $(MAKE) clean)
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/python/ \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/{compilersrc,gadgetrc,nagbodyrc,profilerc,utilsrc} \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Makefiles/$(PARENT_CODE_NAME)/NagBody_$(CODE_NAME) \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Machines \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_Tests/$(PARENT_CODE_NAME)/$(CODE_NAME) \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/Readmes/$(PARENT_CODE_NAME)/Readme-Install_$(CODE_NAME); \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+

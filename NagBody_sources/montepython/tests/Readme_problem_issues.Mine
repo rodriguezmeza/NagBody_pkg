@@ -1,0 +1,174 @@
+
+Si una corrida tiene errores, se debe borrar todo el directorio de salida porque cualquier nueva ejecución (habiendo modificado el archivo de parametros) no correra, lee el archivo de parámetros guardado en output antes por la corrida anterior.
+
+Si se tiene instalado mpi4py se puede correr en paralelo usando
+
+mpirun -np 4 python montepython/MontePython.py run ...
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Block inversion failed for l=2 info=1 #75
+ Open	VicenteAtal opened this issue on Feb 10, 2017 · 1 comment
+ Open
+Block inversion failed for l=2 info=1 #75
+VicenteAtal opened this issue on Feb 10, 2017 · 1 comment
+Comments
+@VicenteAtal
+
+VicenteAtal commented on Feb 10, 2017 • 
+edited 
+Hi all,
+I hope somebody can help me with this problem. When running Planck's base model
+
+python montepython/MontePython.py run -o planck/ -p base2015.param -c covmat/base2015.covmat -b bestfit/base2015.bestfit --conf default.conf -f 1.5 -N 20
+
+I get some error. After initializing the best fit parameters I see block inversion failed
+....
+from best-fit file : gal545_A_217 = 78.8981
+from best-fit file : calib_100T = 998.163
+from best-fit file : calib_217T = 994.844
+from best-fit file : A_planck = 100.222
+block inversion failed for l = 2 info = 1
+
+which then repeats
+
+-LogLkl	1e+02omega_b omega_cdm 100*theta_s ln10^{10}A_s n_s tau_reio A_cib_217 xi_sz_cib A_sz ps_A_100_100 ps_A_143_143 ps_A_143_217 ps_A_217_217 ksz_norm gal545_A_100 gal545_A_143 gal545_A_143_217gal545_A_217 1e+03calib_100T 1e+03calib_217T 1e+02A_planck z_reio Omega_Lambda YHe H0 1e+09A_s sigma8
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+block inversion failed for l = 2 info = 1
+20 nan	2.234564e+00	1.176998e-01	1.041954e+00	3.078268e+00	9.666574e-01	7.466321e-02 6.443051e+01	4.530022e-01	8.697788e+00	2.232064e+02	2.593456e+01	3.300564e+01 8.734209e+01	9.913474e+00	6.172188e+00	8.719394e+00	1.738178e+01	7.872689e+01 9.981529e+02	9.948696e+02	1.000648e+02	9.624161e+00	6.976004e-01	2.478293e-01 6.821757e+01	2.172076e+00	nan
+
+Anybody knows the reason for this problem ?
+thanks in advance
+ @bhorowitz
+
+bhorowitz commented on Apr 19, 2017 • 
+edited 
+I think it is a problem originating from the Planck likelihood code, probably due to some strangeness in the power-spectra you are passing to it. I don't think it should cause the code to fail however, and probably doesn't affect the end results.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Class did not read input parameter(s): w0_fld, cs2_fl, wa_fld #88
+ Closed	betalusso opened this issue on Mar 22, 2016 · 3 comments
+ Closed
+Class did not read input parameter(s): w0_fld, cs2_fl, wa_fld #88
+betalusso opened this issue on Mar 22, 2016 · 3 comments
+Comments
+@betalusso
+
+betalusso commented on Mar 22, 2016
+I am new to montypython and I would like to run a modified version of base2015.param.
+The experiments I have considered are:
+data.experiments=['Planck_highl','Planck_lowl','hst','CFHTLens_correlation']
+and I added the following three parameters to the parameter list:
+data.parameters['cs2_fl'] = [1, None, None, 0.016, 1, 'cosmo']
+data.parameters['w0_fld'] = [-1, None, None, 0.016, 1, 'cosmo']
+data.parameters['wa_fld'] = [0, None, None, 0.016, 1, 'cosmo']
+
+I left anything else untouched, but unfortunately I have the following error
+Cosmological Module Error:
+/|\ Something went wrong when calling CLASS
+/o\ Error in Class: Class did not read input parameter(s): w0_fld, cs2_fl,
+wa_fld
+
+I do not understand why w0 and wa are not recognised by CLASS.
+Any suggestion?
+Thank you very much!
+ @ThomasTram
+
+Collaborator
+ThomasTram commented on Mar 22, 2016
+Hi,
+
+you must specify Omega_Lambda as well, or CLASS will not use a Dark Energy fluid. From explanatory.ini:
+
+8a) Dark energy contributions. At least one out of three conditions must be satisfied:
+    i)   'Omega_Lambda' unspecified.
+    ii)  'Omega_fld' unspecified.
+    iii) 'Omega_scf' set to a negative value. [Will be refered to as
+         unspecified in the following text.]
+    The code will then use the first unspecified component to satisfy the
+    closure equation (sum_i Omega_i) equals (1 + Omega_k)
+    (default: 'Omega_fld' and 'Omega_scf' set to 0 and 'Omega_Lambda' inferred
+    by code)
+What you want to do is probably to add
+data.cosmo_arguments['Omega_Lambda'] = 0.0
+to your input file.
+
+Cheers,
+Thomas
+ @betalusso
+
+Author
+betalusso commented on Mar 22, 2016
+Thanks!
+
+it worked only after having commented the following line
+#data.parameters['cs2_fl'] = [1, None, None, 0.016, 1, 'cosmo']
+
+but I have now this issue
+Error in Class: perturb_init(L:191) :condition (((pba->w0_fld + pba->wa_fld +1.0)*(pba->w0_fld+1.0)) < 0.0) is true; w crosses -1 between the infinite past and today, and this would lead to divergent perturbation equations for the fluid.
+
+Dr. Elisabeta Lusso
+INAF-Osservatorio Astrofisico di Arcetri
+L.go E. Fermi 5
+50125 Firenze - Italy
+tel: +39 055 2752 234
+
+http://www.arcetri.astro.it/~lusso/Site/Home.html
+
+On 22 Mar 2016, at 15:45, Thomas Tram notifications@github.com wrote:
+
+Hi,
+
+you must specify Omega_Lambda as well, or CLASS will not use a Dark Energy fluid. From explanatory.ini:
+
+8a) Dark energy contributions. At least one out of three conditions must be satisfied:
+i) 'Omega_Lambda' unspecified.
+ii) 'Omega_fld' unspecified.
+iii) 'Omega_scf' set to a negative value. [Will be refered to as
+unspecified in the following text.]
+The code will then use the first unspecified component to satisfy the
+closure equation (sum_i Omega_i) equals (1 + Omega_k)
+(default: 'Omega_fld' and 'Omega_scf' set to 0 and 'Omega_Lambda' inferred
+by code)
+What you want to do is probably to add
+data.cosmo_arguments['Omega_Lambda'] = 0.0
+to your input file.
+
+Cheers,
+Thomas
+
+—
+You are receiving this because you authored the thread.
+Reply to this email directly or view it on GitHub #88 (comment)
+ @ThomasTram
+
+Collaborator
+ThomasTram commented on Mar 22, 2016
+Yes, that line had a spelling mistake, it should be cs2_fld not cs2_fl. Also you must set your priors in MontePython such that you do not cross w=-1. For instance
+0>=w0>=-1 and 0<=wa<=1
+should work. (Just check the condition that CLASS prints in the error message.)
+ @ThomasTram ThomasTram closed this on Nov 16, 2016
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

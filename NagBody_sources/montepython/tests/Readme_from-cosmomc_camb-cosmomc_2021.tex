@@ -1,0 +1,127 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%
+Para tener corriendo CosmoMC y Planc2018:
+
+-Compilar cfitsio3390
+-Hacer ln -s cfitsioxxxx cfitsio en el directorio NagBody_pkg/local
+-activar en nagbodyrc su ambiente.
+-La jerarquía de busqueda en .bash_profile debe ser test primero a anaconda3 y después test a port. La busqueda se hace primero en /opt/local y después a anaconda3
+-Procesar code de Planck2018, editando primero su Makefile para tener bien cfitsio. Hacer: make clean, make, make install, make install_python
+-Hacer:
+source /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2021/Planck_2018/code/plc_3.0/plc-3.01/bin/clik_profile.sh
+-En el directorio CosmoMC hacer make clean, make delete y make
+.Para correr ir a: /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2021/runs
+-Hacer:
+source /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2021/Planck_2018/code/plc_3.0/plc-3.01/bin/clik_profile.sh
+
+-Correr
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+Download fresh files:
+
+CosmoMC and plc
+
+make the links:
+
+ln -s CosmoMC_xxxx-xx-xx CosmoMC
+
+cd runs
+ln -s ../CosmoMC/camb camb
+ln -s ../CosmoMC/data data
+ln -s ../CosmoMC/planck_covmats planck_covmats
+
+Works with cfitsio in /opt/local make necesary changes in plc-3.01/Makefile and CosmoMC/source/Makefile
+
+source /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2020/Planck_2018/plc-3.01/bin/clik_profile.sh
+
+New:
+source /Users/mar/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2021/Planck_2015/plc-2.0/bin/clik_profile.sh
+
+./clik_example_C /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2021/Planck_2015/plc_2.0/hi_l/plik/plik_dx11dr2_HM_v18_TT.clik/
+
+(Not working so far...)
+./clik_example_f90 /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2021/Planck_2015/plc_2.0/hi_l/plik/plik_dx11dr2_HM_v18_TT.clik/
+
+Make a link:
+(clik -> /Users/mar/NagBody_pkg/NagBody_sources/cosmomc_camb/downloads_2019/CosmoMC/plc_2.0)
+
+ln -s /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2021/Planck_2015/plc_2.0 clik
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Unpack 
+
+$ tar xvf plc-3.01.tar.gz
+$ cd plc-3.01
+
+Edit Makefile to adapt to your needs, in particular change the line with
+
+GFORTRANLIBPATH = /usr/lib
+
+to
+
+GFORTRANLIBPATH = /opt/local/lib/gcc7
+
+$ make
+$ make install
+
+The edit setup.py to add the Mac include Framework line and then
+$ make install_python
+
+Add to $HOME/.profile (could be to .bashrc, and were done with 
+(echo -e "\nsource $(pwd)/bin/clik_profile.sh" >> ~/.profile)):
+
+source /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2019/xother_files/Planck_2018/plc-3.01/bin/clik_profile.sh
+
+Unpack:
+
+tar xvf CosmoMC_2019-08-29.tar.gz
+
+Add to $HOME/.profile:
+
+#type in the correct COSMOMC..PATH
+export PYTHONPATH=/Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2019/xother_files/CosmoMC_2019-08-29/python:$PYTHONPATH 
+
+Make the link:
+
+ln -s /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2019/xother_files/Planck_2018/plc_3.0 ./data/clik_14.0
+
+You can also do the link:
+
+ln -s ../Planck_2018/plc_2.0/ ./data/clik
+
+if you have the 2015 likelihoods.
+
+Edit source/Makefile to find cfitsio (look for WMAP and # Mar changes):
+
+cfitsio ?= $(HOME)/NagBody_pkg/local/cfitsio
+
+and after 
+ifneq ($(WMAP),)
+
+type in:
+# Mar
+LINKFLAGS +=  -L$(cfitsio)/lib -lcfitsio
+
+and in camb/fortran Makefile also.
+
+FITSDIR ?= $(HOME)/NagBody_pkg/local/cfitsio/lib
+
+
+After:
+
+source /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2019/xother_files/Planck_2018/plc-3.01/bin/clik_profile.sh
+
+Do:
+
+make clean
+ make 2>&1 | tee make_gcc.log
+
+Then go to runs dir and 
+
+$ runs_sh/run_JLA
+
+
+
+
+mpif90 -o ../cosmomc ReleaseMPI/ObjectParamNames.o ReleaseMPI/settings.o ReleaseMPI/samples.o ReleaseMPI/IO.o ReleaseMPI/likelihood.o ReleaseMPI/GeneralTypes.o ReleaseMPI/BaseParameters.o ReleaseMPI/propose.o ReleaseMPI/ParamSet.o ReleaseMPI/PowellConstrainedMinimize.o ReleaseMPI/ImportanceSampling.o ReleaseMPI/MCMC.o ReleaseMPI/minimize.o ReleaseMPI/SampleCollector.o ReleaseMPI/GeneralSetup.o ReleaseMPI/CosmologyTypes.o ReleaseMPI/CosmoTheory.o ReleaseMPI/bbn.o ReleaseMPI/Calculator_Cosmology.o ReleaseMPI/CalcLike_Cosmology.o ReleaseMPI/Likelihood_Cosmology.o ReleaseMPI/Calculator_CAMB.o ReleaseMPI/CMB_BK_Planck.o ReleaseMPI/cliklike.o ReleaseMPI/mpk.o ReleaseMPI/wigglez.o ReleaseMPI/bao.o ReleaseMPI/supernovae_Union2.o ReleaseMPI/supernovae_SNLS.o ReleaseMPI/supernovae_JLA.o ReleaseMPI/szcounts.o ReleaseMPI/supernovae.o ReleaseMPI/HST.o  ReleaseMPI/CMB.o ReleaseMPI/CMBlikes.o ReleaseMPI/ElementAbundances.o ReleaseMPI/wl.o ReleaseMPI/CosmologyParameterizations.o ReleaseMPI/DataLikelihoods.o ReleaseMPI/calclike.o ReleaseMPI/CosmologyConfig.o ReleaseMPI/driver.o -L../camb/fortran/ReleaseMPI -lcamb -L/Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2020/CosmoMC/source/../camb/forutils/ReleaseMPI -lforutils -L/Applications/Xcode.app//Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib -L/opt/local/lib/lapack -lblas -llapack   -L/Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2020/Planck_2018/plc-3.01/lib -lclik_f90 -cpp -O3 -ffast-math -ffree-line-length-none -fopenmp -fmax-errors=4 -DMPI -DCLIK -I../camb/fortran/ReleaseMPI -I/Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2020/CosmoMC/source/../camb/forutils/ReleaseMPI/ -I/Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/cosmomc_camb/cosmomc_2020/Planck_2018/plc-3.01/include -JReleaseMPI -IReleaseMPI/
