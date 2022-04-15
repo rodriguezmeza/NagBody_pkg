@@ -3,9 +3,6 @@
 #define _mathfns_h
 
 #include <math.h>
-#include "./stdinc.h"
-#include "vectdefs.h"
-
 
 #if defined(MIXEDPREC) || defined(DOUBLEPREC)
 #define rsqrt    sqrt
@@ -135,25 +132,6 @@ double bessj(int, double);
 double bessk0(double);
 double bessk1(double);
 // End Bessel functions from Numerical Recipes
-
-
-double gammln(double xx);  // Ln(Gamma(x))
-double beta(double z, double w);
-double erffnr(double x);            // Error function NR 2nd E
-double erffcnr(double x);           // Complementary Error function NR 2nd E
-//double erfcc(double x);               // Complementary Error function NR 2nd E
-                                    // using Chebyshev
-double gammp(double a, double x);
-double gammq(double a, double x);
-void gser(double *gamser, double a, double x, double *gln);
-void gcf(double *gammcf, double a, double x, double *gln);
-
-void VRand(vector p);
-
-real rj0Bessel(real);
-real rj1Bessel(real);
-real rj2Bessel(real);
-real rj3Bessel(real);
 
 #endif	/* ! _mathfns_h	*/
 

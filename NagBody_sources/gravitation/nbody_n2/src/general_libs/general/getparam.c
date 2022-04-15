@@ -1,5 +1,5 @@
 /*==============================================================================
-	MODULE: getparam.c			[General_libs]
+	MODULE: getparam.c			[general_libs]
 	Written by: M.A. Rodriguez-Meza
 	Starting date: May 2006
 	Purpose: routines to initialize the parameters code
@@ -300,7 +300,6 @@ local param *FindParam(string name, param *pvec)
     return (NULL);
 }
 
-/*
 local string ParName(string arg)
 {
     char *ap, *ep;
@@ -315,25 +314,6 @@ local string ParName(string arg)
     if (ep == NULL)
         return (NULL);
     *ep = (char)NULL;
-    return (namebuf);
-} */
-
-// Removing the warning:
-// warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
-local string ParName(string arg)
-{
-    char *ap, *ep;
-    static char namebuf[64];
-    
-    ap = (char *) arg;
-    if (*ap == '<' || *ap == '>')
-        ap++;
-    strncpy(namebuf, ap, 63);
-    namebuf[63] = '\0';
-    ep = strchr(namebuf, '=');
-    if (ep == NULL)
-        return (NULL);
-    *ep = '\0';
     return (namebuf);
 }
 

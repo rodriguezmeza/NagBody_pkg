@@ -2,15 +2,13 @@
 #ifndef _stdinc_h
 #define _stdinc_h
 
-
 #include <stdio.h>
 #include <stdlib.h>
 
-#define copyright	"Copyright (c) 2000-2018 Mario A. Rodriguez-Meza, MEXICO."
+#define copyright	"Copyright (c) 2000-2022 M.A. Rodriguez-Meza, MEXICO."
 
-//long idum;                // seed for random generators
-// To work with gcc11 :: Error found: duplicate symbol '_idum' in:
-static long idum;                // seed for random generators
+//long idum;				// Seed for random generators
+                            // Defined in globaldefs.h
 
 #if !defined(NULL)
 #define NULL 0L
@@ -115,11 +113,11 @@ typedef struct {
 #define SignR(x,y)  (((y) >= 0) ? (x) : (- (x)))
 
 
-//void *allocate(int);			// Definicion original ...
-void *allocate(long int);		// Correccion para trabajar con mas de 16x10^6 particulas...			
-real *AllocVecR(int);			// Define un arreglo de reales como en fortran
-int *AllocVecI(int);			// Define un arreglo de enteros como en fortran
-int *AllocVecINormal(int);		// Define un arreglo de enteros como en C (comenzando en cero)
+//void *allocate(int);			// Original definitio ...
+void *allocate(long int);		// Correction to work with more than 16x10^6 particles...
+real *AllocVecR(int);			// Define an array of reals like in fortran
+int *AllocVecI(int);			// Define an array of integers like in fortran
+int *AllocVecINormal(int);		// Define an array of integers like in C (starting in zero)
 void FreeVecR(real *);
 void FreeVecI(int *);
 void FreeVecINormal(int *);

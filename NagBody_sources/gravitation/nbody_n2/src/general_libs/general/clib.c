@@ -8,29 +8,23 @@
 #include "stdinc.h"
 #include "getparam.h"
 
-#ifdef UNIX						// Este 'UNIX' definido en machines.h
+#ifdef UNIX						        // 'UNIX' defined in machines.h
 #include <sys/times.h>
 #include <sys/param.h>
 #else
 #include <sys/types.h>
 #endif
 
-#include <sys/types.h>  // To remove:
-#include <unistd.h>     // warning: implicit declaration of function ‘dup’ [-Wimplicit-function-declaration]
-                        // fds = dup(fileno(inflag ? stdin : stdout));
-
 #include <sys/timeb.h>
 #include <string.h>	
 
 #ifdef VISUALC
-#include <io.h>						// dup est· definido aqui
-#endif
+#include <io.h>						    // dup is defined here
+#endif			
 
 #include <sys/stat.h>
 #include <stdarg.h>
 
-#include <string.h>
-#include <stdio.h>
 
 void *allocate(long int nb)
 {
@@ -43,22 +37,22 @@ void *allocate(long int nb)
     return (mem);
 }
 
-real *AllocVecR(int size)				// Define un arreglo de tama~no size
-{										// Los indices comienzan en 1
-	real *v;							// (como en fortran)
+real *AllocVecR(int size)				// Define array of size
+{										// Index start in 1
+	real *v;							// (as in fortran)
 	v = (real *)malloc(size * sizeof(real));
 	return (v - 1);
 }
 
-int *AllocVecI(int size)				// Define un arreglo de tama~no size
-{										// Los indices comienzan en 1
-	int *v;								// (como en fortran)
+int *AllocVecI(int size)				// Define array of size
+{										// Index start in 1
+	int *v;								// (as in fortran)
 	v = (int *)malloc(size * sizeof(int));
 	return (v - 1);
 }
 
-int *AllocVecINormal(int size)				// Define un arreglo de tama~no size
-{											// Los indices comienzan en 0
+int *AllocVecINormal(int size)			// Define array of size
+{										// Index start in 0
 	int *v;
 	v = (int *)malloc(size * sizeof(int));
 	return (v);
@@ -78,8 +72,7 @@ void FreeVecINormal(int *v)
 {
 	free(v);
 }
-
-
+ 
 #ifdef UNIX
 double cputime(void)
 { 
@@ -88,17 +81,18 @@ double cputime(void)
     if (times(&buffer) == -1)
         error("cputime in %s: times() call failed\n", getargv0());
     return ((buffer.tms_utime + buffer.tms_stime) / (60.0 * HZ));
-}
+} 
 #else
 double cputime(void)
 {
 	time_t ltime;
 	time(&ltime);
-    return(((double)ltime)/((double) 60.0));
+	return(((double)ltime)/((double) 60.0));
 }
 #endif
 
-#ifdef MPI					// MPI esta definido en switchs.h
+
+#ifdef MPI					            // MPI is defined in switchs.h
 
 #ifdef WALLCLOCK
 #include <mpi.h>
@@ -178,7 +172,7 @@ void eprintf(string fmt, ...)
     va_end(ap);
 }
 
-/*
+
 bool scanopt(string opt, string key)
 {
     char *op, *kp;
@@ -194,27 +188,6 @@ bool scanopt(string opt, string key)
         while (*op != (char)NULL && *op++ != ',')
 
 	    continue;
-    }
-    return (FALSE);
-} */
-
-// Removing the warning:
-// warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
-bool scanopt(string opt, string key)
-{
-    char *op, *kp;
-    
-    op = (char *) opt;
-    while (*op != '\0') {
-        kp = key;
-        while ((*op != ',' ? *op : '\0') == *kp) {
-            if (*kp++ == '\0')
-                return (TRUE);
-            op++;
-        }
-        while (*op != '\0' && *op++ != ',')
-            
-            continue;
     }
     return (FALSE);
 }

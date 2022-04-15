@@ -36,17 +36,6 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-#ifndef NOGNU
-#include "./general_libs/stdinc.h"
-#include "./general_libs/mathfns.h"
-#include "./general_libs/vectdefs.h"
-#include "./general_libs/vectmath.h"
-#include "./general_libs/getparam.h"
-#include "./general_libs/machines.h"
-#include "./general_libs/inout.h"
-// #include <strings.h>							// For unix
-#include "./general_libs/strings.h"	// For Visual c
-#else
 #include "stdinc.h"
 #include "mathfns.h"
 #include "vectdefs.h"
@@ -54,12 +43,9 @@
 #include "getparam.h"
 #include "machines.h"
 #include "inout.h"
-// #include <strings.h>							// For unix
-#include "strings.h"	// For Visual c
-#endif
+#include "strings.h"
 
 #include "data_struc_defs.h"
-//===============================================
 #include "protodefs.h"
 
 typedef struct {
@@ -120,6 +106,23 @@ typedef struct {
 global global_data gd;
 global cmdline_data cmd;
 global bodyptr bodytab;      
+
+// STATIC problem: gcc version 11
+// From inout.h
+global real *inout_xval;
+global real *inout_yval;
+global real *inout_zval;
+global real *inout_wval;
+
+// STATIC problem: gcc version 11
+// From diffeqs.h
+global double dxsav,*xp,**yp;
+global int kmax,kount;
+global int nrhs;
+
+// STATIC problem: gcc version 11
+// From stdinc.h
+global long idum;                // seed for random generators
 
 #endif // ! _globaldefs_h
 

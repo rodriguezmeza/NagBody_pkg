@@ -2,66 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "./stdinc.h"
 #include "numrec.h"
-#include "mathfns.h"
-
-
-#define SWAP(a,b) {temp=(a);(a)=(b);(b)=temp;}
-void gaussj(double **a, int n, double **b, int m)
-{
-    int *indxc,*indxr,*ipiv;
-    int i,icol,irow,j,k,l,ll;
-    double big,dum,pivinv,temp;
-    
-    indxc=nr_ivector(1,n);
-    indxr=nr_ivector(1,n);
-    ipiv=nr_ivector(1,n);
-    for (j=1;j<=n;j++) ipiv[j]=0;
-    for (i=1;i<=n;i++) {
-        big=0.0;
-        for (j=1;j<=n;j++)
-            if (ipiv[j] != 1)
-                for (k=1;k<=n;k++) {
-                    if (ipiv[k] == 0) {
-                        if (fabs(a[j][k]) >= big) {
-                            big=fabs(a[j][k]);
-                            irow=j;
-                            icol=k;
-                        }
-                    }
-                }
-        ++(ipiv[icol]);
-        if (irow != icol) {
-            for (l=1;l<=n;l++) SWAP(a[irow][l],a[icol][l])
-                for (l=1;l<=m;l++) SWAP(b[irow][l],b[icol][l])
-                    }
-        indxr[i]=irow;
-        indxc[i]=icol;
-        if (a[icol][icol] == 0.0) nrerror("gaussj: Singular Matrix");
-        pivinv=1.0/a[icol][icol];
-        a[icol][icol]=1.0;
-        for (l=1;l<=n;l++) a[icol][l] *= pivinv;
-        for (l=1;l<=m;l++) b[icol][l] *= pivinv;
-        for (ll=1;ll<=n;ll++)
-            if (ll != icol) {
-                dum=a[ll][icol];
-                a[ll][icol]=0.0;
-                for (l=1;l<=n;l++) a[ll][l] -= a[icol][l]*dum;
-                for (l=1;l<=m;l++) b[ll][l] -= b[icol][l]*dum;
-            }
-    }
-    for (l=n;l>=1;l--) {
-        if (indxr[l] != indxc[l])
-            for (k=1;k<=n;k++)
-                SWAP(a[k][indxr[l]],a[k][indxc[l]]);
-    }
-    free_ivector(ipiv,1,n);
-    free_ivector(indxr,1,n);
-    free_ivector(indxc,1,n);
-}
-#undef SWAP
-
 
 #define ITMAX 100
 #define EPS 3.0e-8
@@ -131,71 +72,6 @@ float zbrent(float (*func)(float), float x1, float x2, float tol)
 	nrerror("Maximum number of iterations exceeded in zbrent");
 	return 0.0;
 }
-
-double zbrentd(double (*func)(double), double x1, double x2, double tol)
-{
-    int iter;
-    double a=x1,b=x2,c=x2,d,e,min1,min2;
-    double fa=(*func)(a),fb=(*func)(b),fc,p,q,r,s,tol1,xm;
-
-    if ((fa > 0.0 && fb > 0.0) || (fa < 0.0 && fb < 0.0))
-        nrerror("Root must be bracketed in zbrent");
-    fc=fb;
-    for (iter=1;iter<=ITMAX;iter++) {
-        if ((fb > 0.0 && fc > 0.0) || (fb < 0.0 && fc < 0.0)) {
-            c=a;
-            fc=fa;
-            e=d=b-a;
-        }
-        if (fabs(fc) < fabs(fb)) {
-            a=b;
-            b=c;
-            c=a;
-            fa=fb;
-            fb=fc;
-            fc=fa;
-        }
-        tol1=2.0*EPS*fabs(b)+0.5*tol;
-        xm=0.5*(c-b);
-        if (fabs(xm) <= tol1 || fb == 0.0) return b;
-        if (fabs(e) >= tol1 && fabs(fa) > fabs(fb)) {
-            s=fb/fa;
-            if (a == c) {
-                p=2.0*xm*s;
-                q=1.0-s;
-            } else {
-                q=fa/fc;
-                r=fb/fc;
-                p=s*(2.0*xm*q*(q-r)-(b-a)*(r-1.0));
-                q=(q-1.0)*(r-1.0)*(s-1.0);
-            }
-            if (p > 0.0) q = -q;
-            p=fabs(p);
-            min1=3.0*xm*q-fabs(tol1*q);
-            min2=fabs(e*q);
-            if (2.0*p < (min1 < min2 ? min1 : min2)) {
-                e=d;
-                d=p/q;
-            } else {
-                d=xm;
-                e=d;
-            }
-        } else {
-            d=xm;
-            e=d;
-        }
-        a=b;
-        fa=fb;
-        if (fabs(d) > tol1)
-            b += d;
-        else
-            b += SIGN(tol1,xm);
-        fb=(*func)(b);
-    }
-    nrerror("Maximum number of iterations exceeded in zbrentd");
-    return 0.0;
-}
-
 #undef ITMAX
 #undef EPS
 
@@ -221,69 +97,42 @@ void zbrak(float (*fx)(float), float x1, float x2, int n, float xb1[],
 	*nb = nbb;
 }
 
-void zbrakd(double (*fx)(double), double x1, double x2, int n, double xb1[],
-    double xb2[], int *nb)
-{
-    int nbb,i;
-    float x,fp,fc,dx;
-
-    nbb=0;
-    dx=(x2-x1)/n;
-    fp=(*fx)(x=x1);
-    for (i=1;i<=n;i++) {
-        fc=(*fx)(x += dx);
-        if (fc*fp < 0.0) {
-            xb1[++nbb]=x-dx;
-            xb2[nbb]=x;
-            if(*nb == nbb) return;
-
-        }
-        fp=fc;
-    }
-    *nb = nbb;
-}
-
-
 float merff(float x)							
 {												
 												
-	float gammpf(float a, float x);
+	float gammp(float a, float x);
 
-	return x < 0.0 ? -gammpf(0.5,x*x) : gammpf(0.5,x*x);
+	return x < 0.0 ? -gammp(0.5,x*x) : gammp(0.5,x*x);
 }
 
-
-
-float gammpf(float a, float x)
+float gammp(float a, float x)
 {
-	void gcff(float *gammcf, float a, float x, float *gln);
-	void gserf(float *gamser, float a, float x, float *gln);
+	void gcf(float *gammcf, float a, float x, float *gln);
+	void gser(float *gamser, float a, float x, float *gln);
 	void nrerror(char error_text[]);
 	float gamser,gammcf,gln;
 
 	if (x < 0.0 || a <= 0.0) nrerror("Invalid arguments in routine gammp");
 	if (x < (a+1.0)) {
-		gserf(&gamser,a,x,&gln);
+		gser(&gamser,a,x,&gln);
 		return gamser;
 	} else {
-		gcff(&gammcf,a,x,&gln);
+		gcf(&gammcf,a,x,&gln);
 		return 1.0-gammcf;
 	}
 }
 
-
-
 #define ITMAX 100
 #define EPS 3.0e-7
 
-void gserf(float *gamser, float a, float x, float *gln)
+void gser(float *gamser, float a, float x, float *gln)
 {
-	float fgammln(float xx);
+	float gammln(float xx);
 	void nrerror(char error_text[]);
 	int n;
 	float sum,del,ap;
 
-	*gln=fgammln(a);
+	*gln=gammln(a);
 	if (x <= 0.0) {
 		if (x < 0.0) nrerror("x less than 0 in routine gser");
 		*gamser=0.0;
@@ -307,15 +156,13 @@ void gserf(float *gamser, float a, float x, float *gln)
 #undef ITMAX
 #undef EPS
 
-
-
 #define ITMAX 100
 #define EPS 3.0e-7
 #define FPMIN 1.0e-30
 
-void gcff(float *gammcf, float a, float x, float *gln)
+void gcf(float *gammcf, float a, float x, float *gln)
 {
-	float fgammln(float xx);
+	float gammln(float xx);
 	void nrerror(char error_text[]);
 	int i;
 	float an,b,c,d,del,h;
@@ -344,8 +191,7 @@ void gcff(float *gammcf, float a, float x, float *gln)
 #undef EPS
 #undef FPMIN
 
-
-float fgammln(float xx)
+float gammln(float xx)
 {
 	double x,y,tmp,ser;
 	static double cof[6]={76.18009172947146,-86.50532032941677,
@@ -361,9 +207,9 @@ float fgammln(float xx)
 	return -tmp+log(2.5066282746310005*ser/x);
 }
 
-float fgasdev(long *idum)
+float gasdev(long *idum)
 {
-	float fran1(long *idum);
+	float ran1(long *idum);
 	static int iset=0;
 	static float gset;
 	float fac,rsq,v1,v2;
@@ -382,30 +228,6 @@ float fgasdev(long *idum)
 		iset=0;
 		return gset;
 	}
-}
-
-double gasdev(long *idum)
-{
-    double ran1(long *idum);
-    static int iset=0;
-    static double gset;
-    double fac,rsq,v1,v2;
-    
-    if (*idum < 0) iset=0;
-    if  (iset == 0) {
-        do {
-            v1=2.0*ran1(idum)-1.0;
-            v2=2.0*ran1(idum)-1.0;
-            rsq=v1*v1+v2*v2;
-        } while (rsq >= 1.0 || rsq == 0.0);
-        fac=sqrt(-2.0*log(rsq)/rsq);
-        gset=v1*fac;
-        iset=1;
-        return v2*fac;
-    } else {
-        iset=0;
-        return gset;
-    }
 }
 
 #define IA 16807
@@ -445,7 +267,7 @@ float ran0(long *idum)
 #define EPS 1.2e-7
 #define RNMX (1.0-EPS)
 
-float fran1(long *idum)
+float ran1(long *idum)
 {
 	int j;
 	long k;
@@ -472,35 +294,6 @@ float fran1(long *idum)
 	iv[j] = *idum;
 	if ((temp=AM*iy) > RNMX) return RNMX;
 	else return temp;
-}
-
-double ran1(long *idum)
-{
-    int j;
-    long k;
-    static long iy=0;
-    static long iv[NTAB];
-    double temp;
-    
-    if (*idum <= 0 || !iy) {
-        if (-(*idum) < 1) *idum=1;
-        else *idum = -(*idum);
-        for (j=NTAB+7;j>=0;j--) {
-            k=(*idum)/IQ;
-            *idum=IA*(*idum-k*IQ)-IR*k;
-            if (*idum < 0) *idum += IM;
-            if (j < NTAB) iv[j] = *idum;
-        }
-        iy=iv[0];
-    }
-    k=(*idum)/IQ;
-    *idum=IA*(*idum-k*IQ)-IR*k;
-    if (*idum < 0) *idum += IM;
-    j=iy/NDIV;
-    iy=iv[j];
-    iv[j] = *idum;
-    if ((temp=AM*iy) > RNMX) return RNMX;
-    else return temp;
 }
 #undef IA
 #undef IM
@@ -672,17 +465,14 @@ void psdes(unsigned long *lword, unsigned long *irword)
 
 void nrerror(char error_text[])
 {
-//    fprintf(stderr,"Numerical Recipes run-time error...\n");
-    fprintf(stderr,"(NR) run-time error...\n");
+	fprintf(stderr,"Numerical Recipes run-time error...\n");
 	fprintf(stderr,"%s\n",error_text);
 	fprintf(stderr,"...now exiting to system...\n");
 	exit(1);
 }
 
-// Defined bellow
-/*
 float *vector(long nl, long nh)
-// allocate a float vector with subscript range v[nl..nh]
+/* allocate a float vector with subscript range v[nl..nh] */
 {
 	float *v;
 
@@ -690,7 +480,6 @@ float *vector(long nl, long nh)
 	if (!v) nrerror("allocation failure in vector()");
 	return v-nl+NR_END;
 }
-*/
 
 float *nr_vector(long nl, long nh)
 {
@@ -709,17 +498,6 @@ int *nr_ivector(long nl, long nh)
 	if (!v) nrerror("allocation failure in ivector()");
 	return v-nl+NR_END;
 }
-
-int *ivector(long nl, long nh)
-/* allocate an int vector with subscript range v[nl..nh] */
-{
-    int *v;
-    
-    v=(int *)malloc((size_t) ((nh-nl+1+NR_END)*sizeof(int)));
-    if (!v) nrerror("allocation failure in ivector()");
-    return v-nl+NR_END;
-}
-
 
 unsigned char *nr_cvector(long nl, long nh)
 {
@@ -753,9 +531,8 @@ double *nr_dvector(long nl, long nh)
 double *dvector(long nl, long nh)
 {
 	double *v;
-
-//	v=(double *)malloc((size_t) ((nh-nl+1+NR_END)*sizeof(double)));
-    v = (double *)      allocate((nh-nl+1+NR_END)*sizeof(double));
+    
+	v=(double *)malloc((size_t) ((nh-nl+1+NR_END)*sizeof(double)));
 	if (!v) nrerror("allocation failure in dvector()");
 	return v-nl+NR_END;
 }
@@ -799,31 +576,6 @@ double **nr_dmatrix(long nrl, long nrh, long ncl, long nch)
 
 	return m;
 }
-
-double **dmatrix(long nrl, long nrh, long ncl, long nch)
-/* allocate a double matrix with subscript range m[nrl..nrh][ncl..nch] */
-{
-    long i, nrow=nrh-nrl+1,ncol=nch-ncl+1;
-    double **m;
-    
-    /* allocate pointers to rows */
-    m=(double **) malloc((size_t)((nrow+NR_END)*sizeof(double*)));
-    if (!m) nrerror("allocation failure 1 in matrix()");
-    m += NR_END;
-    m -= nrl;
-    
-    /* allocate rows and set pointers to them */
-    m[nrl]=(double *) malloc((size_t)((nrow*ncol+NR_END)*sizeof(double)));
-    if (!m[nrl]) nrerror("allocation failure 2 in matrix()");
-    m[nrl] += NR_END;
-    m[nrl] -= ncl;
-    
-    for(i=nrl+1;i<=nrh;i++) m[i]=m[i-1]+ncol;
-    
-    /* return pointer to array of pointers to rows */
-    return m;
-}
-
 
 int **nr_imatrix(long nrl, long nrh, long ncl, long nch)
 {
@@ -881,13 +633,6 @@ void free_dmatrix(double **m, long nrl, long nrh, long ncl, long nch)
 	free((FREE_ARG) (m[nrl]+ncl-NR_END));
 	free((FREE_ARG) (m+nrl-NR_END));
 }
-
-/*void free_dmatrix(double **m, long nrl, long nrh, long ncl, long nch)
-{
-    free((FREE_ARG) (m[nrl]+ncl-NR_END));
-    free((FREE_ARG) (m+nrl-NR_END));
-}*/
-
 
 void free_imatrix(int **m, long nrl, long nrh, long ncl, long nch)
 {

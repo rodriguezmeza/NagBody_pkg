@@ -26,7 +26,7 @@
 #ifndef _inout_h
 #define _inout_h
 
-#include "./vectdefs.h"
+#include "vectdefs.h"
 
 // ------------[	inout normal definitions	 	]------------
 
@@ -70,7 +70,6 @@ void out_vector_ndim(stream, double *, int);
 void in_vector_ndim(stream, real *, int);
 
 // Macros for binary in/out
-
 #define safewrite(ptr,len,str)                  \
     if (fwrite((void *) ptr, len, 1, str) != 1) \
         error("safewrite: fwrite failed\n")
@@ -80,15 +79,10 @@ void in_vector_ndim(stream, real *, int);
         error("saferead: fread failed\n")
 
 
-// Macros and routines for binary gdgt in/out
-
-// Pasar todas las invocaciones de "my_fread" y "my_fwrite" 
-// a "gdgt_fread" y "gdgt_fwrite" respectivamente.
-// Entonces borrar las definiciones de "my_fread" y "my_fwrite".
-
-size_t my_fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
-size_t my_fwrite(void *ptr, size_t size, size_t nmemb, FILE *stream);
-
+// Macros and routines for binary gdgt in/out:: Uncomment if necessary
+//size_t my_fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+//size_t my_fwrite(void *ptr, size_t size, size_t nmemb, FILE *stream);
+// This are the same as above. Just to be explicit their use in gadget type of codes.
 size_t gdgt_fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
 size_t gdgt_fwrite(void *ptr, size_t size, size_t nmemb, FILE *stream);
 
@@ -96,35 +90,11 @@ size_t gdgt_fwrite(void *ptr, size_t size, size_t nmemb, FILE *stream);
 #define BLKLEN gdgt_fwrite(&blklen, sizeof(blklen), 1, fd);
 
 // IN/OUT ROUTINES TO HANDLE STRINGS ...
-
 void ReadInString(stream, char *);
 void ReadInLineString(stream, char *);
 
 
-// InputData (como el que está en nplot2d)
-// PARA IMPLEMENTAR LECTURA GENERAL DE ARCHIVOS DE DATOS CON FORMATO DE COLUMNAS
-
+// InputData (like the one used by nplot2d)
 void inout_InputData(string, int, int, int *);
-void inout_InputData_1c(string, int, int *);
-void inout_InputData_3c(string filename, int col1, int col2, int col3,
-                  int *npts);
-void inout_InputData_4c(string filename, int col1, int col2, int col3, int col4,
-                        int *npts);
-
-/*
-real *inout_xval;
-real *inout_yval;
-real *inout_zval;
-real *inout_wval;
- */
-
-// To work with gcc11  :: Error found: duplicate symbol '_inout_xval' in:
-static real *inout_xval;
-static real *inout_yval;
-static real *inout_zval;
-static real *inout_wval;
-
-
-// END: PARA IMPLEMENTAR LECTURA GENERAL DE ARCHIVOS DE DATOS CON FORMATO DE COLUMNAS
 
 #endif	// ! _inout_h

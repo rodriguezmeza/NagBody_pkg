@@ -1,5 +1,5 @@
 /*==============================================================================
-	HEADER: machines.h				[General_libs]
+	HEADER: machines.h				[general_libs]
 	Written by: M.A. Rodriguez-Meza
 	Starting date: 2002
 	Purpose: definitions and protodefinitios to license the code

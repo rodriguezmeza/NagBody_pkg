@@ -7,7 +7,7 @@
 #ifndef _vectdefs_h
 #define _vectdefs_h
 
-//#include "../general/stdinc.h"
+#include "stdinc.h"
 
 #if !defined(NDIM) && !defined(TWODIM) && !defined(THREEDIM) && !defined(ONEDIM)
 #define THREEDIM
