@@ -13,34 +13,22 @@
 MAKECLASS = Makefiles/class/NagBody_class
 
 install_class:
-    $(MAKE) -f $(MAKECLASS) install_class
+	$(MAKE) -f $(MAKECLASS) install_class
 
 clean_class:
-    $(MAKE) -f $(MAKECLASS) clean_class
-
-clean_class_dir:
-    $(MAKE) -f $(MAKECLASS) clean_class_dir
+	$(MAKE) -f $(MAKECLASS) clean_class
 
 packing_class:
-    $(MAKE) -f $(MAKECLASS) packing_class
+	$(MAKE) -f $(MAKECLASS) packing_class
 
 packing_gnu_class:
-    $(MAKE) -f $(MAKECLASS) packing_gnu_class
-
-packing_nagbody_gnu_class:
-    $(MAKE) -f $(MAKECLASS) packing_nagbody_gnu_class
+	$(MAKE) -f $(MAKECLASS) packing_gnu_class
 
 install_gnu_dirs_class:
-    $(MAKE) -f $(MAKECLASS) install_gnu_dirs_class
-
-install_nagbody_gnu_dirs_class:
-    $(MAKE) -f $(MAKECLASS) install_nagbody_gnu_dirs_class
+	$(MAKE) -f $(MAKECLASS) install_gnu_dirs_class
 
 clean_gnu_class:
-    $(MAKE) -f $(MAKECLASS) clean_gnu_class
-
-clean_nagbody_gnu_class:
-    $(MAKE) -f $(MAKECLASS) clean_nagbody_gnu_class
+	$(MAKE) -f $(MAKECLASS) clean_gnu_class
 
 
 # ==================================================================
@@ -49,34 +37,22 @@ clean_nagbody_gnu_class:
 MAKEHICLASS = Makefiles/class/NagBody_hiclass
 
 install_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) install_hiclass
+	$(MAKE) -f $(MAKEHICLASS) install_hiclass
 
 clean_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) clean_hiclass
-
-clean_hiclass_dir:
-    $(MAKE) -f $(MAKEHICLASS) clean_hiclass_dir
+	$(MAKE) -f $(MAKEHICLASS) clean_hiclass
 
 packing_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) packing_hiclass
+	$(MAKE) -f $(MAKEHICLASS) packing_hiclass
 
 packing_gnu_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) packing_gnu_hiclass
-
-packing_nagbody_gnu_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) packing_nagbody_gnu_hiclass
+	$(MAKE) -f $(MAKEHICLASS) packing_gnu_hiclass
 
 install_gnu_dirs_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) install_gnu_dirs_hiclass
-
-install_nagbody_gnu_dirs_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) install_nagbody_gnu_dirs_hiclass
+	$(MAKE) -f $(MAKEHICLASS) install_gnu_dirs_hiclass
 
 clean_gnu_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) clean_gnu_hiclass
-
-clean_nagbody_gnu_hiclass:
-    $(MAKE) -f $(MAKEHICLASS) clean_nagbody_gnu_hiclass
+	$(MAKE) -f $(MAKEHICLASS) clean_gnu_hiclass
 
 
 # ==================================================================
@@ -86,34 +62,25 @@ clean_nagbody_gnu_hiclass:
 MAKEMONTEPYTHON = Makefiles/class/NagBody_montepython
 
 #install_montepython:
-#    $(MAKE) -f $(MAKEMONTEPYTHON) install_montepython
+#$(MAKE) -f $(MAKEMONTEPYTHON) install_montepython
 
 #clean_montepython:
-#    $(MAKE) -f $(MAKEMONTEPYTHON) clean_montepython
+#$(MAKE) -f $(MAKEMONTEPYTHON) clean_montepython
 
 #clean_montepython_dir:
-#    $(MAKE) -f $(MAKEMONTEPYTHON) clean_montepython_dir
+#$(MAKE) -f $(MAKEMONTEPYTHON) clean_montepython_dir
 
 packing_montepython:
-    $(MAKE) -f $(MAKEMONTEPYTHON) packing_montepython
+	$(MAKE) -f $(MAKEMONTEPYTHON) packing_montepython
 
 packing_gnu_montepython:
-    $(MAKE) -f $(MAKEMONTEPYTHON) packing_gnu_montepython
-
-packing_nagbody_gnu_montepython:
-    $(MAKE) -f $(MAKEMONTEPYTHON) packing_nagbody_gnu_montepython
+	$(MAKE) -f $(MAKEMONTEPYTHON) packing_gnu_montepython
 
 install_gnu_dirs_montepython:
-    $(MAKE) -f $(MAKEMONTEPYTHON) install_gnu_dirs_montepython
-
-install_nagbody_gnu_dirs_montepython:
-    $(MAKE) -f $(MAKEMONTEPYTHON) install_nagbody_gnu_dirs_montepython
+	$(MAKE) -f $(MAKEMONTEPYTHON) install_gnu_dirs_montepython
 
 clean_gnu_montepython:
-    $(MAKE) -f $(MAKEMONTEPYTHON) clean_gnu_montepython
-
-clean_nagbody_gnu_montepython:
-    $(MAKE) -f $(MAKEMONTEPYTHON) clean_nagbody_gnu_montepython
+	$(MAKE) -f $(MAKEMONTEPYTHON) clean_gnu_montepython
 
 
 # ==================================================================
@@ -123,36 +90,22 @@ clean_nagbody_gnu_montepython:
 MAKEPLANCK2018 = Makefiles/class/NagBody_planck2018
 
 install_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) install_planck
+	$(MAKE) -f $(MAKEPLANCK2018) install_planck
 
 clean_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) clean_planck
-
-
-# Deprecated
-#clean_planck2018_dir:
-#    $(MAKE) -f $(MAKEPLANCK2018) clean_planck_dir
+	$(MAKE) -f $(MAKEPLANCK2018) clean_planck
 
 packing_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) packing_planck
+	$(MAKE) -f $(MAKEPLANCK2018) packing_planck
 
 packing_gnu_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) packing_gnu_planck
-
-packing_nagbody_gnu_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) packing_nagbody_gnu_planck
+	$(MAKE) -f $(MAKEPLANCK2018) packing_gnu_planck
 
 install_gnu_dirs_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) install_gnu_dirs_planck
-
-install_nagbody_gnu_dirs_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) install_nagbody_gnu_dirs_planck
+	$(MAKE) -f $(MAKEPLANCK2018) install_gnu_dirs_planck
 
 clean_gnu_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) clean_gnu_planck
-
-clean_nagbody_gnu_planck2018:
-    $(MAKE) -f $(MAKEPLANCK2018) clean_nagbody_gnu_planck
+	$(MAKE) -f $(MAKEPLANCK2018) clean_gnu_planck
 
 
 # ==================================================================
@@ -161,13 +114,13 @@ clean_nagbody_gnu_planck2018:
 # md_lj_tree code:
 
 install_md_lj_tree:
-    $(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree install_md_lj_tree
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree install_md_lj_tree
 
 clean_md_lj_tree:
-    $(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree clean_md_lj_tree
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree clean_md_lj_tree
 
 packing_md_lj_tree:
-    $(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree packing_md_lj_tree
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree packing_md_lj_tree
 
 
 # ==================================================================
@@ -177,31 +130,23 @@ packing_md_lj_tree:
 MAKEMD_BLJ = Makefiles/cmplxfluids/NagBody_md_blj
 
 install_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) install_md_blj
+	$(MAKE) -f $(MAKEMD_BLJ) install_md_blj
 
 clean_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) clean_md_blj
+	$(MAKE) -f $(MAKEMD_BLJ) clean_md_blj
 
 packing_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) packing_md_blj
+	$(MAKE) -f $(MAKEMD_BLJ) packing_md_blj
 
 packing_gnu_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) packing_gnu_md_blj
-
-packing_nagbody_gnu_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) packing_nagbody_gnu_md_blj
+	$(MAKE) -f $(MAKEMD_BLJ) packing_gnu_md_blj
 
 install_gnu_dirs_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) install_gnu_dirs_md_blj
-
-install_nagbody_gnu_dirs_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) install_nagbody_gnu_dirs_md_blj
+	$(MAKE) -f $(MAKEMD_BLJ) install_gnu_dirs_md_blj
 
 clean_gnu_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) clean_gnu_md_blj
+	$(MAKE) -f $(MAKEMD_BLJ) clean_gnu_md_blj
 
-clean_nagbody_gnu_md_blj:
-    $(MAKE) -f $(MAKEMD_BLJ) clean_nagbody_gnu_md_blj
 
 # ==================================================================
 # md_blj_n2 code:
@@ -209,44 +154,35 @@ clean_nagbody_gnu_md_blj:
 MAKEMD_BLJ_N2 = Makefiles/cmplxfluids/NagBody_md_blj_n2
 
 install_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) install_md_blj_n2
+	$(MAKE) -f $(MAKEMD_BLJ_N2) install_md_blj_n2
 
 clean_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) clean_md_blj_n2
+	$(MAKE) -f $(MAKEMD_BLJ_N2) clean_md_blj_n2
 
 packing_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) packing_md_blj_n2
+	$(MAKE) -f $(MAKEMD_BLJ_N2) packing_md_blj_n2
 
 packing_gnu_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) packing_gnu_md_blj_n2
-
-packing_nagbody_gnu_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) packing_nagbody_gnu_md_blj_n2
+	$(MAKE) -f $(MAKEMD_BLJ_N2) packing_gnu_md_blj_n2
 
 install_gnu_dirs_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) install_gnu_dirs_md_blj_n2
-
-install_nagbody_gnu_dirs_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) install_nagbody_gnu_dirs_md_blj_n2
+	$(MAKE) -f $(MAKEMD_BLJ_N2) install_gnu_dirs_md_blj_n2
 
 clean_gnu_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) clean_gnu_md_blj_n2
-
-clean_nagbody_gnu_md_blj_n2:
-    $(MAKE) -f $(MAKEMD_BLJ_N2) clean_nagbody_gnu_md_blj_n2
+	$(MAKE) -f $(MAKEMD_BLJ_N2) clean_gnu_md_blj_n2
 
 
 # ==================================================================
 # md_ic_model code:
 
 install_md_ic_model:
-    $(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model install_md_ic_model
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model install_md_ic_model
 
 clean_md_ic_model:
-    $(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model clean_md_ic_model
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model clean_md_ic_model
 
 packing_md_ic_model:
-    $(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model packing_md_ic_model
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model packing_md_ic_model
 
 
 # ==================================================================
@@ -255,31 +191,22 @@ packing_md_ic_model:
 MAKEANALYSISMD = Makefiles/cmplxfluids/NagBody_analysis_md
 
 install_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) install_analysis_md
+	$(MAKE) -f $(MAKEANALYSISMD) install_analysis_md
 
 clean_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) clean_analysis_md
+	$(MAKE) -f $(MAKEANALYSISMD) clean_analysis_md
 
 packing_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) packing_analysis_md
+	$(MAKE) -f $(MAKEANALYSISMD) packing_analysis_md
 
 packing_gnu_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) packing_gnu_analysis_md
-
-packing_nagbody_gnu_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) packing_nagbody_gnu_analysis_md
+	$(MAKE) -f $(MAKEANALYSISMD) packing_gnu_analysis_md
 
 install_gnu_dirs_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) install_gnu_dirs_analysis_md
-
-install_nagbody_gnu_dirs_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) install_nagbody_gnu_dirs_analysis_md
+	$(MAKE) -f $(MAKEANALYSISMD) install_gnu_dirs_analysis_md
 
 clean_gnu_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) clean_gnu_analysis_md
-
-clean_nagbody_gnu_analysis_md:
-    $(MAKE) -f $(MAKEANALYSISMD) clean_nagbody_gnu_analysis_md
+	$(MAKE) -f $(MAKEANALYSISMD) clean_gnu_analysis_md
 
 
 # ==================================================================
@@ -291,34 +218,22 @@ clean_nagbody_gnu_analysis_md:
 MAKECOLA = Makefiles/colas/NagBody_cola
 
 install_cola:
-    $(MAKE) -f $(MAKECOLA) install_cola
+	$(MAKE) -f $(MAKECOLA) install_cola
 
 clean_cola:
-    $(MAKE) -f $(MAKECOLA) clean_cola
-
-clean_cola_dir:
-    $(MAKE) -f $(MAKECOLA) clean_cola_dir
+	$(MAKE) -f $(MAKECOLA) clean_cola
 
 packing_cola:
-    $(MAKE) -f $(MAKECOLA) packing_cola
+	$(MAKE) -f $(MAKECOLA) packing_cola
 
 packing_gnu_cola:
-    $(MAKE) -f $(MAKECOLA) packing_gnu_cola
-
-packing_nagbody_gnu_cola:
-    $(MAKE) -f $(MAKECOLA) packing_nagbody_gnu_cola
+	$(MAKE) -f $(MAKECOLA) packing_gnu_cola
 
 install_gnu_dirs_cola:
-    $(MAKE) -f $(MAKECOLA) install_gnu_dirs_cola
-
-install_nagbody_gnu_dirs_cola:
-    $(MAKE) -f $(MAKECOLA) install_nagbody_gnu_dirs_cola
+	$(MAKE) -f $(MAKECOLA) install_gnu_dirs_cola
 
 clean_gnu_cola:
-    $(MAKE) -f $(MAKECOLA) clean_gnu_cola
-
-clean_nagbody_gnu_cola:
-    $(MAKE) -f $(MAKECOLA) clean_nagbody_gnu_cola
+	$(MAKE) -f $(MAKECOLA) clean_gnu_cola
 
 
 # ==================================================================
@@ -328,34 +243,22 @@ clean_nagbody_gnu_cola:
 MAKECOLASIMPLE = Makefiles/colas/NagBody_cola_simple
 
 install_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) install_cola_simple
+	$(MAKE) -f $(MAKECOLAONLY) install_cola_simple
 
 clean_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) clean_cola_simple
-
-clean_cola_simple_dir:
-    $(MAKE) -f $(MAKECOLAONLY) clean_cola_simple_dir
+	$(MAKE) -f $(MAKECOLAONLY) clean_cola_simple
 
 packing_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) packing_cola_simple
+	$(MAKE) -f $(MAKECOLAONLY) packing_cola_simple
 
 packing_gnu_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) packing_gnu_cola_simple
-
-packing_nagbody_gnu_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) packing_nagbody_gnu_cola_simple
+	$(MAKE) -f $(MAKECOLAONLY) packing_gnu_cola_simple
 
 install_gnu_dirs_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) install_gnu_dirs_cola_simple
-
-install_nagbody_gnu_dirs_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) install_nagbody_gnu_dirs_cola_simple
+	$(MAKE) -f $(MAKECOLAONLY) install_gnu_dirs_cola_simple
 
 clean_gnu_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) clean_gnu_cola_simple
-
-clean_nagbody_gnu_cola_simple:
-    $(MAKE) -f $(MAKECOLAONLY) clean_nagbody_gnu_cola_simple
+	$(MAKE) -f $(MAKECOLAONLY) clean_gnu_cola_simple
 
 
 # ==================================================================
@@ -365,34 +268,22 @@ clean_nagbody_gnu_cola_simple:
 MAKELPICOLA = Makefiles/colas/NagBody_lpicola
 
 install_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) install_lpicola
+	$(MAKE) -f $(MAKELPICOLA) install_lpicola
 
 clean_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) clean_lpicola
-
-clean_lpicola_dir:
-    $(MAKE) -f $(MAKELPICOLA) clean_lpicola_dir
+	$(MAKE) -f $(MAKELPICOLA) clean_lpicola
 
 packing_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) packing_lpicola
+	$(MAKE) -f $(MAKELPICOLA) packing_lpicola
 
 packing_gnu_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) packing_gnu_lpicola
-
-packing_nagbody_gnu_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) packing_nagbody_gnu_lpicola
+	$(MAKE) -f $(MAKELPICOLA) packing_gnu_lpicola
 
 install_gnu_dirs_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) install_gnu_dirs_lpicola
-
-install_nagbody_gnu_dirs_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) install_nagbody_gnu_dirs_lpicola
+	$(MAKE) -f $(MAKELPICOLA) install_gnu_dirs_lpicola
 
 clean_gnu_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) clean_gnu_lpicola
-
-clean_nagbody_gnu_lpicola:
-    $(MAKE) -f $(MAKELPICOLA) clean_nagbody_gnu_lpicola
+	$(MAKE) -f $(MAKELPICOLA) clean_gnu_lpicola
 
 
 # ==================================================================
@@ -402,34 +293,22 @@ clean_nagbody_gnu_lpicola:
 MAKEMGLPICOLA = Makefiles/colas/NagBody_mglpicola
 
 install_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) install_mglpicola
+	$(MAKE) -f $(MAKEMGLPICOLA) install_mglpicola
 
 clean_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) clean_mglpicola
-
-clean_mglpicola_dir:
-    $(MAKE) -f $(MAKEMGLPICOLA) clean_mglpicola_dir
+	$(MAKE) -f $(MAKEMGLPICOLA) clean_mglpicola
 
 packing_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) packing_mglpicola
+	$(MAKE) -f $(MAKEMGLPICOLA) packing_mglpicola
 
 packing_gnu_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) packing_gnu_mglpicola
-
-packing_nagbody_gnu_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) packing_nagbody_gnu_mglpicola
+	$(MAKE) -f $(MAKEMGLPICOLA) packing_gnu_mglpicola
 
 install_gnu_dirs_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) install_gnu_dirs_mglpicola
-
-install_nagbody_gnu_dirs_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) install_nagbody_gnu_dirs_mglpicola
+	$(MAKE) -f $(MAKEMGLPICOLA) install_gnu_dirs_mglpicola
 
 clean_gnu_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) clean_gnu_mglpicola
-
-clean_nagbody_gnu_mglpicola:
-    $(MAKE) -f $(MAKEMGLPICOLA) clean_nagbody_gnu_mglpicola
+	$(MAKE) -f $(MAKEMGLPICOLA) clean_gnu_mglpicola
 
 
 # ==================================================================
@@ -439,34 +318,22 @@ clean_nagbody_gnu_mglpicola:
 MAKEMGLPICOLAFOFR = Makefiles/colas/NagBody_mglpicola_fofr
 
 install_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) install_mglpicola_fofr
+	$(MAKE) -f $(MAKEMGLPICOLAFOFR) install_mglpicola_fofr
 
 clean_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) clean_mglpicola_fofr
-
-clean_mglpicola_fofr_dir:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) clean_mglpicola_fofr_dir
+	$(MAKE) -f $(MAKEMGLPICOLAFOFR) clean_mglpicola_fofr
 
 packing_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) packing_mglpicola_fofr
+	$(MAKE) -f $(MAKEMGLPICOLAFOFR) packing_mglpicola_fofr
 
 packing_gnu_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) packing_gnu_mglpicola_fofr
-
-packing_nagbody_gnu_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) packing_nagbody_gnu_mglpicola_fofr
+	$(MAKE) -f $(MAKEMGLPICOLAFOFR) packing_gnu_mglpicola_fofr
 
 install_gnu_dirs_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) install_gnu_dirs_mglpicola_fofr
-
-install_nagbody_gnu_dirs_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) install_nagbody_gnu_dirs_mglpicola_fofr
+	$(MAKE) -f $(MAKEMGLPICOLAFOFR) install_gnu_dirs_mglpicola_fofr
 
 clean_gnu_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) clean_gnu_mglpicola_fofr
-
-clean_nagbody_gnu_mglpicola_fofr:
-    $(MAKE) -f $(MAKEMGLPICOLAFOFR) clean_nagbody_gnu_mglpicola_fofr
+	$(MAKE) -f $(MAKEMGLPICOLAFOFR) clean_gnu_mglpicola_fofr
 
 
 # ==================================================================
@@ -476,34 +343,22 @@ clean_nagbody_gnu_mglpicola_fofr:
 MAKEMGLPICOLAPOFK = Makefiles/colas/NagBody_mglpicola_pofk
 
 install_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) install_mglpicola_pofk
+	$(MAKE) -f $(MAKEMGLPICOLAPOFK) install_mglpicola_pofk
 
 clean_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) clean_mglpicola_pofk
-
-clean_mglpicola_pofk_dir:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) clean_mglpicola_pofk_dir
+	$(MAKE) -f $(MAKEMGLPICOLAPOFK) clean_mglpicola_pofk
 
 packing_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) packing_mglpicola_pofk
+	$(MAKE) -f $(MAKEMGLPICOLAPOFK) packing_mglpicola_pofk
 
 packing_gnu_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) packing_gnu_mglpicola_pofk
-
-packing_nagbody_gnu_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) packing_nagbody_gnu_mglpicola_pofk
+	$(MAKE) -f $(MAKEMGLPICOLAPOFK) packing_gnu_mglpicola_pofk
 
 install_gnu_dirs_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) install_gnu_dirs_mglpicola_pofk
-
-install_nagbody_gnu_dirs_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) install_nagbody_gnu_dirs_mglpicola_pofk
+	$(MAKE) -f $(MAKEMGLPICOLAPOFK) install_gnu_dirs_mglpicola_pofk
 
 clean_gnu_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) clean_gnu_mglpicola_pofk
-
-clean_nagbody_gnu_mglpicola_pofk:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFK) clean_nagbody_gnu_mglpicola_pofk
+	$(MAKE) -f $(MAKEMGLPICOLAPOFK) clean_gnu_mglpicola_pofk
 
 
 # ==================================================================
@@ -513,34 +368,22 @@ clean_nagbody_gnu_mglpicola_pofk:
 MAKEMGLPICOLAPOFKMPI = Makefiles/colas/NagBody_mglpicola_pofk_mpi
 
 install_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) install_mglpicola_pofk_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) install_mglpicola_pofk_mpi
 
 clean_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) clean_mglpicola_pofk_mpi
-
-clean_mglpicola_pofk_mpi_dir:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) clean_mglpicola_pofk_mpi_dir
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) clean_mglpicola_pofk_mpi
 
 packing_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) packing_mglpicola_pofk_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) packing_mglpicola_pofk_mpi
 
 packing_gnu_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) packing_gnu_mglpicola_pofk_mpi
-
-packing_nagbody_gnu_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) packing_nagbody_gnu_mglpicola_pofk_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) packing_gnu_mglpicola_pofk_mpi
 
 install_gnu_dirs_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) install_gnu_dirs_mglpicola_pofk_mpi
-
-install_nagbody_gnu_dirs_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) install_nagbody_gnu_dirs_mglpicola_pofk_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) install_gnu_dirs_mglpicola_pofk_mpi
 
 clean_gnu_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) clean_gnu_mglpicola_pofk_mpi
-
-clean_nagbody_gnu_mglpicola_pofk_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) clean_nagbody_gnu_mglpicola_pofk_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) clean_gnu_mglpicola_pofk_mpi
 
 
 # ==================================================================
@@ -550,34 +393,22 @@ clean_nagbody_gnu_mglpicola_pofk_mpi:
 MAKEMGLPICOLAPOFKRSDMPI = Makefiles/colas/NagBody_mglpicola_pofk_rsd_mpi
 
 install_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) install_mglpicola_pofk_rsd_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) install_mglpicola_pofk_rsd_mpi
 
 clean_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) clean_mglpicola_pofk_rsd_mpi
-
-clean_mglpicola_pofk_rsd_mpi_dir:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) clean_mglpicola_pofk_rsd_mpi_dir
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) clean_mglpicola_pofk_rsd_mpi
 
 packing_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) packing_mglpicola_pofk_rsd_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) packing_mglpicola_pofk_rsd_mpi
 
 packing_gnu_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) packing_gnu_mglpicola_pofk_rsd_mpi
-
-packing_nagbody_gnu_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) packing_nagbody_gnu_mglpicola_pofk_rsd_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) packing_gnu_mglpicola_pofk_rsd_mpi
 
 install_gnu_dirs_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) install_gnu_dirs_mglpicola_pofk_rsd_mpi
-
-install_nagbody_gnu_dirs_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) install_nagbody_gnu_dirs_mglpicola_pofk_rsd_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) install_gnu_dirs_mglpicola_pofk_rsd_mpi
 
 clean_gnu_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) clean_gnu_mglpicola_pofk_rsd_mpi
-
-clean_nagbody_gnu_mglpicola_pofk_rsd_mpi:
-    $(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) clean_nagbody_gnu_mglpicola_pofk_rsd_mpi
+	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) clean_gnu_mglpicola_pofk_rsd_mpi
 
 
 # ==================================================================
@@ -589,34 +420,22 @@ clean_nagbody_gnu_mglpicola_pofk_rsd_mpi:
 MAKEROCKSTAR = Makefiles/cosmo_analysis/NagBody_rockstar
 
 install_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) install_rockstar
+	$(MAKE) -f $(MAKEROCKSTAR) install_rockstar
 
 clean_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) clean_rockstar
-
-clean_rockstar_dir:
-    $(MAKE) -f $(MAKEROCKSTAR) clean_rockstar_dir
+	$(MAKE) -f $(MAKEROCKSTAR) clean_rockstar
 
 packing_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) packing_rockstar
+	$(MAKE) -f $(MAKEROCKSTAR) packing_rockstar
 
 packing_gnu_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) packing_gnu_rockstar
-
-packing_nagbody_gnu_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) packing_nagbody_gnu_rockstar
+	$(MAKE) -f $(MAKEROCKSTAR) packing_gnu_rockstar
 
 install_gnu_dirs_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) install_gnu_dirs_rockstar
-
-install_nagbody_gnu_dirs_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) install_nagbody_gnu_dirs_rockstar
+	$(MAKE) -f $(MAKEROCKSTAR) install_gnu_dirs_rockstar
 
 clean_gnu_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) clean_gnu_rockstar
-
-clean_nagbody_gnu_rockstar:
-    $(MAKE) -f $(MAKEROCKSTAR) clean_nagbody_gnu_rockstar
+	$(MAKE) -f $(MAKEROCKSTAR) clean_gnu_rockstar
 
 
 # ==================================================================
@@ -626,34 +445,22 @@ clean_nagbody_gnu_rockstar:
 MAKECUTEBOX = Makefiles/cosmo_analysis/NagBody_cute_box
 
 install_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) install_cute_box
+	$(MAKE) -f $(MAKECUTEBOX) install_cute_box
 
 clean_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) clean_cute_box
-
-clean_cute_box_dir:
-    $(MAKE) -f $(MAKECUTEBOX) clean_cute_box_dir
+	$(MAKE) -f $(MAKECUTEBOX) clean_cute_box
 
 packing_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) packing_cute_box
+	$(MAKE) -f $(MAKECUTEBOX) packing_cute_box
 
 packing_gnu_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) packing_gnu_cute_box
-
-packing_nagbody_gnu_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) packing_nagbody_gnu_cute_box
+	$(MAKE) -f $(MAKECUTEBOX) packing_gnu_cute_box
 
 install_gnu_dirs_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) install_gnu_dirs_cute_box
-
-install_nagbody_gnu_dirs_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) install_nagbody_gnu_dirs_cute_box
+	$(MAKE) -f $(MAKECUTEBOX) install_gnu_dirs_cute_box
 
 clean_gnu_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) clean_gnu_cute_box
-
-clean_nagbody_gnu_cute_box:
-    $(MAKE) -f $(MAKECUTEBOX) clean_nagbody_gnu_cute_box
+	$(MAKE) -f $(MAKECUTEBOX) clean_gnu_cute_box
 
 
 # ==================================================================
@@ -663,34 +470,22 @@ clean_nagbody_gnu_cute_box:
 MAKEPOWMES = Makefiles/cosmo_analysis/NagBody_powmes
 
 install_powmes:
-    $(MAKE) -f $(MAKEPOWMES) install_powmes
+	$(MAKE) -f $(MAKEPOWMES) install_powmes
 
 clean_powmes:
-    $(MAKE) -f $(MAKEPOWMES) clean_powmes
-
-clean_powmes_dir:
-    $(MAKE) -f $(MAKEPOWMES) clean_powmes_dir
+	$(MAKE) -f $(MAKEPOWMES) clean_powmes
 
 packing_powmes:
-    $(MAKE) -f $(MAKEPOWMES) packing_powmes
+	$(MAKE) -f $(MAKEPOWMES) packing_powmes
 
 packing_gnu_powmes:
-    $(MAKE) -f $(MAKEPOWMES) packing_gnu_powmes
-
-packing_nagbody_gnu_powmes:
-    $(MAKE) -f $(MAKEPOWMES) packing_nagbody_gnu_powmes
+	$(MAKE) -f $(MAKEPOWMES) packing_gnu_powmes
 
 install_gnu_dirs_powmes:
-    $(MAKE) -f $(MAKEPOWMES) install_gnu_dirs_powmes
-
-install_nagbody_gnu_dirs_powmes:
-    $(MAKE) -f $(MAKEPOWMES) install_nagbody_gnu_dirs_powmes
+	$(MAKE) -f $(MAKEPOWMES) install_gnu_dirs_powmes
 
 clean_gnu_powmes:
-    $(MAKE) -f $(MAKEPOWMES) clean_gnu_powmes
-
-clean_nagbody_gnu_powmes:
-    $(MAKE) -f $(MAKEPOWMES) clean_nagbody_gnu_powmes
+	$(MAKE) -f $(MAKEPOWMES) clean_gnu_powmes
 
 
 # ==================================================================
@@ -700,34 +495,22 @@ clean_nagbody_gnu_powmes:
 MAKEGVIEW = Makefiles/cosmo_analysis/NagBody_gview
 
 install_gview:
-    $(MAKE) -f $(MAKEGVIEW) install_gview
+	$(MAKE) -f $(MAKEGVIEW) install_gview
 
 clean_gview:
-    $(MAKE) -f $(MAKEGVIEW) clean_gview
-
-clean_gview_dir:
-    $(MAKE) -f $(MAKEGVIEW) clean_gview_dir
+	$(MAKE) -f $(MAKEGVIEW) clean_gview
 
 packing_gview:
-    $(MAKE) -f $(MAKEGVIEW) packing_gview
+	$(MAKE) -f $(MAKEGVIEW) packing_gview
 
 packing_gnu_gview:
-    $(MAKE) -f $(MAKEGVIEW) packing_gnu_gview
-
-packing_nagbody_gnu_gview:
-    $(MAKE) -f $(MAKEGVIEW) packing_nagbody_gnu_gview
+	$(MAKE) -f $(MAKEGVIEW) packing_gnu_gview
 
 install_gnu_dirs_gview:
-    $(MAKE) -f $(MAKEGVIEW) install_gnu_dirs_gview
-
-install_nagbody_gnu_dirs_gview:
-    $(MAKE) -f $(MAKEGVIEW) install_nagbody_gnu_dirs_gview
+	$(MAKE) -f $(MAKEGVIEW) install_gnu_dirs_gview
 
 clean_gnu_gview:
-    $(MAKE) -f $(MAKEGVIEW) clean_gnu_gview
-
-clean_nagbody_gnu_gview:
-    $(MAKE) -f $(MAKEGVIEW) clean_nagbody_gnu_gview
+	$(MAKE) -f $(MAKEGVIEW) clean_gnu_gview
 
 
 # ==================================================================
@@ -739,34 +522,22 @@ clean_nagbody_gnu_gview:
 MAKENGENIC = Makefiles/cosmo_background_1lpt_2lpt/NagBody_ngenic
 
 install_ngenic:
-    $(MAKE) -f $(MAKENGENIC) install_ngenic
+	$(MAKE) -f $(MAKENGENIC) install_ngenic
 
 clean_ngenic:
-    $(MAKE) -f $(MAKENGENIC) clean_ngenic
-
-clean_ngenic_dir:
-    $(MAKE) -f $(MAKENGENIC) clean_ngenic_dir
+	$(MAKE) -f $(MAKENGENIC) clean_ngenic
 
 packing_ngenic:
-    $(MAKE) -f $(MAKENGENIC) packing_ngenic
+	$(MAKE) -f $(MAKENGENIC) packing_ngenic
 
 packing_gnu_ngenic:
-    $(MAKE) -f $(MAKENGENIC) packing_gnu_ngenic
-
-packing_nagbody_gnu_ngenic:
-    $(MAKE) -f $(MAKENGENIC) packing_nagbody_gnu_ngenic
+	$(MAKE) -f $(MAKENGENIC) packing_gnu_ngenic
 
 install_gnu_dirs_ngenic:
-    $(MAKE) -f $(MAKENGENIC) install_gnu_dirs_ngenic
-
-install_nagbody_gnu_dirs_ngenic:
-    $(MAKE) -f $(MAKENGENIC) install_nagbody_gnu_dirs_ngenic
+	$(MAKE) -f $(MAKENGENIC) install_gnu_dirs_ngenic
 
 clean_gnu_ngenic:
-    $(MAKE) -f $(MAKENGENIC) clean_gnu_ngenic
-
-clean_nagbody_gnu_ngenic:
-    $(MAKE) -f $(MAKENGENIC) clean_nagbody_gnu_ngenic
+	$(MAKE) -f $(MAKENGENIC) clean_gnu_ngenic
 
 
 # ==================================================================
@@ -776,34 +547,22 @@ clean_nagbody_gnu_ngenic:
 MAKE2LPTIC = Makefiles/cosmo_background_1lpt_2lpt/NagBody_2lptic
 
 install_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) install_2lptic
+	$(MAKE) -f $(MAKE2LPTIC) install_2lptic
 
 clean_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) clean_2lptic
-
-clean_2lptic_dir:
-    $(MAKE) -f $(MAKE2LPTIC) clean_2lptic_dir
+	$(MAKE) -f $(MAKE2LPTIC) clean_2lptic
 
 packing_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) packing_2lptic
+	$(MAKE) -f $(MAKE2LPTIC) packing_2lptic
 
 packing_gnu_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) packing_gnu_2lptic
-
-packing_nagbody_gnu_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) packing_nagbody_gnu_2lptic
+	$(MAKE) -f $(MAKE2LPTIC) packing_gnu_2lptic
 
 install_gnu_dirs_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) install_gnu_dirs_2lptic
-
-install_nagbody_gnu_dirs_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) install_nagbody_gnu_dirs_2lptic
+	$(MAKE) -f $(MAKE2LPTIC) install_gnu_dirs_2lptic
 
 clean_gnu_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) clean_gnu_2lptic
-
-clean_nagbody_gnu_2lptic:
-    $(MAKE) -f $(MAKE2LPTIC) clean_nagbody_gnu_2lptic
+	$(MAKE) -f $(MAKE2LPTIC) clean_gnu_2lptic
 
 
 # ==================================================================
@@ -813,34 +572,22 @@ clean_nagbody_gnu_2lptic:
 MAKE2LPTICZA = Makefiles/cosmo_background_1lpt_2lpt/NagBody_2lptic_za
 
 install_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) install_2lptic_za
+	$(MAKE) -f $(MAKE2LPTICZA) install_2lptic_za
 
 clean_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) clean_2lptic_za
-
-clean_2lptic_za_dir:
-    $(MAKE) -f $(MAKE2LPTICZA) clean_2lptic_za_dir
+	$(MAKE) -f $(MAKE2LPTICZA) clean_2lptic_za
 
 packing_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) packing_2lptic_za
+	$(MAKE) -f $(MAKE2LPTICZA) packing_2lptic_za
 
 packing_gnu_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) packing_gnu_2lptic_za
-
-packing_nagbody_gnu_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) packing_nagbody_gnu_2lptic_za
+	$(MAKE) -f $(MAKE2LPTICZA) packing_gnu_2lptic_za
 
 install_gnu_dirs_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) install_gnu_dirs_2lptic_za
-
-install_nagbody_gnu_dirs_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) install_nagbody_gnu_dirs_2lptic_za
+	$(MAKE) -f $(MAKE2LPTICZA) install_gnu_dirs_2lptic_za
 
 clean_gnu_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) clean_gnu_2lptic_za
-
-clean_nagbody_gnu_2lptic_za:
-    $(MAKE) -f $(MAKE2LPTICZA) clean_nagbody_gnu_2lptic_za
+	$(MAKE) -f $(MAKE2LPTICZA) clean_gnu_2lptic_za
 
 
 # ==================================================================
@@ -854,34 +601,22 @@ clean_nagbody_gnu_2lptic_za:
 MAKEGDGT207GALAXY = Makefiles/gdgt2_derived_codes/NagBody_gdgt207galaxy
 
 install_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) install_gdgt207galaxy
+	$(MAKE) -f $(MAKEGDGT207GALAXY) install_gdgt207galaxy
 
 clean_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) clean_gdgt207galaxy
-
-clean_gdgt207galaxy_dir:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) clean_gdgt207galaxy_dir
+	$(MAKE) -f $(MAKEGDGT207GALAXY) clean_gdgt207galaxy
 
 packing_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) packing_gdgt207galaxy
+	$(MAKE) -f $(MAKEGDGT207GALAXY) packing_gdgt207galaxy
 
 packing_gnu_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) packing_gnu_gdgt207galaxy
-
-packing_nagbody_gnu_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) packing_nagbody_gnu_gdgt207galaxy
+	$(MAKE) -f $(MAKEGDGT207GALAXY) packing_gnu_gdgt207galaxy
 
 install_gnu_dirs_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) install_gnu_dirs_gdgt207galaxy
-
-install_nagbody_gnu_dirs_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) install_nagbody_gnu_dirs_gdgt207galaxy
+	$(MAKE) -f $(MAKEGDGT207GALAXY) install_gnu_dirs_gdgt207galaxy
 
 clean_gnu_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) clean_gnu_gdgt207galaxy
-
-clean_nagbody_gnu_gdgt207galaxy:
-    $(MAKE) -f $(MAKEGDGT207GALAXY) clean_nagbody_gnu_gdgt207galaxy
+	$(MAKE) -f $(MAKEGDGT207GALAXY) clean_gnu_gdgt207galaxy
 
 
 # ==================================================================
@@ -893,35 +628,23 @@ clean_nagbody_gnu_gdgt207galaxy:
 MAKEGALIC = Makefiles/gdgt2_derived_codes/NagBody_galic
 
 install_galic:
-    $(MAKE) -f $(MAKEGALIC) install_galic
+	$(MAKE) -f $(MAKEGALIC) install_galic
 
 clean_galic:
-    $(MAKE) -f $(MAKEGALIC) clean_galic
-
-clean_galic_dir:
-    $(MAKE) -f $(MAKEGALIC) clean_galic_dir
+	$(MAKE) -f $(MAKEGALIC) clean_galic
 
 # LINES BELOW ARE NOT YET IMPLEMENTED. DO NOT USE THEM
 packing_galic:
-    $(MAKE) -f $(MAKEGALIC) packing_galic
+	$(MAKE) -f $(MAKEGALIC) packing_galic
 
 packing_gnu_galic:
-    $(MAKE) -f $(MAKEGALIC) packing_gnu_galic
-
-packing_nagbody_gnu_galic:
-    $(MAKE) -f $(MAKEGALIC) packing_nagbody_gnu_galic
+	$(MAKE) -f $(MAKEGALIC) packing_gnu_galic
 
 install_gnu_dirs_galic:
-    $(MAKE) -f $(MAKEGALIC) install_gnu_dirs_galic
-
-install_nagbody_gnu_dirs_galic:
-    $(MAKE) -f $(MAKEGALIC) install_nagbody_gnu_dirs_galic
+	$(MAKE) -f $(MAKEGALIC) install_gnu_dirs_galic
 
 clean_gnu_galic:
-    $(MAKE) -f $(MAKEGALIC) clean_gnu_galic
-
-clean_nagbody_gnu_galic:
-    $(MAKE) -f $(MAKEGALIC) clean_nagbody_gnu_galic
+	$(MAKE) -f $(MAKEGALIC) clean_gnu_galic
 
 
 # ==================================================================
@@ -933,34 +656,22 @@ clean_nagbody_gnu_galic:
 MAKEGDGT207LCDM = Makefiles/gdgt2_derived_codes/NagBody_gdgt207lcdm
 
 install_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) install_gdgt207lcdm
+	$(MAKE) -f $(MAKEGDGT207LCDM) install_gdgt207lcdm
 
 clean_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) clean_gdgt207lcdm
-
-clean_gdgt207lcdm_dir:
-    $(MAKE) -f $(MAKEGDGT207LCDM) clean_gdgt207lcdm_dir
+	$(MAKE) -f $(MAKEGDGT207LCDM) clean_gdgt207lcdm
 
 packing_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) packing_gdgt207lcdm
+	$(MAKE) -f $(MAKEGDGT207LCDM) packing_gdgt207lcdm
 
 packing_gnu_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) packing_gnu_gdgt207lcdm
-
-packing_nagbody_gnu_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) packing_nagbody_gnu_gdgt207lcdm
+	$(MAKE) -f $(MAKEGDGT207LCDM) packing_gnu_gdgt207lcdm
 
 install_gnu_dirs_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) install_gnu_dirs_gdgt207lcdm
-
-install_nagbody_gnu_dirs_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) install_nagbody_gnu_dirs_gdgt207lcdm
+	$(MAKE) -f $(MAKEGDGT207LCDM) install_gnu_dirs_gdgt207lcdm
 
 clean_gnu_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) clean_gnu_gdgt207lcdm
-
-clean_nagbody_gnu_gdgt207lcdm:
-    $(MAKE) -f $(MAKEGDGT207LCDM) clean_nagbody_gnu_gdgt207lcdm
+	$(MAKE) -f $(MAKEGDGT207LCDM) clean_gnu_gdgt207lcdm
 
 
 # ==================================================================
@@ -972,34 +683,22 @@ clean_nagbody_gnu_gdgt207lcdm:
 MAKEGDGT207CLUSTER = Makefiles/gdgt2_derived_codes/NagBody_gdgt207cluster
 
 install_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) install_gdgt207cluster
+	$(MAKE) -f $(MAKEGDGT207CLUSTER) install_gdgt207cluster
 
 clean_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) clean_gdgt207cluster
-
-clean_gdgt207cluster_dir:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) clean_gdgt207cluster_dir
+	$(MAKE) -f $(MAKEGDGT207CLUSTER) clean_gdgt207cluster
 
 packing_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) packing_gdgt207cluster
+	$(MAKE) -f $(MAKEGDGT207CLUSTER) packing_gdgt207cluster
 
 packing_gnu_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) packing_gnu_gdgt207cluster
-
-packing_nagbody_gnu_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) packing_nagbody_gnu_gdgt207cluster
+	$(MAKE) -f $(MAKEGDGT207CLUSTER) packing_gnu_gdgt207cluster
 
 install_gnu_dirs_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) install_gnu_dirs_gdgt207cluster
-
-install_nagbody_gnu_dirs_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) install_nagbody_gnu_dirs_gdgt207cluster
+	$(MAKE) -f $(MAKEGDGT207CLUSTER) install_gnu_dirs_gdgt207cluster
 
 clean_gnu_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) clean_gnu_gdgt207cluster
-
-clean_nagbody_gnu_gdgt207cluster:
-    $(MAKE) -f $(MAKEGDGT207CLUSTER) clean_nagbody_gnu_gdgt207cluster
+	$(MAKE) -f $(MAKEGDGT207CLUSTER) clean_gnu_gdgt207cluster
 
 
 # ==================================================================
@@ -1011,34 +710,22 @@ clean_nagbody_gnu_gdgt207cluster:
 MAKEGDGT207GASSPHERE = Makefiles/gdgt2_derived_codes/NagBody_gdgt207gassphere
 
 install_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) install_gdgt207gassphere
+	$(MAKE) -f $(MAKEGDGT207GASSPHERE) install_gdgt207gassphere
 
 clean_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) clean_gdgt207gassphere
-
-clean_gdgt207gassphere_dir:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) clean_gdgt207gassphere_dir
+	$(MAKE) -f $(MAKEGDGT207GASSPHERE) clean_gdgt207gassphere
 
 packing_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) packing_gdgt207gassphere
+	$(MAKE) -f $(MAKEGDGT207GASSPHERE) packing_gdgt207gassphere
 
 packing_gnu_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) packing_gnu_gdgt207gassphere
-
-packing_nagbody_gnu_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) packing_nagbody_gnu_gdgt207gassphere
+	$(MAKE) -f $(MAKEGDGT207GASSPHERE) packing_gnu_gdgt207gassphere
 
 install_gnu_dirs_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) install_gnu_dirs_gdgt207gassphere
-
-install_nagbody_gnu_dirs_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) install_nagbody_gnu_dirs_gdgt207gassphere
+	$(MAKE) -f $(MAKEGDGT207GASSPHERE) install_gnu_dirs_gdgt207gassphere
 
 clean_gnu_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) clean_gnu_gdgt207gassphere
-
-clean_nagbody_gnu_gdgt207gassphere:
-    $(MAKE) -f $(MAKEGDGT207GASSPHERE) clean_nagbody_gnu_gdgt207gassphere
+	$(MAKE) -f $(MAKEGDGT207GASSPHERE) clean_gnu_gdgt207gassphere
 
 
 # ==================================================================
@@ -1049,34 +736,22 @@ clean_nagbody_gnu_gdgt207gassphere:
 MAKEGBSPH = Makefiles/gravitation/NagBody_gbsph
 
 install_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) install_gbsph
+	$(MAKE) -f $(MAKEGBSPH) install_gbsph
 
 clean_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) clean_gbsph
-
-clean_gbsph_dir:
-    $(MAKE) -f $(MAKEGBSPH) clean_gbsph_dir
+	$(MAKE) -f $(MAKEGBSPH) clean_gbsph
 
 packing_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) packing_gbsph
+	$(MAKE) -f $(MAKEGBSPH) packing_gbsph
 
 packing_gnu_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) packing_gnu_gbsph
-
-packing_nagbody_gnu_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) packing_nagbody_gnu_gbsph
+	$(MAKE) -f $(MAKEGBSPH) packing_gnu_gbsph
 
 install_gnu_dirs_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) install_gnu_dirs_gbsph
-
-install_nagbody_gnu_dirs_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) install_nagbody_gnu_dirs_gbsph
+	$(MAKE) -f $(MAKEGBSPH) install_gnu_dirs_gbsph
 
 clean_gnu_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) clean_gnu_gbsph
-
-clean_nagbody_gnu_gbsph:
-    $(MAKE) -f $(MAKEGBSPH) clean_nagbody_gnu_gbsph
+	$(MAKE) -f $(MAKEGBSPH) clean_gnu_gbsph
 
 
 # ==================================================================
@@ -1085,31 +760,22 @@ clean_nagbody_gnu_gbsph:
 MAKENBODY_N2 = Makefiles/gravitation/NagBody_nbody_n2
 
 install_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) install_nbody_n2
+	$(MAKE) -f $(MAKENBODY_N2) install_nbody_n2
 
 clean_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) clean_nbody_n2
+	$(MAKE) -f $(MAKENBODY_N2) clean_nbody_n2
 
 packing_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) packing_nbody_n2
+	$(MAKE) -f $(MAKENBODY_N2) packing_nbody_n2
 
 packing_gnu_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) packing_gnu_nbody_n2
-
-packing_nagbody_gnu_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) packing_nagbody_gnu_nbody_n2
+	$(MAKE) -f $(MAKENBODY_N2) packing_gnu_nbody_n2
 
 install_gnu_dirs_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) install_gnu_dirs_nbody_n2
-
-install_nagbody_gnu_dirs_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) install_nagbody_gnu_dirs_nbody_n2
+	$(MAKE) -f $(MAKENBODY_N2) install_gnu_dirs_nbody_n2
 
 clean_gnu_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) clean_gnu_nbody_n2
-
-clean_nagbody_gnu_nbody_n2:
-    $(MAKE) -f $(MAKENBODY_N2) clean_nagbody_gnu_nbody_n2
+	$(MAKE) -f $(MAKENBODY_N2) clean_gnu_nbody_n2
 
 
 # ==================================================================
@@ -1118,31 +784,22 @@ clean_nagbody_gnu_nbody_n2:
 MAKEGALAXYSTARSCREAM = Makefiles/gravitation/NagBody_galaxy_starscream
 
 install_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) install_galaxy_starscream
+	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) install_galaxy_starscream
 
 clean_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) clean_galaxy_starscream
+	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) clean_galaxy_starscream
 
 packing_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) packing_galaxy_starscream
+	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) packing_galaxy_starscream
 
 packing_gnu_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) packing_gnu_galaxy_starscream
-
-packing_nagbody_gnu_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) packing_nagbody_gnu_galaxy_starscream
+	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) packing_gnu_galaxy_starscream
 
 install_gnu_dirs_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) install_gnu_dirs_galaxy_starscream
-
-install_nagbody_gnu_dirs_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) install_nagbody_gnu_dirs_galaxy_starscream
+	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) install_gnu_dirs_galaxy_starscream
 
 clean_gnu_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) clean_gnu_galaxy_starscream
-
-clean_nagbody_gnu_galaxy_starscream:
-    $(MAKE) -f $(MAKEGALAXYSTARSCREAM) clean_nagbody_gnu_galaxy_starscream
+	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) clean_gnu_galaxy_starscream
 
 
 # ==================================================================
@@ -1151,31 +808,22 @@ clean_nagbody_gnu_galaxy_starscream:
 MAKEANALYSISGRAV = Makefiles/gravitation/NagBody_analysis_grav
 
 install_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) install_analysis_grav
+	$(MAKE) -f $(MAKEANALYSISGRAV) install_analysis_grav
 
 clean_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) clean_analysis_grav
+	$(MAKE) -f $(MAKEANALYSISGRAV) clean_analysis_grav
 
 packing_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) packing_analysis_grav
+	$(MAKE) -f $(MAKEANALYSISGRAV) packing_analysis_grav
 
 packing_gnu_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) packing_gnu_analysis_grav
-
-packing_nagbody_gnu_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) packing_nagbody_gnu_analysis_grav
+	$(MAKE) -f $(MAKEANALYSISGRAV) packing_gnu_analysis_grav
 
 install_gnu_dirs_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) install_gnu_dirs_analysis_grav
-
-install_nagbody_gnu_dirs_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) install_nagbody_gnu_dirs_analysis_grav
+	$(MAKE) -f $(MAKEANALYSISGRAV) install_gnu_dirs_analysis_grav
 
 clean_gnu_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) clean_gnu_analysis_grav
-
-clean_nagbody_gnu_analysis_grav:
-    $(MAKE) -f $(MAKEANALYSISGRAV) clean_nagbody_gnu_analysis_grav
+	$(MAKE) -f $(MAKEANALYSISGRAV) clean_gnu_analysis_grav
 
 
 # ==================================================================
@@ -1184,31 +832,22 @@ clean_nagbody_gnu_analysis_grav:
 MAKEANALYSISGALAXY = Makefiles/gravitation/NagBody_analysis_galaxy
 
 install_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) install_analysis_galaxy
+	$(MAKE) -f $(MAKEANALYSISGALAXY) install_analysis_galaxy
 
 clean_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) clean_analysis_galaxy
+	$(MAKE) -f $(MAKEANALYSISGALAXY) clean_analysis_galaxy
 
 packing_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) packing_analysis_galaxy
+	$(MAKE) -f $(MAKEANALYSISGALAXY) packing_analysis_galaxy
 
 packing_gnu_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) packing_gnu_analysis_galaxy
-
-packing_nagbody_gnu_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) packing_nagbody_gnu_analysis_galaxy
+	$(MAKE) -f $(MAKEANALYSISGALAXY) packing_gnu_analysis_galaxy
 
 install_gnu_dirs_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) install_gnu_dirs_analysis_galaxy
-
-install_nagbody_gnu_dirs_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) install_nagbody_gnu_dirs_analysis_galaxy
+	$(MAKE) -f $(MAKEANALYSISGALAXY) install_gnu_dirs_analysis_galaxy
 
 clean_gnu_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) clean_gnu_analysis_galaxy
-
-clean_nagbody_gnu_analysis_galaxy:
-    $(MAKE) -f $(MAKEANALYSISGALAXY) clean_nagbody_gnu_analysis_galaxy
+	$(MAKE) -f $(MAKEANALYSISGALAXY) clean_gnu_analysis_galaxy
 
 
 # ==================================================================
@@ -1217,34 +856,22 @@ clean_nagbody_gnu_analysis_galaxy:
 MAKEGALAXYMODEL = Makefiles/gravitation/NagBody_galaxy_model
 
 install_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) install_galaxy_model
+	$(MAKE) -f $(MAKEGALAXYMODEL) install_galaxy_model
 
 clean_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) clean_galaxy_model
-
-clean_galaxy_model_dir:
-    $(MAKE) -f $(MAKEGALAXYMODEL) clean_galaxy_model_dir
+	$(MAKE) -f $(MAKEGALAXYMODEL) clean_galaxy_model
 
 packing_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) packing_galaxy_model
+	$(MAKE) -f $(MAKEGALAXYMODEL) packing_galaxy_model
 
 packing_gnu_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) packing_gnu_galaxy_model
-
-packing_nagbody_gnu_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) packing_nagbody_gnu_galaxy_model
+	$(MAKE) -f $(MAKEGALAXYMODEL) packing_gnu_galaxy_model
 
 install_gnu_dirs_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) install_gnu_dirs_galaxy_model
-
-install_nagbody_gnu_dirs_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) install_nagbody_gnu_dirs_galaxy_model
+	$(MAKE) -f $(MAKEGALAXYMODEL) install_gnu_dirs_galaxy_model
 
 clean_gnu_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) clean_gnu_galaxy_model
-
-clean_nagbody_gnu_galaxy_model:
-    $(MAKE) -f $(MAKEGALAXYMODEL) clean_nagbody_gnu_galaxy_model
+	$(MAKE) -f $(MAKEGALAXYMODEL) clean_gnu_galaxy_model
 
 
 # ==================================================================
@@ -1253,31 +880,22 @@ clean_nagbody_gnu_galaxy_model:
 MAKEMODEL = Makefiles/gravitation/NagBody_model
 
 install_model:
-    $(MAKE) -f $(MAKEMODEL) install_model
+	$(MAKE) -f $(MAKEMODEL) install_model
 
 clean_model:
-    $(MAKE) -f $(MAKEMODEL) clean_model
+	$(MAKE) -f $(MAKEMODEL) clean_model
 
 packing_model:
-    $(MAKE) -f $(MAKEMODEL) packing_model
+	$(MAKE) -f $(MAKEMODEL) packing_model
 
 packing_gnu_model:
-    $(MAKE) -f $(MAKEMODEL) packing_gnu_model
-
-packing_nagbody_gnu_model:
-    $(MAKE) -f $(MAKEMODEL) packing_nagbody_gnu_model
+	$(MAKE) -f $(MAKEMODEL) packing_gnu_model
 
 install_gnu_dirs_model:
-    $(MAKE) -f $(MAKEMODEL) install_gnu_dirs_model
-
-install_nagbody_gnu_dirs_model:
-    $(MAKE) -f $(MAKEMODEL) install_nagbody_gnu_dirs_model
+	$(MAKE) -f $(MAKEMODEL) install_gnu_dirs_model
 
 clean_gnu_model:
-    $(MAKE) -f $(MAKEMODEL) clean_gnu_model
-
-clean_nagbody_gnu_model:
-    $(MAKE) -f $(MAKEMODEL) clean_nagbody_gnu_model
+	$(MAKE) -f $(MAKEMODEL) clean_gnu_model
 
 
 # ==================================================================
@@ -1293,26 +911,14 @@ install_md_blj_n2_sird:
 clean_md_blj_n2_sird:
 	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) clean_md_blj_n2_sird
 
-packing_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) packing_md_blj_n2_sird
-
 packing_gnu_md_blj_n2_sird:
 	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) packing_gnu_md_blj_n2_sird
-
-packing_nagbody_gnu_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) packing_nagbody_gnu_md_blj_n2_sird
 
 install_gnu_dirs_md_blj_n2_sird:
 	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) install_gnu_dirs_md_blj_n2_sird
 
-install_nagbody_gnu_dirs_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) install_nagbody_gnu_dirs_md_blj_n2_sird
-
 clean_gnu_md_blj_n2_sird:
 	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) clean_gnu_md_blj_n2_sird
-
-clean_nagbody_gnu_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) clean_nagbody_gnu_md_blj_n2_sird
 
 
 # ==================================================================
@@ -1323,34 +929,22 @@ clean_nagbody_gnu_md_blj_n2_sird:
 MAKENCHI2 = Makefiles/mcmc/NagBody_nchi2
 
 install_nchi2:
-    $(MAKE) -f $(MAKENCHI2) install_nchi2
+	$(MAKE) -f $(MAKENCHI2) install_nchi2
 
 clean_nchi2:
-    $(MAKE) -f $(MAKENCHI2) clean_nchi2
-
-clean_nchi2_dir:
-    $(MAKE) -f $(MAKENCHI2) clean_nchi2_dir
+	$(MAKE) -f $(MAKENCHI2) clean_nchi2
 
 packing_nchi2:
-    $(MAKE) -f $(MAKENCHI2) packing_nchi2
+	$(MAKE) -f $(MAKENCHI2) packing_nchi2
 
 packing_gnu_nchi2:
-    $(MAKE) -f $(MAKENCHI2) packing_gnu_nchi2
-
-packing_nagbody_gnu_nchi2:
-    $(MAKE) -f $(MAKENCHI2) packing_nagbody_gnu_nchi2
+	$(MAKE) -f $(MAKENCHI2) packing_gnu_nchi2
 
 install_gnu_dirs_nchi2:
-    $(MAKE) -f $(MAKENCHI2) install_gnu_dirs_nchi2
-
-install_nagbody_gnu_dirs_nchi2:
-    $(MAKE) -f $(MAKENCHI2) install_nagbody_gnu_dirs_nchi2
+	$(MAKE) -f $(MAKENCHI2) install_gnu_dirs_nchi2
 
 clean_gnu_nchi2:
-    $(MAKE) -f $(MAKENCHI2) clean_gnu_nchi2
-
-clean_nagbody_gnu_nchi2:
-    $(MAKE) -f $(MAKENCHI2) clean_nagbody_gnu_nchi2
+	$(MAKE) -f $(MAKENCHI2) clean_gnu_nchi2
 
 
 # ==================================================================
@@ -1359,34 +953,22 @@ clean_nagbody_gnu_nchi2:
 MAKENMCMC = Makefiles/mcmc/NagBody_nmcmc
 
 install_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) install_nmcmc
+	$(MAKE) -f $(MAKENMCMC) install_nmcmc
 
 clean_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) clean_nmcmc
-
-clean_nmcmc_dir:
-    $(MAKE) -f $(MAKENMCMC) clean_nmcmc_dir
+	$(MAKE) -f $(MAKENMCMC) clean_nmcmc
 
 packing_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) packing_nmcmc
+	$(MAKE) -f $(MAKENMCMC) packing_nmcmc
 
 packing_gnu_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) packing_gnu_nmcmc
-
-packing_nagbody_gnu_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) packing_nagbody_gnu_nmcmc
+	$(MAKE) -f $(MAKENMCMC) packing_gnu_nmcmc
 
 install_gnu_dirs_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) install_gnu_dirs_nmcmc
-
-install_nagbody_gnu_dirs_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) install_nagbody_gnu_dirs_nmcmc
+	$(MAKE) -f $(MAKENMCMC) install_gnu_dirs_nmcmc
 
 clean_gnu_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) clean_gnu_nmcmc
-
-clean_nagbody_gnu_nmcmc:
-    $(MAKE) -f $(MAKENMCMC) clean_nagbody_gnu_nmcmc
+	$(MAKE) -f $(MAKENMCMC) clean_gnu_nmcmc
 
 
 # ==================================================================
@@ -1395,34 +977,22 @@ clean_nagbody_gnu_nmcmc:
 MAKEMATHEMATICAMCMC = Makefiles/mcmc/NagBody_MathematicaMCMC
 
 install_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) install_MathematicaMCMC
+	$(MAKE) -f $(MAKEMATHEMATICAMCMC) install_MathematicaMCMC
 
 clean_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) clean_MathematicaMCMC
-
-clean_MathematicaMCMC_dir:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) clean_MathematicaMCMC_dir
+	$(MAKE) -f $(MAKEMATHEMATICAMCMC) clean_MathematicaMCMC
 
 packing_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) packing_MathematicaMCMC
+	$(MAKE) -f $(MAKEMATHEMATICAMCMC) packing_MathematicaMCMC
 
 packing_gnu_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) packing_gnu_MathematicaMCMC
-
-packing_nagbody_gnu_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) packing_nagbody_gnu_MathematicaMCMC
+	$(MAKE) -f $(MAKEMATHEMATICAMCMC) packing_gnu_MathematicaMCMC
 
 install_gnu_dirs_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) install_gnu_dirs_MathematicaMCMC
-
-install_nagbody_gnu_dirs_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) install_nagbody_gnu_dirs_MathematicaMCMC
+	$(MAKE) -f $(MAKEMATHEMATICAMCMC) install_gnu_dirs_MathematicaMCMC
 
 clean_gnu_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) clean_gnu_MathematicaMCMC
-
-clean_nagbody_gnu_MathematicaMCMC:
-    $(MAKE) -f $(MAKEMATHEMATICAMCMC) clean_nagbody_gnu_MathematicaMCMC
+	$(MAKE) -f $(MAKEMATHEMATICAMCMC) clean_gnu_MathematicaMCMC
 
 
 # ==================================================================
@@ -1433,31 +1003,22 @@ clean_nagbody_gnu_MathematicaMCMC:
 MAKENPLOT2D = Makefiles/NagBody_PLPlots/NagBody_nplot2d
 
 install_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) install_nplot2d
+	$(MAKE) -f $(MAKENPLOT2D) install_nplot2d
 
 clean_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) clean_nplot2d
+	$(MAKE) -f $(MAKENPLOT2D) clean_nplot2d
 
 packing_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) packing_nplot2d
+	$(MAKE) -f $(MAKENPLOT2D) packing_nplot2d
 
 packing_gnu_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) packing_gnu_nplot2d
-
-packing_nagbody_gnu_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) packing_nagbody_gnu_nplot2d
+	$(MAKE) -f $(MAKENPLOT2D) packing_gnu_nplot2d
 
 install_gnu_dirs_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) install_gnu_dirs_nplot2d
-
-install_nagbody_gnu_dirs_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) install_nagbody_gnu_dirs_nplot2d
+	$(MAKE) -f $(MAKENPLOT2D) install_gnu_dirs_nplot2d
 
 clean_gnu_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) clean_gnu_nplot2d
-
-clean_nagbody_gnu_nplot2d:
-    $(MAKE) -f $(MAKENPLOT2D) clean_nagbody_gnu_nplot2d
+	$(MAKE) -f $(MAKENPLOT2D) clean_gnu_nplot2d
 
 
 # ==================================================================
@@ -1466,34 +1027,22 @@ clean_nagbody_gnu_nplot2d:
 MAKENXLS = Makefiles/nagbody_plplots/NagBody_nxls
 
 install_nxls:
-    $(MAKE) -f $(MAKENXLS) install_nxls
+	$(MAKE) -f $(MAKENXLS) install_nxls
 
 clean_nxls:
-    $(MAKE) -f $(MAKENXLS) clean_nxls
-
-clean_nxls_dir:
-    $(MAKE) -f $(MAKENXLS) clean_nxls_dir
+	$(MAKE) -f $(MAKENXLS) clean_nxls
 
 packing_nxls:
-    $(MAKE) -f $(MAKENXLS) packing_nxls
+	$(MAKE) -f $(MAKENXLS) packing_nxls
 
 packing_gnu_nxls:
-    $(MAKE) -f $(MAKENXLS) packing_gnu_nxls
-
-packing_nagbody_gnu_nxls:
-    $(MAKE) -f $(MAKENXLS) packing_nagbody_gnu_nxls
+	$(MAKE) -f $(MAKENXLS) packing_gnu_nxls
 
 install_gnu_dirs_nxls:
-    $(MAKE) -f $(MAKENXLS) install_gnu_dirs_nxls
-
-install_nagbody_gnu_dirs_nxls:
-    $(MAKE) -f $(MAKENXLS) install_nagbody_gnu_dirs_nxls
+	$(MAKE) -f $(MAKENXLS) install_gnu_dirs_nxls
 
 clean_gnu_nxls:
-    $(MAKE) -f $(MAKENXLS) clean_gnu_nxls
-
-clean_nagbody_gnu_nxls:
-    $(MAKE) -f $(MAKENXLS) clean_nagbody_gnu_nxls
+	$(MAKE) -f $(MAKENXLS) clean_gnu_nxls
 
 
 # ==================================================================
@@ -1504,34 +1053,22 @@ clean_nagbody_gnu_nxls:
 MAKEMGPT = Makefiles/perturbations/NagBody_mgpt
 
 install_mgpt:
-    $(MAKE) -f $(MAKEMGPT) install_mgpt
+	$(MAKE) -f $(MAKEMGPT) install_mgpt
 
 clean_mgpt:
-    $(MAKE) -f $(MAKEMGPT) clean_mgpt
-
-clean_mgpt_dir:
-    $(MAKE) -f $(MAKEMGPT) clean_mgpt_dir
+	$(MAKE) -f $(MAKEMGPT) clean_mgpt
 
 packing_mgpt:
-    $(MAKE) -f $(MAKEMGPT) packing_mgpt
+	$(MAKE) -f $(MAKEMGPT) packing_mgpt
 
 packing_gnu_mgpt:
-    $(MAKE) -f $(MAKEMGPT) packing_gnu_mgpt
-
-packing_nagbody_gnu_mgpt:
-    $(MAKE) -f $(MAKEMGPT) packing_nagbody_gnu_mgpt
+	$(MAKE) -f $(MAKEMGPT) packing_gnu_mgpt
 
 install_gnu_dirs_mgpt:
-    $(MAKE) -f $(MAKEMGPT) install_gnu_dirs_mgpt
-
-install_nagbody_gnu_dirs_mgpt:
-    $(MAKE) -f $(MAKEMGPT) install_nagbody_gnu_dirs_mgpt
+	$(MAKE) -f $(MAKEMGPT) install_gnu_dirs_mgpt
 
 clean_gnu_mgpt:
-    $(MAKE) -f $(MAKEMGPT) clean_gnu_mgpt
-
-clean_nagbody_gnu_mgpt:
-    $(MAKE) -f $(MAKEMGPT) clean_nagbody_gnu_mgpt
+	$(MAKE) -f $(MAKEMGPT) clean_gnu_mgpt
 
 
 # ==================================================================
@@ -1540,34 +1077,22 @@ clean_nagbody_gnu_mgpt:
 MAKESMGPT = Makefiles/perturbations/NagBody_smgpt
 
 install_smgpt:
-    $(MAKE) -f $(MAKESMGPT) install_smgpt
+	$(MAKE) -f $(MAKESMGPT) install_smgpt
 
 clean_smgpt:
-    $(MAKE) -f $(MAKESMGPT) clean_smgpt
-
-clean_smgpt_dir:
-    $(MAKE) -f $(MAKESMGPT) clean_smgpt_dir
+	$(MAKE) -f $(MAKESMGPT) clean_smgpt
 
 packing_smgpt:
-    $(MAKE) -f $(MAKESMGPT) packing_smgpt
+	$(MAKE) -f $(MAKESMGPT) packing_smgpt
 
 packing_gnu_smgpt:
-    $(MAKE) -f $(MAKESMGPT) packing_gnu_smgpt
-
-packing_nagbody_gnu_smgpt:
-    $(MAKE) -f $(MAKESMGPT) packing_nagbody_gnu_smgpt
+	$(MAKE) -f $(MAKESMGPT) packing_gnu_smgpt
 
 install_gnu_dirs_smgpt:
-    $(MAKE) -f $(MAKESMGPT) install_gnu_dirs_smgpt
-
-install_nagbody_gnu_dirs_smgpt:
-    $(MAKE) -f $(MAKESMGPT) install_nagbody_gnu_dirs_smgpt
+	$(MAKE) -f $(MAKESMGPT) install_gnu_dirs_smgpt
 
 clean_gnu_smgpt:
-    $(MAKE) -f $(MAKESMGPT) clean_gnu_smgpt
-
-clean_nagbody_gnu_smgpt:
-    $(MAKE) -f $(MAKESMGPT) clean_nagbody_gnu_smgpt
+	$(MAKE) -f $(MAKESMGPT) clean_gnu_smgpt
 
 
 # ==================================================================
@@ -1577,34 +1102,22 @@ clean_nagbody_gnu_smgpt:
 MAKECLASSMGPT = Makefiles/perturbations/NagBody_class_mgpt
 
 install_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) install_class_mgpt
+	$(MAKE) -f $(MAKECLASSMGPT) install_class_mgpt
 
 clean_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) clean_class_mgpt
-
-clean_class_mgpt_dir:
-    $(MAKE) -f $(MAKECLASSMGPT) clean_class_mgpt_dir
+	$(MAKE) -f $(MAKECLASSMGPT) clean_class_mgpt
 
 packing_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) packing_class_mgpt
+	$(MAKE) -f $(MAKECLASSMGPT) packing_class_mgpt
 
 packing_gnu_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) packing_gnu_class_mgpt
-
-packing_nagbody_gnu_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) packing_nagbody_gnu_class_mgpt
+	$(MAKE) -f $(MAKECLASSMGPT) packing_gnu_class_mgpt
 
 install_gnu_dirs_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) install_gnu_dirs_class_mgpt
-
-install_nagbody_gnu_dirs_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) install_nagbody_gnu_dirs_class_mgpt
+	$(MAKE) -f $(MAKECLASSMGPT) install_gnu_dirs_class_mgpt
 
 clean_gnu_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) clean_gnu_class_mgpt
-
-clean_nagbody_gnu_class_mgpt:
-    $(MAKE) -f $(MAKECLASSMGPT) clean_nagbody_gnu_class_mgpt
+	$(MAKE) -f $(MAKECLASSMGPT) clean_gnu_class_mgpt
 
 
 # ==================================================================
@@ -1614,34 +1127,22 @@ clean_nagbody_gnu_class_mgpt:
 MAKEHICLASSMGPT = Makefiles/perturbations/NagBody_hiclass_mgpt
 
 install_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) install_hiclass_mgpt
+	$(MAKE) -f $(MAKEHICLASSMGPT) install_hiclass_mgpt
 
 clean_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) clean_hiclass_mgpt
-
-clean_hiclass_mgpt_dir:
-    $(MAKE) -f $(MAKEHICLASSMGPT) clean_hiclass_mgpt_dir
+	$(MAKE) -f $(MAKEHICLASSMGPT) clean_hiclass_mgpt
 
 packing_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) packing_hiclass_mgpt
+	$(MAKE) -f $(MAKEHICLASSMGPT) packing_hiclass_mgpt
 
 packing_gnu_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) packing_gnu_hiclass_mgpt
-
-packing_nagbody_gnu_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) packing_nagbody_gnu_hiclass_mgpt
+	$(MAKE) -f $(MAKEHICLASSMGPT) packing_gnu_hiclass_mgpt
 
 install_gnu_dirs_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) install_gnu_dirs_hiclass_mgpt
-
-install_nagbody_gnu_dirs_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) install_nagbody_gnu_dirs_hiclass_mgpt
+	$(MAKE) -f $(MAKEHICLASSMGPT) install_gnu_dirs_hiclass_mgpt
 
 clean_gnu_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) clean_gnu_hiclass_mgpt
-
-clean_nagbody_gnu_hiclass_mgpt:
-    $(MAKE) -f $(MAKEHICLASSMGPT) clean_nagbody_gnu_hiclass_mgpt
+	$(MAKE) -f $(MAKEHICLASSMGPT) clean_gnu_hiclass_mgpt
 
 
 # ==================================================================
@@ -1651,55 +1152,40 @@ clean_nagbody_gnu_hiclass_mgpt:
 MAKETREECORR = Makefiles/perturbations/NagBody_TreeCorr
 
 install_TreeCorr:
-    $(MAKE) -f $(MAKETREECORR) install_TreeCorr
+	$(MAKE) -f $(MAKETREECORR) install_TreeCorr
 
 clean_TreeCorr:
-    $(MAKE) -f $(MAKETREECORR) clean_TreeCorr
+	$(MAKE) -f $(MAKETREECORR) clean_TreeCorr
 
 packing_TreeCorr:
-    $(MAKE) -f $(MAKETREECORR) packing_TreeCorr
+	$(MAKE) -f $(MAKETREECORR) packing_TreeCorr
 
 
 
 # ==================================================================
 # SPH CODES
 # ==================================================================
-# sphz code: zeno -> NagBody adaptation ...
+# sphz code: zeno -> NagBody adaptation ... sphz -> sphcode_u
 
 MAKESPHZ = Makefiles/sph/NagBody_sphz
 
 install_sphz:
-    $(MAKE) -f $(MAKESPHZ) install_sphz
+	$(MAKE) -f $(MAKESPHZ) install_sphz
 
 clean_sphz:
-    $(MAKE) -f $(MAKESPHZ) clean_sphz
+	$(MAKE) -f $(MAKESPHZ) clean_sphz
 
 packing_sphz:
-    $(MAKE) -f $(MAKESPHZ) packing_sphz
+	$(MAKE) -f $(MAKESPHZ) packing_sphz
 
 packing_gnu_sphz:
-    $(MAKE) -f $(MAKESPHZ) packing_gnu_sphz
+	$(MAKE) -f $(MAKESPHZ) packing_gnu_sphz
 
 install_gnu_dirs_sphz:
-    $(MAKE) -f $(MAKESPHZ) install_gnu_dirs_sphz
+	$(MAKE) -f $(MAKESPHZ) install_gnu_dirs_sphz
 
 clean_gnu_sphz:
-    $(MAKE) -f $(MAKESPHZ) clean_gnu_sphz
-
-
-# ==================================================================
-# zeno codes: zeno package -> NagBody adaptation ...
-
-MAKEZENOALL = Makefiles/sph/NagBody_zeno_all
-
-install_zeno_all:
-    $(MAKE) -f $(MAKEZENOALL) install_zeno_all
-
-clean_zeno_all:
-    $(MAKE) -f $(MAKEZENOALL) clean_zeno_all
-
-packing_zeno_all:
-    $(MAKE) -f $(MAKEZENOALL) packing_zeno_all
+	$(MAKE) -f $(MAKESPHZ) clean_gnu_sphz
 
 
 # ==================================================================
@@ -1710,47 +1196,35 @@ packing_zeno_all:
 MAKETEMPLATE06 = Makefiles/templates/NagBody_template06
 
 install_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) install_template06
+	$(MAKE) -f $(MAKETEMPLATE06) install_template06
 
 clean_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) clean_template06
-
-clean_template06_dir:
-    $(MAKE) -f $(MAKETEMPLATE06) clean_template06_dir
+	$(MAKE) -f $(MAKETEMPLATE06) clean_template06
 
 packing_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) packing_template06
+	$(MAKE) -f $(MAKETEMPLATE06) packing_template06
 
 packing_gnu_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) packing_gnu_template06
-
-packing_nagbody_gnu_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) packing_nagbody_gnu_template06
+	$(MAKE) -f $(MAKETEMPLATE06) packing_gnu_template06
 
 install_gnu_dirs_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) install_gnu_dirs_template06
-
-install_nagbody_gnu_dirs_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) install_nagbody_gnu_dirs_template06
+	$(MAKE) -f $(MAKETEMPLATE06) install_gnu_dirs_template06
 
 clean_gnu_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) clean_gnu_template06
-
-clean_nagbody_gnu_template06:
-    $(MAKE) -f $(MAKETEMPLATE06) clean_nagbody_gnu_template06
+	$(MAKE) -f $(MAKETEMPLATE06) clean_gnu_template06
 
 
 # ==================================================================
 # templateBessel code:
 
 install_templateBessel:
-    $(MAKE) -f Makefiles/NagBody_templateBessel install_templateBessel
+	$(MAKE) -f Makefiles/NagBody_templateBessel install_templateBessel
 
 clean_templateBessel:
-    $(MAKE) -f Makefiles/NagBody_templateBessel clean_templateBessel
+	$(MAKE) -f Makefiles/NagBody_templateBessel clean_templateBessel
 
 packing_templateBessel:
-    $(MAKE) -f Makefiles/NagBody_templateBessel packing_templateBessel
+	$(MAKE) -f Makefiles/NagBody_templateBessel packing_templateBessel
 
 
 # ==================================================================
@@ -1771,3 +1245,4 @@ install_dirs:
 # ==================================================================
 # END OF NAGBODY GIT REPOSITORY
 # ==================================================================
+
