@@ -83,6 +83,7 @@ gravitation
 4. analysis_grav	: code to analyse output of the nbody_n2 (gbsph)
 5. analysis_galaxy	: code to analyse output of the galaxy
 7. galaxy_starscream	: set two galaxy in parabolic initial condition to collide
+8. galaxy_model		: generates galaxy initial condition. Useful for small N.
 
 
 influenza
@@ -105,6 +106,7 @@ perturbations (Mario A. Rodr’guez-Meza and Alejadro Aviles)
 2. smgpt		: Under development. Not ready yet.
 3. class_mgpt		: Under development. Not ready yet.
 4. hiclass_mgpt		: Under development. Not ready yet.
+5. TreeCorr		: TreeCorr by M. Jarvis.
 
 
 sph
