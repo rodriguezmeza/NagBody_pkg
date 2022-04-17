@@ -1,21 +1,82 @@
 
-Introduction to the N-body problem using NagBody codes
-Mario A. Rodriguez-Meza
+Simulations of the N-body problem using NagBody codes
+and other useful codes to use in complex systems and fluids, astrophysics and cosmology
+
+Mario A. Rodriguez-Meza (collector and developer)
+
 
 Numerical codes list:
 
+
+additional_libs
+1. cfitsio		: CFITSIO, a library of ANSI C routines for reading and writing FITS files
+2. fftw-2		: FFTW-2, a collection of fast C routines to compute the 
+			: Discrete Fourier Transform in one or more dimensions. Gadget depends on it.
+3. fftw-3		: FFTW-3, a free collection of fast C routines for computing 
+			: the Discrete Fourier Transform in one or more dimensions. COLA codes use it.
+4. gsl			: GSL - GNU Scientific Library. It is use by gadget codes.
+5. healpix		: HEALPix, Hierarchical Equal Area isoLatitude Pixelation of the sphere
+6. lapack		: LAPACK, a library of Fortran 90 with subroutines for solving
+			: the most commonly occurring problems in numerical linear algebra.
+7. OpenBLAS		: OpenBLAS, an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+8. plplot		: PLplot, a cross-platform software package for creating scientific plots
+9. NR			: We include some of the numerical recipes codes: interpolation, quadratures, 
+			: special function, ODE solvers, etc. Isolated in order to be easy to use.
+
+
 class
+1. class		: Julien Lesgourges CLASS
+2. hiclass		: Emilio Bellini, Ignacy Sawicki and Miguel Zumalacárregui hi_class
+3. montepython		: Thejs Brinckmann & Julien Lesgourgues MontePython 3
+4. planck2018		: Planck collaboration release 2018
+
 
 cmplxflds
+1. md_blj_n2		: molecular dynamics code, to simulate binary systems (PP method)
+2. analysis_md		: code to analyse output of the md_blj_n2
+3. md_blj		: molecular dynamics code to simulate binary systems using various methods
+			: to compute the force among particles
+4. md_ic_model		: code to generate initial conditions for molecular dynamics simulations
+5. md_lj_tree		: molecular dynamics code, to simulate binary systems (Tree method to compute foreces)
+
+
+colas
+1. cola			: Svetlin Tassev, Matias Zaldarriaga and Daniel J. Eisenstein COLA
+2. cola_simple		: Simple version of the above COLA code
+3. lpicola		: C. Howlett, M. Manera and W.J. Percival L-PICOLA
+4. mgpicola		: Hans A. Winther MG-PICOLA
+5. mgpicola_fofr	: Hans A. Winther MG-PICOLA (only fof code)
+6. mgpicola_pok		: Hans A. Winther MG-PICOLA (only pofk code)
+7. mgpicola_pok_mpi	: Hans A. Winther MG-PICOLA (only pofk_mpi code)
+8. mgpicola_pok_rsd_mpi	: Hans A. Winther MG-PICOLA (only pofk_rsd_mpi code)
+
 
 cosmo_analysis
+1. cute_box		: David Alonso CUTE - Correlation Utilities and Two-point Estimates
+2. gadgetviewer		: John Helly program for visualisation of gadget snaps
+3. gview		: Carsten Frigaard program to display a 3D view of a series of gadget snapshot files
+4. nbodykit		: a massively parallel large-scale structure toolkit by:
+			: NickHand, Yu Feng, Florian Beutler, Yin Li, Chirag Modi, Uros Seljak and Zachary Slepian
+5. powmes		: Accurate estimators of power spectra in N-body simulations by
+			: Stéphane Colombi, Andrew Jaffe, Dmitri Novikov and Christophe Pichon 
+6. rockstar		: The rockstar halo finder by Peter Behroozi
 
-cosmos_background
 
-Influenza
+cosmo_background_1lpt_2lpt
+1. 2lptic		: 
+2. 2lptic_za		: 
+3. ngenic		: Volker Springel N-GenIC - A code for cosmological initial conditions
 
 
-Gravitation
+gdgt2_derived_codes (Gadget derived codes of Volker Springel codes)
+1. gdgt207cluster	: code to make cosmological simulations using vacuum boundary conditions
+2. gdgt207galaxy	: code to evolve N-body galaxies
+3. gdgt207gassphere	: code to evolve a gas sphere using SPH method
+4. gdgt207lcdm		: code to make cosmological simulations
+6. galic		: generates galaxy initial condition
+
+
+gravitation
 1. nbody_n2		: code to evolve an N-body system (PP method)
 2. model		: code to generate several N-body initial condition using Monte Carlo
 3. gbsph		: code to evolve an N-body system (tree method)
@@ -23,28 +84,36 @@ Gravitation
 5. analysis_galaxy	: code to analyse output of the galaxy
 7. galaxy_starscream	: set two galaxy in parabolic initial condition to collide
 
-Cmplxfluids
-1. md_blj_n2		: molecular dynamics code, to simulate binary systems (PP method)
-2. analysis_md		: code to analyse output of the md_blj_n2
-3. md_blj		: molecular dynamics code to simulate binary systems using various methods to compute the force among particles
-4. md_ic_model		: code to generate initial conditions for molecular dynamics simulations
+
+influenza
+1. md_blj_n2_sird	: a spatial 2D molecular dynamic simulation of the SIR model
 
 
-Gadget derived codes (Volker Springel codes)
-9. gdgt207cluster	: code to make cosmological simulations using vacuum boundary conditions
-10. gdgt207galaxy	: code to evolve N-body galaxies
-11. gdgt207gassphere	: code to evolve a gas sphere using SPH method
-12. gdgt207lcdm		: code to make cosmological simulations
-13. n-genic		: cgenerates initial conditions using Zeldovich's approximation.
-14. galic		: generates galaxy initial condition
+mcmc
+1. MathematicaMCMC	: Mathematica notebook to do model fitting using MCMC method.
+2. nchi2		: Minimization of Chi2. Useful in model fitting.
+3. mmcmc		: A C code to do model fitting using MCMC method. Under development. Not ready yet.
 
-Perturbations
+
+nagbody_plplots
+1. nplot2d		: plotting code (2D plots, data in columns format)
+2. nxls			: basic operation on the columns of data files. Under development. Not ready yet.
+
+
+perturbations (Mario A. Rodríguez-Meza and Alejadro Aviles)
 1. mgpt			: Modified gravity perturbation theory code
+2. smgpt		: Under development. Not ready yet.
+3. class_mgpt		: Under development. Not ready yet.
+4. hiclass_mgpt		: Under development. Not ready yet.
 
-Templates
+
+sph
+1. sphz			: 
+
+
+templates
 1. templateBessel	: template that evaluate Bessel function, to show the programming simple structure of NagBody package.
 
-Visualization
-1. nplot2d		: plotting code (2D plots, data in columns format)
+
 
 
