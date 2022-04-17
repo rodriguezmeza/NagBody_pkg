@@ -1,8 +1,6 @@
 All INSTALL PARTICLE DYNAMICS PROJECT (NagBody)
-Copyright (c) 2006-2013  M.A. Rodriguez-Meza, Mexico, D.F.
+Copyright (c) 2006-2022  M.A. Rodriguez-Meza, Mexico, D.F.
 
-Note: when you see below execution lines starting with character ">", this
-symbol means the unix prompt and should not be type it in.
 
 gsl INSTALLATION
 
@@ -11,7 +9,7 @@ Note: steps 1 and 2 are not necessary if you have installed another NagBody code
 1. In the $NAGBODYDIR make bin, man, man/man1, zip, and local directories:
 with the instruction:
 
-> make -f NagBody install_dirs
+make -f NagBody install_dirs
 
 Here $NAGBODYDIR is the directory which contains the NagBody files. 
 For example, if you unpacked the NagBody zipped file in your $HOME dir
@@ -29,7 +27,9 @@ export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gsl/lib:${DYLD_LIBRARY_PATH}
 
 Then, refresh your terminal.
 
-Note: In some linux machines the file is .bash_profile or .bashrc.
+Note: 
+In Mac OSX is .bash_profile.
+In some linux machines the file is .bash_profile or .bashrc.
 Or if you are using tcsh, the file is .tcshrc, the above lines have to be:
 
 setenv PATH ${HOME}/NagBody_pkg/local/gsl/bin:${PATH}
@@ -48,20 +48,7 @@ export F77=gfortran
 export FC=gfortran
 export F90=gfortran
 
-For a specific Mac OS X:
-export CC=gcc-mp-4.6
-export CXX=g++-mp-4.6
-export F77=gfortran-mp-4.6
-export FC=gfortran-mp-4.6
-export F90=gfortran-mp-4.6
-
-export CC=gcc-mp-4.9
-export CXX=g++-mp-4.9
-export F77=gfortran-mp-4.9
-export FC=gfortran-mp-4.9
-export F90=gfortran-mp-4.9
-
-Intel compilers
+Intel compilers:
 export CC=icc
 export CXX=icc
 export F77=ifort
@@ -69,19 +56,17 @@ export FC=ifort
 export F90=ifort
 
 
-
 4. Go to directory: 
 
-> cd $HOME/NagBody_pkg/NagBody_sources/Additional_libs/Gadget
+cd $HOME/NagBody_pkg/NagBody_sources/additional_libs/
 
 5. Unpack file:
 
-> gunzip gsl-1.14.tar.gz
-> tar xvf gsl-1.14.tar
+tar xvf gsl-latest.tar.gz
 
 6. Change to directory:
 
-> cd gsl-1.14
+cd gsl-2.7.1
 
 7. Configure, make and install:
 
@@ -90,12 +75,7 @@ make 2>&1 | tee make_gcc.log
 make check 2>&1 | tee check.log
 make install 2>&1 | tee install_gcc.log
 
-8. Move the directory gel and make the link:
+8. Clean directory:
 
-> mv gsl gsl-1.14_intel64
-> ln -s gsl-1.14_intel64 gsl
-
-9. Clean directory:
-
-> make distclean
+make distclean
 

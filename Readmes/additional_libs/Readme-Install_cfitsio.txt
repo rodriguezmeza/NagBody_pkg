@@ -15,7 +15,7 @@ For Mac OS X
 sudo port install gcc46 +gfortran
 )
 
-Note: steps 1 and 2 are not necessary if you have installed another NagBody code already.
+Note: steps 1 and 2 are not necessary if you have installed another NagBody code already. Step 3 is also optional.
 
 1. In the $NAGBODYDIR make bin, man, man/man1, tests, zip, and local directories:
 with the instruction:

@@ -1,8 +1,6 @@
 All INSTALL PARTICLE DYNAMICS PROJECT (NagBody)
-Copyright (c) 2006-2016  M.A. Rodriguez-Meza, Mexico, D.F.
+Copyright (c) 2006-2022  M.A. Rodriguez-Meza, Mexico, D.F.
 
-Note: when you see below execution lines starting with character ">", this
-symbol means the unix prompt and should not be type it in.
 
 (La œltima versi—n fue bajada de:
 http://healpix.jpl.nasa.gov/)
@@ -24,7 +22,7 @@ Note: steps 1 and 2 are not necessary if you have installed another NagBody code
 1. In the $NAGBODYDIR make bin, man, man/man1, zip, and local directories:
 with the instruction:
 
-> make -f NagBody install_dirs
+make -f NagBody install_dirs
 
 Here $NAGBODYDIR is the directory which contains the NagBody files. 
 For example, if you unpacked the NagBody zipped file in your $HOME dir
@@ -40,7 +38,9 @@ export MANPATH=${MANPATH}:${HOME}/NagBody_pkg/bin
 
 Then, refresh your terminal.
 
-Note: In some linux machines the file is .bash_profile or .bashrc.
+Note: 
+In Mac OSX is .bash_profile.
+In some linux machines the file is .bash_profile or .bashrc.
 Or if you are using tcsh, the file is .tcshrc, the above lines have to be:
 
 setenv PATH ${PATH}:${HOME}/NagBody_pkg/bin
@@ -57,42 +57,26 @@ export F77=gfortran
 export FC=gfortran
 export F90=gfortran
 
-For a specific Mac OS X:
-export CC=gcc-mp-4.6
-export CXX=g++-mp-4.6
-export F77=gfortran-mp-4.6
-export FC=gfortran-mp-4.6
-export F90=gfortran-mp-4.6
-
-or
-
-export CC=gcc-mp-4.9
-export CXX=g++-mp-4.9
-export F77=gfortran-mp-4.9
-export FC=gfortran-mp-4.9
-export F90=gfortran-mp-4.9
-
 
 4. Go to directory: 
 
-> cd $HOME/NagBody_pkg/NagBody_sources/Additional_libs/CosmoMC_CAMB
+cd $HOME/NagBody_pkg/NagBody_sources/additional_libs/
 
 5. Unpack file:
 
-> gunzip Healpix_2.15a.tar.gz
-> tar xvf Healpix_2.15a.tar
+tar xvf Healpix_3.30_2015Oct08.tar.gz
 
 6. Move directory Healpix_3.30 to $HOME/NagBody_pkg/local
 
-> mv Healpix_3.30 $HOME/NagBody_pkg/local/.
+mv Healpix_3.30 $HOME/NagBody_pkg/local/.
 
 6. Change to that directory:
 
-> cd $HOME/NagBody_pkg/local/Healpix_3.30
+cd $HOME/NagBody_pkg/local/Healpix_3.30
 
 7. Configure, make and install:
 
-> ./configure
+./configure
 
 and choose options (2): Almost accept default, except when asked for cfitsio libraries and headers, there, type in the correct paths: Instead of "$HOME/NagBody_pkg/local/cfitsio/lib". Here use the full path (for example: /Users/mar/NagBody_pkg/local/cfitsio/lib). 
 
@@ -102,10 +86,11 @@ Option (3): use gfortran-mp-4.9. No suffix selected. Create directories. Select 
 
 Then
 
-> make
-> make test
+make clean (if it was old or used)
+make
+make test
 
-Note: do not clean directory É
+Note: do not clean directory.
 
 
 THE FOLLOWING IT IS ALREADY DONE IN THE PROCESS ABOVE DURING OPTION (2) if you answer yes:
