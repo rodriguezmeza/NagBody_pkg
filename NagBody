@@ -1235,11 +1235,11 @@ packing_templateBessel:
 INSTALLDIRS = bin man zip tests man/man1 local
 
 install_dirs:
-    -@for i in $(INSTALLDIRS) ; do \
-        (if [ ! -d $$i ]; then \
-            echo DIR $$i created; \
-            mkdir $$i; \
-        fi); done
+	-@for i in $(INSTALLDIRS) ; do \
+	(if [ ! -d $$i ]; then \
+	    echo DIR $$i created; \
+	    mkdir $$i; \
+	fi); done
 
 
 # ==================================================================
