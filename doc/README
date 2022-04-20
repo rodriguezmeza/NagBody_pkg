@@ -1,0 +1,28 @@
+NagBody: Installation
+
+Read the corresponding code Readme.txt file in its own directory to get installation instructions. Also the additional packages needed by some of the codes have their own readme files, go to NagBody_sources/additional_libs.
+
+
+To convert man files to html execute:
+
+man nbody_n2 | man2html > nbody_n2.html
+
+It may be necessary to install man2html code.
+
+Here some useful git small set of commands
+
+git config --list
+git add -A
+git status
+git commit -m "Added all the files"
+git push https://github.com/rodriguezmeza/NagBody_pkg.git
+
+See:
+
+Version control with git by Jon Loeliger and Matthew MacCullough (2nd edition, O'Reilly)
+
+The code nbody_n2 also has a template to be package using the tools to be install it as: configure, make, make install. Look for it to learn about this technique. See the book:
+
+Autotools, a practitioner's guide to GNU autoconf, automake and libtool by John Calcote, (No Starch Press, 2010)
+
+
