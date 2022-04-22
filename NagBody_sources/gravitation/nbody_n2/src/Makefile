@@ -1,14 +1,35 @@
 # ----- MAKE FILE FOR nbody_n2 CODE -----
 # Copyright (c) 2006-2022  M.A. Rodriguez-Meza, Mexico, D.F.
 #
-# Define directory where particular machines are set
-MACHINES_DIR = ../../../../Machines/
-include $(MACHINES_DIR)machine.inc
+#--------------------------------------------
+# Definitions for particular machines are set
+#
+# Architecture definitions:
+#
+# C compilers:
+CC = gcc
+#CC = clang
+#CC = icc
+# Fortran compilers:
+FC = gfortran
+#F90C = ifort
+F90C = gfortran
+F90 = gfortran
+# If it is unsupported option
+#CFLAGS = -O3 -fopenmp
+CFLAGS = -O3
+#CFLAGS = -O3 -fopenmp -I/opt/local/lib/gcc8/gcc/x86_64-apple-darwin18/8.3.0/include/ssp/
+#
+# OPTIMIZE is to set some particular arquitecture.
+OPTIMIZE = -O2
+# For linux machines:
+LIBS = -lm
+#--------------------------------------------
+#
 
 # Set local options to this code
 # 	OPT1 -- OPT10
 # OPTIMIZE is to set some particular arquitecture.
-# It is set in machine.inc o pmachine.inc
 #
 OPT1    =  -I ./
 OPT2    =  -I ./general_libs/general

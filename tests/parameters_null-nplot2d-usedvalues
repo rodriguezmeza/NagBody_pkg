@@ -1,0 +1,121 @@
+%-------------------------------------------------------------------
+% Parameter input file for: ../bin/nplot2d
+%
+% NagBody: plotting 2d graphics code...
+%	    Based on plplot library
+%-------------------------------------------------------------------
+%
+inputfile                          
+xrange                             autoscale
+yrange                             autoscale
+usingcolumns                       1:2
+xlabel                             
+ylabel                             
+labelcolor                         2
+legends                            
+legendspos                         0
+legendsfontsize                    1
+legendsfontweight                  1
+witherrorbars                      false
+errorbarstype                      0
+fontset                            0
+fontchr                            1
+labelfontsize                      1
+labelfontweight                    1
+xaxis                              false
+yaxis                              false
+graphicsarray                      1x1
+plottype                           0
+axesorigin                         0,0
+axestype                           1
+axeswidth                          1
+axescolor                          1
+plotlabel                          
+nlxdigmax                          0
+nlydigmax                          0
+nlsize                             1
+nlcolor                            1
+plotjoined                         true
+linetype                           1
+linewidth                          1
+linecolor                          3
+withdots                           false
+withsymbols                        false
+symboltype                         1
+symbolcolor                        4
+symbolweight                       1
+symbolsize                         1
+text1                              
+text1side                          b
+text1disp                          -5
+text1pos                           0.3
+text1just                          0
+text1size                          1
+text1weight                        1
+text1color                         2
+text2                              
+text2side                          b
+text2disp                          -3
+text2pos                           0.3
+text2just                          0
+text2size                          1
+text2weight                        1
+text2color                         2
+text3                              
+text3side                          b
+text3disp                          -1
+text3pos                           0.3
+text3just                          0
+text3size                          1
+text3weight                        1
+text3color                         2
+text4                              
+text4x                             0
+text4y                             0
+text4dx                            1
+text4dy                            0
+text4just                          0
+text4size                          1
+text4weight                        1
+text4color                         2
+locatemode                         false
+frame                              true
+framestyle                         
+gridlines                          false
+epilog                             
+showall                            false
+h                                  false
+v                                  false
+verbose                            false
+debug                              false
+hack                               false
+dev                                xwin
+outputfile                         
+display                            
+geometry                           640x480
+wplt                               0,0,1,1
+mar                                0
+aspectratio                        
+jx                                 0
+jy                                 0
+ori                                0
+freeaspect                         false
+portrait                           false
+width                              
+background                         
+ncol0                              
+ncol1                              
+fam                                false
+fsiz                               
+fbeg                               
+finc                               
+fflen                              
+nopixmap                           false
+db                                 false
+np                                 false
+bufmax                             
+dpi                                
+compression                        
+drvopt                             
+
+

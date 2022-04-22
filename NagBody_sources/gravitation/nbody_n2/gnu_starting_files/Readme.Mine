@@ -1,0 +1,33 @@
+
+How to use automake:
+https://www.gnu.org/software/automake/manual/automake.html
+
+With configure.ac done and using Automake:
+
+First:
+
+make -f NagBody clean_gnu_nbody_n2
+make -f NagBody install_gnu_dirs_nbody_n2
+make -f NagBody packing_gnu_nbody_n2
+
+autoreconf -i
+autoscan
+
+Then 
+
+./configure
+make
+make install		(check: ls -lht /usr/local/nagbody/bin/)
+make check
+make distcheck
+make dist
+make uninstall
+
+tar xvf nbody_n2-1.0.0.tar.gz
+cd nbody_n2-1.0.0
+./configure
+make
+make install
+make uninstall
+
+

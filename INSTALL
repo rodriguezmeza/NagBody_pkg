@@ -2,92 +2,91 @@
 NagBody: Installation
 ################################################################################
 
-1. Clone NagBody_lectures git repository
+Read the correspondig code Readme file in directory Readmes to get installation instructions of a particular NagBody code.
 
-git clone https://github.com/rodriguezmeza/NagBody_lectures.git
+The first steps to do in order to start compiling a NagBody code are:
 
-2. Change to NagBody_lectures/NagBody_pkg and execute
+1. Unpack the code file in your $(HOME):
 
-make -f NagBody install_dirs
+> unzip nagbody_name_code.tar.gz
+> tar xvf nagbody_name_code.tar
 
-3. Read the corresponding code Readme file in directory Readmes to get installation instructions of a particular NagBody code.
+2. Move to the NagBody directory:
 
-4. The first steps to do in order to start compiling a NagBody code are:
+> cd NagBody_pkg
 
-To create one binary code. In the Readmes folder there are several Readme files. Readme them to follow the making process. For example, "nbody_n2":
+3. Create directories where binaries and man pages will be located, as well as other useful directories:
 
-make -f NagBody install_nbody_n2
+> make -f NagBody install_dirs
 
-In the ÒbinÓ directory you will have the Ònbody_n2Ó code. Then go to tests directory and
+4. Change to your HOME:
 
-../bin/nbody_n2
+> cd $HOME
 
-Last command run the nbody_n2 code and you will see in the terminal some output. Read the manual to see how to use the code:
-
-man ../man/man1/nbody_n2.1
-
-ThatÕs it.
-
-
-5. Could be useful to have NagBody_pkg binaries set in the environment path of your computer. Change to your HOME:
-
-cd $HOME
-
-6. Modify your profile (it can be ".profile" for Mac OS X or ".bashrc" for Linux):
+5. Modify your profile (it can be ".profile" for Mac OS X or ".bashrc" for Linux):
 
 For a Mac OS X:
 
-cp .profile profile_nagbody_bak
-cat profile_nagbody_bak NagBody_lectures/NagBody_pkg/env_config/profilerc > .profile
+> cp .profile profile_nagbody_bak
+> cat profile_nagbody_bak NagBody_pkg/env_config/profilerc > .profile
 
 For a Linux:
 
 > cp .bashrc bashrc_nagbody_bak
-> cat bashrc_nagbody_bak NagBody_lectures/NagBody_pkg/env_config/profilerc > .bashrc
+> cat bashrc_nagbody_bak NagBody_pkg/env_config/profilerc > .bashrc
 
-7. Open a new terminal to refresh your environment. 
+6. Open a new terminal to refresh your environment. 
 
-7. Change to NagBody_pkg directory:
+7. Change to NagBody directory:
 
-> cd NagBody_lectures/NagBody_pkg
+> cd NagBody_pkg
 
-8. Tune the file "Machines/machine.inc" or "Machines/pmachines.inc" in order to use the right compilers and libraries. 
+8. Tune the file "Machines/machine.inc" or "Machines/pmachines.inc" in order to use the right compilers and libraries. See in this directory the files in there for several examples. 
 
 For now, in Mac OS X:
+
+> cp Machines/macosx.inc Machines/machine.inc
+> cp Machines/p_macosx.inc Machines/pmachine.inc
+
+and for Linux:
+
+> cp Machines/linux.inc Machines/machine.inc
+> cp Machines/p_linux.inc Machines/pmachine.inc
+
+
+Note: I you unpack the file of a NagBody code when you have already unpacked another one, normally overwrite some configuration files, like the ones in the directory "Machines". If you already tune file "Machine/machine.inc" or "Machine/pmachine.inc" to work with your compilers and libraries, then you have to tune the files again or repeat steps as described in 8, above.
+
+9. Now create one binary code, the one you unpacked first. In the Readmes folder there are several Readme files. Readme them to follow the making process. For example, Ònbody_n2Ó:
+
+> make -f NagBody install_nbody_n2
+
+in the ÒbinÓ directory you will have the Ònbody_n2Ó code. Then go to your $HOME directory and make a ÒborrameÓ folder:
+
+> mkdir borrame
+> cd borrame
+> nbody_n2
+
+Last command run the nbody code and you will see in the terminal some output. Read the manual to see how to use the code:
+
+> man nbody_n2
+
+ThatÕs it.
+
 
 
 ################################################################################
 PLPLOT:
 
-Description of the installation steps for the plplot package needed for the visualization codes and in the readme file in the folder Readmes/additional_libs.
+Description of the installation steps for the plplot package needed for the visualization codes and in the readme file in the folder Readmes/Additional_libs.
 
 The plplot libraries are needed to generate nplot2d, analysis_XXX visualization codes.
 
 NOTE: If plplot libraries can be installed using apt-get (linux) or Ports (Mac OS X) or by other means then just make the following link:
 
-cd $HOME/NagBody_pkg/local
-ln -s /usr plplot
+> cd $HOME/NagBody_pkg/local
+> ln -s /usr plplot
 
-Las line if the one in case that in that directory was installed plplot library. In Mac OS X using ports it goes in /opt/local.
-
-Once you are set, the steps below are not necesary!! 
-
-To install plplot manually do (make sure xwin, pdf and eps or ps drivers were installed!!)
-
-cd NagBody_lectures/NagBody_pkg/NagBody_sources/additional_libs/plplot-5.15.0
-
-(directory name may change with the version)
-
-cmake -DCMAKE_INSTALL_PREFIX=$HOME/NagBody_lectures//NagBody_pkg/local/ -DENABLE_DYNDRIVERS=ON -DPLD_psttfc=OFF -DPLD_plmeta=OFF -DENABLE_python:BOOL=OFF -DENABLE_lua:BOOL=OFF -DPLD_luac=OFF .. 2>&1 | tee cmake.out
-
-make 2>&1 | tee make.out
-make install 2>&1 | tee make_install.out
-
-Review log (*.out) files to see the status of each one of the installation process. If there were no errors you are set and can remove installation directory:
-
-cd ..
-rm -fR build_dir
-
+and the steps below are not necesary!! However make sure xwin and eps or ps drivers were installed!!
 
 
 %%%%%%%%%%%%%%%%%%%
@@ -96,9 +95,5 @@ In case fortran is needed should be installed with
 
 Mac OS X Mac Ports:
 sudo port install gcc46 +gfortran
-
-Also could be necessary to install cmake. In linux do
-
-sudo apt-get install cmake
 
 

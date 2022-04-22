@@ -57,18 +57,40 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/src/{Makefile,*.h,*.c} \
-		$(PACK_CODE_DIR)/src/general_libs/ \
+		$(PACK_CODE_DIR)/gnu_pack \
+		$(PACK_CODE_DIR)/gnu_starting_files \
 		$(PACK_CODE_DIR)/doc \
 		$(PACK_CODE_DIR)/NagBody \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/src/ \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/{compilersrc,gadgetrc,nagbodyrc,profilerc,utilsrc} \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Makefiles/$(PARENT_CODE_NAME)/NagBody_$(CODE_NAME) \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Machines/{machine.inc,pmachine.inc} \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Readmes/$(PARENT_CODE_NAME)/Readme-Install_$(CODE_NAME).txt; \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/tests; \
 	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
 
+#####################################
+#####################################
+# PACKING (TAR) (INDEPENDENT of NagBody)
+#
+PACK_NAGBODY_DIR = ../..
+PACK_ZIP_NO_NAGBODY_DIR = $(PACK_NAGBODY_DIR)/zip
+
+#####################################
+packing_sources_no_nagbody:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources no NagBody..."
+	@echo " "
+	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
+		$(CODE_NAME)/doc \
+		$(CODE_NAME)/Readme.txt \
+		$(CODE_NAME)/src/ \
+		$(CODE_NAME)/tests; \
+	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 
 #####################################
 #####################################

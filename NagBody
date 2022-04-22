@@ -9,204 +9,275 @@
 # CLASS
 # ==================================================================
 # class codes: [class code (with some modifications)]
+#
 
-MAKECLASS = Makefiles/class/NagBody_class
+MAKECLASS = NagBody_sources/class/class
 
 install_class:
-	$(MAKE) -f $(MAKECLASS) install_class
+	(cd $(MAKECLASS); $(MAKE) -f NagBody install_all)
 
 clean_class:
-	$(MAKE) -f $(MAKECLASS) clean_class
+	(cd $(MAKECLASS); $(MAKE) -f NagBody clean)
 
 packing_class:
-	$(MAKE) -f $(MAKECLASS) packing_class
+	(cd $(MAKECLASS); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_class:
+	(cd $(MAKECLASS); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_class:
-	$(MAKE) -f $(MAKECLASS) packing_gnu_class
+	(cd $(MAKECLASS); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_class:
-	$(MAKE) -f $(MAKECLASS) install_gnu_dirs_class
+	(cd $(MAKECLASS); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_class:
-	$(MAKE) -f $(MAKECLASS) clean_gnu_class
+	(cd $(MAKECLASS); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # hiclass code: [hi_class code (with some modifications)]
+#
 
-MAKEHICLASS = Makefiles/class/NagBody_hiclass
+MAKEHICLASS = NagBody_sources/class/hiclass
 
 install_hiclass:
-	$(MAKE) -f $(MAKEHICLASS) install_hiclass
+	(cd $(MAKEHICLASS); $(MAKE) -f NagBody install_all)
 
 clean_hiclass:
-	$(MAKE) -f $(MAKEHICLASS) clean_hiclass
+	(cd $(MAKEHICLASS); $(MAKE) -f NagBody clean)
 
 packing_hiclass:
-	$(MAKE) -f $(MAKEHICLASS) packing_hiclass
+	(cd $(MAKEHICLASS); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_hiclass:
+	(cd $(MAKEHICLASS); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_hiclass:
-	$(MAKE) -f $(MAKEHICLASS) packing_gnu_hiclass
+	(cd $(MAKEHICLASS); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_hiclass:
-	$(MAKE) -f $(MAKEHICLASS) install_gnu_dirs_hiclass
+	(cd $(MAKEHICLASS); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_hiclass:
-	$(MAKE) -f $(MAKEHICLASS) clean_gnu_hiclass
+	(cd $(MAKEHICLASS); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # montepython code: [montepython code (with some modifications)]
 #
 
-MAKEMONTEPYTHON = Makefiles/class/NagBody_montepython
+MAKEMONTEPYTHON = NagBody_sources/class/montepython
 
-#install_montepython:
-#$(MAKE) -f $(MAKEMONTEPYTHON) install_montepython
+install_montepython:
+	(cd $(MAKEMONTEPYTHON); $(MAKE) -f NagBody install_all)
 
-#clean_montepython:
-#$(MAKE) -f $(MAKEMONTEPYTHON) clean_montepython
-
-#clean_montepython_dir:
-#$(MAKE) -f $(MAKEMONTEPYTHON) clean_montepython_dir
+clean_montepython:
+	(cd $(MAKEMONTEPYTHON); $(MAKE) -f NagBody clean)
 
 packing_montepython:
-	$(MAKE) -f $(MAKEMONTEPYTHON) packing_montepython
+	(cd $(MAKEMONTEPYTHON); $(MAKE) -f NagBody packing_sources_no_nagbody)
 
-packing_gnu_montepython:
-	$(MAKE) -f $(MAKEMONTEPYTHON) packing_gnu_montepython
-
-install_gnu_dirs_montepython:
-	$(MAKE) -f $(MAKEMONTEPYTHON) install_gnu_dirs_montepython
-
-clean_gnu_montepython:
-	$(MAKE) -f $(MAKEMONTEPYTHON) clean_gnu_montepython
+packing_nagbody_montepython:
+	(cd $(MAKEMONTEPYTHON); $(MAKE) -f NagBody packing_sources)
 
 
 # ==================================================================
 # planck2018 codes: [planck2018 code and data (with some modifications)]
 #
 
-MAKEPLANCK2018 = Makefiles/class/NagBody_planck2018
+MAKEPLANCK2018 = NagBody_sources/class/planck2018
 
 install_planck2018:
-	$(MAKE) -f $(MAKEPLANCK2018) install_planck
+	(cd $(MAKEPLANCK2018); $(MAKE) -f NagBody install_all)
 
 clean_planck2018:
-	$(MAKE) -f $(MAKEPLANCK2018) clean_planck
+	(cd $(MAKEPLANCK2018); $(MAKE) -f NagBody clean)
 
 packing_planck2018:
-	$(MAKE) -f $(MAKEPLANCK2018) packing_planck
+	(cd $(MAKEPLANCK2018); $(MAKE) -f NagBody packing_sources_no_nagbody)
 
-packing_gnu_planck2018:
-	$(MAKE) -f $(MAKEPLANCK2018) packing_gnu_planck
-
-install_gnu_dirs_planck2018:
-	$(MAKE) -f $(MAKEPLANCK2018) install_gnu_dirs_planck
-
-clean_gnu_planck2018:
-	$(MAKE) -f $(MAKEPLANCK2018) clean_gnu_planck
+packing_nagbody_planck2018:
+	(cd $(MAKEPLANCK2018); $(MAKE) -f NagBody packing_sources)
 
 
 # ==================================================================
 # CMPLXFLUIDS
 # ==================================================================
 # md_lj_tree code:
+#
+
+MAKEMDLJTREE  = NagBody_sources/cmplxfluids/md_lj_tree
 
 install_md_lj_tree:
-	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree install_md_lj_tree
+	(cd $(MAKEMDLJTREE); $(MAKE) -f NagBody install_all)
 
 clean_md_lj_tree:
-	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree clean_md_lj_tree
+	(cd $(MAKEMDLJTREE); $(MAKE) -f NagBody clean)
 
 packing_md_lj_tree:
-	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_tree packing_md_lj_tree
+	(cd $(MAKEMDLJTREE); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_md_lj_tree:
+	(cd $(MAKEMDLJTREE); $(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
+# md_lj code: [Generalizacion de md_blj para incluir m‡s especies y
+#         particulas frontera]
+
+install_md_lj:
+	$(MAKE) -f NagBody_sources/Cmplxfluids/NagBody_md_lj install_md_lj
+
+clean_md_lj:
+	$(MAKE) -f Makefiles/Cmplxfluids/NagBody_md_lj clean_md_lj
+
+packing_md_lj:
+	$(MAKE) -f Makefiles/Cmplxfluids/NagBody_md_lj packing_md_lj
 
 
 # ==================================================================
 # md_blj code:
 #
 
-MAKEMD_BLJ = Makefiles/cmplxfluids/NagBody_md_blj
+MAKEMD_BLJ = NagBody_sources/cmplxfluids/md_blj
 
 install_md_blj:
-	$(MAKE) -f $(MAKEMD_BLJ) install_md_blj
+	(cd $(MAKEMD_BLJ); $(MAKE) -f NagBody install_all)
 
 clean_md_blj:
-	$(MAKE) -f $(MAKEMD_BLJ) clean_md_blj
+	(cd $(MAKEMD_BLJ); $(MAKE) -f NagBody clean)
 
 packing_md_blj:
-	$(MAKE) -f $(MAKEMD_BLJ) packing_md_blj
+	(cd $(MAKEMD_BLJ); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_md_blj:
+	(cd $(MAKEMD_BLJ); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_md_blj:
-	$(MAKE) -f $(MAKEMD_BLJ) packing_gnu_md_blj
+	(cd $(MAKEMD_BLJ); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_md_blj:
-	$(MAKE) -f $(MAKEMD_BLJ) install_gnu_dirs_md_blj
+	(cd $(MAKEMD_BLJ); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_md_blj:
-	$(MAKE) -f $(MAKEMD_BLJ) clean_gnu_md_blj
+	(cd $(MAKEMD_BLJ); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # md_blj_n2 code:
+#
 
-MAKEMD_BLJ_N2 = Makefiles/cmplxfluids/NagBody_md_blj_n2
+MAKEMD_BLJ_N2 = NagBody_sources/cmplxfluids/md_blj_n2
 
 install_md_blj_n2:
-	$(MAKE) -f $(MAKEMD_BLJ_N2) install_md_blj_n2
+	(cd $(MAKEMD_BLJ_N2); $(MAKE) -f NagBody install_all)
 
 clean_md_blj_n2:
-	$(MAKE) -f $(MAKEMD_BLJ_N2) clean_md_blj_n2
+	(cd $(MAKEMD_BLJ_N2); $(MAKE) -f NagBody clean)
 
 packing_md_blj_n2:
-	$(MAKE) -f $(MAKEMD_BLJ_N2) packing_md_blj_n2
+	(cd $(MAKEMD_BLJ_N2); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_md_blj_n2:
+	(cd $(MAKEMD_BLJ_N2); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_md_blj_n2:
-	$(MAKE) -f $(MAKEMD_BLJ_N2) packing_gnu_md_blj_n2
+	(cd $(MAKEMD_BLJ_N2); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_md_blj_n2:
-	$(MAKE) -f $(MAKEMD_BLJ_N2) install_gnu_dirs_md_blj_n2
+	(cd $(MAKEMD_BLJ_N2); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_md_blj_n2:
-	$(MAKE) -f $(MAKEMD_BLJ_N2) clean_gnu_md_blj_n2
+	(cd $(MAKEMD_BLJ_N2); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # md_ic_model code:
+#
+
+MAKEMD_IC_MODEL = NagBody_sources/cmplxfluids/md_ic_model
 
 install_md_ic_model:
-	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model install_md_ic_model
+	(cd $(MAKEMD_IC_MODEL); $(MAKE) -f NagBody install_all)
 
 clean_md_ic_model:
-	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model clean_md_ic_model
+	(cd $(MAKEMD_IC_MODEL); $(MAKE) -f NagBody clean)
 
 packing_md_ic_model:
-	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_ic_model packing_md_ic_model
+	(cd $(MAKEMD_IC_MODEL); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_md_ic_model:
+	(cd $(MAKEMD_IC_MODEL); $(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
+# md_blj_n2_3b code:
+#
+
+install_md_blj_n2_3b:
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_blj_n2_3b install_md_blj_n2_3b
+
+clean_md_blj_n2_3b:
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_blj_n2_3b clean_md_blj_n2_3b
+
+packing_md_blj_n2_3b:
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_blj_n2_3b packing_md_blj_n2_3b
+
+
+# ==================================================================
+# md_lj_n2_mathlink codes:
+#
+
+install_md_lj_n2_mathlink:
+	$(MAKE) -f Makefiles/NagBody_md_lj_n2_mathlink install_md_lj_n2_mathlink
+
+clean_md_lj_n2_mathlink:
+	$(MAKE) -f Makefiles/NagBody_md_lj_n2_mathlink clean_md_lj_n2_mathlink
+
+packing_md_lj_n2_mathlink:
+	$(MAKE) -f Makefiles/NagBody_md_lj_n2_mathlink packing_md_lj_n2_mathlink
+
+
+# ==================================================================
+# md_lj_n2 code:
+
+install_md_lj_n2:
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_n2 install_md_lj_n2
+
+clean_md_lj_n2:
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_n2 clean_md_lj_n2
+
+packing_md_lj_n2:
+	$(MAKE) -f Makefiles/cmplxfluids/NagBody_md_lj_n2 packing_md_lj_n2
 
 
 # ==================================================================
 # analysis_md code:
+#
 
-MAKEANALYSISMD = Makefiles/cmplxfluids/NagBody_analysis_md
+MAKEANALYSISMD = NagBody_sources/cmplxfluids/analysis_md
 
 install_analysis_md:
-	$(MAKE) -f $(MAKEANALYSISMD) install_analysis_md
+	(cd $(MAKEANALYSISMD); $(MAKE) -f NagBody install_all)
 
 clean_analysis_md:
-	$(MAKE) -f $(MAKEANALYSISMD) clean_analysis_md
+	(cd $(MAKEANALYSISMD); $(MAKE) -f NagBody clean)
 
 packing_analysis_md:
-	$(MAKE) -f $(MAKEANALYSISMD) packing_analysis_md
+	(cd $(MAKEANALYSISMD); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_analysis_md:
+	(cd $(MAKEANALYSISMD); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_analysis_md:
-	$(MAKE) -f $(MAKEANALYSISMD) packing_gnu_analysis_md
+	(cd $(MAKEANALYSISMD); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_analysis_md:
-	$(MAKE) -f $(MAKEANALYSISMD) install_gnu_dirs_analysis_md
+	(cd $(MAKEANALYSISMD); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_analysis_md:
-	$(MAKE) -f $(MAKEANALYSISMD) clean_gnu_analysis_md
+	(cd $(MAKEANALYSISMD); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -215,200 +286,224 @@ clean_gnu_analysis_md:
 # cola code: [cola (with some modifications)]
 #
 
-MAKECOLA = Makefiles/colas/NagBody_cola
+MAKECOLA = NagBody_sources/colas/cola
 
 install_cola:
-	$(MAKE) -f $(MAKECOLA) install_cola
+	(cd $(MAKECOLA); $(MAKE) -f NagBody install_all)
 
 clean_cola:
-	$(MAKE) -f $(MAKECOLA) clean_cola
+	(cd $(MAKECOLA); $(MAKE) -f NagBody clean)
 
 packing_cola:
-	$(MAKE) -f $(MAKECOLA) packing_cola
+	(cd $(MAKECOLA); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_cola:
+	(cd $(MAKECOLA); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_cola:
-	$(MAKE) -f $(MAKECOLA) packing_gnu_cola
+	(cd $(MAKECOLA); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_cola:
-	$(MAKE) -f $(MAKECOLA) install_gnu_dirs_cola
+	(cd $(MAKECOLA); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_cola:
-	$(MAKE) -f $(MAKECOLA) clean_gnu_cola
+	(cd $(MAKECOLA); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # cola_simple code: [cola (with some modifications)]
 #
 
-MAKECOLASIMPLE = Makefiles/colas/NagBody_cola_simple
+MAKECOLASIMPLE = NagBody_sources/colas/cola_simple
 
 install_cola_simple:
-	$(MAKE) -f $(MAKECOLAONLY) install_cola_simple
+	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody install_all)
 
 clean_cola_simple:
-	$(MAKE) -f $(MAKECOLAONLY) clean_cola_simple
+	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody clean)
 
 packing_cola_simple:
-	$(MAKE) -f $(MAKECOLAONLY) packing_cola_simple
+	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_cola_simple:
+	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_cola_simple:
-	$(MAKE) -f $(MAKECOLAONLY) packing_gnu_cola_simple
+	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_cola_simple:
-	$(MAKE) -f $(MAKECOLAONLY) install_gnu_dirs_cola_simple
+	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_cola_simple:
-	$(MAKE) -f $(MAKECOLAONLY) clean_gnu_cola_simple
+	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # lpicola code: [L-Picola (with some modifications)]
 #
 
-MAKELPICOLA = Makefiles/colas/NagBody_lpicola
+MAKELPICOLA = NagBody_sources/colas/lpicola
 
 install_lpicola:
-	$(MAKE) -f $(MAKELPICOLA) install_lpicola
+	(cd $(MAKELPICOLA); $(MAKE) -f NagBody install_all)
 
 clean_lpicola:
-	$(MAKE) -f $(MAKELPICOLA) clean_lpicola
+	(cd $(MAKELPICOLA); $(MAKE) -f NagBody clean)
 
 packing_lpicola:
-	$(MAKE) -f $(MAKELPICOLA) packing_lpicola
+	(cd $(MAKELPICOLA); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_lpicola:
+	(cd $(MAKELPICOLA); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_lpicola:
-	$(MAKE) -f $(MAKELPICOLA) packing_gnu_lpicola
+	(cd $(MAKELPICOLA); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_lpicola:
-	$(MAKE) -f $(MAKELPICOLA) install_gnu_dirs_lpicola
+	(cd $(MAKELPICOLA); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_lpicola:
-	$(MAKE) -f $(MAKELPICOLA) clean_gnu_lpicola
+	(cd $(MAKELPICOLA); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
-# mglpicola code: [MG-L-Picola (with some modifications)]
+# mgpicola code: [MG-Picola (with some modifications)]
 #
 
-MAKEMGLPICOLA = Makefiles/colas/NagBody_mglpicola
+MAKEMGPICOLA = NagBody_sources/colas/mgpicola
 
-install_mglpicola:
-	$(MAKE) -f $(MAKEMGLPICOLA) install_mglpicola
+install_mgpicola:
+	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody install_all)
 
-clean_mglpicola:
-	$(MAKE) -f $(MAKEMGLPICOLA) clean_mglpicola
+clean_mgpicola:
+	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody clean)
 
-packing_mglpicola:
-	$(MAKE) -f $(MAKEMGLPICOLA) packing_mglpicola
+packing_mgpicola:
+	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody packing_sources_no_nagbody)
 
-packing_gnu_mglpicola:
-	$(MAKE) -f $(MAKEMGLPICOLA) packing_gnu_mglpicola
+packing_nagbody_mgpicola:
+	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody packing_sources)
 
-install_gnu_dirs_mglpicola:
-	$(MAKE) -f $(MAKEMGLPICOLA) install_gnu_dirs_mglpicola
+packing_gnu_mgpicola:
+	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody packing_gnu_sources)
 
-clean_gnu_mglpicola:
-	$(MAKE) -f $(MAKEMGLPICOLA) clean_gnu_mglpicola
+install_gnu_dirs_mgpicola:
+	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_mgpicola:
+	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
-# mglpicola_fofr code: [MG-L-Picola (FoFR minimum)]
+# mgpicola_fofr code: [MG-Picola (FoFR minimum)]
 #
 
-MAKEMGLPICOLAFOFR = Makefiles/colas/NagBody_mglpicola_fofr
+MAKEMGPICOLAFOFR = NagBody_sources/colas/mgpicola_fofr
 
-install_mglpicola_fofr:
-	$(MAKE) -f $(MAKEMGLPICOLAFOFR) install_mglpicola_fofr
+install_mgpicola_fofr:
+	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody install_all)
 
-clean_mglpicola_fofr:
-	$(MAKE) -f $(MAKEMGLPICOLAFOFR) clean_mglpicola_fofr
+clean_mgpicola_fofr:
+	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody clean)
 
-packing_mglpicola_fofr:
-	$(MAKE) -f $(MAKEMGLPICOLAFOFR) packing_mglpicola_fofr
+packing_mgpicola_fofr:
+	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody packing_sources_no_nagbody)
 
-packing_gnu_mglpicola_fofr:
-	$(MAKE) -f $(MAKEMGLPICOLAFOFR) packing_gnu_mglpicola_fofr
+packing_nagbody_mgpicola_fofr:
+	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody packing_sources)
 
-install_gnu_dirs_mglpicola_fofr:
-	$(MAKE) -f $(MAKEMGLPICOLAFOFR) install_gnu_dirs_mglpicola_fofr
+packing_gnu_mgpicola_fofr:
+	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody packing_gnu_sources)
 
-clean_gnu_mglpicola_fofr:
-	$(MAKE) -f $(MAKEMGLPICOLAFOFR) clean_gnu_mglpicola_fofr
+install_gnu_dirs_mgpicola_fofr:
+	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_mgpicola_fofr:
+	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
-# mglpicola_pofk code: [Simple_pofk (minimum)]
+# mgpicola_pofk code: [Simple_pofk (minimum)]
 #
 
-MAKEMGLPICOLAPOFK = Makefiles/colas/NagBody_mglpicola_pofk
+MAKEMGPICOLAPOFK = NagBody_sources/colas/mgpicola_pofk
 
-install_mglpicola_pofk:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFK) install_mglpicola_pofk
+install_mgpicola_pofk:
+	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody install_all)
 
-clean_mglpicola_pofk:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFK) clean_mglpicola_pofk
+clean_mgpicola_pofk:
+	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody clean)
 
-packing_mglpicola_pofk:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFK) packing_mglpicola_pofk
+packing_mgpicola_pofk:
+	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody packing_sources_no_nagbody)
 
-packing_gnu_mglpicola_pofk:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFK) packing_gnu_mglpicola_pofk
+packing_nagbody_mgpicola_pofk:
+	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody packing_sources)
 
-install_gnu_dirs_mglpicola_pofk:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFK) install_gnu_dirs_mglpicola_pofk
+packing_gnu_mgpicola_pofk:
+	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody packing_gnu_sources)
 
-clean_gnu_mglpicola_pofk:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFK) clean_gnu_mglpicola_pofk
+install_gnu_dirs_mgpicola_pofk:
+	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_mgpicola_pofk:
+	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
-# mglpicola_pofk_mpi code: [Simple_pofk_mpi (minimum)]
+# mgpicola_pofk_mpi code: [Simple_pofk_mpi (minimum)]
 #
 
-MAKEMGLPICOLAPOFKMPI = Makefiles/colas/NagBody_mglpicola_pofk_mpi
+MAKEMGPICOLAPOFKMPI = NagBody_sources/colas/mgpicola_pofk_mpi
 
-install_mglpicola_pofk_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) install_mglpicola_pofk_mpi
+install_mgpicola_pofk_mpi:
+	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody install_all)
 
-clean_mglpicola_pofk_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) clean_mglpicola_pofk_mpi
+clean_mgpicola_pofk_mpi:
+	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody clean)
 
-packing_mglpicola_pofk_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) packing_mglpicola_pofk_mpi
+packing_mgpicola_pofk_mpi:
+	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody packing_sources_no_nagbody)
 
-packing_gnu_mglpicola_pofk_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) packing_gnu_mglpicola_pofk_mpi
+packing_nagbody_mgpicola_pofk_mpi:
+	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody packing_sources)
 
-install_gnu_dirs_mglpicola_pofk_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) install_gnu_dirs_mglpicola_pofk_mpi
+packing_gnu_mgpicola_pofk_mpi:
+	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody packing_gnu_sources)
 
-clean_gnu_mglpicola_pofk_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKMPI) clean_gnu_mglpicola_pofk_mpi
+install_gnu_dirs_mgpicola_pofk_mpi:
+	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_mgpicola_pofk_mpi:
+	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
-# mglpicola_pofk_rsd_mpi code: [Simple_pofk_rsd_mpi (minimum)]
+# mgpicola_pofk_rsd_mpi code: [Simple_pofk_rsd_mpi (minimum)]
 #
 
-MAKEMGLPICOLAPOFKRSDMPI = Makefiles/colas/NagBody_mglpicola_pofk_rsd_mpi
+MAKEMGPICOLAPOFKRSDMPI = NagBody_sources/colas/mgpicola_pofk_rsd_mpi
 
-install_mglpicola_pofk_rsd_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) install_mglpicola_pofk_rsd_mpi
+install_mgpicola_pofk_rsd_mpi:
+	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody install_all)
 
-clean_mglpicola_pofk_rsd_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) clean_mglpicola_pofk_rsd_mpi
+clean_mgpicola_pofk_rsd_mpi:
+	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody clean)
 
-packing_mglpicola_pofk_rsd_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) packing_mglpicola_pofk_rsd_mpi
+packing_mgpicola_pofk_rsd_mpi:
+	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody packing_sources_no_nagbody)
 
-packing_gnu_mglpicola_pofk_rsd_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) packing_gnu_mglpicola_pofk_rsd_mpi
+packing_nagbody_mgpicola_pofk_rsd_mpi:
+	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody packing_sources)
 
-install_gnu_dirs_mglpicola_pofk_rsd_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) install_gnu_dirs_mglpicola_pofk_rsd_mpi
+packing_gnu_mgpicola_pofk_rsd_mpi:
+	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody packing_gnu_sources)
 
-clean_gnu_mglpicola_pofk_rsd_mpi:
-	$(MAKE) -f $(MAKEMGLPICOLAPOFKRSDMPI) clean_gnu_mglpicola_pofk_rsd_mpi
+install_gnu_dirs_mgpicola_pofk_rsd_mpi:
+	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_mgpicola_pofk_rsd_mpi:
+	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -417,100 +512,219 @@ clean_gnu_mglpicola_pofk_rsd_mpi:
 # rockstar code: [Rockstar (with some modifications)]
 #
 
-MAKEROCKSTAR = Makefiles/cosmo_analysis/NagBody_rockstar
+MAKEROCKSTAR = NagBody_sources/cosmo_analysis/rockstar
 
 install_rockstar:
-	$(MAKE) -f $(MAKEROCKSTAR) install_rockstar
+	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody install_all)
 
 clean_rockstar:
-	$(MAKE) -f $(MAKEROCKSTAR) clean_rockstar
+	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody clean)
 
 packing_rockstar:
-	$(MAKE) -f $(MAKEROCKSTAR) packing_rockstar
+	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_rockstar:
+	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_rockstar:
-	$(MAKE) -f $(MAKEROCKSTAR) packing_gnu_rockstar
+	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_rockstar:
-	$(MAKE) -f $(MAKEROCKSTAR) install_gnu_dirs_rockstar
+	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_rockstar:
-	$(MAKE) -f $(MAKEROCKSTAR) clean_gnu_rockstar
+	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # cute_box code: [cute_box (with some modifications)]
 #
 
-MAKECUTEBOX = Makefiles/cosmo_analysis/NagBody_cute_box
+MAKECUTEBOX = NagBody_sources/cosmo_analysis/cute_box
 
 install_cute_box:
-	$(MAKE) -f $(MAKECUTEBOX) install_cute_box
+	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody install_all)
 
 clean_cute_box:
-	$(MAKE) -f $(MAKECUTEBOX) clean_cute_box
+	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody clean)
 
 packing_cute_box:
-	$(MAKE) -f $(MAKECUTEBOX) packing_cute_box
+	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_cute_box:
+	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_cute_box:
-	$(MAKE) -f $(MAKECUTEBOX) packing_gnu_cute_box
+	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_cute_box:
-	$(MAKE) -f $(MAKECUTEBOX) install_gnu_dirs_cute_box
+	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_cute_box:
-	$(MAKE) -f $(MAKECUTEBOX) clean_gnu_cute_box
+	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody clean_gnu)
+
+
+# ==================================================================
+# cute code: [cute (with some modifications)]
+#
+
+MAKECUTE = NagBody_sources/cosmo_analysis/cute
+
+install_cute:
+	(cd $(MAKECUTE); $(MAKE) -f NagBody install_all)
+
+clean_cute:
+	(cd $(MAKECUTE); $(MAKE) -f NagBody clean)
+
+packing_cute:
+	(cd $(MAKECUTE); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_cute:
+	(cd $(MAKECUTE); $(MAKE) -f NagBody packing_sources)
+
+packing_gnu_cute:
+	(cd $(MAKECUTE); $(MAKE) -f NagBody packing_gnu_sources)
+
+install_gnu_dirs_cute:
+	(cd $(MAKECUTE); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_cute:
+	(cd $(MAKECUTE); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # powmes code: [powmes.0.2 (with some modifications)]
 #
 
-MAKEPOWMES = Makefiles/cosmo_analysis/NagBody_powmes
+MAKEPOWMES = NagBody_sources/cosmo_analysis/powmes
 
 install_powmes:
-	$(MAKE) -f $(MAKEPOWMES) install_powmes
+	(cd $(MAKEPOWMES); $(MAKE) -f NagBody install_all)
 
 clean_powmes:
-	$(MAKE) -f $(MAKEPOWMES) clean_powmes
+	(cd $(MAKEPOWMES); $(MAKE) -f NagBody clean)
 
 packing_powmes:
-	$(MAKE) -f $(MAKEPOWMES) packing_powmes
+	(cd $(MAKEPOWMES); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_powmes:
+	(cd $(MAKEPOWMES); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_powmes:
-	$(MAKE) -f $(MAKEPOWMES) packing_gnu_powmes
+	(cd $(MAKEPOWMES); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_powmes:
-	$(MAKE) -f $(MAKEPOWMES) install_gnu_dirs_powmes
+	(cd $(MAKEPOWMES); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_powmes:
-	$(MAKE) -f $(MAKEPOWMES) clean_gnu_powmes
+	(cd $(MAKEPOWMES); $(MAKE) -f NagBody clean_gnu)
+
+
+# ==================================================================
+# powspec code: powmes -> NagBody adaptation ... ANALYSIS CODES ...
+
+MAKEPOWSPEC = NagBody_sources/cosmo_analysis/powmes
+
+install_powspec:
+	$(MAKE) -f $(MAKEPOWSPEC) install_powspec
+
+clean_powspec:
+	$(MAKE) -f $(MAKEPOWSPEC) clean_powspec
+
+packing_powspec:
+	$(MAKE) -f $(MAKEPOWSPEC) packing_powspec
+
+packing_gnu_powspec:
+	$(MAKE) -f $(MAKEPOWMES) packing_gnu_powspec
+
+install_gnu_dirs_powspec:
+	$(MAKE) -f $(MAKEPOWMES) install_gnu_dirs_powspec
+
+clean_gnu_powspec:
+	$(MAKE) -f $(MAKEPOWMES) clean_gnu_powspec
+
+
+# ==================================================================
+# heitmann_readin code: [heitmann readin (with some modifications)]
+#
+
+install_heitmann_readin:
+	$(MAKE) -f NagBody_sources/NagBody_heitmann_readin install_heitmann_readin
+
+clean_heitmann_readin:
+	$(MAKE) -f NagBody_sources/NagBody_heitmann_readin clean_heitmann_readin
+
+packing_heitmann_readin:
+	$(MAKE) -f NagBody_sources/NagBody_heitmann_readin packing_heitmann_readin
+
+
+# ==================================================================
+# tipsy codes: [tipsy codes and tools (with some modifications)]
+#
+
+MAKETIPSY = NagBody_sources/cosmo_analysis/tipsy
+
+install_tipsy:
+	$(MAKE) -f $(MAKETIPSY) install_tipsy
+
+clean_tipsy:
+	$(MAKE) -f $(MAKETIPSY) clean_tipsy
+
+packing_tipsy:
+	$(MAKE) -f $(MAKETIPSY) packing_tipsy
+
+packing_gnu_tipsy:
+	$(MAKE) -f $(MAKETIPSY) packing_gnu_tipsy
+
+install_gnu_dirs_tipsy:
+	$(MAKE) -f $(MAKETIPSY) install_gnu_dirs_tipsy
+
+clean_gnu_tipsy:
+	$(MAKE) -f $(MAKETIPSY) clean_gnu_tipsy
 
 
 # ==================================================================
 # gview code: [gadget viewer by Carsten Frigaard]
 #
 
-MAKEGVIEW = Makefiles/cosmo_analysis/NagBody_gview
+MAKEGVIEW = NagBody_sources/cosmo_analysis/gview
 
 install_gview:
-	$(MAKE) -f $(MAKEGVIEW) install_gview
+	(cd $(MAKEGVIEW); $(MAKE) -f NagBody install_all)
 
 clean_gview:
-	$(MAKE) -f $(MAKEGVIEW) clean_gview
+	(cd $(MAKEGVIEW); $(MAKE) -f NagBody clean)
 
 packing_gview:
-	$(MAKE) -f $(MAKEGVIEW) packing_gview
+	(cd $(MAKEGVIEW); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_gview:
+	(cd $(MAKEGVIEW); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_gview:
-	$(MAKE) -f $(MAKEGVIEW) packing_gnu_gview
+	(cd $(MAKEGVIEW); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_gview:
-	$(MAKE) -f $(MAKEGVIEW) install_gnu_dirs_gview
+	(cd $(MAKEGVIEW); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_gview:
-	$(MAKE) -f $(MAKEGVIEW) clean_gnu_gview
+	(cd $(MAKEGVIEW); $(MAKE) -f NagBody clean_gnu)
+
+
+# ==================================================================
+# glnemo2 code: [gadget and falcON viewer by Jean-Charles Lambert]
+#
+
+MAKEGLNEMO2 = NagBody_sources/cosmo_analysis/glnemo2
+
+install_glnemo2:
+	$(MAKE) -f $(MAKEGLNEMO2) install_glnemo2
+
+clean_glnemo2:
+	$(MAKE) -f $(MAKEGLNEMO2) clean_glnemo2
+
+packing_glnemo2:
+	$(MAKE) -f $(MAKEGLNEMO2) packing_glnemo2
 
 
 # ==================================================================
@@ -519,104 +733,159 @@ clean_gnu_gview:
 # ngenic code: [N-GenIC (with some modifications)]
 #
 
-MAKENGENIC = Makefiles/cosmo_background_1lpt_2lpt/NagBody_ngenic
+MAKENGENIC = NagBody_sources/cosmo_background_1lpt_2lpt/ngenic
 
 install_ngenic:
-	$(MAKE) -f $(MAKENGENIC) install_ngenic
+	(cd $(MAKENGENIC); $(MAKE) -f NagBody install_all)
 
 clean_ngenic:
-	$(MAKE) -f $(MAKENGENIC) clean_ngenic
+	(cd $(MAKENGENIC); $(MAKE) -f NagBody clean)
 
 packing_ngenic:
-	$(MAKE) -f $(MAKENGENIC) packing_ngenic
+	(cd $(MAKENGENIC); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_ngenic:
+	(cd $(MAKENGENIC); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_ngenic:
-	$(MAKE) -f $(MAKENGENIC) packing_gnu_ngenic
+	(cd $(MAKENGENIC); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_ngenic:
-	$(MAKE) -f $(MAKENGENIC) install_gnu_dirs_ngenic
+	(cd $(MAKENGENIC); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_ngenic:
-	$(MAKE) -f $(MAKENGENIC) clean_gnu_ngenic
+	(cd $(MAKENGENIC); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # 2lptic code: [2LPTic (with some modifications)]
 #
 
-MAKE2LPTIC = Makefiles/cosmo_background_1lpt_2lpt/NagBody_2lptic
+MAKE2LPTIC = NagBody_sources/cosmo_background_1lpt_2lpt/2lptic
 
 install_2lptic:
-	$(MAKE) -f $(MAKE2LPTIC) install_2lptic
+	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody install_all)
 
 clean_2lptic:
-	$(MAKE) -f $(MAKE2LPTIC) clean_2lptic
+	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody clean)
 
 packing_2lptic:
-	$(MAKE) -f $(MAKE2LPTIC) packing_2lptic
+	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_2lptic:
+	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_2lptic:
-	$(MAKE) -f $(MAKE2LPTIC) packing_gnu_2lptic
+	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_2lptic:
-	$(MAKE) -f $(MAKE2LPTIC) install_gnu_dirs_2lptic
+	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_2lptic:
-	$(MAKE) -f $(MAKE2LPTIC) clean_gnu_2lptic
+	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
 # 2lptic_za code: [2LPTic only ZA (with some modifications)]
 #
 
-MAKE2LPTICZA = Makefiles/cosmo_background_1lpt_2lpt/NagBody_2lptic_za
+MAKE2LPTICZA = NagBody_sources/cosmo_background_1lpt_2lpt/2lptic_za
 
 install_2lptic_za:
-	$(MAKE) -f $(MAKE2LPTICZA) install_2lptic_za
+	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody install_all)
 
 clean_2lptic_za:
-	$(MAKE) -f $(MAKE2LPTICZA) clean_2lptic_za
+	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody clean)
 
 packing_2lptic_za:
-	$(MAKE) -f $(MAKE2LPTICZA) packing_2lptic_za
+	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_2lptic_za:
+	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_2lptic_za:
-	$(MAKE) -f $(MAKE2LPTICZA) packing_gnu_2lptic_za
+	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_2lptic_za:
-	$(MAKE) -f $(MAKE2LPTICZA) install_gnu_dirs_2lptic_za
+	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_2lptic_za:
-	$(MAKE) -f $(MAKE2LPTICZA) clean_gnu_2lptic_za
+	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody clean_gnu)
+
+
+# ==================================================================
+# bckg_lcdm code:
+
+install_bckg_lcdm:
+	$(MAKE) -f Makefiles/Cosmo_background_1LPT_2LPT/NagBody_bckg_lcdm install_bckg_lcdm
+
+clean_bckg_lcdm:
+	$(MAKE) -f Makefiles/Cosmo_background_1LPT_2LPT/NagBody_bckg_lcdm clean_bckg_lcdm
+
+packing_bckg_lcdm:
+	$(MAKE) -f Makefiles/Cosmo_background_1LPT_2LPT/NagBody_bckg_lcdm packing_bckg_lcdm
 
 
 # ==================================================================
 # GADGET207 DERIVED CODE
+# ==================================================================
+# gdgt207 code: [Gadget-2.0.7 (with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+install_gdgt207:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207 install_gdgt207
+
+clean_gdgt207:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207 clean_gdgt207
+
+packing_gdgt207:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207 packing_gdgt207
+
+
+# ==================================================================
+# pgnbody207 code: [Gadget-2.0.7 (NagBody version)]
+# VER (abajo) pgnbody2 para los detalles de como se pasa a versi—n NagBody
+
+install_pgnbody207:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_pgnbody207 install_pgnbody207
+
+clean_pgnbody207:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_pgnbody207 clean_pgnbody207
+
+packing_pgnbody207:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_pgnbody207 packing_pgnbody207
+
+
+
 # ==================================================================
 # gdgt207galaxy code: [Gadget-2.0.7 galaxy simulations
 #    (with some modifications: no comments,
 #    structures like NagBody, command line parametersÉ )]
 #
 
-MAKEGDGT207GALAXY = Makefiles/gdgt2_derived_codes/NagBody_gdgt207galaxy
+MAKEGDGT207GALAXY = NagBody_sources/gdgt2_derived_codes/gdgt207galaxy
 
 install_gdgt207galaxy:
-	$(MAKE) -f $(MAKEGDGT207GALAXY) install_gdgt207galaxy
+	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody install_all)
 
 clean_gdgt207galaxy:
-	$(MAKE) -f $(MAKEGDGT207GALAXY) clean_gdgt207galaxy
+	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody clean)
 
 packing_gdgt207galaxy:
-	$(MAKE) -f $(MAKEGDGT207GALAXY) packing_gdgt207galaxy
+	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_gdgt207galaxy:
+	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_gdgt207galaxy:
-	$(MAKE) -f $(MAKEGDGT207GALAXY) packing_gnu_gdgt207galaxy
+	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_gdgt207galaxy:
-	$(MAKE) -f $(MAKEGDGT207GALAXY) install_gnu_dirs_gdgt207galaxy
+	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_gdgt207galaxy:
-	$(MAKE) -f $(MAKEGDGT207GALAXY) clean_gnu_gdgt207galaxy
+	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -625,26 +894,28 @@ clean_gnu_gdgt207galaxy:
 #    structures like NagBody, command line parametersÉ )]
 # ABOVE NOT YET IMPLEMENTED
 
-MAKEGALIC = Makefiles/gdgt2_derived_codes/NagBody_galic
+MAKEGALIC = NagBody_sources/gdgt2_derived_codes/galic
 
 install_galic:
-	$(MAKE) -f $(MAKEGALIC) install_galic
+	(cd $(MAKEGALIC); $(MAKE) -f NagBody install_all)
 
 clean_galic:
-	$(MAKE) -f $(MAKEGALIC) clean_galic
+	(cd $(MAKEGALIC); $(MAKE) -f NagBody clean)
 
-# LINES BELOW ARE NOT YET IMPLEMENTED. DO NOT USE THEM
 packing_galic:
-	$(MAKE) -f $(MAKEGALIC) packing_galic
+	(cd $(MAKEGALIC); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_galic:
+	(cd $(MAKEGALIC); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_galic:
-	$(MAKE) -f $(MAKEGALIC) packing_gnu_galic
+	(cd $(MAKEGALIC); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_galic:
-	$(MAKE) -f $(MAKEGALIC) install_gnu_dirs_galic
+	(cd $(MAKEGALIC); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_galic:
-	$(MAKE) -f $(MAKEGALIC) clean_gnu_galic
+	(cd $(MAKEGALIC); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -653,25 +924,108 @@ clean_gnu_galic:
 #    structures like NagBody, command line parametersÉ )]
 #
 
-MAKEGDGT207LCDM = Makefiles/gdgt2_derived_codes/NagBody_gdgt207lcdm
+MAKEGDGT207LCDM = NagBody_sources/gdgt2_derived_codes/gdgt207lcdm
 
 install_gdgt207lcdm:
-	$(MAKE) -f $(MAKEGDGT207LCDM) install_gdgt207lcdm
+	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody install_all)
 
 clean_gdgt207lcdm:
-	$(MAKE) -f $(MAKEGDGT207LCDM) clean_gdgt207lcdm
+	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody clean)
 
 packing_gdgt207lcdm:
-	$(MAKE) -f $(MAKEGDGT207LCDM) packing_gdgt207lcdm
+	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_gdgt207lcdm:
+	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_gdgt207lcdm:
-	$(MAKE) -f $(MAKEGDGT207LCDM) packing_gnu_gdgt207lcdm
+	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_gdgt207lcdm:
-	$(MAKE) -f $(MAKEGDGT207LCDM) install_gnu_dirs_gdgt207lcdm
+	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_gdgt207lcdm:
-	$(MAKE) -f $(MAKEGDGT207LCDM) clean_gnu_gdgt207lcdm
+	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody clean_gnu)
+
+
+# ==================================================================
+# gdgt_read_snapshot code: [Gadget-2.0.7 utilities for cosmo simulations
+#    (with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+MAKEGDGTREADSNAPSHOT = NagBody_sources/gdgt2_derived_codes/gdgt_read_snapshot
+
+install_gdgt_read_snapshot:
+	$(MAKE) -f $(MAKEGDGTREADSNAPSHOT) install_gdgt_read_snapshot
+
+clean_gdgt_read_snapshot:
+	$(MAKE) -f $(MAKEGDGTREADSNAPSHOT) clean_gdgt_read_snapshot
+
+packing_gdgt_read_snapshot:
+	$(MAKE) -f $(MAKEGDGTREADSNAPSHOT) packing_gdgt_read_snapshot
+
+packing_gnu_gdgt_read_snapshot:
+	$(MAKE) -f $(MAKEGDGTREADSNAPSHOT) packing_gnu_gdgt_read_snapshot
+
+install_gnu_dirs_gdgt_read_snapshot:
+	$(MAKE) -f $(MAKEGDGTREADSNAPSHOT) install_gnu_dirs_gdgt_read_snapshot
+
+clean_gnu_gdgt_read_snapshot:
+	$(MAKE) -f $(MAKEGDGTREADSNAPSHOT) clean_gnu_gdgt_read_snapshot
+
+
+# ==================================================================
+# gdgt207utils code: [Gadget-2.0.7 utilities for cosmo simulations
+#    (with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+MAKEGDGT207UTILS = NagBody_sources/gdgt2_derived_codes/gdgt207utils
+
+install_gdgt207utils:
+	$(MAKE) -f $(MAKEGDGT207UTILS) install_gdgt207utils
+
+clean_gdgt207utils:
+	$(MAKE) -f $(MAKEGDGT207UTILS) clean_gdgt207utils
+
+packing_gdgt207utils:
+	$(MAKE) -f $(MAKEGDGT207UTILS) packing_gdgt207utils
+
+packing_gnu_gdgt207utils:
+	$(MAKE) -f $(MAKEGDGT207UTILS) packing_gnu_gdgt207utils
+
+install_gnu_dirs_gdgt207utils:
+	$(MAKE) -f $(MAKEGDGT207UTILS) install_gnu_dirs_gdgt207utils
+
+clean_gnu_gdgt207utils:
+	$(MAKE) -f $(MAKEGDGT207UTILS) clean_gnu_gdgt207utils
+
+
+# ==================================================================
+# axiongdgt code: [Gadget-2 cosmo simulations with Fuzzy DM
+#    (with some modifications)]
+#
+
+MAKEAXIONGDGT = NagBody_sources/gdgt2_derived_codes/axiongdgt
+
+install_axiongdgt:
+	$(MAKE) -f $(MAKEAXIONGDGT) install_axiongdgt
+
+clean_axiongdgt:
+	$(MAKE) -f $(MAKEAXIONGDGT) clean_axiongdgt
+
+packing_axiongdgt:
+	$(MAKE) -f $(MAKEAXIONGDGT) packing_axiongdgt
+
+packing_gnu_axiongdgt:
+	$(MAKE) -f $(MAKEAXIONGDGT) packing_gnu_axiongdgt
+
+install_gnu_dirs_axiongdgt:
+	$(MAKE) -f $(MAKEAXIONGDGT) install_gnu_dirs_axiongdgt
+
+clean_gnu_axiongdgt:
+	$(MAKE) -f $(MAKEAXIONGDGT) clean_gnu_axiongdgt
 
 
 # ==================================================================
@@ -680,25 +1034,28 @@ clean_gnu_gdgt207lcdm:
 #    structures like NagBody, command line parametersÉ )]
 #
 
-MAKEGDGT207CLUSTER = Makefiles/gdgt2_derived_codes/NagBody_gdgt207cluster
+MAKEGDGT207CLUSTER = NagBody_sources/gdgt2_derived_codes/gdgt207cluster
 
 install_gdgt207cluster:
-	$(MAKE) -f $(MAKEGDGT207CLUSTER) install_gdgt207cluster
+	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody install_all)
 
 clean_gdgt207cluster:
-	$(MAKE) -f $(MAKEGDGT207CLUSTER) clean_gdgt207cluster
+	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody clean)
 
 packing_gdgt207cluster:
-	$(MAKE) -f $(MAKEGDGT207CLUSTER) packing_gdgt207cluster
+	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_gdgt207cluster:
+	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_gdgt207cluster:
-	$(MAKE) -f $(MAKEGDGT207CLUSTER) packing_gnu_gdgt207cluster
+	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_gdgt207cluster:
-	$(MAKE) -f $(MAKEGDGT207CLUSTER) install_gnu_dirs_gdgt207cluster
+	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_gdgt207cluster:
-	$(MAKE) -f $(MAKEGDGT207CLUSTER) clean_gnu_gdgt207cluster
+	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -707,25 +1064,210 @@ clean_gnu_gdgt207cluster:
 #    structures like NagBody, command line parametersÉ )]
 #
 
-MAKEGDGT207GASSPHERE = Makefiles/gdgt2_derived_codes/NagBody_gdgt207gassphere
+MAKEGDGT207GASSPHERE = NagBody_sources/gdgt2_derived_codes/gdgt207gassphere
 
 install_gdgt207gassphere:
-	$(MAKE) -f $(MAKEGDGT207GASSPHERE) install_gdgt207gassphere
+	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody install_all)
 
 clean_gdgt207gassphere:
-	$(MAKE) -f $(MAKEGDGT207GASSPHERE) clean_gdgt207gassphere
+	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody clean)
 
 packing_gdgt207gassphere:
-	$(MAKE) -f $(MAKEGDGT207GASSPHERE) packing_gdgt207gassphere
+	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_gdgt207gassphere:
+	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_gdgt207gassphere:
-	$(MAKE) -f $(MAKEGDGT207GASSPHERE) packing_gnu_gdgt207gassphere
+	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_gdgt207gassphere:
-	$(MAKE) -f $(MAKEGDGT207GASSPHERE) install_gnu_dirs_gdgt207gassphere
+	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_gdgt207gassphere:
-	$(MAKE) -f $(MAKEGDGT207GASSPHERE) clean_gnu_gdgt207gassphere
+	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody clean_gnu)
+
+
+# ==================================================================
+# gdgt207gassphere_to_start code: [Gadget-2.0.7 gassphere simulations
+#    (with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+MAKEGDGT207GASSPHERETOSTART = NagBody_sources/gdgt2_derived_codes/gdgt207gassphere_to_start
+
+install_gdgt207gassphere_to_start:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERETOSTART) install_gdgt207gassphere_to_start
+
+clean_gdgt207gassphere_to_start:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERETOSTART) clean_gdgt207gassphere_to_start
+
+packing_gdgt207gassphere_to_start:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERETOSTART) packing_gdgt207gassphere_to_start
+
+packing_gnu_gdgt207gassphere_to_start:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERETOSTART) packing_gnu_gdgt207gassphere_to_start
+
+install_gnu_dirs_gdgt207gassphere_to_start:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERETOSTART) install_gnu_dirs_gdgt207gassphere_to_start
+
+clean_gnu_gdgt207gassphere_to_start:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERETOSTART) clean_gnu_gdgt207gassphere_to_start
+
+
+# ==================================================================
+# gdgt207gassphere_reduced code: [Gadget-2.0.7 gassphere simulations
+
+MAKEGDGT207GASSPHEREREDUCED = NagBody_sources/gdgt2_derived_codes/gdgt207gassphere_reduced
+
+install_gdgt207gassphere_reduced:
+	$(MAKE) -f $(MAKEGDGT207GASSPHEREREDUCED) install_gdgt207gassphere_reduced
+
+clean_gdgt207gassphere_reduced:
+	$(MAKE) -f $(MAKEGDGT207GASSPHEREREDUCED) clean_gdgt207gassphere_reduced
+
+packing_gdgt207gassphere_reduced:
+	$(MAKE) -f $(MAKEGDGT207GASSPHEREREDUCED) packing_gdgt207gassphere_reduced
+
+packing_gnu_gdgt207gassphere_reduced:
+	$(MAKE) -f $(MAKEGDGT207GASSPHEREREDUCED) packing_gnu_gdgt207gassphere_reduced
+
+install_gnu_dirs_gdgt207gassphere_reduced:
+	$(MAKE) -f $(MAKEGDGT207GASSPHEREREDUCED) install_gnu_dirs_gdgt207gassphere_reduced
+
+clean_gnu_gdgt207gassphere_reduced:
+	$(MAKE) -f $(MAKEGDGT207GASSPHEREREDUCED) clean_gnu_gdgt207gassphere_reduced
+
+
+# ==================================================================
+# gdgt207gassphere_nosph code: [Gadget-2.0.7 gassphere simulations
+
+MAKEGDGT207GASSPHERENOSPH = NagBody_sources/gdgt2_derived_codes/gdgt207gassphere_nosph
+
+install_gdgt207gassphere_nosph:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOSPH) install_gdgt207gassphere_nosph
+
+clean_gdgt207gassphere_nosph:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOSPH) clean_gdgt207gassphere_nosph
+
+packing_gdgt207gassphere_nosph:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOSPH) packing_gdgt207gassphere_nosph
+
+packing_gnu_gdgt207gassphere_nosph:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOSPH) packing_gnu_gdgt207gassphere_nosph
+
+install_gnu_dirs_gdgt207gassphere_nosph:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOSPH) install_gnu_dirs_gdgt207gassphere_nosph
+
+clean_gnu_gdgt207gassphere_nosph:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOSPH) clean_gnu_gdgt207gassphere_nosph
+
+
+# ==================================================================
+# gdgt207gassphere_notree code: [Gadget-2.0.7 gassphere simulations
+
+MAKEGDGT207GASSPHERENOTREE = NagBody_sources/gdgt2_derived_codes/gdgt207gassphere_notree
+
+install_gdgt207gassphere_notree:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOTREE) install_gdgt207gassphere_notree
+
+clean_gdgt207gassphere_notree:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOTREE) clean_gdgt207gassphere_notree
+
+packing_gdgt207gassphere_notree:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOTREE) packing_gdgt207gassphere_notree
+
+packing_gnu_gdgt207gassphere_notree:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOTREE) packing_gnu_gdgt207gassphere_notree
+
+install_gnu_dirs_gdgt207gassphere_notree:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOTREE) install_gnu_dirs_gdgt207gassphere_notree
+
+clean_gnu_gdgt207gassphere_notree:
+	$(MAKE) -f $(MAKEGDGT207GASSPHERENOTREE) clean_gnu_gdgt207gassphere_notree
+
+
+# ==================================================================
+# gdgt207nopm code: [Gadget-2.0.7 (without PMGRID and
+#    with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+install_gdgt207nopm:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm install_gdgt207nopm
+
+clean_gdgt207nopm:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm clean_gdgt207nopm
+
+packing_gdgt207nopm:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm packing_gdgt207nopm
+
+
+# ==================================================================
+# gdgt207nopm_nop_nocom_nosph code: [Gadget-2.0.7 (without PMGRID,
+#    no-periodic, no-comoving, no-sph)
+#    with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+install_gdgt207nopm_nop_nocom_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_nop_nocom_nosph install_gdgt207nopm_nop_nocom_nosph
+
+clean_gdgt207nopm_nop_nocom_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_nop_nocom_nosph clean_gdgt207nopm_nop_nocom_nosph
+
+packing_gdgt207nopm_nop_nocom_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_nop_nocom_nosph packing_gdgt207nopm_nop_nocom_nosph
+
+
+# ==================================================================
+# gdgt207nopm_nop_com_nosph code: [Gadget-2.0.7 (without PMGRID,
+#    no-periodic, comoving, no-sph)
+#    with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+install_gdgt207nopm_nop_com_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_nop_com_nosph install_gdgt207nopm_nop_com_nosph
+
+clean_gdgt207nopm_nop_com_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_nop_com_nosph clean_gdgt207nopm_nop_com_nosph
+
+packing_gdgt207nopm_nop_com_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_nop_com_nosph packing_gdgt207nopm_nop_com_nosph
+
+
+# ==================================================================
+# gdgt207nopm_p_nocom_nosph code: [Gadget-2.0.7 (without PMGRID,
+#    periodic, no-comoving, no-sph)
+#    with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+install_gdgt207nopm_p_nocom_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_p_nocom_nosph install_gdgt207nopm_p_nocom_nosph
+
+clean_gdgt207nopm_p_nocom_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_p_nocom_nosph clean_gdgt207nopm_p_nocom_nosph
+
+packing_gdgt207nopm_p_nocom_nosph:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207nopm_p_nocom_nosph packing_gdgt207nopm_p_nocom_nosph
+
+
+# ==================================================================
+# gdgt207pm code: [Gadget-2.0.7 (with PMGRID and
+#    with some modifications: no comments,
+#    structures like NagBody, command line parametersÉ )]
+#
+
+install_gdgt207pm:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207pm install_gdgt207pm
+
+clean_gdgt207pm:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207pm clean_gdgt207pm
+
+packing_gdgt207pm:
+	$(MAKE) -f Makefiles/gdgt2_derived_codes/NagBody_gdgt207pm packing_gdgt207pm
 
 
 # ==================================================================
@@ -733,169 +1275,388 @@ clean_gnu_gdgt207gassphere:
 # ==================================================================
 # gbsph code:
 
-MAKEGBSPH = Makefiles/gravitation/NagBody_gbsph
+MAKEGBSPH = NagBody_sources/gravitation/gbsph
 
 install_gbsph:
-	$(MAKE) -f $(MAKEGBSPH) install_gbsph
+	(cd $(MAKEGBSPH); $(MAKE) -f NagBody install_all)
 
 clean_gbsph:
-	$(MAKE) -f $(MAKEGBSPH) clean_gbsph
+	(cd $(MAKEGBSPH); $(MAKE) -f NagBody clean)
 
 packing_gbsph:
-	$(MAKE) -f $(MAKEGBSPH) packing_gbsph
+	(cd $(MAKEGBSPH); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_gbsph:
+	(cd $(MAKEGBSPH); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_gbsph:
-	$(MAKE) -f $(MAKEGBSPH) packing_gnu_gbsph
+	(cd $(MAKEGBSPH); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_gbsph:
-	$(MAKE) -f $(MAKEGBSPH) install_gnu_dirs_gbsph
+	(cd $(MAKEGBSPH); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_gbsph:
-	$(MAKE) -f $(MAKEGBSPH) clean_gnu_gbsph
+	(cd $(MAKEGBSPH); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# gbsph_bbgg code:
+
+install_gbsph_bbgg:
+	$(MAKE) -f Makefiles/gravitation/NagBody_gbsph_bbgg install_gbsph_bbgg
+
+clean_gbsph_bbgg:
+	$(MAKE) -f Makefiles/gravitation/NagBody_gbsph_bbgg clean_gbsph_bbgg
+
+packing_gbsph_bbgg:
+	$(MAKE) -f Makefiles/gravitation/NagBody_gbsph_bbgg packing_gbsph_bbgg
+
+
+# ==================================================================
+# gbsph_analysis code:
+
+install_gbsph_analysis:
+	$(MAKE) -f Makefiles/gravitation/NagBody_gbsph_analysis install_gbsph_analysis
+
+clean_gbsph_analysis:
+	$(MAKE) -f Makefiles/gravitation/NagBody_gbsph_analysis clean_gbsph_analysis
+
+packing_gbsph_analysis:
+	$(MAKE) -f Makefiles/gravitation/NagBody_gbsph_analysis packing_gbsph_analysis
 
 
 # ==================================================================
 # nbody_n2 code: [N-body + direct (version data struct treecode)]
 
-MAKENBODY_N2 = Makefiles/gravitation/NagBody_nbody_n2
+MAKENBODY_N2 = NagBody_sources/gravitation/nbody_n2
 
 install_nbody_n2:
-	$(MAKE) -f $(MAKENBODY_N2) install_nbody_n2
+	(cd $(MAKENBODY_N2); $(MAKE) -f NagBody install_all)
 
 clean_nbody_n2:
-	$(MAKE) -f $(MAKENBODY_N2) clean_nbody_n2
+	(cd $(MAKENBODY_N2); $(MAKE) -f NagBody clean)
 
 packing_nbody_n2:
-	$(MAKE) -f $(MAKENBODY_N2) packing_nbody_n2
+	(cd $(MAKENBODY_N2); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_nbody_n2:
+	(cd $(MAKENBODY_N2); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_nbody_n2:
-	$(MAKE) -f $(MAKENBODY_N2) packing_gnu_nbody_n2
+	(cd $(MAKENBODY_N2); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_nbody_n2:
-	$(MAKE) -f $(MAKENBODY_N2) install_gnu_dirs_nbody_n2
+	(cd $(MAKENBODY_N2); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_nbody_n2:
-	$(MAKE) -f $(MAKENBODY_N2) clean_gnu_nbody_n2
+	(cd $(MAKENBODY_N2); $(MAKE) -f NagBody clean_gnu)
+
+
+# ==================================================================
+# nbody_n2_lambda code: [N-body + direct (version data struct treecode)]
+#     with cosmological constant as a force proportional to dr.
+
+install_nbody_n2_lambda:
+	$(MAKE) -f Makefiles/gravitation/NagBody_nbody_n2_lambda install_nbody_n2_lambda
+
+clean_nbody_n2_lambda:
+	$(MAKE) -f Makefiles/gravitation/NagBody_nbody_n2_lambda clean_nbody_n2_lambda
+
+packing_nbody_n2_lambda:
+	$(MAKE) -f Makefiles/gravitation/NagBody_nbody_n2_lambda packing_nbody_n2_lambda
+
+
+# ==================================================================
+# nbody_n2_cosmo code: [N-body + direct (version data struct treecode)]
+#     for cosmological simulations
+
+install_nbody_n2_cosmo:
+	$(MAKE) -f Makefiles/gravitation/NagBody_nbody_n2_cosmo install_nbody_n2_cosmo
+
+clean_nbody_n2_cosmo:
+	$(MAKE) -f Makefiles/gravitation/NagBody_nbody_n2_cosmo clean_nbody_n2_cosmo
+
+packing_nbody_n2_cosmo:
+	$(MAKE) -f Makefiles/gravitation/NagBody_nbody_n2_cosmo packing_nbody_n2_cosmo
+
+
+# ==================================================================
+# galaxy_hernquist code: [Galaxy model IC]
+
+MAKEGALAXYHERNQUIST = NagBody_sources/gravitation/galaxy_hernquist
+
+install_galaxy_hernquist:
+	(cd $(MAKEGALAXYHERNQUIST); $(MAKE) -f NagBody install_all)
+
+clean_galaxy_hernquist:
+	(cd $(MAKEGALAXYHERNQUIST); $(MAKE) -f NagBody clean)
+
+packing_galaxy_hernquist:
+	(cd $(MAKEGALAXYHERNQUIST); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_galaxy_hernquist:
+	(cd $(MAKEGALAXYHERNQUIST); $(MAKE) -f NagBody packing_sources)
+
+packing_gnu_galaxy_hernquist:
+	(cd $(MAKEGALAXYHERNQUIST); $(MAKE) -f NagBody packing_gnu_sources)
+
+install_gnu_dirs_galaxy_hernquist:
+	(cd $(MAKEGALAXYHERNQUIST); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_galaxy_hernquist:
+	(cd $(MAKEGALAXYHERNQUIST); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
 # galaxy_starscream code: [Galaxy model IC]
 
-MAKEGALAXYSTARSCREAM = Makefiles/gravitation/NagBody_galaxy_starscream
+MAKEGALAXYSTARSCREAM = NagBody_sources/gravitation/galaxy_starscream
 
 install_galaxy_starscream:
-	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) install_galaxy_starscream
+	(cd $(MAKEGALAXYSTARSCREAM); $(MAKE) -f NagBody install_all)
 
 clean_galaxy_starscream:
-	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) clean_galaxy_starscream
+	(cd $(MAKEGALAXYSTARSCREAM); $(MAKE) -f NagBody clean)
 
 packing_galaxy_starscream:
-	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) packing_galaxy_starscream
+	(cd $(MAKEGALAXYSTARSCREAM); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_galaxy_starscream:
+	(cd $(MAKEGALAXYSTARSCREAM); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_galaxy_starscream:
-	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) packing_gnu_galaxy_starscream
+	(cd $(MAKEGALAXYSTARSCREAM); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_galaxy_starscream:
-	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) install_gnu_dirs_galaxy_starscream
+	(cd $(MAKEGALAXYSTARSCREAM); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_galaxy_starscream:
-	$(MAKE) -f $(MAKEGALAXYSTARSCREAM) clean_gnu_galaxy_starscream
+	(cd $(MAKEGALAXYSTARSCREAM); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
 # analysis_grav code:
 
-MAKEANALYSISGRAV = Makefiles/gravitation/NagBody_analysis_grav
+MAKEANALYSISGRAV = NagBody_sources/gravitation/analysis_grav
 
 install_analysis_grav:
-	$(MAKE) -f $(MAKEANALYSISGRAV) install_analysis_grav
+	(cd $(MAKEANALYSISGRAV); $(MAKE) -f NagBody install_all)
 
 clean_analysis_grav:
-	$(MAKE) -f $(MAKEANALYSISGRAV) clean_analysis_grav
+	(cd $(MAKEANALYSISGRAV); $(MAKE) -f NagBody clean)
 
 packing_analysis_grav:
-	$(MAKE) -f $(MAKEANALYSISGRAV) packing_analysis_grav
+	(cd $(MAKEANALYSISGRAV); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_analysis_grav:
+	(cd $(MAKEANALYSISGRAV); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_analysis_grav:
-	$(MAKE) -f $(MAKEANALYSISGRAV) packing_gnu_analysis_grav
+	(cd $(MAKEANALYSISGRAV); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_analysis_grav:
-	$(MAKE) -f $(MAKEANALYSISGRAV) install_gnu_dirs_analysis_grav
+	(cd $(MAKEANALYSISGRAV); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_analysis_grav:
-	$(MAKE) -f $(MAKEANALYSISGRAV) clean_gnu_analysis_grav
+	(cd $(MAKEANALYSISGRAV); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
 # analysis_galaxy code:
 
-MAKEANALYSISGALAXY = Makefiles/gravitation/NagBody_analysis_galaxy
+MAKEANALYSISGALAXY = NagBody_sources/gravitation/analysis_galaxy
 
 install_analysis_galaxy:
-	$(MAKE) -f $(MAKEANALYSISGALAXY) install_analysis_galaxy
+	(cd $(MAKEANALYSISGALAXY); $(MAKE) -f NagBody install_all)
 
 clean_analysis_galaxy:
-	$(MAKE) -f $(MAKEANALYSISGALAXY) clean_analysis_galaxy
+	(cd $(MAKEANALYSISGALAXY); $(MAKE) -f NagBody clean)
 
 packing_analysis_galaxy:
-	$(MAKE) -f $(MAKEANALYSISGALAXY) packing_analysis_galaxy
+	(cd $(MAKEANALYSISGALAXY); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_analysis_galaxy:
+	(cd $(MAKEANALYSISGALAXY); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_analysis_galaxy:
-	$(MAKE) -f $(MAKEANALYSISGALAXY) packing_gnu_analysis_galaxy
+	(cd $(MAKEANALYSISGALAXY); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_analysis_galaxy:
-	$(MAKE) -f $(MAKEANALYSISGALAXY) install_gnu_dirs_analysis_galaxy
+	(cd $(MAKEANALYSISGALAXY); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_analysis_galaxy:
-	$(MAKE) -f $(MAKEANALYSISGALAXY) clean_gnu_analysis_galaxy
+	(cd $(MAKEANALYSISGALAXY); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
-# galaxy_models code:
+# analysis_galaxy_collision code:
 
-MAKEGALAXYMODEL = Makefiles/gravitation/NagBody_galaxy_model
+install_analysis_galaxy_collision:
+	$(MAKE) -f Makefiles/gravitation/NagBody_analysis_galaxy_collision install_analysis_galaxy_collision
+
+clean_analysis_galaxy_collision:
+	$(MAKE) -f Makefiles/gravitation/NagBody_analysis_galaxy_collision clean_analysis_galaxy_collision
+
+packing_analysis_galaxy_collision:
+	$(MAKE) -f Makefiles/gravitation/NagBody_analysis_galaxy_collision packing_analysis_galaxy_collision
+
+
+# ==================================================================
+# galaxy_model code:
+#
+
+MAKEGALAXYMODEL = NagBody_sources/gravitation/galaxy_model
 
 install_galaxy_model:
-	$(MAKE) -f $(MAKEGALAXYMODEL) install_galaxy_model
+	(cd $(MAKEGALAXYMODEL); $(MAKE) -f NagBody install_all)
 
 clean_galaxy_model:
-	$(MAKE) -f $(MAKEGALAXYMODEL) clean_galaxy_model
+	(cd $(MAKEGALAXYMODEL); $(MAKE) -f NagBody clean)
 
 packing_galaxy_model:
-	$(MAKE) -f $(MAKEGALAXYMODEL) packing_galaxy_model
+	(cd $(MAKEGALAXYMODEL); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_galaxy_model:
+	(cd $(MAKEGALAXYMODEL); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_galaxy_model:
-	$(MAKE) -f $(MAKEGALAXYMODEL) packing_gnu_galaxy_model
+	(cd $(MAKEGALAXYMODEL); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_galaxy_model:
-	$(MAKE) -f $(MAKEGALAXYMODEL) install_gnu_dirs_galaxy_model
+	(cd $(MAKEGALAXYMODEL); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_galaxy_model:
-	$(MAKE) -f $(MAKEGALAXYMODEL) clean_gnu_galaxy_model
+	(cd $(MAKEGALAXYMODEL); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# galaxy_model_kd code: [GalactICS kit by Kuijken and Dubinski]
+#
+
+MAKEGALAXYMODELKD = NagBody_sources/gravitation/galaxy_model_kd
+
+install_galaxy_model_kd:
+	$(MAKE) -f $(MAKEGALAXYMODELKD) install_galaxy_model_kd
+
+clean_galaxy_model_kd:
+	$(MAKE) -f $(MAKEGALAXYMODELKD) clean_galaxy_model_kd
+
+packing_galaxy_model_kd:
+	$(MAKE) -f $(MAKEGALAXYMODELKD) packing_galaxy_model_kd
+
+packing_gnu_galaxy_model_kd:
+	$(MAKE) -f $(MAKEGALAXYMODELKD) packing_gnu_galaxy_model_kd
+
+install_gnu_dirs_galaxy_model_kd:
+	$(MAKE) -f $(MAKEGALAXYMODELKD) install_gnu_dirs_galaxy_model_kd
+
+clean_gnu_galaxy_model_kd:
+	$(MAKE) -f $(MAKEGALAXYMODELKD) clean_gnu_galaxy_model_kd
 
 
 # ==================================================================
 # model code:
 
-MAKEMODEL = Makefiles/gravitation/NagBody_model
+MAKEMODEL = NagBody_sources/gravitation/model
 
 install_model:
-	$(MAKE) -f $(MAKEMODEL) install_model
+	(cd $(MAKEMODEL); $(MAKE) -f NagBody install_all)
 
 clean_model:
-	$(MAKE) -f $(MAKEMODEL) clean_model
+	(cd $(MAKEMODEL); $(MAKE) -f NagBody clean)
 
 packing_model:
-	$(MAKE) -f $(MAKEMODEL) packing_model
+	(cd $(MAKEMODEL); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_model:
+	(cd $(MAKEMODEL); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_model:
-	$(MAKE) -f $(MAKEMODEL) packing_gnu_model
+	(cd $(MAKEMODEL); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_model:
-	$(MAKE) -f $(MAKEMODEL) install_gnu_dirs_model
+	(cd $(MAKEMODEL); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_model:
-	$(MAKE) -f $(MAKEMODEL) clean_gnu_model
+	(cd $(MAKEMODEL); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# mkplummer code: [to model a Plummer sphere (version from nemo)]
+#[DON NOT USE. USE INSTEAD NEMO4 VERSION AND ALSO ITS SNAPPLOT VERSION]
+
+MAKEMKPLUMMER = NagBody_sources/gravitation/mkplummer
+
+install_mkplummer:
+	$(MAKE) -f $(MAKEMKPLUMMER) install_mkplummer
+
+clean_mkplummer:
+	$(MAKE) -f $(MAKEMKPLUMMER) clean_mkplummer
+
+packing_mkplummer:
+	$(MAKE) -f $(MAKEMKPLUMMER) packing_mkplummer
+
+packing_gnu_mkplummer:
+	$(MAKE) -f $(MAKEMKPLUMMER) packing_gnu_mkplummer
+
+install_gnu_dirs_mkplummer:
+	$(MAKE) -f $(MAKEMKPLUMMER) install_gnu_dirs_mkplummer
+
+clean_gnu_mkplummer:
+	$(MAKE) -f $(MAKEMKPLUMMER) clean_gnu_mkplummer
+
+
+# ==================================================================
+# GRAVITATION + SFDM
+# ==================================================================
+# nbody_n2_sfdm code: [SFDM N-body + direct (version data struct treecode)]
+
+install_nbody_n2_sfdm:
+	$(MAKE) -f Makefiles/Gravitation_sfdm/NagBody_nbody_n2_sfdm install_nbody_n2_sfdm
+
+clean_nbody_n2_sfdm:
+	$(MAKE) -f Makefiles/Gravitation_sfdm/NagBody_nbody_n2_sfdm clean_nbody_n2_sfdm
+
+packing_nbody_n2_sfdm:
+	$(MAKE) -f Makefiles/Gravitation_sfdm/NagBody_nbody_n2_sfdm packing_nbody_n2_sfdm
+
+
+# ==================================================================
+# sph_sf code: [Hydro SPH + SF]
+
+MAKESPHSF = NagBody_sources/gravitation_sfdm/NagBody_sph_sf
+
+install_sph_sf:
+	$(MAKE) -f $(MAKESPHSF) install_sph_sf
+
+clean_sph_sf:
+	$(MAKE) -f $(MAKESPHSF) clean_sph_sf
+
+packing_sph_sf:
+	$(MAKE) -f $(MAKESPHSF) packing_sph_sf
+
+packing_gnu_sph_sf:
+	$(MAKE) -f $(MAKESPHSF) packing_gnu_sph_sf
+
+install_gnu_dirs_sph_sf:
+	$(MAKE) -f $(MAKESPHSF) install_gnu_dirs_sph_sf
+
+clean_gnu_sph_sf:
+	$(MAKE) -f $(MAKESPHSF) clean_gnu_sph_sf
+
+
+#SPH_SF_DIR = NagBody_sources/Gravitation/sph_sf
+#install_sph_sf: sph_sf sph_sf_man
+#sph_sf:
+#    (cd $(MAKESPHSF);$(MAKE) -f NagBody install)
+#sph_sf_man:
+#    (cd $(MAKESPHSF);$(MAKE) -f NagBody install_man)
+#clean_sph_sf:
+#    (cd $(MAKESPHSF);$(MAKE) -f NagBody clean)
+#clean_sph_sf_dir:
+#    (cd $(MAKESPHSF);$(MAKE) -f NagBody clean_dir)
+#packing_sph_sf:
+#    (cd $(MAKESPHSF);$(MAKE) -f NagBody packing_sources)
 
 
 # ==================================================================
@@ -903,22 +1664,76 @@ clean_gnu_model:
 # ==================================================================
 # md_blj_n2_sird code:
 
-MAKEMD_BLJ_N2_SIRD = Makefiles/influenza/NagBody_md_blj_n2_sird
+MAKEMD_BLJ_N2_SIRD = NagBody_sources/influenza/md_blj_n2_sird
 
 install_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) install_md_blj_n2_sird
+	(cd $(MAKEMD_BLJ_N2_SIRD); $(MAKE) -f NagBody install_all)
 
 clean_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) clean_md_blj_n2_sird
+	(cd $(MAKEMD_BLJ_N2_SIRD); $(MAKE) -f NagBody clean)
+
+packing_md_blj_n2_sird:
+	(cd $(MAKEMD_BLJ_N2_SIRD); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_md_blj_n2_sird:
+	(cd $(MAKEMD_BLJ_N2_SIRD); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) packing_gnu_md_blj_n2_sird
+	(cd $(MAKEMD_BLJ_N2_SIRD); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) install_gnu_dirs_md_blj_n2_sird
+	(cd $(MAKEMD_BLJ_N2_SIRD); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_md_blj_n2_sird:
-	$(MAKE) -f $(MAKEMD_BLJ_N2_SIRD) clean_gnu_md_blj_n2_sird
+	(cd $(MAKEMD_BLJ_N2_SIRD); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# md_blj_n2_gsir code:
+
+MAKEMD_BLJ_N2_GSIR = NagBody_sources/influenza/md_blj_n2_gsir
+
+install_md_blj_n2_gsir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSIR) install_md_blj_n2_gsir
+
+clean_md_blj_n2_gsir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSIR) clean_md_blj_n2_gsir
+
+packing_md_blj_n2_gsir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSIR) packing_md_blj_n2_gsir
+
+packing_gnu_md_blj_n2_gsir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSIR) packing_gnu_md_blj_n2_gsir
+
+install_gnu_dirs_md_blj_n2_gsir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSIR) install_gnu_dirs_md_blj_n2_gsir
+
+clean_gnu_md_blj_n2_gsir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSIR) clean_gnu_md_blj_n2_gsir
+
+
+# ==================================================================
+# md_blj_n2_gseir code:
+
+MAKEMD_BLJ_N2_GSEIR = NagBody_sources/influenza/md_blj_n2_gseir
+
+install_md_blj_n2_gseir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSEIR) install_md_blj_n2_gseir
+
+clean_md_blj_n2_gseir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSEIR) clean_md_blj_n2_gseir
+
+packing_md_blj_n2_gseir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSEIR) packing_md_blj_n2_gseir
+
+packing_gnu_md_blj_n2_gseir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSEIR) packing_gnu_md_blj_n2_gseir
+
+install_gnu_dirs_md_blj_n2_gseir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSEIR) install_gnu_dirs_md_blj_n2_gseir
+
+clean_gnu_md_blj_n2_gseir:
+	$(MAKE) -f $(MAKEMD_BLJ_N2_GSEIR) clean_gnu_md_blj_n2_gseir
 
 
 # ==================================================================
@@ -926,73 +1741,130 @@ clean_gnu_md_blj_n2_sird:
 # ==================================================================
 # nchi2 code:
 
-MAKENCHI2 = Makefiles/mcmc/NagBody_nchi2
+MAKENCHI2 = NagBody_sources/mcmc/nchi2
 
 install_nchi2:
-	$(MAKE) -f $(MAKENCHI2) install_nchi2
+	(cd $(MAKENCHI2); $(MAKE) -f NagBody install_all)
 
 clean_nchi2:
-	$(MAKE) -f $(MAKENCHI2) clean_nchi2
+	(cd $(MAKENCHI2); $(MAKE) -f NagBody clean)
 
 packing_nchi2:
-	$(MAKE) -f $(MAKENCHI2) packing_nchi2
+	(cd $(MAKENCHI2); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_nchi2:
+	(cd $(MAKENCHI2); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_nchi2:
-	$(MAKE) -f $(MAKENCHI2) packing_gnu_nchi2
+	(cd $(MAKENCHI2); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_nchi2:
-	$(MAKE) -f $(MAKENCHI2) install_gnu_dirs_nchi2
+	(cd $(MAKENCHI2); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_nchi2:
-	$(MAKE) -f $(MAKENCHI2) clean_gnu_nchi2
+	(cd $(MAKENCHI2); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
 # nmcmc code:
 
-MAKENMCMC = Makefiles/mcmc/NagBody_nmcmc
+MAKENMCMC = NagBody_sources/mcmc/nmcmc
 
 install_nmcmc:
-	$(MAKE) -f $(MAKENMCMC) install_nmcmc
+	(cd $(MAKENMCMC); $(MAKE) -f NagBody install_all)
 
 clean_nmcmc:
-	$(MAKE) -f $(MAKENMCMC) clean_nmcmc
+	(cd $(MAKENMCMC); $(MAKE) -f NagBody clean)
 
 packing_nmcmc:
-	$(MAKE) -f $(MAKENMCMC) packing_nmcmc
+	(cd $(MAKENMCMC); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_nmcmc:
+	(cd $(MAKENMCMC); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_nmcmc:
-	$(MAKE) -f $(MAKENMCMC) packing_gnu_nmcmc
+	(cd $(MAKENMCMC); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_nmcmc:
-	$(MAKE) -f $(MAKENMCMC) install_gnu_dirs_nmcmc
+	(cd $(MAKENMCMC); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_nmcmc:
-	$(MAKE) -f $(MAKENMCMC) clean_gnu_nmcmc
+	(cd $(MAKENMCMC); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# twalk code:
+
+MAKETWALK = NagBody_sources/mcmc/twalk
+
+install_twalk:
+	$(MAKE) -f $(MAKETWALK) install_twalk
+
+clean_twalk:
+	$(MAKE) -f $(MAKETWALK) clean_twalk
+
+packing_twalk:
+	$(MAKE) -f $(MAKETWALK) packing_twalk
+
+packing_gnu_twalk:
+	$(MAKE) -f $(MAKETWALK) packing_gnu_twalk
+
+install_gnu_dirs_twalk:
+	$(MAKE) -f $(MAKETWALK) install_gnu_dirs_twalk
+
+clean_gnu_twalk:
+	$(MAKE) -f $(MAKETWALK) clean_gnu_twalk
 
 
 # ==================================================================
 # MathematicaMCMC code:
 
-MAKEMATHEMATICAMCMC = Makefiles/mcmc/NagBody_MathematicaMCMC
+MAKEMATHEMATICAMCMC = NagBody_sources/mcmc/MathematicaMCMC
 
 install_MathematicaMCMC:
-	$(MAKE) -f $(MAKEMATHEMATICAMCMC) install_MathematicaMCMC
+	(cd $(MAKEMATHEMATICAMCMC); $(MAKE) -f NagBody install_all)
 
 clean_MathematicaMCMC:
-	$(MAKE) -f $(MAKEMATHEMATICAMCMC) clean_MathematicaMCMC
+	(cd $(MAKEMATHEMATICAMCMC); $(MAKE) -f NagBody clean)
 
 packing_MathematicaMCMC:
-	$(MAKE) -f $(MAKEMATHEMATICAMCMC) packing_MathematicaMCMC
+	(cd $(MAKEMATHEMATICAMCMC); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_MathematicaMCMC:
+	(cd $(MAKEMATHEMATICAMCMC); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_MathematicaMCMC:
-	$(MAKE) -f $(MAKEMATHEMATICAMCMC) packing_gnu_MathematicaMCMC
+	(cd $(MAKEMATHEMATICAMCMC); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_MathematicaMCMC:
-	$(MAKE) -f $(MAKEMATHEMATICAMCMC) install_gnu_dirs_MathematicaMCMC
+	(cd $(MAKEMATHEMATICAMCMC); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_MathematicaMCMC:
-	$(MAKE) -f $(MAKEMATHEMATICAMCMC) clean_gnu_MathematicaMCMC
+	(cd $(MAKEMATHEMATICAMCMC); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# MathematicaMCMC_pkg Mathematica notebook codes:
+
+MAKEMATHEMATICAMCMCPKG = NagBody_sources/mcmc/MathematicaMCMC_pkg
+
+install_MathematicaMCMC_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMCMCPKG) install_MathematicaMCMC_pkg
+
+clean_MathematicaMCMC_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMCMCPKG) clean_MathematicaMCMC_pkg
+
+packing_MathematicaMCMC_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMCMCPKG) packing_MathematicaMCMC_pkg
+
+packing_gnu_MathematicaMCMC_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMCMCPKG) packing_gnu_MathematicaMCMC_pkg
+
+install_gnu_dirs_MathematicaMCMC_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMCMCPKG) install_gnu_dirs_MathematicaMCMC_pkg
+
+clean_gnu_MathematicaMCMC_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMCMCPKG) clean_gnu_MathematicaMCMC_pkg
 
 
 # ==================================================================
@@ -1000,49 +1872,68 @@ clean_gnu_MathematicaMCMC:
 # ==================================================================
 # nplot2d code:
 
-MAKENPLOT2D = Makefiles/NagBody_PLPlots/NagBody_nplot2d
+MAKENPLOT2D = NagBody_sources/nagbody_plplots/nplot2d
 
 install_nplot2d:
-	$(MAKE) -f $(MAKENPLOT2D) install_nplot2d
+	(cd $(MAKENPLOT2D); $(MAKE) -f NagBody install_all)
 
 clean_nplot2d:
-	$(MAKE) -f $(MAKENPLOT2D) clean_nplot2d
+	(cd $(MAKENPLOT2D); $(MAKE) -f NagBody clean)
 
 packing_nplot2d:
-	$(MAKE) -f $(MAKENPLOT2D) packing_nplot2d
+	(cd $(MAKENPLOT2D); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_nplot2d:
+	(cd $(MAKENPLOT2D); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_nplot2d:
-	$(MAKE) -f $(MAKENPLOT2D) packing_gnu_nplot2d
+	(cd $(MAKENPLOT2D); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_nplot2d:
-	$(MAKE) -f $(MAKENPLOT2D) install_gnu_dirs_nplot2d
+	(cd $(MAKENPLOT2D); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_nplot2d:
-	$(MAKE) -f $(MAKENPLOT2D) clean_gnu_nplot2d
+	(cd $(MAKENPLOT2D); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# nplot3d code:
+
+install_nplot3d:
+	$(MAKE) -f Makefiles/NagBody_nplot3d install_nplot3d
+
+clean_nplot3d:
+	$(MAKE) -f Makefiles/NagBody_nplot3d clean_nplot3d
+
+packing_nplot3d:
+	$(MAKE) -f Makefiles/NagBody_nplot3d packing_nplot3d
 
 
 # ==================================================================
 # nxls code:
 
-MAKENXLS = Makefiles/nagbody_plplots/NagBody_nxls
+MAKENXLS = NagBody_sources/nagbody_plplots/nxls
 
 install_nxls:
-	$(MAKE) -f $(MAKENXLS) install_nxls
+	(cd $(MAKENXLS); $(MAKE) -f NagBody install_all)
 
 clean_nxls:
-	$(MAKE) -f $(MAKENXLS) clean_nxls
+	(cd $(MAKENXLS); $(MAKE) -f NagBody clean)
 
 packing_nxls:
-	$(MAKE) -f $(MAKENXLS) packing_nxls
+	(cd $(MAKENXLS); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_nxls:
+	(cd $(MAKENXLS); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_nxls:
-	$(MAKE) -f $(MAKENXLS) packing_gnu_nxls
+	(cd $(MAKENXLS); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_nxls:
-	$(MAKE) -f $(MAKENXLS) install_gnu_dirs_nxls
+	(cd $(MAKENXLS); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_nxls:
-	$(MAKE) -f $(MAKENXLS) clean_gnu_nxls
+	(cd $(MAKENXLS); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
@@ -1050,181 +1941,516 @@ clean_gnu_nxls:
 # ==================================================================
 # mgpt code:
 
-MAKEMGPT = Makefiles/perturbations/NagBody_mgpt
+MAKEMGPT = NagBody_sources/perturbations/mgpt
 
 install_mgpt:
-	$(MAKE) -f $(MAKEMGPT) install_mgpt
+	(cd $(MAKEMGPT); $(MAKE) -f NagBody install_all)
 
 clean_mgpt:
-	$(MAKE) -f $(MAKEMGPT) clean_mgpt
+	(cd $(MAKEMGPT); $(MAKE) -f NagBody clean)
 
 packing_mgpt:
-	$(MAKE) -f $(MAKEMGPT) packing_mgpt
+	(cd $(MAKEMGPT); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_mgpt:
+	(cd $(MAKEMGPT); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_mgpt:
-	$(MAKE) -f $(MAKEMGPT) packing_gnu_mgpt
+	(cd $(MAKEMGPT); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_mgpt:
-	$(MAKE) -f $(MAKEMGPT) install_gnu_dirs_mgpt
+	(cd $(MAKEMGPT); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_mgpt:
-	$(MAKE) -f $(MAKEMGPT) clean_gnu_mgpt
+	(cd $(MAKEMGPT); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
 # sMGPT code:
 
-MAKESMGPT = Makefiles/perturbations/NagBody_smgpt
+MAKESMGPT = NagBody_sources/perturbations/smgpt
 
 install_smgpt:
-	$(MAKE) -f $(MAKESMGPT) install_smgpt
+	(cd $(MAKESMGPT); $(MAKE) -f NagBody install_all)
 
 clean_smgpt:
-	$(MAKE) -f $(MAKESMGPT) clean_smgpt
+	(cd $(MAKESMGPT); $(MAKE) -f NagBody clean)
 
 packing_smgpt:
-	$(MAKE) -f $(MAKESMGPT) packing_smgpt
+	(cd $(MAKESMGPT); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_smgpt:
+	(cd $(MAKESMGPT); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_smgpt:
-	$(MAKE) -f $(MAKESMGPT) packing_gnu_smgpt
+	(cd $(MAKESMGPT); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_smgpt:
-	$(MAKE) -f $(MAKESMGPT) install_gnu_dirs_smgpt
+	(cd $(MAKESMGPT); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_smgpt:
-	$(MAKE) -f $(MAKESMGPT) clean_gnu_smgpt
+	(cd $(MAKESMGPT); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# MathematicaMGPT_pkg codes:
+
+MAKEMATHEMATICAMGPTPKG = NagBody_sources/perturbations/MathematicaMGPT_pkg
+
+install_MathematicaMGPT_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMGPTPKG) install_MathematicaMGPT_pkg
+
+clean_MathematicaMGPT_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMGPTPKG) clean_MathematicaMGPT_pkg
+
+packing_MathematicaMGPT_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMGPTPKG) packing_MathematicaMGPT_pkg
+
+packing_gnu_MathematicaMGPT_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMGPTPKG) packing_gnu_MathematicaMGPT_pkg
+
+install_gnu_dirs_MathematicaMGPT_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMGPTPKG) install_gnu_dirs_MathematicaMGPT_pkg
+
+clean_gnu_MathematicaMGPT_pkg:
+	$(MAKE) -f $(MAKEMATHEMATICAMGPTPKG) clean_gnu_MathematicaMGPT_pkg
 
 
 # ==================================================================
 # class_mgpt code: [class_mgpt code]
 #
 
-MAKECLASSMGPT = Makefiles/perturbations/NagBody_class_mgpt
+MAKECLASSMGPT = NagBody_sources/perturbations/class_mgpt
 
 install_class_mgpt:
-	$(MAKE) -f $(MAKECLASSMGPT) install_class_mgpt
+	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody install_all)
 
 clean_class_mgpt:
-	$(MAKE) -f $(MAKECLASSMGPT) clean_class_mgpt
+	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody clean)
 
 packing_class_mgpt:
-	$(MAKE) -f $(MAKECLASSMGPT) packing_class_mgpt
+	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_class_mgpt:
+	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_class_mgpt:
-	$(MAKE) -f $(MAKECLASSMGPT) packing_gnu_class_mgpt
+	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_class_mgpt:
-	$(MAKE) -f $(MAKECLASSMGPT) install_gnu_dirs_class_mgpt
+	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_class_mgpt:
-	$(MAKE) -f $(MAKECLASSMGPT) clean_gnu_class_mgpt
+	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
 # hiclass_mgpt code: [hi_class_mgpt code]
 #
 
-MAKEHICLASSMGPT = Makefiles/perturbations/NagBody_hiclass_mgpt
+MAKEHICLASSMGPT = NagBody_sources/perturbations/hiclass_mgpt
 
 install_hiclass_mgpt:
-	$(MAKE) -f $(MAKEHICLASSMGPT) install_hiclass_mgpt
+	(cd $(MAKEHICLASSMGPT); $(MAKE) -f NagBody install_all)
 
 clean_hiclass_mgpt:
-	$(MAKE) -f $(MAKEHICLASSMGPT) clean_hiclass_mgpt
+	(cd $(MAKEHICLASSMGPT); $(MAKE) -f NagBody clean)
 
 packing_hiclass_mgpt:
-	$(MAKE) -f $(MAKEHICLASSMGPT) packing_hiclass_mgpt
+	(cd $(MAKEHICLASSMGPT); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_hiclass_mgpt:
+	(cd $(MAKEHICLASSMGPT); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_hiclass_mgpt:
-	$(MAKE) -f $(MAKEHICLASSMGPT) packing_gnu_hiclass_mgpt
+	(cd $(MAKEHICLASSMGPT); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_hiclass_mgpt:
-	$(MAKE) -f $(MAKEHICLASSMGPT) install_gnu_dirs_hiclass_mgpt
+	(cd $(MAKEHICLASSMGPT); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_hiclass_mgpt:
-	$(MAKE) -f $(MAKEHICLASSMGPT) clean_gnu_hiclass_mgpt
+	(cd $(MAKEHICLASSMGPT); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
 # TreeCorr code: [TreeCorr code by M. Travis]
 #
 
-MAKETREECORR = Makefiles/perturbations/NagBody_TreeCorr
+MAKETREECORR = NagBody_sources/perturbations/TreeCorr
 
 install_TreeCorr:
-	$(MAKE) -f $(MAKETREECORR) install_TreeCorr
+	(cd $(MAKETREECORR); $(MAKE) -f NagBody install_all)
 
 clean_TreeCorr:
-	$(MAKE) -f $(MAKETREECORR) clean_TreeCorr
+	(cd $(MAKETREECORR); $(MAKE) -f NagBody clean)
 
 packing_TreeCorr:
-	$(MAKE) -f $(MAKETREECORR) packing_TreeCorr
+	(cd $(MAKETREECORR); $(MAKE) -f NagBody packing_sources_no_nagbody)
 
+packing_nagbody_TreeCorr:
+	(cd $(MAKETREECORR); $(MAKE) -f NagBody packing_sources)
 
 
 # ==================================================================
 # SPH CODES
 # ==================================================================
+# sphzk code: (Debe de ser koda etude)
+#
+
+MAKESPHZK = NagBody_sources/sph/sphzk
+
+install_sphzk:
+	(cd $(MAKESPHZK); $(MAKE) -f NagBody install_all)
+
+clean_sphzk:
+	(cd $(MAKESPHZK); $(MAKE) -f NagBody clean)
+
+packing_sphzk:
+	(cd $(MAKESPHZK); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_sphzk:
+	(cd $(MAKESPHZK); $(MAKE) -f NagBody packing_sources)
+
+packing_gnu_sphzk:
+	(cd $(MAKESPHZK); $(MAKE) -f NagBody packing_gnu_sources)
+
+install_gnu_dirs_sphzk:
+	(cd $(MAKESPHZK); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_sphzk:
+	(cd $(MAKESPHZK); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# sphs_sgn2_nop code: sph simplest selfgravity (n2) and non periodic boundaries
+
+MAKESPHSSGN2NOP = NagBody_sources/sph/sphs_sgn2_nop
+
+install_sphs_sgn2_nop:
+	(cd $(MAKESPHSSGN2NOP); $(MAKE) -f NagBody install_all)
+
+clean_sphs_sgn2_nop:
+	(cd $(MAKESPHSSGN2NOP); $(MAKE) -f NagBody clean)
+
+packing_sphs_sgn2_nop:
+	(cd $(MAKESPHSSGN2NOP); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_sphs_sgn2_nop:
+	(cd $(MAKESPHSSGN2NOP); $(MAKE) -f NagBody packing_sources)
+
+packing_gnu_sphs_sgn2_nop:
+	(cd $(MAKESPHSSGN2NOP); $(MAKE) -f NagBody packing_gnu_sources)
+
+install_gnu_dirs_sphs_sgn2_nop:
+	(cd $(MAKESPHSSGN2NOP); $(MAKE) -f NagBody install_gnu_dirs)
+
+clean_gnu_sphs_sgn2_nop:
+	(cd $(MAKESPHSSGN2NOP); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
 # sphz code: zeno -> NagBody adaptation ... sphz -> sphcode_u
 
-MAKESPHZ = Makefiles/sph/NagBody_sphz
+MAKESPHZ = NagBody_sources/sph/sphz
 
 install_sphz:
-	$(MAKE) -f $(MAKESPHZ) install_sphz
+	(cd $(MAKESPHZ); $(MAKE) -f NagBody install_all)
 
 clean_sphz:
-	$(MAKE) -f $(MAKESPHZ) clean_sphz
+	(cd $(MAKESPHZ); $(MAKE) -f NagBody clean)
 
 packing_sphz:
-	$(MAKE) -f $(MAKESPHZ) packing_sphz
+	(cd $(MAKESPHZ); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_sphz:
+	(cd $(MAKESPHZ); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_sphz:
-	$(MAKE) -f $(MAKESPHZ) packing_gnu_sphz
+	(cd $(MAKESPHZ); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_sphz:
-	$(MAKE) -f $(MAKESPHZ) install_gnu_dirs_sphz
+	(cd $(MAKESPHZ); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_sphz:
-	$(MAKE) -f $(MAKESPHZ) clean_gnu_sphz
+	(cd $(MAKESPHZ); $(MAKE) -f NagBody clean_nagbody_gnu)
+
+
+# ==================================================================
+# zeno codes: zeno package -> NagBody adaptation ...
+
+MAKEZENOALL = NagBody_sources/sph/zeno_all
+
+install_zeno_all:
+	(cd $(MAKEZENOALL); $(MAKE) -f NagBody install_all)
+
+clean_zeno_all:
+	(cd $(MAKEZENOALL); $(MAKE) -f NagBody clean)
+
+packing_zeno_all:
+	(cd $(MAKEZENOALL); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_zeno_all:
+	(cd $(MAKEZENOALL); $(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
+# sphzcode15 code:
+
+MAKESPHZCODE15 = NagBody_sources/sph/sphzcode15
+
+install_sphzcode15:
+	$(MAKE) -f $(MAKESPHZCODE15) install_sphzcode15
+
+clean_sphzcode15:
+	$(MAKE) -f $(MAKESPHZCODE15) clean_sphzcode15
+
+packing_sphzcode15:
+	$(MAKE) -f $(MAKESPHZCODE15) packing_sphzcode15
+
+packing_gnu_sphzcode15:
+	$(MAKE) -f $(MAKESPHZCODE15) packing_gnu_sphzcode15
+
+install_gnu_dirs_sphzcode15:
+	$(MAKE) -f $(MAKESPHZCODE15) install_gnu_dirs_sphzcode15
+
+clean_gnu_sphzcode15:
+	$(MAKE) -f $(MAKESPHZCODE15) clean_gnu_sphzcode15
+
+
+# ==================================================================
+# etude code: zeno (nemo) -> NagBody adaptation ...
+
+MAKEETUDE = NagBody_sources/sph/etude
+
+install_etude:
+	$(MAKE) -f $(MAKEETUDE) install_etude
+
+clean_etude:
+	$(MAKE) -f $(MAKEETUDE) clean_etude
+
+packing_etude:
+	$(MAKE) -f $(MAKEETUDE) packing_etude
+
+packing_gnu_etude:
+	$(MAKE) -f $(MAKEETUDE) packing_gnu_etude
+
+install_gnu_dirs_etude:
+	$(MAKE) -f $(MAKEETUDE) install_gnu_dirs_etude
+
+clean_gnu_etude:
+	$(MAKE) -f $(MAKEETUDE) clean_gnu_etude
+
+
+# ==================================================================
+# sphzenon_tree code:
+
+MAKESPHZENONTREE = NagBody_sources/sph/sphzenon_tree
+
+install_sphzenon_tree:
+	$(MAKE) -f $(MAKESPHZENONTREE) install_sphzenon_tree
+
+clean_sphzenon_tree:
+	$(MAKE) -f $(MAKESPHZENONTREE) clean_sphzenon_tree
+
+packing_sphzenon_tree:
+	$(MAKE) -f $(MAKESPHZENONTREE) packing_sphzenon_tree
+
+packing_gnu_sphzenon_tree:
+	$(MAKE) -f $(MAKESPHZENONTREE) packing_gnu_sphzenon_tree
+
+install_gnu_dirs_sphzenon_tree:
+	$(MAKE) -f $(MAKESPHZENONTREE) install_gnu_dirs_sphzenon_tree
+
+clean_gnu_sphzenon_tree:
+	$(MAKE) -f $(MAKESPHZENONTREE) clean_gnu_sphzenon_tree
+
+
+# ==================================================================
+# sphzenon_sph code:
+
+MAKESPHZENONSPH = NagBody_sources/sph/sphzenon_sph
+
+install_sphzenon_sph:
+	$(MAKE) -f $(MAKESPHZENONSPH) install_sphzenon_sph
+
+clean_sphzenon_sph:
+	$(MAKE) -f $(MAKESPHZENONSPH) clean_sphzenon_sph
+
+packing_sphzenon_sph:
+	$(MAKE) -f $(MAKESPHZENONSPH) packing_sphzenon_sph
+
+packing_gnu_sphzenon_sph:
+	$(MAKE) -f $(MAKESPHZENONSPH) packing_gnu_sphzenon_sph
+
+install_gnu_dirs_sphzenon_sph:
+	$(MAKE) -f $(MAKESPHZENONSPH) install_gnu_dirs_sphzenon_sph
+
+clean_gnu_sphzenon_sph:
+	$(MAKE) -f $(MAKESPHZENONSPH) clean_gnu_sphzenon_sph
 
 
 # ==================================================================
 # TEMPLATES
 # ==================================================================
+# template00 code:
+
+install_template00:
+	$(MAKE) -f Makefiles/NagBody_template00 install_template00
+
+clean_template00:
+	$(MAKE) -f Makefiles/NagBody_template00 clean_template00
+
+packing_template00:
+	$(MAKE) -f Makefiles/NagBody_template00 packing_template00
+
+
+# ==================================================================
+# template01 code:
+
+install_template01:
+	$(MAKE) -f Makefiles/NagBody_template01 install_template01
+
+clean_template01:
+	$(MAKE) -f Makefiles/NagBody_template01 clean_template01
+
+packing_template01:
+	$(MAKE) -f Makefiles/NagBody_template01 packing_template01
+
+
+# ==================================================================
+# template02 code:
+
+install_template02:
+	$(MAKE) -f Makefiles/NagBody_template02 install_template02
+
+clean_template02:
+	$(MAKE) -f Makefiles/NagBody_template02 clean_template02
+
+packing_template02:
+	$(MAKE) -f Makefiles/NagBody_template02 packing_template02
+
+
+# ==================================================================
+# template03 code:
+
+install_template03:
+	$(MAKE) -f Makefiles/Templates/NagBody_template03 install_template03
+
+clean_template03:
+	$(MAKE) -f Makefiles/Templates/NagBody_template03 clean_template03
+
+packing_template03:
+	$(MAKE) -f Makefiles/Templates/NagBody_template03 packing_template03
+
+
+# ==================================================================
+# template04 code:
+
+install_template04:
+	$(MAKE) -f Makefiles/Templates/NagBody_template04 install_template04
+
+clean_template04:
+	$(MAKE) -f Makefiles/Templates/NagBody_template04 clean_template04
+
+packing_template04:
+	$(MAKE) -f Makefiles/Templates/NagBody_template04 packing_template04
+
+
+# ==================================================================
+# template05 code:
+
+install_template05:
+	$(MAKE) -f Makefiles/Templates/NagBody_template05 install_template05
+
+clean_template05:
+	$(MAKE) -f Makefiles/Templates/NagBody_template05 clean_template05
+
+packing_template05:
+	$(MAKE) -f Makefiles/Templates/NagBody_template05 packing_template05
+
+
+# ==================================================================
 # template06 code: Structure same as nbody_n2, clean
 
-MAKETEMPLATE06 = Makefiles/templates/NagBody_template06
+MAKETEMPLATE06 = NagBody_sources/templates/template06
 
 install_template06:
-	$(MAKE) -f $(MAKETEMPLATE06) install_template06
+	(cd $(MAKETEMPLATE06); $(MAKE) -f NagBody install_all)
 
 clean_template06:
-	$(MAKE) -f $(MAKETEMPLATE06) clean_template06
+	(cd $(MAKETEMPLATE06); $(MAKE) -f NagBody clean)
 
 packing_template06:
-	$(MAKE) -f $(MAKETEMPLATE06) packing_template06
+	(cd $(MAKETEMPLATE06); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_template06:
+	(cd $(MAKETEMPLATE06); $(MAKE) -f NagBody packing_sources)
 
 packing_gnu_template06:
-	$(MAKE) -f $(MAKETEMPLATE06) packing_gnu_template06
+	(cd $(MAKETEMPLATE06); $(MAKE) -f NagBody packing_gnu_sources)
 
 install_gnu_dirs_template06:
-	$(MAKE) -f $(MAKETEMPLATE06) install_gnu_dirs_template06
+	(cd $(MAKETEMPLATE06); $(MAKE) -f NagBody install_gnu_dirs)
 
 clean_gnu_template06:
-	$(MAKE) -f $(MAKETEMPLATE06) clean_gnu_template06
+	(cd $(MAKETEMPLATE06); $(MAKE) -f NagBody clean_nagbody_gnu)
 
 
 # ==================================================================
 # templateBessel code:
 
+MAKETEMPLATEBESSEL = NagBody_sources/templates/templateBessel
+
 install_templateBessel:
-	$(MAKE) -f Makefiles/NagBody_templateBessel install_templateBessel
+	(cd $(MAKETEMPLATEBESSEL); $(MAKE) -f NagBody install_all)
 
 clean_templateBessel:
-	$(MAKE) -f Makefiles/NagBody_templateBessel clean_templateBessel
+	(cd $(MAKETEMPLATEBESSEL); $(MAKE) -f NagBody clean)
 
 packing_templateBessel:
-	$(MAKE) -f Makefiles/NagBody_templateBessel packing_templateBessel
+	(cd $(MAKETEMPLATEBESSEL); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_templateBessel:
+	(cd $(MAKETEMPLATEBESSEL); $(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
+# templateZ code:
+
+install_templateZ:
+	$(MAKE) -f Makefiles/NagBody_templateZ install_templateZ
+
+clean_templateZ:
+	$(MAKE) -f Makefiles/NagBody_templateZ clean_templateZ
+
+packing_templateZ:
+	$(MAKE) -f Makefiles/NagBody_templateZ packing_templateZ
+
+
+# ==================================================================
+# templateMD code:
+
+install_templateMD:
+	$(MAKE) -f Makefiles/NagBody_templateMD install_templateMD
+
+clean_templateMD:
+	$(MAKE) -f Makefiles/NagBody_templateMD clean_templateMD
+
+packing_templateMD:
+	$(MAKE) -f Makefiles/NagBody_templateMD packing_templateMD
+
+
+# ==================================================================
+# templatemd_lj_n2_mathlink codes:
+
+install_templatemd_lj_n2_mathlink:
+	$(MAKE) -f Makefiles/Templates/NagBody_templatemd_lj_n2_mathlink install_templatemd_lj_n2_mathlink
+
+clean_templatemd_lj_n2_mathlink:
+	$(MAKE) -f Makefiles/Templates/NagBody_templatemd_lj_n2_mathlink clean_templatemd_lj_n2_mathlink
+
+packing_templatemd_lj_n2_mathlink:
+	$(MAKE) -f Makefiles/Templates/NagBody_templatemd_lj_n2_mathlink packing_templatemd_lj_n2_mathlink
 
 
 # ==================================================================
@@ -1236,13 +2462,765 @@ INSTALLDIRS = bin man zip tests man/man1 local
 
 install_dirs:
 	-@for i in $(INSTALLDIRS) ; do \
-	(if [ ! -d $$i ]; then \
-	    echo DIR $$i created; \
-	    mkdir $$i; \
-	fi); done
+        (if [ ! -d $$i ]; then \
+            echo DIR $$i created; \
+            mkdir $$i; \
+        fi); done
 
 
 # ==================================================================
 # END OF NAGBODY GIT REPOSITORY
 # ==================================================================
+
+
+
+
+
+# ==================================================================
+# CMPLXFLUIDS: RAPAPORT
+# ==================================================================
+# pr_02_1 code:
+
+MAKEPR021 = NagBody_sources/cmplxfluids_rapaport/pr_02_1
+
+install_pr_02_1:
+	$(MAKE) -f $(MAKEPR021) install_pr_02_1
+
+clean_pr_02_1:
+	$(MAKE) -f $(MAKEPR021) clean_pr_02_1
+
+packing_pr_02_1:
+	$(MAKE) -f $(MAKEPR021) packing_pr_02_1
+
+
+# ==================================================================
+# pr_02_2 code:
+
+MAKEPR022 = NagBody_sources/cmplxfluids_rapaport/pr_02_2
+
+install_pr_02_2:
+	$(MAKE) -f $(MAKEPR022) install_pr_02_2
+
+clean_pr_02_2:
+	$(MAKE) -f $(MAKEPR022) clean_pr_02_2
+
+packing_pr_02_2:
+	$(MAKE) -f $(MAKEPR022) packing_pr_02_2
+
+
+# ==================================================================
+# pr_03_1 code:
+
+MAKEPR031 = NagBody_sources/cmplxfluids_rapaport/pr_03_1
+
+install_pr_03_1:
+	$(MAKE) -f $(MAKEPR031) install_pr_03_1
+
+clean_pr_03_1:
+	$(MAKE) -f $(MAKEPR031) clean_pr_03_1
+
+packing_pr_03_1:
+	$(MAKE) -f $(MAKEPR031) packing_pr_03_1
+
+
+# ==================================================================
+# pr_12_1 code:
+
+MAKEPR121 = NagBody_sources/cmplxfluids_rapaport/pr_12_1
+
+install_pr_12_1:
+	$(MAKE) -f $(MAKEPR121) install_pr_12_1
+
+clean_pr_12_1:
+	$(MAKE) -f $(MAKEPR121) clean_pr_12_1
+
+packing_pr_12_1:
+	$(MAKE) -f $(MAKEPR121) packing_pr_12_1
+
+
+# ==================================================================
+# CMPLXFLUIDS: MOLECULAR_DYNAMICS:
+# ==================================================================
+# pipe_flow code:
+
+install_pipe_flow:
+	$(MAKE) -f NagBody_sources/NagBody_pipe_flow install_pipe_flow
+
+clean_pipe_flow:
+	$(MAKE) -f Makefiles/NagBody_pipe_flow clean_pipe_flow
+
+packing_pipe_flow:
+	$(MAKE) -f Makefiles/NagBody_pipe_flow packing_pipe_flow
+
+
+#PIPE_FLOW_DIR = NagBody_sources/Molecular_Dynamcis/pipe_flow
+#
+#install_pipe_flow: pipe_flow pipe_flow_man
+#
+#pipe_flow:
+#	(cd $(PIPE_FLOW_DIR);	$(MAKE) -f NagBody install)
+#
+#pipe_flow_man:
+#	(cd $(PIPE_FLOW_DIR);	$(MAKE) -f NagBody install_man)
+#
+#clean_pipe_flow:
+#	(cd $(PIPE_FLOW_DIR);	$(MAKE) -f NagBody clean)
+#
+#clean_pipe_flow_dir:
+#	(cd $(PIPE_FLOW_DIR);	$(MAKE) -f NagBody clean_dir)
+#
+#packing_pipe_flow:
+#	(cd $(PIPE_FLOW_DIR);	$(MAKE) -f NagBody packing_sources)
+
+
+
+
+# ==================================================================
+# COSMOMC_CAMB
+# ==================================================================
+# camb codes: [camb code (with some modifications)]
+#
+
+MAKECAMB = NagBody_sources/cosmomc_camb/camb
+
+install_camb:
+	$(MAKE) -f $(MAKECAMB) install_camb
+
+clean_camb:
+	$(MAKE) -f $(MAKECAMB) clean_camb
+
+packing_camb:
+	$(MAKE) -f $(MAKECAMB) packing_camb
+
+packing_gnu_camb:
+	$(MAKE) -f $(MAKECAMB) packing_gnu_camb
+
+install_gnu_dirs_camb:
+	$(MAKE) -f $(MAKECAMB) install_gnu_dirs_camb
+
+clean_gnu_camb:
+	$(MAKE) -f $(MAKECAMB) clean_gnu_camb
+
+
+# ==================================================================
+# cosmomc codes: [cosmomc codes (with some modifications)]
+#
+
+MAKECOSMOMC = NagBody_sources/cosmomc_camb/cosmomc
+
+install_cosmomc:
+	$(MAKE) -f $(MAKECOSMOMC) install_cosmomc
+
+clean_cosmomc:
+	$(MAKE) -f $(MAKECOSMOMC) clean_cosmomc
+
+packing_cosmomc:
+	$(MAKE) -f $(MAKECOSMOMC) packing_cosmomc
+
+packing_gnu_cosmomc:
+	$(MAKE) -f $(MAKECOSMOMC) packing_gnu_cosmomc
+
+install_gnu_dirs_cosmomc:
+	$(MAKE) -f $(MAKECOSMOMC) install_gnu_dirs_cosmomc
+
+clean_gnu_cosmomc:
+	$(MAKE) -f $(MAKECOSMOMC) clean_gnu_cosmomc
+
+
+# ==================================================================
+# cosmomc_rc codes: [cosmomc codes (with some modifications to study RC)]
+#
+
+MAKECOSMOMCRC = NagBody_sources/cosmomc_camb/cosmomc_rc
+
+install_cosmomc_rc:
+	$(MAKE) -f $(MAKECOSMOMCRC) install_cosmomc_rc
+
+clean_cosmomc_rc:
+	$(MAKE) -f $(MAKECOSMOMCRC) clean_cosmomc_rc
+
+packing_cosmomc_rc:
+	$(MAKE) -f $(MAKECOSMOMCRC) packing_cosmomc_rc
+
+packing_gnu_cosmomc_rc:
+	$(MAKE) -f $(MAKECOSMOMCRC) packing_gnu_cosmomc_rc
+
+install_gnu_dirs_cosmomc_rc:
+	$(MAKE) -f $(MAKECOSMOMCRC) install_gnu_dirs_cosmomc_rc
+
+clean_gnu_cosmomc_rc:
+	$(MAKE) -f $(MAKECOSMOMCRC) clean_gnu_cosmomc_rc
+
+
+# ==================================================================
+# cosmomc_sigmalos codes: [cosmomc codes (with some modifications to study RC)]
+#
+
+MAKECOSMOMCSIGMALOS = NagBody_sources/cosmomc_camb/cosmomc_sigmalos
+
+install_cosmomc_sigmalos:
+	$(MAKE) -f $(MAKECOSMOMCSIGMALOS) install_cosmomc_sigmalos
+
+clean_cosmomc_sigmalos:
+	$(MAKE) -f $(MAKECOSMOMCSIGMALOS) clean_cosmomc_sigmalos
+
+packing_cosmomc_sigmalos:
+	$(MAKE) -f $(MAKECOSMOMCSIGMALOS) packing_cosmomc_sigmalos
+
+packing_gnu_cosmomc_sigmalos:
+	$(MAKE) -f $(MAKECOSMOMCSIGMALOS) packing_gnu_cosmomc_sigmalos
+
+install_gnu_dirs_cosmomc_sigmalos:
+	$(MAKE) -f $(MAKECOSMOMCSIGMALOS) install_gnu_dirs_cosmomc_sigmalos
+
+clean_gnu_cosmomc_sigmalos:
+	$(MAKE) -f $(MAKECOSMOMCSIGMALOS) clean_gnu_cosmomc_sigmalos
+
+
+# ==================================================================
+# cosmomc_quasars codes: [cosmomc codes (with some modifications to study RC)]
+#
+
+MAKECOSMOMCQUASARS = NagBody_sources/cosmomc_camb/cosmomc_quasars
+
+install_cosmomc_quasars:
+	$(MAKE) -f $(MAKECOSMOMCQUASARS) install_cosmomc_quasars
+
+clean_cosmomc_quasars:
+	$(MAKE) -f $(MAKECOSMOMCQUASARS) clean_cosmomc_quasars
+
+packing_cosmomc_quasars:
+	$(MAKE) -f $(MAKECOSMOMCQUASARS) packing_cosmomc_quasars
+
+packing_gnu_cosmomc_quasars:
+	$(MAKE) -f $(MAKECOSMOMCQUASARS) packing_gnu_cosmomc_quasars
+
+install_gnu_dirs_cosmomc_quasars:
+	$(MAKE) -f $(MAKECOSMOMCQUASARS) install_gnu_dirs_cosmomc_quasars
+
+clean_gnu_cosmomc_quasars:
+	$(MAKE) -f $(MAKECOSMOMCQUASARS) clean_gnu_cosmomc_quasars
+
+
+# ==================================================================
+# likelihood_v4 codes: [camb code and libs (with some modifications)]
+#
+
+#MAKELIKELIHOODV4 = Makefiles/cosmomc_camb/likelihood_v4
+MAKELIKELIHOODV4 = NagBody_sources/class/likelihood_v4
+
+install_likelihood_v4:
+	$(MAKE) -f $(MAKELIKELIHOODV4) install_likelihood_v4
+
+clean_likelihood_v4:
+	$(MAKE) -f $(MAKELIKELIHOODV4) clean_likelihood_v4
+
+packing_likelihood_v4:
+	$(MAKE) -f $(MAKELIKELIHOODV4) packing_likelihood_v4
+
+packing_gnu_likelihood_v4:
+	$(MAKE) -f $(MAKELIKELIHOODV4) packing_gnu_likelihood_v4
+
+install_gnu_dirs_likelihood_v4:
+	$(MAKE) -f $(MAKELIKELIHOODV4) install_gnu_dirs_likelihood_v4
+
+clean_gnu_likelihood_v4:
+	$(MAKE) -f $(MAKELIKELIHOODV4) clean_gnu_likelihood_v4
+
+
+# ==================================================================
+# planck2015 codes: [planck2015 code and data (with some modifications)]
+#
+
+MAKEPLANCK2015 = NagBody_sources/class/planck2015
+
+install_planck2015:
+	$(MAKE) -f $(MAKEPLANCK2015) install_planck
+
+clean_planck2015:
+	$(MAKE) -f $(MAKEPLANCK2015) clean_planck
+
+packing_planck2015:
+	$(MAKE) -f $(MAKEPLANCK2015) packing_planck
+
+packing_gnu_planck2015:
+	$(MAKE) -f $(MAKEPLANCK2015) packing_gnu_planck
+
+install_gnu_dirs_planck2015:
+	$(MAKE) -f $(MAKEPLANCK2015) install_gnu_dirs_planck
+
+clean_gnu_planck2015:
+	$(MAKE) -f $(MAKEPLANCK2015) clean_gnu_planck
+
+
+# ==================================================================
+# getdist codes: [cosmomc codes (with some modifications)]
+#
+
+#MAKEGETDIST = NagBody_sources/cosmomc_camb/getdist
+MAKEGETDIST = NagBody_sources/class/getdist
+
+install_getdist:
+	$(MAKE) -f $(MAKEGETDIST) install_getdist
+
+clean_getdist:
+	$(MAKE) -f $(MAKEGETDIST) clean_getdist
+
+packing_getdist:
+	$(MAKE) -f $(MAKEGETDIST) packing_getdist
+
+packing_gnu_getdist:
+	$(MAKE) -f $(MAKEGETDIST) packing_gnu_getdist
+
+install_gnu_dirs_getdist:
+	$(MAKE) -f $(MAKEGETDIST) install_gnu_dirs_getdist
+
+clean_gnu_getdist:
+	$(MAKE) -f $(MAKEGETDIST) clean_gnu_getdist
+
+
+# ==================================================================
+# GENERAL BODY DYNAMICS
+# ==================================================================
+# gbdyn code:
+
+install_gbdyn:
+	$(MAKE) -f NagBody_sources/NagBody_gbdyn install_gbdyn
+
+clean_gbdyn:
+	$(MAKE) -f NagBody_sources/NagBody_gbdyn clean_gbdyn
+
+packing_gbdyn:
+	$(MAKE) -f NagBody_sources/NagBody_gbdyn packing_gbdyn
+
+
+# ==================================================================
+# GADGET1: SERIAL ORIGINAL AND DERIVED
+# ==================================================================
+# s-gadget11 code:
+
+#S-GADGET11_DIR = Originals/s-gadget11
+
+#install_s-gadget11: s-gadget11 s-gadget11_man
+
+#s-gadget11:
+#	(cd $(S-GADGET11_DIR);	$(MAKE) -f NagBody install)
+
+#s-gadget11_man:
+#	(cd $(S-GADGET11_DIR);	$(MAKE) -f NagBody install_man)
+
+#clean_s-gadget11:
+#	(cd $(S-GADGET11_DIR);	$(MAKE) -f NagBody clean)
+
+#clean_s-gadget11_dir:
+#	(cd $(S-GADGET11_DIR);	$(MAKE) -f NagBody clean_dir)
+
+#packing_s-gadget11:
+#	(cd $(S-GADGET11_DIR);	$(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
+# sph_simple code:
+
+MAKESPHSIMPLE = NagBody_sources/gdgt/sph_simple
+
+install_sph_simple:
+	$(MAKE) -f $(MAKESPHSIMPLE) install_sph_simple
+
+clean_sph_simple:
+	$(MAKE) -f $(MAKESPHSIMPLE) clean_sph_simple
+
+packing_sph_simple:
+	$(MAKE) -f $(MAKESPHSIMPLE) packing_sph_simple
+
+packing_gnu_sph_simple:
+	$(MAKE) -f $(MAKESPHSIMPLE) packing_gnu_sph_simple
+
+install_gnu_dirs_sph_simple:
+	$(MAKE) -f $(MAKESPHSIMPLE) install_gnu_dirs_sph_simple
+
+clean_gnu_sph_simple:
+	$(MAKE) -f $(MAKESPHSIMPLE) clean_gnu_sph_simple
+
+#install_sph_simple:
+#	$(MAKE) -f Makefiles/NagBody_sph_simple install_sph_simple
+
+#clean_sph_simple:
+#	$(MAKE) -f Makefiles/NagBody_sph_simple clean_sph_simple
+
+#packing_sph_simple:
+#	$(MAKE) -f Makefiles/NagBody_sph_simple packing_sph_simple
+
+#SPH_SIMPLE_DIR = NagBody_sources/gdgt/sph_simple
+
+#install_sph_simple: sph_simple sph_simple_man
+
+#sph_simple:
+#	(cd $(SPH_SIMPLE_DIR);	$(MAKE) -f NagBody install)
+
+#sph_simple_man:
+#	(cd $(SPH_SIMPLE_DIR);	$(MAKE) -f NagBody install_man)
+
+#clean_sph_simple:
+#	(cd $(SPH_SIMPLE_DIR);	$(MAKE) -f NagBody clean)
+
+#clean_sph_simple_dir:
+#	(cd $(SPH_SIMPLE_DIR);	$(MAKE) -f NagBody clean_dir)
+
+#packing_sph_simple:
+#	(cd $(SPH_SIMPLE_DIR);	$(MAKE) -f NagBody packing_sources)
+
+
+
+# ==================================================================
+# GADGET1: PARALLEL ORIGINAL AND DERIVED
+# ==================================================================
+# nbody_n2_gdgt code: [N-body + direct (version gdgt to parallelize)]
+
+#install_nbody_n2_gdgt:
+#	$(MAKE) -f Makefiles/NagBody_nbody_n2_gdgt install_nbody_n2_gdgt
+#
+#clean_nbody_n2_gdgt:
+#	$(MAKE) -f Makefiles/NagBody_nbody_n2_gdgt clean_nbody_n2_gdgt
+#
+#packing_nbody_n2_gdgt:
+#	$(MAKE) -f Makefiles/NagBody_nbody_n2_gdgt packing_nbody_n2_gdgt
+
+
+# ==================================================================
+# pnbody_n2 code: [N-body + grav + aislado (free boundaries) + direct]
+
+install_pnbody_n2:
+	$(MAKE) -f Makefiles/NagBody_pnbody_n2 install_pnbody_n2
+
+clean_pnbody_n2:
+	$(MAKE) -f Makefiles/NagBody_pnbody_n2 clean_pnbody_n2
+
+packing_pnbody_n2:
+	$(MAKE) -f Makefiles/NagBody_pnbody_n2 packing_pnbody_n2
+
+
+
+
+# ==================================================================
+# pcosmos code:
+
+install_pcosmos:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pcosmos install_pcosmos
+
+clean_pcosmos:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pcosmos clean_pcosmos
+
+packing_pcosmos:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pcosmos packing_pcosmos
+
+# ==================================================================
+# pnbody code: [N-body + grav + aislado (free + periodic boundaries)
+#			 + direct + tree]
+
+install_pnbody:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pnbody install_pnbody
+
+clean_pnbody:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pnbody clean_pnbody
+
+packing_pnbody:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pnbody packing_pnbody
+
+
+# ==================================================================
+# pgnbody code: [N-body + grav + aislado + periodic + tree +
+#			comoving + cosmos + SF (perturbed)]
+# Predecesores: pcosmos y pnbody ...
+
+install_pgnbody:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pgnbody install_pgnbody
+
+clean_pgnbody:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pgnbody clean_pgnbody
+
+packing_pgnbody:
+	$(MAKE) -f Makefiles/gdgt/NagBody_pgnbody packing_pgnbody
+
+
+# ==================================================================
+# pnbody_KanBalam code: [N-body + grav + aislado (free + periodic boundaries)
+#			 + direct + tree]
+
+MAKEPNBODYKANBALAM = NagBody_sources/gravitation/pnbody_KanBalam
+
+install_pnbody_KanBalam:
+	$(MAKE) -f $(MAKEPNBODYKANBALAM) install_pnbody_KanBalam
+
+clean_pnbody_KanBalam:
+	$(MAKE) -f $(MAKEPNBODYKANBALAM) clean_pnbody_KanBalam
+
+packing_pnbody_KanBalam:
+	$(MAKE) -f $(MAKEPNBODYKANBALAM) packing_pnbody_KanBalam
+
+packing_gnu_pnbody_KanBalam:
+	$(MAKE) -f $(MAKEPNBODYKANBALAM) packing_gnu_pnbody_KanBalam
+
+install_gnu_dirs_pnbody_KanBalam:
+	$(MAKE) -f $(MAKEPNBODYKANBALAM) install_gnu_dirs_pnbody_KanBalam
+
+clean_gnu_pnbody_KanBalam:
+	$(MAKE) -f $(MAKEPNBODYKANBALAM) clean_gnu_pnbody_KanBalam
+
+
+# ==================================================================
+# psph code:
+
+PSPH_DIR = NagBody_sources/gdgt/psph
+
+install_psph: psph psph_man
+
+psph:
+	(cd $(PSPH_DIR);	$(MAKE) -f NagBody install)
+
+psph_man:
+	(cd $(PSPH_DIR);	$(MAKE) -f NagBody install_man)
+
+clean_psph:
+	(cd $(PSPH_DIR);	$(MAKE) -f NagBody clean)
+
+packing_psph:
+	(cd $(PSPH_DIR);	$(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
+# GADGET206 DERIVED CODE
+# ==================================================================
+# gadget206 code: [Gadget-2.0.6 (Original version, only slightly modified)]
+
+install_gadget206:
+	$(MAKE) -f Makefiles/NagBody_gadget206 install_gadget206
+
+clean_gadget206:
+	$(MAKE) -f Makefiles/NagBody_gadget206 clean_gadget206
+
+packing_gadget206:
+	$(MAKE) -f Makefiles/NagBody_gadget206 packing_gadget206
+
+
+# ==================================================================
+# pgnbody206 code: [Gadget-2.0.6 (NagBody version)]
+# VER (abajo) pgnbody2 para los detalles de como se pasa a versi—n NagBody 
+
+install_pgnbody206:
+	$(MAKE) -f Makefiles/NagBody_pgnbody206 install_pgnbody206
+
+clean_pgnbody206:
+	$(MAKE) -f Makefiles/NagBody_pgnbody206 clean_pgnbody206
+
+packing_pgnbody206:
+	$(MAKE) -f Makefiles/NagBody_pgnbody206 packing_pgnbody206
+
+
+# ==================================================================
+# pgnbody2 code: [Gadget2, pasado al estilo de NagBody en su funcionamiento de linea de commandos]
+
+install_pgnbody2:
+	$(MAKE) -f Makefiles/NagBody_pgnbody2 install_pgnbody2
+
+clean_pgnbody2:
+	$(MAKE) -f Makefiles/NagBody_pgnbody2 clean_pgnbody2
+
+packing_pgnbody2:
+	$(MAKE) -f Makefiles/NagBody_pgnbody2 packing_pgnbody2
+
+
+# ==================================================================
+# GADGET207: VER MEJORES VERSIONES NAGBODY:
+# ==================================================================
+# ==================================================================
+# gadget207 code: [Gadget-2.0.7 (with some modifications)]
+#
+
+install_gadget207:
+	$(MAKE) -f Makefiles/gdgt2/NagBody_gadget207 install_gadget207
+
+clean_gadget207:
+	$(MAKE) -f Makefiles/gdgt2/NagBody_gadget207 clean_gadget207
+
+packing_gadget207:
+	$(MAKE) -f Makefiles/gdgt2/NagBody_gadget207 packing_gadget207
+
+
+# ==================================================================
+# gadget207 code Additional libraries: []
+#
+
+packing_gadget207_Addlibs:
+	$(MAKE) -f Makefiles/gdgt2/NagBody_gadget207_Addlibs packing_gadget207_Addlibs
+
+
+# ==================================================================
+# gadget2_ruslan code: [Gadget-2_ruslan (with some modifications)]
+#
+
+install_gadget2_ruslan:
+	$(MAKE) -f Makefiles/gdgt2/NagBody_gadget2_ruslan install_gadget2_ruslan
+
+clean_gadget2_ruslan:
+	$(MAKE) -f Makefiles/gdgt2/NagBody_gadget2_ruslan clean_gadget2_ruslan
+
+packing_gadget2_ruslan:
+	$(MAKE) -f Makefiles/gdgt2/NagBody_gadget2_ruslan packing_gadget2_ruslan
+
+
+# ==================================================================
+# STARS
+# ==================================================================
+# staro156_f code: BORRAR
+
+MAKESTARO156F = NagBody_sources/stars/staro156_f
+
+install_staro156_f:
+	$(MAKE) -f $(MAKESTARO156F) install_staro156_f
+
+clean_staro156_f:
+	$(MAKE) -f $(MAKESTARO156F) clean_staro156_f
+
+packing_staro156_f:
+	$(MAKE) -f $(MAKESTARO156F) packing_staro156_f
+
+packing_gnu_staro156_f:
+	$(MAKE) -f $(MAKESTARO156F) packing_gnu_staro156_f
+
+install_gnu_dirs_staro156_f:
+	$(MAKE) -f $(MAKESTARO156F) install_gnu_dirs_staro156_f
+
+clean_gnu_staro156_f:
+	$(MAKE) -f $(MAKESTARO156F) clean_gnu_staro156_f
+
+
+# ==================================================================
+# staro156_c code: BORRAR
+
+MAKESTARO156C = NagBody_sources/stars/staro156_c
+
+install_staro156_c:
+	$(MAKE) -f $(MAKESTARO156C) install_staro156_c
+
+clean_staro156_c:
+	$(MAKE) -f $(MAKESTARO156C) clean_staro156_c
+
+packing_staro156_c:
+	$(MAKE) -f $(MAKESTARO156C) packing_staro156_c
+
+packing_gnu_staro156_c:
+	$(MAKE) -f $(MAKESTARO156C) packing_gnu_staro156_c
+
+install_gnu_dirs_staro156_c:
+	$(MAKE) -f $(MAKESTARO156C) install_gnu_dirs_staro156_c
+
+clean_gnu_staro156_c:
+	$(MAKE) -f $(MAKESTARO156C) clean_gnu_staro156_c
+
+
+# ==================================================================
+# mgstar code:
+
+MAKEMGSTAR = NagBody_sources/stars/mgstar
+
+install_mgstar:
+	$(MAKE) -f $(MAKEMGSTAR) install_mgstar
+
+clean_mgstar:
+	$(MAKE) -f $(MAKEMGSTAR) clean_mgstar
+
+packing_mgstar:
+	$(MAKE) -f $(MAKEMGSTAR) packing_mgstar
+
+packing_gnu_mgstar:
+	$(MAKE) -f $(MAKEMGSTAR) packing_gnu_mgstar
+
+install_gnu_dirs_mgstar:
+	$(MAKE) -f $(MAKEMGSTAR) install_gnu_dirs_mgstar
+
+clean_gnu_mgstar:
+	$(MAKE) -f $(MAKEMGSTAR) clean_gnu_mgstar
+
+
+# ==================================================================
+# [FINITE DIFFERENCES]: SCHRODINGER
+# ==================================================================
+# schrod code:
+
+install_schrod:
+	$(MAKE) -f Makefiles/NagBody_schrod install_schrod
+
+clean_schrod:
+	$(MAKE) -f Makefiles/NagBody_schrod clean_schrod
+
+packing_schrod:
+	$(MAKE) -f Makefiles/NagBody_schrod packing_schrod
+
+
+# ==================================================================
+# analysis_schrod code:
+
+install_analysis_schrod:
+	$(MAKE) -f Makefiles/NagBody_analysis_schrod install_analysis_schrod
+
+clean_analysis_schrod:
+	$(MAKE) -f Makefiles/NagBody_analysis_schrod clean_analysis_schrod
+
+packing_analysis_schrod:
+	$(MAKE) -f Makefiles/NagBody_analysis_schrod packing_analysis_schrod
+
+
+# ==================================================================
+# [FINITE DIFFERENCES]: GRAVITATIONAL COLLAPSE
+# ==================================================================
+# collapse1Df code:
+
+install_collapse1Df:
+	$(MAKE) -f Makefiles/NagBody_collapse1Df install_collapse1Df
+
+clean_collapse1Df:
+	$(MAKE) -f Makefiles/NagBody_collapse1Df clean_collapse1Df
+
+packing_collapse1Df:
+	$(MAKE) -f Makefiles/NagBody_collapse1Df packing_collapse1Df
+
+
+# ==================================================================
+# LICENSES
+# ==================================================================
+# lmgr code:
+
+install_lmgr:
+	$(MAKE) -f Makefiles/NagBody_lmgr install_lmgr
+
+clean_lmgr:
+	$(MAKE) -f Makefiles/NagBody_lmgr clean_lmgr
+
+packing_lmgr:
+	$(MAKE) -f Makefiles/NagBody_lmgr packing_lmgr
+
+#
+#LMGR_DIR = NagBody_sources/Licenses/lmgr
+#
+#install_lmgr: lmgr lmgr_man
+#
+#lmgr:
+#	(cd $(LMGR_DIR);	$(MAKE) -f NagBody install)
+#
+#lmgr_man:
+#	(cd $(LMGR_DIR);	$(MAKE) -f NagBody install_man)
+#
+#clean_lmgr:
+#	(cd $(LMGR_DIR);	$(MAKE) -f NagBody clean)
+#
+#clean_lmgr_dir:
+#	(cd $(LMGR_DIR);	$(MAKE) -f NagBody clean_dir)
+#
+#packing_lmgr:
+#	(cd $(LMGR_DIR);	$(MAKE) -f NagBody packing_sources)
+#
+#packing_lmgr_binaries:
+#	(cd $(LMGR_DIR);	$(MAKE) -f NagBody packing_binaries)
+
 

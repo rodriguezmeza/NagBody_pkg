@@ -9,7 +9,7 @@ Installation:
 
 $ cd $HOME/NagBody_pkg
 
-It is assumed that the trajectory to NagBody_pkg is under the your home directory. Then
+It is assumed that the trajectory to NagBody_pkg is under your home directory. Then
 
 $ make -f NagBody install_dirs
 
@@ -44,7 +44,9 @@ $ source env_config/nagbodyrc.sh
 Go again to tests directory and do the above tests:
 
 $ nbody_n2
+
 $ nbody_n2 -help
+
 $ man nbody_n2
 
 You may see that now you do not need to add ../bin, etc. That is because in the env_config/nagbodyrc.sh there are some additions to the environment variables and you activated by sourcing it.

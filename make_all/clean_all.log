@@ -1,0 +1,87 @@
+(cd NagBody_sources/class/class; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody clean)
+ 
+Cleaning class source dir, binary and man page files...
+(cd src; /Applications/Xcode.app/Contents/Developer/usr/bin/make clean; \
+	rm -f ../../../../bin/class \
+	rm -f ../../../../man/man1/class.1)
+rm -rf /Users/mar/NagBody_pkg/NagBody_sources/class/class/src/build;
+rm -f libclass.a
+rm -f /Users/mar/NagBody_pkg/NagBody_sources/class/class/src/python/classy.c
+rm -rf /Users/mar/NagBody_pkg/NagBody_sources/class/class/src/python/build
+rm -f python/autosetup.py
+(cd NagBody_sources/class/hiclass; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody clean)
+ 
+Cleaning hiclass source dir, binary and man page files...
+(cd src; /Applications/Xcode.app/Contents/Developer/usr/bin/make clean; \
+	rm -f ../../../../bin/hiclass \
+	rm -f ../../../../man/man1/hiclass.1)
+rm -rf /Users/mar/NagBody_pkg/NagBody_sources/class/hiclass/src/build;
+rm -f libclass.a
+rm -f /Users/mar/NagBody_pkg/NagBody_sources/class/hiclass/src/python/classy.c
+rm -rf /Users/mar/NagBody_pkg/NagBody_sources/class/hiclass/src/python/build
+(cd NagBody_sources/class/montepython; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody clean)
+ 
+Cleaning montepython source dir and binary dir (dummy) and man page files)...
+(cd montepython_public; \
+	rm -fR  * ; \
+	rm -f ../../../../man/man1/montepython.1)
+(cd NagBody_sources/class/planck2018; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody clean)
+ 
+Cleaning planck2018 source dir, binaries and man page files...
+(cd src/code/plc_3.0/plc-3.01; ./waf uninstall; ./waf clean; ./waf distclean; /Applications/Xcode.app/Contents/Developer/usr/bin/make clean; \
+	rm -f ../../../../../../../bin/clik* \
+	rm -f ../../../../../../../bin/prepare_wmap \
+	rm -f ../../../../../../../man/man1/planck2018.1)
+Waf: Entering directory `/Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/build'
+add plik/component_plugin/rel2015/fg2015.c
+add plik/component_plugin/rel2015/corrnoise.c
+add plik/component_plugin/rel2015/leakage.c
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/libclik.dylib
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/include/clik_lensing.h
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/include/clik.h
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/clik_example_C
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/libclik_f90.dylib
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/include/errorlist.h
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/clik_example_f90
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/smicahlp.py
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/__init__.py
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/hpy.pyc
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/miniparse.py
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/parobject.pyc
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/cldf.pyc
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/smicahlp.pyo
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/hpy.py
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/smicahlp.pyc
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/parobject.py
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/hpy.pyo
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/__init__.pyc
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/cldf.pyo
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/miniparse.pyo
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/parobject.pyo
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/__init__.pyo
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/miniparse.pyc
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/lib/python/site-packages/clik/cldf.py
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/tsz_143_eps0.50.dat
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/clik_change_lrange_bychannel_pol
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/sz_x_cib_template.dat
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/clik_change_lrange
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/ksz_fromcamspec.dat
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/clik_get_selfcheck
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/cib_1h_2h_100_353_Jsr-1_PS_2014_09.dat
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/prepare_wmap
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/sky_template_v15_F100_143_217_353.dat
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/clik_example_py
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/cnoise_F100_143_217_353_v17.dat
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/clik_print
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/cleak_eh_rd12rc3_v1.dat
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/bin/clik_explore_1d
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/cnoise_e2e_v2.dat
+- remove /Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/share/clik/rel2015/sbpx_tmpl_v4_hm.dat
+Waf: Leaving directory `/Users/mar/Research/Codigos/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/build'
+'uninstall' finished successfully (0.129s)
+add plik/component_plugin/rel2015/fg2015.c
+add plik/component_plugin/rel2015/corrnoise.c
+add plik/component_plugin/rel2015/leakage.c
+'clean' finished successfully (0.069s)
+'distclean' finished successfully (0.029s)
+[36;11mRemoving all in /Users/mar/NagBody_pkg/NagBody_sources/class/planck2018/src/code/plc_3.0/plc-3.01/buildir[0m

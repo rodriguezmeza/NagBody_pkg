@@ -80,5 +80,5 @@ source $HOME/NagBody_pkg/bin/clik_profile.sh
 
 ###################################################################
 # Python environment (ver 3.9):
-export PYTHONPATH=${HOME}/.local/lib/python3.9/site-packages:${PYTHONPATH}
+#export PYTHONPATH=${HOME}/.local/lib/python3.9/site-packages:${PYTHONPATH}
 

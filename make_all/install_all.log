@@ -1,0 +1,311 @@
+(cd NagBody_sources/colas/cola; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody install_all)
+ 
+Creating cola binary...
+(cd src; make; cp cola ../../../../bin/.)
+gcc -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -std=c99 -O3 -Wall  -o cola main.c  auxPM.o gadget_blob.o cola.o -lm -L/Users/mar/NagBody_pkg/local/fftw3/lib -lfftw3f -L/Users/mar/NagBody_pkg/local/gsl/lib -lgsl -lgslcblas 
+ 
+Copying cola man page...
+(cd doc; cp cola.1 ../../../../man/man1/cola.1)
+(cd NagBody_sources/colas/cola_simple; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody install_all)
+ 
+Creating cola_simple binary...
+(cd src; make; cp cola_simple ../../../../bin/.)
+gcc -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -std=c99 -O3 -Wall  -o cola_simple main.c  auxPM.o gadget_blob.o cola.o -lm -L/Users/mar/NagBody_pkg/local/fftw3/lib -lfftw3f -L/Users/mar/NagBody_pkg/local/gsl/lib -lgsl -lgslcblas 
+ 
+Copying cola_simple man page...
+(cd doc; cp cola_simple.m ../../../../man/man1/cola_simple.1)
+(cd NagBody_sources/colas/lpicola; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody install_all)
+ 
+Creating lpicola binary...
+(cd src; make; cp lpicola ../../../../bin/.)
+mpicc -O3 -Wall -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/ -DMEMORY_MODE                             -DPARTICLE_ID                             -DGAUSSIAN                     -DGADGET_STYLE                          -DTIMING                                            main.o cosmo.o auxPM.o 2LPT.o power.o vars.o read_param.o -lm  -L/Users/mar/NagBody_pkg/local/fftw3/lib -lfftw3_mpi -lfftw3 -L/Users/mar/NagBody_pkg/local/gsl/lib -lgsl -lgslcblas -o lpicola
+ 
+Copying lpicola man page...
+(cd doc; cp lpicola.1 ../../../../man/man1/lpicola.1)
+(cd NagBody_sources/colas/mgpicola; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody install_all)
+ 
+Creating mgpicola binary...
+(cd src; make; cp mgpicola_* ../../../../bin/.; \
+	cd SimplePofk; \
+	cd SimplePofk_MPI; make; cp simplepofk_mpi ../../../../../../bin/.; \
+	cd ../SimplePofk_RSD_MPI; make; cp simplepofk_rsd_mpi ../../../../../../bin/.)
+
+=====================================================
+MODEL = [FOFR]  EXEC = [mglpicola_FOFR]
+External options = []
+=====================================================
+
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o main.o main.c
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from main.c:28:
+main.c: In function 'Output_Info':
+main.c:1079:18: warning: '%s' directive writing up to 499 bytes into a region of size 300 [-Wformat-overflow=]
+ 1079 |     sprintf(buf, "%s/info_%s_z%dp%03d.txt", OutputDir, FileBase, (int)Z, (int)rint((Z-(int)Z)*1000));
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+main.c:1079:19: note: format string is defined here
+ 1079 |     sprintf(buf, "%s/info_%s_z%dp%03d.txt", OutputDir, FileBase, (int)Z, (int)rint((Z-(int)Z)*1000));
+      |                   ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from main.c:28:
+main.c:1079:5: note: '__builtin___sprintf_chk' output between 18 and 1034 bytes into a destination of size 300
+ 1079 |     sprintf(buf, "%s/info_%s_z%dp%03d.txt", OutputDir, FileBase, (int)Z, (int)rint((Z-(int)Z)*1000));
+      |     ^~~~~~~
+main.c: In function 'Output':
+main.c:907:22: warning: '%s' directive writing up to 499 bytes into a region of size 300 [-Wformat-overflow=]
+  907 |         sprintf(buf, "%s/%s_z%dp%03d.%d", OutputDir, FileBase, Zint, Zfrac, ThisTask);
+      |                      ^~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+main.c:907:23: note: format string is defined here
+  907 |         sprintf(buf, "%s/%s_z%dp%03d.%d", OutputDir, FileBase, Zint, Zfrac, ThisTask);
+      |                       ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from main.c:28:
+main.c:907:9: note: '__builtin___sprintf_chk' output between 11 and 1037 bytes into a destination of size 300
+  907 |         sprintf(buf, "%s/%s_z%dp%03d.%d", OutputDir, FileBase, Zint, Zfrac, ThisTask);
+      |         ^~~~~~~
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o cosmo.o cosmo.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o auxPM.o auxPM.c
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from auxPM.c:28:
+auxPM.c: In function 'write_grid_to_file':
+auxPM.c:768:16: warning: '%s' directive writing up to 499 bytes into a region of size 300 [-Wformat-overflow=]
+  768 |   sprintf(buf, "%s/%s_%s_z%dp%03d.%d", OutputDir, prefix, FileBase, Zint, Zfrac, ThisTask);
+      |                ^~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+auxPM.c:768:17: note: format string is defined here
+  768 |   sprintf(buf, "%s/%s_%s_z%dp%03d.%d", OutputDir, prefix, FileBase, Zint, Zfrac, ThisTask);
+      |                 ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from auxPM.c:28:
+auxPM.c:768:3: note: '__builtin___sprintf_chk' output 12 or more bytes (assuming 1010) into a destination of size 300
+  768 |   sprintf(buf, "%s/%s_%s_z%dp%03d.%d", OutputDir, prefix, FileBase, Zint, Zfrac, ThisTask);
+      |   ^~~~~~~
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o 2LPT.o 2LPT.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o power.o power.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o vars.o vars.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o read_param.o read_param.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o timer.o timer.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o msg.o msg.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o wrappers.o wrappers.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o jbd.o jbd.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o compute_pofk.o compute_pofk.c
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from compute_pofk.c:1:
+compute_pofk.c: In function 'compute_power_spectrum':
+compute_pofk.c:246:23: warning: '%s' directive writing up to 499 bytes into a region of size between 495 and 994 [-Wformat-overflow=]
+  246 |     sprintf(filename, "%s/pofk_%s_z%d.%03d_%s.txt", OutputDir, FileBase, zint, zfrac, label);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~             ~~~~~~~~
+compute_pofk.c:246:32: note: format string is defined here
+  246 |     sprintf(filename, "%s/pofk_%s_z%d.%03d_%s.txt", OutputDir, FileBase, zint, zfrac, label);
+      |                                ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from compute_pofk.c:1:
+compute_pofk.c:246:5: note: '__builtin___sprintf_chk' output 19 or more bytes (assuming 1017) into a destination of size 1000
+  246 |     sprintf(filename, "%s/pofk_%s_z%d.%03d_%s.txt", OutputDir, FileBase, zint, zfrac, label);
+      |     ^~~~~~~
+compute_pofk.c: In function 'compute_RSD_powerspectrum':
+compute_pofk.c:461:23: warning: '%s' directive writing up to 499 bytes into a region of size between 491 and 990 [-Wformat-overflow=]
+  461 |     sprintf(filename, "%s/pofk_RSD_%s_z%d.%03d.txt", OutputDir, FileBase, zint, zfrac);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~             ~~~~~~~~
+compute_pofk.c:461:36: note: format string is defined here
+  461 |     sprintf(filename, "%s/pofk_RSD_%s_z%d.%03d.txt", OutputDir, FileBase, zint, zfrac);
+      |                                    ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from compute_pofk.c:1:
+compute_pofk.c:461:5: note: '__builtin___sprintf_chk' output between 22 and 1038 bytes into a destination of size 1000
+  461 |     sprintf(filename, "%s/pofk_RSD_%s_z%d.%03d.txt", OutputDir, FileBase, zint, zfrac);
+      |     ^~~~~~~
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                             main.o cosmo.o auxPM.o 2LPT.o power.o vars.o read_param.o timer.o msg.o wrappers.o jbd.o compute_pofk.o readICfromfile.c -lm  -L/Users/mar/NagBody_pkg/local/fftw3/lib -lfftw3_mpi -lfftw3 -L/Users/mar/NagBody_pkg/local/gsl/lib -lgsl -lgslcblas -o mglpicola_FOFR
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from readICfromfile.c:3:
+readICfromfile.c: In function 'ReadFilesMakeDisplacementField':
+readICfromfile.c:379:23: warning: '%s' directive writing up to 199 bytes into a region of size between 0 and 199 [-Wformat-overflow=]
+  379 |     sprintf(filename, "%s/%s.%i", outputdir, fileprefix, i);
+      |                       ^~~~~~~~~~
+readICfromfile.c:379:27: note: format string is defined here
+  379 |     sprintf(filename, "%s/%s.%i", outputdir, fileprefix, i);
+      |                           ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from readICfromfile.c:3:
+readICfromfile.c:379:23: note: directive argument in the range [0, 2147483646]
+  379 |     sprintf(filename, "%s/%s.%i", outputdir, fileprefix, i);
+      |                       ^~~~~~~~~~
+readICfromfile.c:379:5: note: '__builtin___sprintf_chk' output between 4 and 411 bytes into a destination of size 200
+  379 |     sprintf(filename, "%s/%s.%i", outputdir, fileprefix, i);
+      |     ^~~~~~~
+readICfromfile.c:351:23: warning: '%s' directive writing up to 199 bytes into a region of size between 0 and 199 [-Wformat-overflow=]
+  351 |     sprintf(filename, "%s/%s.%i", outputdir, fileprefix, i);
+      |                       ^~~~~~~~~~
+readICfromfile.c:351:27: note: format string is defined here
+  351 |     sprintf(filename, "%s/%s.%i", outputdir, fileprefix, i);
+      |                           ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from readICfromfile.c:3:
+readICfromfile.c:351:23: note: directive argument in the range [1, 2147483647]
+  351 |     sprintf(filename, "%s/%s.%i", outputdir, fileprefix, i);
+      |                       ^~~~~~~~~~
+readICfromfile.c:351:5: note: '__builtin___sprintf_chk' output between 4 and 411 bytes into a destination of size 200
+  351 |     sprintf(filename, "%s/%s.%i", outputdir, fileprefix, i);
+      |     ^~~~~~~
+readICfromfile.c:323:23: warning: '/part_' directive writing 6 bytes into a region of size between 1 and 200 [-Wformat-overflow=]
+  323 |     sprintf(filename, "%s/part_%05i.out%05i", outputdir, outnumber, i);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~
+readICfromfile.c:323:26: note: format string is defined here
+  323 |     sprintf(filename, "%s/part_%05i.out%05i", outputdir, outnumber, i);
+      |                          ^~~~~~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from readICfromfile.c:3:
+readICfromfile.c:323:23: note: directive argument in the range [1, 2147483647]
+  323 |     sprintf(filename, "%s/part_%05i.out%05i", outputdir, outnumber, i);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~
+readICfromfile.c:323:5: note: '__builtin___sprintf_chk' output between 21 and 231 bytes into a destination of size 200
+  323 |     sprintf(filename, "%s/part_%05i.out%05i", outputdir, outnumber, i);
+      |     ^~~~~~~
+cp: mgpicola_*: No such file or directory
+mpicc -o simplepofk_mpi main.c -O3 -Wall -D_DECONVOLVEWINDOWFUNCTION -I/Users/mar/NagBody_pkg/local/fftw3/include -L/Users/mar/NagBody_pkg/local/fftw3/lib -lm -lfftw3_mpi -lfftw3 
+main.c: In function 'compute_pofk':
+main.c:625:3: warning: 'pofk_bin' may be used uninitialized [-Wmaybe-uninitialized]
+  625 |   MPI_Allreduce(pofk_bin, pofk_bin_all, nbins, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/mar/NagBody_pkg/local/fftw3/include/fftw3-mpi.h:51,
+                 from main.c:2:
+/opt/local/include/openmpi-gcc11/mpi.h:1321:20: note: by argument 1 of type 'const void *' to 'MPI_Allreduce' declared here
+ 1321 | OMPI_DECLSPEC  int MPI_Allreduce(const void *sendbuf, void *recvbuf, int count,
+      |                    ^~~~~~~~~~~~~
+mpicc -std=c99 -o simplepofk_rsd_mpi rsd_main.c -O3 -Wall -D_DECONVOLVEWINDOWFUNCTION -D_READVELOCITY -I/Users/mar/NagBody_pkg/local/fftw3/include -L/Users/mar/NagBody_pkg/local/fftw3/lib -lfftw3_mpi -lfftw3 
+rsd_main.c: In function 'compute_2d_pofk':
+rsd_main.c:643:3: warning: 'pofk0_bin' may be used uninitialized [-Wmaybe-uninitialized]
+  643 |   MPI_Allreduce(pofk0_bin, pofk0_bin_all, nbins, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/mar/NagBody_pkg/local/fftw3/include/fftw3-mpi.h:51,
+                 from rsd_main.c:2:
+/opt/local/include/openmpi-gcc11/mpi.h:1321:20: note: by argument 1 of type 'const void *' to 'MPI_Allreduce' declared here
+ 1321 | OMPI_DECLSPEC  int MPI_Allreduce(const void *sendbuf, void *recvbuf, int count,
+      |                    ^~~~~~~~~~~~~
+ 
+Copying mgpicola man page...
+(cd doc; cp mgpicola.1 ../../../../man/man1/mgpicola.1; \
+	cp simplepofk_mpi.1 ../../../../man/man1/simplepofk_mpi.1; \
+	cp simplepofk_rsd_mpi.1 ../../../../man/man1/simplepofk_rsd_mpi.1)
+(cd NagBody_sources/colas/mgpicola_fofr; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody install_all)
+ 
+Creating mgpicola_fofr binary...
+(cd src; make; cp mgpicola_fofr ../../../../bin/. )
+
+=====================================================
+MODEL = []  EXEC = [mgpicola_fofr]
+External options = []
+=====================================================
+
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o main.o main.c
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from main.c:28:
+main.c: In function 'Output_Info':
+main.c:1079:18: warning: '%s' directive writing up to 499 bytes into a region of size 300 [-Wformat-overflow=]
+ 1079 |     sprintf(buf, "%s/info_%s_z%dp%03d.txt", OutputDir, FileBase, (int)Z, (int)rint((Z-(int)Z)*1000));
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+main.c:1079:19: note: format string is defined here
+ 1079 |     sprintf(buf, "%s/info_%s_z%dp%03d.txt", OutputDir, FileBase, (int)Z, (int)rint((Z-(int)Z)*1000));
+      |                   ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from main.c:28:
+main.c:1079:5: note: '__builtin___sprintf_chk' output between 18 and 1034 bytes into a destination of size 300
+ 1079 |     sprintf(buf, "%s/info_%s_z%dp%03d.txt", OutputDir, FileBase, (int)Z, (int)rint((Z-(int)Z)*1000));
+      |     ^~~~~~~
+main.c: In function 'Output':
+main.c:907:22: warning: '%s' directive writing up to 499 bytes into a region of size 300 [-Wformat-overflow=]
+  907 |         sprintf(buf, "%s/%s_z%dp%03d.%d", OutputDir, FileBase, Zint, Zfrac, ThisTask);
+      |                      ^~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+main.c:907:23: note: format string is defined here
+  907 |         sprintf(buf, "%s/%s_z%dp%03d.%d", OutputDir, FileBase, Zint, Zfrac, ThisTask);
+      |                       ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from main.c:28:
+main.c:907:9: note: '__builtin___sprintf_chk' output between 11 and 1037 bytes into a destination of size 300
+  907 |         sprintf(buf, "%s/%s_z%dp%03d.%d", OutputDir, FileBase, Zint, Zfrac, ThisTask);
+      |         ^~~~~~~
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o cosmo.o cosmo.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o auxPM.o auxPM.c
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from auxPM.c:28:
+auxPM.c: In function 'write_grid_to_file':
+auxPM.c:768:16: warning: '%s' directive writing up to 499 bytes into a region of size 300 [-Wformat-overflow=]
+  768 |   sprintf(buf, "%s/%s_%s_z%dp%03d.%d", OutputDir, prefix, FileBase, Zint, Zfrac, ThisTask);
+      |                ^~~~~~~~~~~~~~~~~~~~~~  ~~~~~~~~~
+auxPM.c:768:17: note: format string is defined here
+  768 |   sprintf(buf, "%s/%s_%s_z%dp%03d.%d", OutputDir, prefix, FileBase, Zint, Zfrac, ThisTask);
+      |                 ^~
+In file included from /opt/local/lib/gcc11/gcc/x86_64-apple-darwin21/11.2.0/include-fixed/stdio.h:413,
+                 from vars.h:33,
+                 from auxPM.c:28:
+auxPM.c:768:3: note: '__builtin___sprintf_chk' output 12 or more bytes (assuming 1010) into a destination of size 300
+  768 |   sprintf(buf, "%s/%s_%s_z%dp%03d.%d", OutputDir, prefix, FileBase, Zint, Zfrac, ThisTask);
+      |   ^~~~~~~
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o 2LPT.o 2LPT.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o power.o power.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o vars.o vars.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o read_param.o read_param.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o timer.o timer.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o msg.o msg.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o wrappers.o wrappers.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                               -c -o jbd.o jbd.c
+mpicc -O3 -Wall -std=c99  -I/Users/mar/NagBody_pkg/local/fftw3/include -I/Users/mar/NagBody_pkg/local/gsl/include -I/opt/local/include/openmpi-mp/  -DFOFRGRAVITY -DSCALEDEPENDENT -DGAUSSIAN                      -DMEMORY_MODE	             	   	            -DGADGET_STYLE                            -DPARTICLE_ID                             main.o cosmo.o auxPM.o 2LPT.o power.o vars.o read_param.o timer.o msg.o wrappers.o jbd.o -lm  -L/Users/mar/NagBody_pkg/local/fftw3/lib -lfftw3_mpi -lfftw3 -L/Users/mar/NagBody_pkg/local/gsl/lib -lgsl -lgslcblas -o mgpicola_fofr
+ 
+Copying mgpicola_fofr man page...
+(cd doc; cp mgpicola_fofr.1 ../../../../man/man1/mgpicola_fofr.1)
+(cd NagBody_sources/colas/mgpicola_pofk; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody install_all)
+ 
+Creating mgpicola_pofk binary...
+(cd src; make; cp mgpicola_pofk ../../../../bin/.)
+g++ -o mgpicola_pofk main.cpp -O3 -Wall -fopenmp -D_SUBTRACTSHOTNOISE -D_CIC -I/Users/mar/NagBody_pkg/local/fftw3/include -L/Users/mar/NagBody_pkg/local/fftw3/lib -lfftw3 -lfftw3_threads 
+ 
+Copying mgpicola_pofk man page...
+(cd doc; cp mgpicola_pofk.1 ../../../../man/man1/mgpicola_pofk.1)
+(cd NagBody_sources/colas/mgpicola_pofk_mpi; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody install_all)
+ 
+Creating mgpicola_pofk_mpi binary...
+(cd src; make; cp mgpicola_pofk_mpi ../../../../bin/.)
+mpicc -o mgpicola_pofk_mpi main.c -O3 -Wall -D_DECONVOLVEWINDOWFUNCTION -I/Users/mar/NagBody_pkg/local/fftw3/include -L/Users/mar/NagBody_pkg/local/fftw3/lib -lm -lfftw3_mpi -lfftw3 
+main.c: In function 'compute_pofk':
+main.c:625:3: warning: 'pofk_bin' may be used uninitialized [-Wmaybe-uninitialized]
+  625 |   MPI_Allreduce(pofk_bin, pofk_bin_all, nbins, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/mar/NagBody_pkg/local/fftw3/include/fftw3-mpi.h:51,
+                 from main.c:2:
+/opt/local/include/openmpi-gcc11/mpi.h:1321:20: note: by argument 1 of type 'const void *' to 'MPI_Allreduce' declared here
+ 1321 | OMPI_DECLSPEC  int MPI_Allreduce(const void *sendbuf, void *recvbuf, int count,
+      |                    ^~~~~~~~~~~~~
+ 
+Copying mgpicola_pofk_mpi man page...
+(cd doc; cp mgpicola_pofk_mpi.1 ../../../../man/man1/mgpicola_pofk_mpi.1)
+(cd NagBody_sources/colas/mgpicola_pofk_rsd_mpi; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody install_all)
+ 
+Creating mgpicola_pofk_rsd_mpi binary...
+(cd src; make; cp mgpicola_pofk_rsd_mpi ../../../../bin/.)
+mpicc -std=c99 -o mgpicola_pofk_rsd_mpi rsd_main.c -O3 -Wall -D_DECONVOLVEWINDOWFUNCTION -D_READVELOCITY -I/Users/mar/NagBody_pkg/local/fftw3/include -L/Users/mar/NagBody_pkg/local/fftw3/lib -lfftw3_mpi -lfftw3 
+rsd_main.c: In function 'compute_2d_pofk':
+rsd_main.c:643:3: warning: 'pofk0_bin' may be used uninitialized [-Wmaybe-uninitialized]
+  643 |   MPI_Allreduce(pofk0_bin, pofk0_bin_all, nbins, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /Users/mar/NagBody_pkg/local/fftw3/include/fftw3-mpi.h:51,
+                 from rsd_main.c:2:
+/opt/local/include/openmpi-gcc11/mpi.h:1321:20: note: by argument 1 of type 'const void *' to 'MPI_Allreduce' declared here
+ 1321 | OMPI_DECLSPEC  int MPI_Allreduce(const void *sendbuf, void *recvbuf, int count,
+      |                    ^~~~~~~~~~~~~
+ 
+Copying mgpicola_pofk_rsd_mpi man page...
+(cd doc; cp mgpicola_pofk_rsd_mpi.1 ../../../../man/man1/mgpicola_pofk_rsd_mpi.1)

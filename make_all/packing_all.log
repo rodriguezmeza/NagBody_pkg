@@ -1,0 +1,617 @@
+(cd NagBody_sources/colas/cola; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody packing_sources_no_nagbody)
+ 
+Packing cola sources no NagBody...
+ 
+(cd ../; tar cvf ../../zip/cola.tar \
+		cola/doc \
+		cola/Readme.txt \
+		cola/src/ \
+		cola/tests; \
+	 gzip ../../zip/cola.tar )
+a cola/doc
+a cola/doc/cola.texi
+a cola/doc/.DS_Store
+a cola/doc/Cola-Svetlin_Tassev_2013_J._Cosmol._Astropart._Phys._2013_036.pdf
+a cola/doc/cola.1
+a cola/Readme.txt
+a cola/src
+a cola/src/.DS_Store
+a cola/src/Makefile
+a cola/src/cola.c
+a cola/src/main.c
+a cola/src/auxPM.c
+a cola/src/stuff.h
+a cola/src/.hg_archival.txt
+a cola/src/gadget_blob.c
+a cola/tests
+a cola/tests/.DS_Store
+a cola/tests/Readme.txt
+a cola/tests/Carmen_2lptic-and-zaic_clean
+a cola/tests/Carmen_2lptic-and-zaic_clean/.DS_Store
+a cola/tests/Carmen_2lptic-and-zaic_clean/input_spectrum_LasDamas.dat
+a cola/tests/Carmen_2lptic-and-zaic_clean/run_cola_only
+a cola/tests/Carmen_2lptic-and-zaic_clean/run_2lptic
+a cola/tests/Carmen_2lptic-and-zaic_clean/run_2lptic_za_only
+a cola/tests/Carmen_2lptic-and-zaic_clean/glass1_le
+a cola/tests/Carmen_2lptic-and-zaic_clean/2lpt_Carmen.param
+a cola/tests/Carmen_2lptic-and-zaic_clean/ICs
+a cola/tests/Carmen_2lptic-and-zaic_clean/2lpt_za_only_Carmen.param
+a cola/tests/Carmen_2lptic-and-zaic_clean/ICs/inputspec_ics_za_only_mar.txt
+a cola/tests/Carmen_2lptic-and-zaic_clean/ICs/ics_mar
+a cola/tests/Carmen_2lptic-and-zaic_clean/ICs/inputspec_ics_mar.txt
+a cola/tests/Carmen_2lptic-and-zaic_clean/ICs/ics_za_only_mar
+(cd NagBody_sources/colas/cola_simple; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody packing_sources_no_nagbody)
+ 
+Packing cola_simple sources no NagBody...
+ 
+(cd ../; tar cvf ../../zip/cola_simple.tar \
+		cola_simple/doc \
+		cola_simple/Readme.txt \
+		cola_simple/src/ \
+		cola_simple/tests; \
+	 gzip ../../zip/cola_simple.tar )
+a cola_simple/doc
+a cola_simple/doc/.DS_Store
+a cola_simple/doc/cola_simple.1
+a cola_simple/doc/Cola-Svetlin_Tassev_2013_J._Cosmol._Astropart._Phys._2013_036.pdf
+a cola_simple/doc/cola_simple.m
+a cola_simple/doc/cola_simple.texi
+a cola_simple/Readme.txt
+a cola_simple/src
+a cola_simple/src/.DS_Store
+a cola_simple/src/Makefile
+a cola_simple/src/cola.c
+a cola_simple/src/main.c
+a cola_simple/src/auxPM.c
+a cola_simple/src/stuff.h
+a cola_simple/src/.hg_archival.txt
+a cola_simple/src/gadget_blob.c
+a cola_simple/tests
+a cola_simple/tests/.DS_Store
+a cola_simple/tests/Carmen_2lptic-and-zaic
+a cola_simple/tests/Carmen_2lptic-and-zaic/.DS_Store
+a cola_simple/tests/Carmen_2lptic-and-zaic/input_spectrum_LasDamas.dat
+a cola_simple/tests/Carmen_2lptic-and-zaic/output_cola_only
+a cola_simple/tests/Carmen_2lptic-and-zaic/run_cola_only
+a cola_simple/tests/Carmen_2lptic-and-zaic/run_2lptic
+a cola_simple/tests/Carmen_2lptic-and-zaic/run_2lptic_za_only
+a cola_simple/tests/Carmen_2lptic-and-zaic/glass1_le
+a cola_simple/tests/Carmen_2lptic-and-zaic/2lpt_Carmen.param
+a cola_simple/tests/Carmen_2lptic-and-zaic/ICs
+a cola_simple/tests/Carmen_2lptic-and-zaic/2lpt_za_only_Carmen.param
+a cola_simple/tests/Carmen_2lptic-and-zaic/ICs/inputspec_ics_za_only_mar.txt
+a cola_simple/tests/Carmen_2lptic-and-zaic/ICs/ics_mar
+a cola_simple/tests/Carmen_2lptic-and-zaic/ICs/inputspec_ics_mar.txt
+a cola_simple/tests/Carmen_2lptic-and-zaic/ICs/ics_za_only_mar
+(cd NagBody_sources/colas/lpicola; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody packing_sources_no_nagbody)
+ 
+Packing lpicola sources no NagBody...
+ 
+(cd ../; tar cvf ../../zip/lpicola.tar \
+		lpicola/doc \
+		lpicola/Readme.txt \
+		lpicola/src/ \
+		lpicola/tests; \
+	 gzip ../../zip/lpicola.tar )
+a lpicola/doc
+a lpicola/doc/L-Picola-1-s2.0-S2213133715000700-main.pdf
+a lpicola/doc/.DS_Store
+a lpicola/doc/lpicola.texi
+a lpicola/doc/L-PICOLA_cosmology.pdf
+a lpicola/doc/L-PICOLA.pdf
+a lpicola/doc/README
+a lpicola/doc/lpicola.1
+a lpicola/doc/User_Guide.pdf
+a lpicola/Readme.txt
+a lpicola/src
+a lpicola/src/cosmo.c
+a lpicola/src/.DS_Store
+a lpicola/src/kernel.c
+a lpicola/src/proto.h
+a lpicola/src/Makefile
+a lpicola/src/read_param.c
+a lpicola/src/vars.c
+a lpicola/src/2LPT.c
+a lpicola/src/lightcone.c
+a lpicola/src/power.c
+a lpicola/src/utilities
+a lpicola/src/main.c
+a lpicola/src/auxPM.c
+a lpicola/src/vars.h
+a lpicola/src/Makefile_original
+a lpicola/src/utilities/L-PICOLA_mem.py
+a lpicola/src/utilities/prepare_snapshot.f90
+a lpicola/src/utilities/prepare_lightcone.f90
+a lpicola/tests
+a lpicola/tests/.DS_Store
+a lpicola/tests/B0256_P0256_M0256
+a lpicola/tests/B0256_P0256_M0256/box5001
+a lpicola/tests/B0256_P0256_M0256/.DS_Store
+a lpicola/tests/B0256_P0256_M0256/box5001/B0256_P0256_M0256.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/.DS_Store
+a lpicola/tests/B0256_P0256_M0256/box5001/run_pofk_rsd
+a lpicola/tests/B0256_P0256_M0256/box5001/output
+a lpicola/tests/B0256_P0256_M0256/box5001/run_powmes
+a lpicola/tests/B0256_P0256_M0256/box5001/files
+a lpicola/tests/B0256_P0256_M0256/box5001/run
+a lpicola/tests/B0256_P0256_M0256/box5001/infiles
+a lpicola/tests/B0256_P0256_M0256/box5001/run_pofk
+a lpicola/tests/B0256_P0256_M0256/box5001/run_parameters_from_lpicola.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/infiles/input_spectrum.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/infiles/.DS_Store
+a lpicola/tests/B0256_P0256_M0256/box5001/infiles/WMAP9yrs_matterpower.in
+a lpicola/tests/B0256_P0256_M0256/box5001/infiles/powmes.config
+a lpicola/tests/B0256_P0256_M0256/box5001/infiles/output_redshifts.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/infiles/BLi_matterpower_Extended.in
+a lpicola/tests/B0256_P0256_M0256/box5001/files/input_spectrum.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/files/output_redshifts.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/files/input_kernel_ortho.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/files/input_kernel_local.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/files/run_parameters.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/files/input_transfer.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/files/input_kernel_equil.txt
+a lpicola/tests/B0256_P0256_M0256/box5001/output/.DS_Store
+(cd NagBody_sources/colas/mgpicola; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody packing_sources_no_nagbody)
+ 
+Packing mgpicola sources no NagBody...
+ 
+(cd ../; tar cvf ../../zip/mgpicola.tar \
+		mgpicola/doc \
+		mgpicola/Readme.txt \
+		mgpicola/src/ \
+		mgpicola/tests; \
+	 gzip ../../zip/mgpicola.tar )
+a mgpicola/doc
+a mgpicola/doc/simplepofk.1
+a mgpicola/doc/simplepofk_mpi.texi
+a mgpicola/doc/.DS_Store
+a mgpicola/doc/simplepofk_mpi.1
+a mgpicola/doc/simplepofk_rsd_mpi.1
+a mgpicola/doc/simplepofk_rsd_mpi.texi
+a mgpicola/doc/mgpicola.1
+a mgpicola/doc/README.md
+a mgpicola/doc/mgpicola.texi
+a mgpicola/doc/simplepofk.texi
+a mgpicola/Readme.txt
+a mgpicola/src
+a mgpicola/src/cosmo.c
+a mgpicola/src/msg.c
+a mgpicola/src/timer.c
+a mgpicola/src/.DS_Store
+a mgpicola/src/kernel.c
+a mgpicola/src/proto.h
+a mgpicola/src/SimplePofk
+a mgpicola/src/mg.h
+a mgpicola/src/read_CAMB_data.h
+a mgpicola/src/Makefile
+a mgpicola/src/read_param.c
+a mgpicola/src/vars.c
+a mgpicola/src/compute_pofk.c
+a mgpicola/src/wrappers.h
+a mgpicola/src/2LPT.c
+a mgpicola/src/mm_snap_io.c
+a mgpicola/src/lightcone.c
+a mgpicola/src/timer.h
+a mgpicola/src/power.c
+a mgpicola/src/readICfromfile.c
+a mgpicola/src/msg.h
+a mgpicola/src/mm_main.c
+a mgpicola/src/main.c
+a mgpicola/src/auxPM.c
+a mgpicola/src/mm_common.h
+a mgpicola/src/vars.h
+a mgpicola/src/wrappers.c
+a mgpicola/src/jbd.c
+a mgpicola/src/user_defined_functions.h
+a mgpicola/src/mm_msg.c
+a mgpicola/src/mm_fof.c
+a mgpicola/src/SimplePofk/io_ascii.h
+a mgpicola/src/SimplePofk/.DS_Store
+a mgpicola/src/SimplePofk/SimplePofk_RSD_MPI
+a mgpicola/src/SimplePofk/Makefile
+a mgpicola/src/SimplePofk/calcPofkSimple
+a mgpicola/src/SimplePofk/SimplePofk_MPI
+a mgpicola/src/SimplePofk/README
+a mgpicola/src/SimplePofk/io_gadget.h
+a mgpicola/src/SimplePofk/io_ramses.h
+a mgpicola/src/SimplePofk/main.cpp
+a mgpicola/src/SimplePofk/SimplePofk_MPI/global.h
+a mgpicola/src/SimplePofk/SimplePofk_MPI/Makefile
+a mgpicola/src/SimplePofk/SimplePofk_MPI/main.c
+a mgpicola/src/SimplePofk/SimplePofk_MPI/io_gadget.h
+a mgpicola/src/SimplePofk/SimplePofk_RSD_MPI/global.h
+a mgpicola/src/SimplePofk/SimplePofk_RSD_MPI/Makefile
+a mgpicola/src/SimplePofk/SimplePofk_RSD_MPI/main.c
+a mgpicola/src/SimplePofk/SimplePofk_RSD_MPI/io_gadget.h
+a mgpicola/src/SimplePofk/SimplePofk_RSD_MPI/rsd_main.c
+a mgpicola/tests
+a mgpicola/tests/2lptic
+a mgpicola/tests/Cosma_Acceso.rtf
+a mgpicola/tests/cute
+a mgpicola/tests/.DS_Store
+a mgpicola/tests/powmes_plotting.ipynb
+a mgpicola/tests/GR
+a mgpicola/tests/F4
+a mgpicola/tests/pofk_rsd_avg_error_all_combined_with_GR.ipynb
+a mgpicola/tests/pofk_rsd_avg_error_all_combined_with_GR.ipynb copy
+a mgpicola/tests/pofk_rsd_avg_error_all_combined_with_GR_old.ipynb
+a mgpicola/tests/Elephant simulations.pdf
+a mgpicola/tests/Readme
+a mgpicola/tests/MGPT
+a mgpicola/tests/cosma.zip
+a mgpicola/tests/pofk_rsd_avg_error_all_combined_with_GR.py
+a mgpicola/tests/rockstar
+a mgpicola/tests/.ipynb_checkpoints
+a mgpicola/tests/perturbations
+a mgpicola/tests/Halos
+a mgpicola/tests/Halos/binning_histograms_extract-cols.ipynb
+a mgpicola/tests/Halos/pofk_rsd.ipynb
+a mgpicola/tests/Halos/3pcf.ipynb
+a mgpicola/tests/Halos/2pcf.ipynb
+a mgpicola/tests/Halos/binning_histograms_extract-cols.py
+a mgpicola/tests/Halos/powmes.config-f6-box1-27
+a mgpicola/tests/Halos/.ipynb_checkpoints
+a mgpicola/tests/Halos/pofk.ipynb
+a mgpicola/tests/Halos/.ipynb_checkpoints/pofk_rsd-checkpoint.ipynb
+a mgpicola/tests/perturbations/.DS_Store
+a mgpicola/tests/perturbations/MGPT
+a mgpicola/tests/perturbations/Readme.txt
+a mgpicola/tests/perturbations/MGPT/.DS_Store
+a mgpicola/tests/perturbations/MGPT/Input
+a mgpicola/tests/perturbations/MGPT/Output
+a mgpicola/tests/perturbations/MGPT/README.md
+a mgpicola/tests/perturbations/MGPT/mgpt
+a mgpicola/tests/perturbations/MGPT/.gitignore
+a mgpicola/tests/perturbations/MGPT/.git
+a mgpicola/tests/perturbations/MGPT/parameters.in
+a mgpicola/tests/perturbations/MGPT/src
+a mgpicola/tests/perturbations/MGPT/src/main.o
+a mgpicola/tests/perturbations/MGPT/src/mgpt_io.c
+a mgpicola/tests/perturbations/MGPT/src/mgpt.c
+a mgpicola/tests/perturbations/MGPT/src/mgpt_quads.o
+a mgpicola/tests/perturbations/MGPT/src/startrun.c
+a mgpicola/tests/perturbations/MGPT/src/Makefile
+a mgpicola/tests/perturbations/MGPT/src/models.c
+a mgpicola/tests/perturbations/MGPT/src/mgpt_postprocess.o
+a mgpicola/tests/perturbations/MGPT/src/mgpt_diffeqs.o
+a mgpicola/tests/perturbations/MGPT/src/globaldefs.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs
+a mgpicola/tests/perturbations/MGPT/src/models_user.h
+a mgpicola/tests/perturbations/MGPT/src/mgpt
+a mgpicola/tests/perturbations/MGPT/src/main.c
+a mgpicola/tests/perturbations/MGPT/src/startrun.o
+a mgpicola/tests/perturbations/MGPT/src/mgpt_quads.c
+a mgpicola/tests/perturbations/MGPT/src/models_bak.c
+a mgpicola/tests/perturbations/MGPT/src/mgpt_io.o
+a mgpicola/tests/perturbations/MGPT/src/mgpt.o
+a mgpicola/tests/perturbations/MGPT/src/mgpt_diffeqs.c
+a mgpicola/tests/perturbations/MGPT/src/mgpt_postprocess.c
+a mgpicola/tests/perturbations/MGPT/src/models.o
+a mgpicola/tests/perturbations/MGPT/src/cmdline_defs.h
+a mgpicola/tests/perturbations/MGPT/src/models.h
+a mgpicola/tests/perturbations/MGPT/src/protodefs.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/getparam.o
+a mgpicola/tests/perturbations/MGPT/src/general_libs/getparam.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/mathfns.o
+a mgpicola/tests/perturbations/MGPT/src/general_libs/mathfns.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/stdinc.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/numrec.c
+a mgpicola/tests/perturbations/MGPT/src/general_libs/vectmath.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/clib.c
+a mgpicola/tests/perturbations/MGPT/src/general_libs/switchs.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/mathutil.c
+a mgpicola/tests/perturbations/MGPT/src/general_libs/inout.c
+a mgpicola/tests/perturbations/MGPT/src/general_libs/precision.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/constant.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/quads.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/quads.o
+a mgpicola/tests/perturbations/MGPT/src/general_libs/diffeqs.c
+a mgpicola/tests/perturbations/MGPT/src/general_libs/vectdefs.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/strings.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/numrec.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/numrec.o
+a mgpicola/tests/perturbations/MGPT/src/general_libs/mathfns.c
+a mgpicola/tests/perturbations/MGPT/src/general_libs/getparam.c
+a mgpicola/tests/perturbations/MGPT/src/general_libs/clib.o
+a mgpicola/tests/perturbations/MGPT/src/general_libs/machines.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/quads.c
+a mgpicola/tests/perturbations/MGPT/src/general_libs/diffeqs.o
+a mgpicola/tests/perturbations/MGPT/src/general_libs/diffeqs.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/inout.h
+a mgpicola/tests/perturbations/MGPT/src/general_libs/mathutil.o
+a mgpicola/tests/perturbations/MGPT/src/general_libs/inout.o
+a mgpicola/tests/perturbations/MGPT/src/general_libs/mathutil.h
+a mgpicola/tests/perturbations/MGPT/.git/config
+a mgpicola/tests/perturbations/MGPT/.git/objects
+a mgpicola/tests/perturbations/MGPT/.git/HEAD
+a mgpicola/tests/perturbations/MGPT/.git/info
+a mgpicola/tests/perturbations/MGPT/.git/logs
+a mgpicola/tests/perturbations/MGPT/.git/description
+a mgpicola/tests/perturbations/MGPT/.git/hooks
+a mgpicola/tests/perturbations/MGPT/.git/refs
+a mgpicola/tests/perturbations/MGPT/.git/index
+a mgpicola/tests/perturbations/MGPT/.git/packed-refs
+a mgpicola/tests/perturbations/MGPT/.git/refs/heads
+a mgpicola/tests/perturbations/MGPT/.git/refs/tags
+a mgpicola/tests/perturbations/MGPT/.git/refs/remotes
+a mgpicola/tests/perturbations/MGPT/.git/refs/remotes/origin
+a mgpicola/tests/perturbations/MGPT/.git/refs/remotes/origin/HEAD
+a mgpicola/tests/perturbations/MGPT/.git/refs/heads/master
+a mgpicola/tests/perturbations/MGPT/.git/hooks/commit-msg.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/pre-rebase.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/pre-commit.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/applypatch-msg.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/fsmonitor-watchman.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/pre-receive.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/prepare-commit-msg.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/post-update.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/pre-applypatch.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/pre-push.sample
+a mgpicola/tests/perturbations/MGPT/.git/hooks/update.sample
+a mgpicola/tests/perturbations/MGPT/.git/logs/HEAD
+a mgpicola/tests/perturbations/MGPT/.git/logs/refs
+a mgpicola/tests/perturbations/MGPT/.git/logs/refs/heads
+a mgpicola/tests/perturbations/MGPT/.git/logs/refs/remotes
+a mgpicola/tests/perturbations/MGPT/.git/logs/refs/remotes/origin
+a mgpicola/tests/perturbations/MGPT/.git/logs/refs/remotes/origin/HEAD
+a mgpicola/tests/perturbations/MGPT/.git/logs/refs/heads/master
+a mgpicola/tests/perturbations/MGPT/.git/info/exclude
+a mgpicola/tests/perturbations/MGPT/.git/objects/pack
+a mgpicola/tests/perturbations/MGPT/.git/objects/info
+a mgpicola/tests/perturbations/MGPT/.git/objects/pack/pack-edf6d98d9567c82746282eee5fd78db8ff3e7756.pack
+a mgpicola/tests/perturbations/MGPT/.git/objects/pack/pack-edf6d98d9567c82746282eee5fd78db8ff3e7756.idx
+a mgpicola/tests/perturbations/MGPT/Output/CorrelationFunction_F5.dat
+a mgpicola/tests/perturbations/MGPT/Output/qfunctions_F5.dat
+a mgpicola/tests/perturbations/MGPT/Output/kfunctions_F5.dat
+a mgpicola/tests/perturbations/MGPT/Input/WMAP9yrs_matterpower.in
+a mgpicola/tests/perturbations/MGPT/Input/psLCDM.in
+a mgpicola/tests/.ipynb_checkpoints/pofk_rsd_avg_error_all_combined_with_GR-checkpoint.ipynb
+a mgpicola/tests/rockstar/rockstar.cfg
+a mgpicola/tests/rockstar/halos_0.0.bin
+a mgpicola/tests/rockstar/.DS_Store
+a mgpicola/tests/rockstar/auto-rockstar.cfg
+a mgpicola/tests/rockstar/output
+a mgpicola/tests/rockstar/restart.cfg
+a mgpicola/tests/rockstar/halos_0.0.ascii
+a mgpicola/tests/rockstar/quickstart.cfg
+a mgpicola/tests/rockstar/parallel.cfg
+a mgpicola/tests/rockstar/output/snapshot_z0p000.0
+a mgpicola/tests/MGPT/.DS_Store
+a mgpicola/tests/MGPT/parameters_null-nplot2d-usedvalues
+a mgpicola/tests/MGPT/CorrelationFunction.dat
+a mgpicola/tests/MGPT/Input
+a mgpicola/tests/MGPT/Output
+a mgpicola/tests/MGPT/mgpt
+a mgpicola/tests/MGPT/SPTPowerSpectrum.dat
+a mgpicola/tests/MGPT/nplot2d.log
+a mgpicola/tests/MGPT/tmp
+a mgpicola/tests/MGPT/tmp/psLCDM.in_ext2.dat
+a mgpicola/tests/MGPT/tmp/mgpt.log
+a mgpicola/tests/MGPT/tmp/psLCDM.in_ext.dat
+a mgpicola/tests/MGPT/tmp/parameters_null-mgpt-usedvalues
+a mgpicola/tests/MGPT/Output/qfunctions.dat
+a mgpicola/tests/MGPT/Output/kfunctions.dat
+a mgpicola/tests/MGPT/Output/PSL.dat
+a mgpicola/tests/MGPT/Input/WMAP9yrs_matterpower.in
+a mgpicola/tests/MGPT/Input/psLCDM.in
+a mgpicola/tests/F4/.DS_Store
+a mgpicola/tests/F4/box1001
+a mgpicola/tests/F4/box1001/pofk_rsd_z0p000.py
+a mgpicola/tests/F4/box1001/.DS_Store
+a mgpicola/tests/F4/box1001/B0200_P0512_M0512.txt
+a mgpicola/tests/F4/box1001/run_pofk_rsd_nbodykit
+a mgpicola/tests/F4/box1001/run_pofk_nbodykit
+a mgpicola/tests/F4/box1001/run_pofk_rsd
+a mgpicola/tests/F4/box1001/output
+a mgpicola/tests/F4/box1001/pofk_z0p000.py
+a mgpicola/tests/F4/box1001/pofk_rsd_z1p000.py
+a mgpicola/tests/F4/box1001/run_powmes
+a mgpicola/tests/F4/box1001/pofk_rsd_z0p500.py
+a mgpicola/tests/F4/box1001/files
+a mgpicola/tests/F4/box1001/run
+a mgpicola/tests/F4/box1001/infiles
+a mgpicola/tests/F4/box1001/pofk_z0p500.py
+a mgpicola/tests/F4/box1001/pofk_z1p000.py
+a mgpicola/tests/F4/box1001/run_pofk
+a mgpicola/tests/F4/box1001/infiles/input_spectrum.txt
+a mgpicola/tests/F4/box1001/infiles/.DS_Store
+a mgpicola/tests/F4/box1001/infiles/powmes_z1p000.config
+a mgpicola/tests/F4/box1001/infiles/WMAP9yrs_matterpower.in
+a mgpicola/tests/F4/box1001/infiles/powmes_z0p500.config
+a mgpicola/tests/F4/box1001/infiles/output_redshifts.txt
+a mgpicola/tests/F4/box1001/infiles/powmes_z0p000.config
+a mgpicola/tests/F4/box1001/infiles/BLi_matterpower_Extended.in
+a mgpicola/tests/F4/box1001/files/input_spectrum.txt
+a mgpicola/tests/F4/box1001/files/output_redshifts.txt
+a mgpicola/tests/F4/box1001/files/input_kernel_ortho.txt
+a mgpicola/tests/F4/box1001/files/input_kernel_local.txt
+a mgpicola/tests/F4/box1001/files/run_parameters.txt
+a mgpicola/tests/F4/box1001/files/input_transfer.txt
+a mgpicola/tests/F4/box1001/files/input_kernel_equil.txt
+a mgpicola/tests/F4/box1001/output/.DS_Store
+a mgpicola/tests/GR/.DS_Store
+a mgpicola/tests/GR/box1001
+a mgpicola/tests/GR/box1001/pofk_rsd_z0p000.py
+a mgpicola/tests/GR/box1001/.DS_Store
+a mgpicola/tests/GR/box1001/B0200_P0512_M0512.txt
+a mgpicola/tests/GR/box1001/run_pofk_rsd_nbodykit
+a mgpicola/tests/GR/box1001/pofk_rsd.ipynb
+a mgpicola/tests/GR/box1001/run_pofk_nbodykit
+a mgpicola/tests/GR/box1001/pofk_rsd.py
+a mgpicola/tests/GR/box1001/run_pofk_rsd
+a mgpicola/tests/GR/box1001/output
+a mgpicola/tests/GR/box1001/pofk_z0p000.py
+a mgpicola/tests/GR/box1001/pofk_rsd_z1p000.py
+a mgpicola/tests/GR/box1001/run_powmes
+a mgpicola/tests/GR/box1001/pofk_rsd_z0p500.py
+a mgpicola/tests/GR/box1001/files
+a mgpicola/tests/GR/box1001/.ipynb_checkpoints
+a mgpicola/tests/GR/box1001/run
+a mgpicola/tests/GR/box1001/pofk.ipynb
+a mgpicola/tests/GR/box1001/infiles
+a mgpicola/tests/GR/box1001/pofk_z0p500.py
+a mgpicola/tests/GR/box1001/pofk_z1p000.py
+a mgpicola/tests/GR/box1001/run_pofk
+a mgpicola/tests/GR/box1001/infiles/input_spectrum.txt
+a mgpicola/tests/GR/box1001/infiles/.DS_Store
+a mgpicola/tests/GR/box1001/infiles/powmes_z1p000.config
+a mgpicola/tests/GR/box1001/infiles/WMAP9yrs_matterpower.in
+a mgpicola/tests/GR/box1001/infiles/powmes_z0p500.config
+a mgpicola/tests/GR/box1001/infiles/output_redshifts.txt
+a mgpicola/tests/GR/box1001/infiles/powmes_z0p000.config
+a mgpicola/tests/GR/box1001/infiles/BLi_matterpower_Extended.in
+a mgpicola/tests/GR/box1001/.ipynb_checkpoints/2pcf-checkpoint.ipynb
+a mgpicola/tests/GR/box1001/.ipynb_checkpoints/pofk-checkpoint.ipynb
+a mgpicola/tests/GR/box1001/files/input_spectrum.txt
+a mgpicola/tests/GR/box1001/files/output_redshifts.txt
+a mgpicola/tests/GR/box1001/files/input_kernel_ortho.txt
+a mgpicola/tests/GR/box1001/files/input_kernel_local.txt
+a mgpicola/tests/GR/box1001/files/run_parameters.txt
+a mgpicola/tests/GR/box1001/files/input_transfer.txt
+a mgpicola/tests/GR/box1001/files/input_kernel_equil.txt
+a mgpicola/tests/GR/box1001/output/.DS_Store
+a mgpicola/tests/cute/README_cute_box
+a mgpicola/tests/cute/params.txt
+a mgpicola/tests/cute/README_cute
+a mgpicola/tests/cute/data.dat
+a mgpicola/tests/2lptic/.DS_Store
+a mgpicola/tests/2lptic/parameters_null-nplot2d-usedvalues
+a mgpicola/tests/2lptic/input_spectrum_LasDamas.dat
+a mgpicola/tests/2lptic/powmes.config
+a mgpicola/tests/2lptic/2lpt.sh
+a mgpicola/tests/2lptic/2lpt_Carmen_only_ZA.param
+a mgpicola/tests/2lptic/ngenic
+a mgpicola/tests/2lptic/glass1_le
+a mgpicola/tests/2lptic/2lpt_Carmen.param
+a mgpicola/tests/2lptic/pofk.dat
+a mgpicola/tests/2lptic/powspec.dat
+a mgpicola/tests/2lptic/nplot2d.log
+a mgpicola/tests/2lptic/ICs
+a mgpicola/tests/2lptic/pofk_za.dat
+a mgpicola/tests/2lptic/ICs/.DS_Store
+a mgpicola/tests/2lptic/ngenic/show_output_spectrum.pro
+a mgpicola/tests/2lptic/ngenic/.DS_Store
+a mgpicola/tests/2lptic/ngenic/parameters_null-nplot2d-usedvalues
+a mgpicola/tests/2lptic/ngenic/powmes.config
+a mgpicola/tests/2lptic/ngenic/dummy_glass.dat
+a mgpicola/tests/2lptic/ngenic/make_dummy_glass.pro
+a mgpicola/tests/2lptic/ngenic/ics.param
+a mgpicola/tests/2lptic/ngenic/pofk.dat
+a mgpicola/tests/2lptic/ngenic/powspec.dat
+a mgpicola/tests/2lptic/ngenic/job.sh
+a mgpicola/tests/2lptic/ngenic/nplot2d.log
+a mgpicola/tests/2lptic/ngenic/ICs
+a mgpicola/tests/2lptic/ngenic/ICs/ics.0
+a mgpicola/tests/2lptic/ngenic/ICs/inputspec_ics.txt
+(cd NagBody_sources/colas/mgpicola_fofr; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody packing_sources_no_nagbody)
+ 
+Packing mgpicola_fofr sources no NagBody...
+ 
+(cd ../; tar cvf ../../zip/mgpicola_fofr.tar \
+		mgpicola_fofr/doc \
+		mgpicola_fofr/Readme.txt \
+		mgpicola_fofr/src/ \
+		mgpicola_fofr/tests; \
+	 gzip ../../zip/mgpicola_fofr.tar )
+a mgpicola_fofr/doc
+a mgpicola_fofr/doc/.DS_Store
+a mgpicola_fofr/doc/mgpicola_fofr.1
+a mgpicola_fofr/doc/mgpicola_fofr.texi
+a mgpicola_fofr/Readme.txt
+a mgpicola_fofr/src
+a mgpicola_fofr/src/cosmo.c
+a mgpicola_fofr/src/msg.c
+a mgpicola_fofr/src/timer.c
+a mgpicola_fofr/src/.DS_Store
+a mgpicola_fofr/src/proto.h
+a mgpicola_fofr/src/mg.h
+a mgpicola_fofr/src/read_CAMB_data.h
+a mgpicola_fofr/src/Makefile
+a mgpicola_fofr/src/read_param.c
+a mgpicola_fofr/src/vars.c
+a mgpicola_fofr/src/wrappers.h
+a mgpicola_fofr/src/Makefile_starting
+a mgpicola_fofr/src/2LPT.c
+a mgpicola_fofr/src/timer.h
+a mgpicola_fofr/src/power.c
+a mgpicola_fofr/src/msg.h
+a mgpicola_fofr/src/main.c
+a mgpicola_fofr/src/auxPM.c
+a mgpicola_fofr/src/vars.h
+a mgpicola_fofr/src/wrappers.c
+a mgpicola_fofr/src/jbd.c
+a mgpicola_fofr/src/user_defined_functions.h
+a mgpicola_fofr/tests
+a mgpicola_fofr/tests/Readme.txt
+(cd NagBody_sources/colas/mgpicola_pofk; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody packing_sources_no_nagbody)
+ 
+Packing mgpicola_pofk sources no NagBody...
+ 
+(cd ../; tar cvf ../../zip/mgpicola_pofk.tar \
+		mgpicola_pofk/doc \
+		mgpicola_pofk/Readme.txt \
+		mgpicola_pofk/src/ \
+		mgpicola_pofk/tests; \
+	 gzip ../../zip/mgpicola_pofk.tar )
+a mgpicola_pofk/doc
+a mgpicola_pofk/doc/mgpicola_pofk.1
+a mgpicola_pofk/doc/.DS_Store
+a mgpicola_pofk/doc/mgpicola_pofk.texi
+a mgpicola_pofk/Readme.txt
+a mgpicola_pofk/src
+a mgpicola_pofk/src/io_ascii.h
+a mgpicola_pofk/src/.DS_Store
+a mgpicola_pofk/src/Makefile
+a mgpicola_pofk/src/README
+a mgpicola_pofk/src/io_gadget.h
+a mgpicola_pofk/src/io_ramses.h
+a mgpicola_pofk/src/main.cpp
+a mgpicola_pofk/tests
+a mgpicola_pofk/tests/Readme.txt
+(cd NagBody_sources/colas/mgpicola_pofk_mpi; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody packing_sources_no_nagbody)
+ 
+Packing mgpicola_pofk_mpi sources no NagBody...
+ 
+(cd ../; tar cvf ../../zip/mgpicola_pofk_mpi.tar \
+		mgpicola_pofk_mpi/doc \
+		mgpicola_pofk_mpi/Readme.txt \
+		mgpicola_pofk_mpi/src/ \
+		mgpicola_pofk_mpi/tests; \
+	 gzip ../../zip/mgpicola_pofk_mpi.tar )
+a mgpicola_pofk_mpi/doc
+a mgpicola_pofk_mpi/doc/.DS_Store
+a mgpicola_pofk_mpi/doc/mgpicola_pofk_mpi.texi
+a mgpicola_pofk_mpi/doc/mgpicola_pofk_mpi.1
+a mgpicola_pofk_mpi/Readme.txt
+a mgpicola_pofk_mpi/src
+a mgpicola_pofk_mpi/src/.DS_Store
+a mgpicola_pofk_mpi/src/global.h
+a mgpicola_pofk_mpi/src/Makefile
+a mgpicola_pofk_mpi/src/main.c
+a mgpicola_pofk_mpi/src/io_gadget.h
+a mgpicola_pofk_mpi/tests
+a mgpicola_pofk_mpi/tests/Readme.txt
+(cd NagBody_sources/colas/mgpicola_pofk_rsd_mpi; /Applications/Xcode.app/Contents/Developer/usr/bin/make -f NagBody packing_sources_no_nagbody)
+ 
+Packing mgpicola_pofk_rsd_mpi sources no NagBody...
+ 
+(cd ../; tar cvf ../../zip/mgpicola_pofk_rsd_mpi.tar \
+		mgpicola_pofk_rsd_mpi/doc \
+		mgpicola_pofk_rsd_mpi/Readme.txt \
+		mgpicola_pofk_rsd_mpi/src/ \
+		mgpicola_pofk_rsd_mpi/tests; \
+	 gzip ../../zip/mgpicola_pofk_rsd_mpi.tar )
+a mgpicola_pofk_rsd_mpi/doc
+a mgpicola_pofk_rsd_mpi/doc/.DS_Store
+a mgpicola_pofk_rsd_mpi/doc/mgpicola_pofk_rsd_mpi.texi
+a mgpicola_pofk_rsd_mpi/doc/mgpicola_pofk_rsd_mpi.1
+a mgpicola_pofk_rsd_mpi/Readme.txt
+a mgpicola_pofk_rsd_mpi/src
+a mgpicola_pofk_rsd_mpi/src/.DS_Store
+a mgpicola_pofk_rsd_mpi/src/global.h
+a mgpicola_pofk_rsd_mpi/src/Makefile
+a mgpicola_pofk_rsd_mpi/src/main.c
+a mgpicola_pofk_rsd_mpi/src/io_gadget.h
+a mgpicola_pofk_rsd_mpi/src/rsd_main.c
+a mgpicola_pofk_rsd_mpi/tests
+a mgpicola_pofk_rsd_mpi/tests/Readme.txt
