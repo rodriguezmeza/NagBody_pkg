@@ -37,7 +37,7 @@ cmplxflds
 3. md_blj		: molecular dynamics code to simulate binary systems using various methods
 			: to compute the force among particles
 4. md_ic_model		: code to generate initial conditions for molecular dynamics simulations
-5. md_lj_tree		: molecular dynamics code, to simulate binary systems (Tree method to compute foreces)
+5. md_lj_tree		: molecular dynamics code, to simulate binary systems (Tree method to compute forces)
 
 
 colas
@@ -82,6 +82,7 @@ gravitation
 3. gbsph		: code to evolve an N-body system (tree method)
 4. analysis_grav	: code to analyse output of the nbody_n2 (gbsph)
 5. analysis_galaxy	: code to analyse output of the galaxy
+6. galaxy_hernquist	: code to generate galaxy IC by Hernquist
 7. galaxy_starscream	: set two galaxy in parabolic initial condition to collide
 8. galaxy_model		: generates galaxy initial condition. Useful for small N.
 
