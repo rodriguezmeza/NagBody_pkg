@@ -1,0 +1,94 @@
+# NagBody install file - gsl code/lib
+# Copyright (c) 2006-2022  Mario A. Rodriguez-Meza, Mexico, D.F.
+
+CODE_NAME = gsl
+PARENT_CODE_NAME = additional_libs
+
+INSTALL_PATH = ../../../..
+
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+install_all: install
+
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) binary..."
+	(tar xvf gsl-latest.tar.gz; \
+	cd gsl-2.7.1; \
+	./configure --prefix=$(HOME)/NagBody_pkg/local/gsl 2>&1 | tee configure_gsl.log; \
+	make 2>&1 | tee make_gsl.log; \
+	make check 2>&1 | tee check_gsl.log ; \
+	make install 2>&1 | tee install_gsl.log)
+
+# ==================================================================
+# Test $(CODE_NAME)
+
+install_test:
+	@echo " "
+	@echo "Testing $(CODE_NAME) done with install..."
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
+	(cd gsl-2.7.1; $(MAKE) distclean; \
+	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/gsl-latest.tar.gz \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/tests; \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+#####################################
+#####################################
+# PACKING (TAR) (INDEPENDENT of NagBody)
+#
+PACK_NAGBODY_DIR = ../..
+PACK_ZIP_NO_NAGBODY_DIR = $(PACK_NAGBODY_DIR)/zip
+
+#####################################
+packing_sources_no_nagbody:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources no NagBody..."
+	@echo " "
+	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
+		$(CODE_NAME)/doc \
+		$(CODE_NAME)/Readme.txt \
+		$(CODE_NAME)/gsl-latest.tar.gz \
+		$(CODE_NAME)/tests; \
+	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
+

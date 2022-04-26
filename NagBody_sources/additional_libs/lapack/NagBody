@@ -1,0 +1,104 @@
+# NagBody install file - lapack code/lib
+# Copyright (c) 2006-2022  Mario A. Rodriguez-Meza, Mexico, D.F.
+
+CODE_NAME = lapack
+PARENT_CODE_NAME = additional_libs
+
+INSTALL_PATH = ../../../..
+
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+install_all: install
+
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) binary..."
+	(tar xvf lapack-3.10.1.tar.gz; \
+	cd lapack-3.10.1; \
+	make all 2>&1 | tee make_all_lapack.log; \
+	mkdir $(INSTALL_PATH)/local/$(CODE_NAME) ; \
+	mkdir $(INSTALL_PATH)/local/$(CODE_NAME)/lib ;\
+	cp librefblas.a $(INSTALL_PATH)/local/$(CODE_NAME)/lib/. ; \
+	cp libcblas.a $(INSTALL_PATH)/local/$(CODE_NAME)/lib/. ; \
+	cp liblapack.a $(INSTALL_PATH)/local/$(CODE_NAME)/lib/. ; \
+	cp liblapacke.a $(INSTALL_PATH)/local/$(CODE_NAME)/lib/. ; \
+	cp libtmglib.a $(INSTALL_PATH)/local/$(CODE_NAME)/lib/. ; \
+	make clean)
+
+
+# Was done and tar file is updated. Also Makefile was updated.
+#	cp INSTALL/make.inc.gfortran make.inc; \
+
+# ==================================================================
+# Test $(CODE_NAME)
+
+install_test:
+	@echo " "
+	@echo "Testing $(CODE_NAME)..."
+	(cd lapack-3.10.1; make test)
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
+	(cd lapack-3.10.1; $(MAKE) clean; \
+	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/lapack-3.10.1.tar.gz \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/tests; \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+#####################################
+#####################################
+# PACKING (TAR) (INDEPENDENT of NagBody)
+#
+PACK_NAGBODY_DIR = ../..
+PACK_ZIP_NO_NAGBODY_DIR = $(PACK_NAGBODY_DIR)/zip
+
+#####################################
+packing_sources_no_nagbody:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources no NagBody..."
+	@echo " "
+	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
+		$(CODE_NAME)/doc \
+		$(CODE_NAME)/Readme.txt \
+		$(CODE_NAME)/lapack-3.10.1.tar.gz \
+		$(CODE_NAME)/tests; \
+	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
+

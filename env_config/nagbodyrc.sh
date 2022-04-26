@@ -11,22 +11,23 @@
 # NagBody Defintion of variables ...
 
 # To activate nnbodykit environment (added to load notebooks in jupyter, does not work)
+# (For Anaconda2)
 #source /anaconda2/bin/activate /anaconda2/envs/nbodykit-env/
 
 # NagBody:
 export PATH=${HOME}/NagBody_pkg/bin:${PATH}
 export MANPATH=${HOME}/NagBody_pkg/man:${MANPATH}
 
-# CFITSIO (NEEDED BY CAMB):
+# CFITSIO (NEEDED BY CAMB and Healpix):
 export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/cfitsio/lib/pkgconfig:${PKG_CONFIG_PATH}
 export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/cfitsio/lib:${DYLD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/cfitsio/lib:${LD_LIBRARY_PATH}
 
-# FFTW-2:
+# FFTW-2 (Needed by gadget type of codes):
 # INSTALADO CON PORT ... fftw, fftw-single, falto que se incluya con openmpi ...
 export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/fftw2/lib:${DYLD_LIBRARY_PATH}
 
-# FFTW3:
+# FFTW3 (Needed by cola type of codes):
 # Instalar con port ... fftw-3 ... tambien la precision simple fftw-3-single
 export PATH=${HOME}/NagBody_pkg/local/fftw3/bin:${PATH}
 export MANPATH=${HOME}/NagBody_pkg/local/fftw3/share/man:${MANPATH}
@@ -34,7 +35,7 @@ export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/fftw3/lib/pkgconfig:${PKG_CONFI
 export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/fftw3/lib:${DYLD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/fftw3/lib:${LD_LIBRARY_PATH}
 
-# GSL:
+# GSL (Needed by gadget and cola type of codes):
 # INSTALADO CON PORT ...
 export PATH=${HOME}/NagBody_pkg/local/gsl/bin:${PATH}
 export MANPATH=${HOME}/NagBody_pkg/local/gsl/share/man:${MANPATH}
@@ -42,7 +43,15 @@ export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/gsl/lib/pkgconfig:${PKG_CONFIG_
 export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gsl/lib:${LD_LIBRARY_PATH}
 #
 
-# LAPACK (Instalada con ports en Mac):
+# Healpix (Manual installation in $(HOME)/NagBody_pkg/local/Healpix_3.30):
+# If this env configuration was not done in .bash_profile use these line:
+#
+# modifications by HEALPixAutoConf 3.30
+# (Note: see this particular user path, change it properly as it si done in the following line)
+#[ -r /Users/mar/.healpix/3_30_Darwin/config ] && . /Users/mar/.healpix/3_30_Darwin/config
+[ -r ${HOME}/.healpix/3_30_Darwin/config ] && . ${HOME}/.healpix/3_30_Darwin/config
+
+# LAPACK (can be installed with ports en Mac):
 export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/lapack/lib:${LD_LIBRARY_PATH}
 
 ###################################################################

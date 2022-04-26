@@ -1,0 +1,117 @@
+# NagBody install file - plplot code/lib
+# Copyright (c) 2006-2022  Mario A. Rodriguez-Meza, Mexico, D.F.
+
+CODE_NAME = plplot
+PARENT_CODE_NAME = additional_libs
+
+INSTALL_PATH = ../../../..
+
+# ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+#
+CODEHOME = $(INSTALL_PATH)
+# WE ARE IN THE PROCESS OF IMPLEMENT THIS DEFINITION...
+#
+# ==================================================================
+
+
+# ==================================================================
+
+# This definition has the minimum number of drivers. Need to look for others like: pdf, png or jpg.
+#
+PLPLOTDEFS = -DDEFAULT_NO_QT_DEVICES:BOOL=ON -DENABLE_qt:BOOL=OFF -DPLD_tiffqt=OFF -DPLD_bmpqt=OFF -DPLD_jpgqt=OFF -DPLD_pngqt=OFF -DPLD_epsqt=OFF -DPLD_pdfqt=OFF -DPLD_ppmqt=OFF -DPLD_svgqt=OFF -DPLD_qtwidget=OFF -DPLD_extqt=OFF -DBUILD_TEST=ON -DENABLE_python:BOOL=OFF
+
+CODEVER = plplot-5.15.0
+CODEPKG = plplot-5.15.0.tar.gz
+CODEVEREX = plplot5.15.0
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+install_all: install install_test
+
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) binary..."
+	(tar xvf $(CODEPKG); \
+	cd $(CODEVER); \
+	mkdir build_dir; \
+	cd build_dir; \
+	cmake -DCMAKE_INSTALL_PREFIX=$(HOME)/NagBody_pkg/local/plplot $(PLPLOTDEFS) .. 2>&1 | tee cmake_plplot.out; \
+	make 2>&1 | tee make_plplot.log; \
+	make install 2>&1 | tee install_plplot.log)
+
+# ==================================================================
+# Test $(CODE_NAME) man page
+
+install_test:
+	@echo " "
+	@echo "Testing $(CODE_NAME)..."
+	(cd $(HOME)/NagBody_pkg/local/plplot/share/$(CODEVEREX)/examples; \
+	make test_interactive)
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
+	(cd $(CODEVER); \
+	rm -fR build_dir; \
+	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/$(CODEPKG) \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/tests; \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+#####################################
+#####################################
+# PACKING (TAR) (INDEPENDENT of NagBody)
+#
+PACK_NAGBODY_DIR = ../..
+PACK_ZIP_NO_NAGBODY_DIR = $(PACK_NAGBODY_DIR)/zip
+
+#####################################
+packing_sources_no_nagbody:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources no NagBody..."
+	@echo " "
+	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
+		$(CODE_NAME)/doc \
+		$(CODE_NAME)/Readme.txt \
+		$(CODE_NAME)/$(CODEPKG) \
+		$(CODE_NAME)/tests; \
+	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
+
