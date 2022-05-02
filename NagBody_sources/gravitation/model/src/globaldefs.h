@@ -38,6 +38,7 @@
 
 #include "switches.h"
 
+/*
 #ifndef NOGNU
 #include "./general_libs/stdinc.h"
 #include "./general_libs/vectdefs.h"
@@ -53,6 +54,7 @@
 #include "./general_libs/physconstants.h"
 #include "./general_libs/machines.h"
 #else
+ */
 #include "stdinc.h"
 #include "vectdefs.h"
 #include "nagbody.h"
@@ -66,7 +68,7 @@
 #include "strings.h"
 #include "physconstants.h"
 #include "machines.h"
-#endif
+//#endif
 
 #include "models.h"
 
@@ -144,6 +146,23 @@ global io_header_blj hdr;
 local global_data gd;
 local cmdline_data cmd;
 local io_header_blj hdr;
+
+// STATIC problem: gcc version 11
+// From inout.h
+local real *inout_xval;
+local real *inout_yval;
+local real *inout_zval;
+local real *inout_wval;
+
+// STATIC problem: gcc version 11
+// From diffeqs.h
+local double dxsav,*xp,**yp;
+local int kmax,kount;
+local int nrhs;
+
+// STATIC problem: gcc version 11
+// From stdinc.h
+local long idum;                // seed for random generators
 
 #endif // !_globaldefs_h
 
