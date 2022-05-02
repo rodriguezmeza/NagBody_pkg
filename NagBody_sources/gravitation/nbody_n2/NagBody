@@ -8,6 +8,14 @@ INSTALL_PATH = ../../../..
 
 
 # ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+
+# ==================================================================
 # Install $(CODE_NAME) binary
 
 install_all: install install_man
@@ -34,7 +42,6 @@ clean:
 	(cd src; $(MAKE) clean; \
 	rm -f $(INSTALL_PATH)/bin/$(CODE_NAME) \
 	rm -f $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
-
 
 # ==================================================================
 # Archive all source directories.  

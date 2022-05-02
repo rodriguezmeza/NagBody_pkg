@@ -9,20 +9,20 @@ Numerical codes list:
 
 
 additional_libs
-1. cfitsio		: CFITSIO, a library of ANSI C routines for reading and writing FITS files
-2. fftw-2		: FFTW-2, a collection of fast C routines to compute the 
+1. openmpi		: Open MPI
+2. cfitsio		: CFITSIO, a library of ANSI C routines for reading and writing FITS files
+3. fftw-2		: FFTW-2, a collection of fast C routines to compute the 
 			: Discrete Fourier Transform in one or more dimensions. Gadget depends on it.
-3. fftw-3		: FFTW-3, a free collection of fast C routines for computing 
+4. fftw-3		: FFTW-3, a free collection of fast C routines for computing 
 			: the Discrete Fourier Transform in one or more dimensions. COLA codes use it.
-4. gsl			: GSL - GNU Scientific Library. It is use by gadget codes.
-5. healpix		: HEALPix, Hierarchical Equal Area isoLatitude Pixelation of the sphere
-6. lapack		: LAPACK, a library of Fortran 90 with subroutines for solving
+5. gsl			: GSL - GNU Scientific Library. It is use by gadget codes.
+6. healpix		: HEALPix, Hierarchical Equal Area isoLatitude Pixelation of the sphere
+7. lapack		: LAPACK, a library of Fortran 90 with subroutines for solving
 			: the most commonly occurring problems in numerical linear algebra.
-7. OpenBLAS		: OpenBLAS, an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
-8. plplot		: PLplot, a cross-platform software package for creating scientific plots
-9. NR			: We include some of the numerical recipes codes: interpolation, quadratures, 
+8. OpenBLAS		: OpenBLAS, an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+9. plplot		: PLplot, a cross-platform software package for creating scientific plots
+10. NR			: We include some of the numerical recipes codes: interpolation, quadratures, 
 			: special function, ODE solvers, etc. Isolated in order to be easy to use.
-
 
 class
 1. class		: Julien Lesgourges CLASS

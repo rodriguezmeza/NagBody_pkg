@@ -49,7 +49,11 @@ export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gsl/lib:${LD_LIBRARY_PATH}
 # modifications by HEALPixAutoConf 3.30
 # (Note: see this particular user path, change it properly as it si done in the following line)
 #[ -r /Users/mar/.healpix/3_30_Darwin/config ] && . /Users/mar/.healpix/3_30_Darwin/config
-[ -r ${HOME}/.healpix/3_30_Darwin/config ] && . ${HOME}/.healpix/3_30_Darwin/config
+#[ -r ${HOME}/.healpix/3_30_Darwin/config ] && . ${HOME}/.healpix/3_30_Darwin/config
+
+# modifications by HEALPixAutoConf 3.81
+[ -r /Users/mar/.healpix/3_81_Darwin/config ] && . /Users/mar/.healpix/3_81_Darwin/config
+
 
 # LAPACK (can be installed with ports en Mac):
 export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/lapack/lib:${LD_LIBRARY_PATH}
@@ -90,4 +94,11 @@ source $HOME/NagBody_pkg/bin/clik_profile.sh
 ###################################################################
 # Python environment (ver 3.9):
 #export PYTHONPATH=${HOME}/.local/lib/python3.9/site-packages:${PYTHONPATH}
+
+###################################################################
+# Open MPI (ver 4.1):
+export PATH=${HOME}/NagBody_pkg/local/openmpi/bin:${PATH}
+export MANPATH=${HOME}/NagBody_pkg/local/openmpi/share/man:${MANPATH}
+export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/openmpi/lib:${DYLD_LIBRARY_PATH}
+export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/openmpi/lib/openmpi:${DYLD_LIBRARY_PATH}
 

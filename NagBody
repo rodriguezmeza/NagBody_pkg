@@ -15,6 +15,25 @@
 # ==================================================================
 # additional_libs
 # ==================================================================
+# openmpi codes/lib: [Open MPI codes/lib]
+#
+
+MAKEOPENMPI = NagBody_sources/additional_libs/openmpi
+
+install_openmpi:
+	(cd $(MAKEOPENMPI); $(MAKE) -f NagBody install_all)
+
+clean_openmpi:
+	(cd $(MAKEOPENMPI); $(MAKE) -f NagBody clean)
+
+packing_openmpi:
+	(cd $(MAKEOPENMPI); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_openmpi:
+	(cd $(MAKEOPENMPI); $(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
 # cfitsio codes/lib: [cfitsio lib]
 #
 
@@ -1428,14 +1447,24 @@ packing_class_mgpt:
 packing_nagbody_class_mgpt:
 	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_class_mgpt:
-	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody packing_gnu_sources)
 
-install_gnu_dirs_class_mgpt:
-	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody install_gnu_dirs)
+# ==================================================================
+# class_mgpt_smgpt code: [class_mgpt_smgpt code]
+#
 
-clean_gnu_class_mgpt:
-	(cd $(MAKECLASSMGPT); $(MAKE) -f NagBody clean_nagbody_gnu)
+MAKECLASSMGPTSMGPT = NagBody_sources/perturbations/class_mgpt_smgpt
+
+install_class_mgpt_smgpt:
+	(cd $(MAKECLASSMGPTSMGPT); $(MAKE) -f NagBody install_all)
+
+clean_class_mgpt_smgpt:
+	(cd $(MAKECLASSMGPTSMGPT); $(MAKE) -f NagBody clean)
+
+packing_class_mgpt_smgpt:
+	(cd $(MAKECLASSMGPTSMGPT); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_class_mgpt_smgpt:
+	(cd $(MAKECLASSMGPTSMGPT); $(MAKE) -f NagBody packing_sources)
 
 
 # ==================================================================

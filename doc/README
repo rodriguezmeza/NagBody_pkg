@@ -1,6 +1,22 @@
-NagBody: Installation
+NagBody_pkg were tested in:
+-macOS Monterrey - version 12.3.1, 2.4 GHz 8-Core Intel Core i9, 32 GB, MacPorts & Anaconda3, gcc11
+-macOS Monterrey - version 12.3.1, 2.4 GHz 8-Core Intel Core i9, 32 GB, Homebrew, gcc11
+-Ubuntu ver 20
 
-Read the corresponding code Readme.txt file in its own directory to get installation instructions. Also the additional packages needed by some of the codes have their own readme files, go to NagBody_sources/additional_libs.
+NagBody's codes installation follow the pattern:
+
+cd $HOME/NagBody_pkg
+make -f NagBody install_CODENAME
+
+where CODENAME is the name of the code/lib (names in doc/List_of_numerical_codes, type them as they appear). 
+
+Also codes can be cleaned or packed:
+
+make -f NagBody clean_CODENAME
+make -f NagBody packing_CODENAME
+
+
+Read the corresponding code Readme.txt file in its own directory to get further details of installation instructions. Also the additional packages needed by some of the codes have their own readme files, go to NagBody_sources/additional_libs.
 
 
 To convert man files to html execute:
