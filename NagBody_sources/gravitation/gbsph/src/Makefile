@@ -1,36 +1,20 @@
 # ----- MAKE FILE FOR gbsph CODE -----
 # Copyright (c) 2006-2011  M.A. Rodriguez-Meza, Mexico, D.F.
 #
-# Se define el directorio en donde estan las
-# definiciones de las arquitecturas particulares.
-MACHINES_DIR = ../../../../Machines/
-include $(MACHINES_DIR)machine.inc
-
-# Se definen opciones locales de este codigo
-# 	OPT1 -- OPT10
-# La serie de opciones OPT11 -- OPT20 y OPTIMIZE son para la arquitectura 
-# particular y estan en el archivo machine.inc o pmachine.inc
 #
-#OPT1    =  -DOPTIONNAME
-#OPT2    =  -DOPTIONNAME
-#OPT3    =  -DOPTIONNAME
-#OPT4    =  -DOPTIONNAME
-#OPT5    =  -DOPTIONNAME
-#OPT6    =  -DOPTIONNAME
-#OPT7    =  -DBMAX            
-OPT8    =  -I $(HOME)/NagBody_pkg/local/gsl/include
-#OPT9    =  -DOPTIONNAME
-#OPT10   =  -DOPTIONNAME
+# Machine definitions
+MACHINES_DIR = ./
+include $(MACHINES_DIR)Makefile_machine
 
-OPTIONS =  $(OPTIMIZE) $(OPT1) $(OPT2) $(OPT3) $(OPT4) $(OPT5) $(OPT6)\
-           $(OPT7) $(OPT8) $(OPT9) $(OPT10) $(OPT11) $(OPT12) $(OPT13)\
-	   $(OPT14) $(OPT15)
+# OPTIMIZE is to set some particular architecture. See MACHINE section in Makefile_machine.
 
+OPTIONS =  $(OPTIMIZE) $(OPT2)
+
+CPPFLAGS = $(INCLUDES)
 CFLAGS = $(OPTIONS)
-#LDFLAGS = $(LIBS)
+LDFLAGS = $(LIBS)
 
 H_PATH = ./general_libs/
-#H_PATH = ../../../General_libs/
 
 EXEC   = gbsph
 
