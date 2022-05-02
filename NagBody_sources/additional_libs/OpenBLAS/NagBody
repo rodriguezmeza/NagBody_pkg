@@ -8,6 +8,20 @@ INSTALL_PATH = ../../../..
 
 
 # ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+CODEVER = OpenBLAS-0.3.13
+CODEPKG = OpenBLAS-0.3.13.tar.gz
+CODEVEREX = OpenBLAS-0.3.13
+
+#MYMAKE = gmake
+MYMAKE = make
+
+# ==================================================================
 # Install $(CODE_NAME) binary
 
 install_all: install
@@ -15,10 +29,10 @@ install_all: install
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) binary..."
-	(tar xvf OpenBLAS-0.3.13.tar.gz; \
+	(tar xvf $(CODEPKG); \
 	cd OpenBLAS-0.3.13; \
-	gmake CC=gcc FC=gfortran 2>&1 | tee gmake_OpenBLAS.log; \
-	make install PREFIX=$(HOME)/NagBody_pkg/local/OpenBLAS 2>&1 | tee install_OpenBLAS.log)
+	$(MYMAKE) CC=gcc FC=gfortran 2>&1 | tee gmake_$(CODE_NAME).log; \
+	make install PREFIX=$(NAGBODYDIR)/local/$(CODE_NAME) 2>&1 | tee install_$(CODE_NAME).log)
 
 # ==================================================================
 # Test $(CODE_NAME) man page
@@ -26,7 +40,7 @@ install:
 install_test:
 	@echo " "
 	@echo "Testing $(CODE_NAME)..."
-	(cd OpenBLAS-0.3.13; make test )
+	(cd $(CODEVER); make test )
 
 # ==================================================================
 # Clean up $(CODE_NAME) source directory
@@ -34,7 +48,7 @@ install_test:
 clean:
 	@echo " "
 	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
-	(cd OpenBLAS-0.3.13; $(MAKE) distclean; \
+	(cd $(CODEVER); $(MAKE) distclean; \
 	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
 
 # ==================================================================
@@ -58,7 +72,7 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/OpenBLAS-0.3.13.tar.gz \
+		$(PACK_CODE_DIR)/$(CODEPKG) \
 		$(PACK_CODE_DIR)/doc \
 		$(PACK_CODE_DIR)/NagBody \
 		$(PACK_CODE_DIR)/Readme.txt \
@@ -87,7 +101,7 @@ packing_sources_no_nagbody:
 	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
 		$(CODE_NAME)/doc \
 		$(CODE_NAME)/Readme.txt \
-		$(CODE_NAME)/OpenBLAS-0.3.13.tar.gz \
+		$(CODE_NAME)/$(CODEPKG) \
 		$(CODE_NAME)/tests; \
 	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 

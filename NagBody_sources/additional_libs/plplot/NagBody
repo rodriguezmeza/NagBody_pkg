@@ -9,38 +9,60 @@ INSTALL_PATH = ../../../..
 # ==================================================================
 # NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
 # 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = ../$(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
 #
-CODEHOME = $(INSTALL_PATH)
-# WE ARE IN THE PROCESS OF IMPLEMENT THIS DEFINITION...
-#
-# ==================================================================
+CODEVER = plplot-5.15.0
+CODEPKG = plplot-5.15.0.tar.gz
+CODEVEREX = plplot5.15.0
+
+#MYMAKE = gmake
+MYMAKE = make
 
 
 # ==================================================================
 
 # This definition has the minimum number of drivers. Need to look for others like: pdf, png or jpg.
 #
-PLPLOTDEFS = -DDEFAULT_NO_QT_DEVICES:BOOL=ON -DENABLE_qt:BOOL=OFF -DPLD_tiffqt=OFF -DPLD_bmpqt=OFF -DPLD_jpgqt=OFF -DPLD_pngqt=OFF -DPLD_epsqt=OFF -DPLD_pdfqt=OFF -DPLD_ppmqt=OFF -DPLD_svgqt=OFF -DPLD_qtwidget=OFF -DPLD_extqt=OFF -DBUILD_TEST=ON -DENABLE_python:BOOL=OFF
+#PLPLOTDEFS = -DDEFAULT_NO_QT_DEVICES:BOOL=ON -DENABLE_qt:BOOL=OFF -DPLD_tiffqt=OFF -DPLD_bmpqt=OFF -DPLD_jpgqt=OFF -DPLD_pngqt=OFF -DPLD_epsqt=OFF -DPLD_pdfqt=OFF -DPLD_ppmqt=OFF -DPLD_svgqt=OFF -DPLD_qtwidget=OFF -DPLD_extqt=OFF -DBUILD_TEST=ON -DENABLE_python:BOOL=OFF
 
-CODEVER = plplot-5.15.0
-CODEPKG = plplot-5.15.0.tar.gz
-CODEVEREX = plplot5.15.0
+#PLPLOTDEFS = -DDEFAULT_NO_QT_DEVICES:BOOL=ON -DENABLE_qt:BOOL=OFF -DPLD_tiffqt=OFF -DPLD_bmpqt=OFF -DPLD_jpgqt=OFF -DPLD_pngqt=OFF -DPLD_epsqt=OFF -DPLD_pdfqt=OFF -DPLD_ppmqt=OFF -DPLD_svgqt=OFF -DPLD_qtwidget=OFF -DPLD_extqt=OFF
+
+PLPLOTDEFS = -DENABLE_tk:BOOL=OFF
+
+#PLPLOTDEFS = 
 
 # ==================================================================
 # Install $(CODE_NAME) binary
 
 install_all: install install_test
+#install_all: install
 
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) binary..."
 	(tar xvf $(CODEPKG); \
 	cd $(CODEVER); \
+	export CC=gcc; \
+	export CXX=g++; \
+	export F77=gfortran; \
+	export FC=gfortran; \
+	export F90=gfortran; \
+	export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"; \
+	export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"; \
 	mkdir build_dir; \
 	cd build_dir; \
-	cmake -DCMAKE_INSTALL_PREFIX=$(HOME)/NagBody_pkg/local/plplot $(PLPLOTDEFS) .. 2>&1 | tee cmake_plplot.out; \
-	make 2>&1 | tee make_plplot.log; \
-	make install 2>&1 | tee install_plplot.log)
+	cmake -DCMAKE_INSTALL_PREFIX=$(NAGBODYDIR)/local/$(CODE_NAME) $(PLPLOTDEFS) .. 2>&1 | tee cmake_$(CODE_NAME).out; \
+	make 2>&1 | tee make_$(CODE_NAME).log; \
+	make install 2>&1 | tee install_$(CODE_NAME).log)
+
+# This are for Homebrew in Mac to find tcl-tk :: not working yet
+#	export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"; \
+#	export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"; \
+#
+# To work testing examples was disable with:
+#PLPLOTDEFS = -DENABLE_tk:BOOL=OFF
 
 # ==================================================================
 # Test $(CODE_NAME) man page
@@ -48,7 +70,7 @@ install:
 install_test:
 	@echo " "
 	@echo "Testing $(CODE_NAME)..."
-	(cd $(HOME)/NagBody_pkg/local/plplot/share/$(CODEVEREX)/examples; \
+	(cd $(INSTALL_PATH)/NagBody_pkg/local/$(CODE_NAME)/share/$(CODEVEREX)/examples; \
 	make test_interactive)
 
 # ==================================================================

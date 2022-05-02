@@ -8,18 +8,30 @@ INSTALL_PATH = ../../../..
 
 
 # ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+CODEVER = cfitsio-4.1.0
+CODEPKG = cfitsio-4.1.0.tar.gz
+CODEVEREX = cfitsio-4.1.0
+
+# ==================================================================
 # Install $(CODE_NAME) binary
 
-install_all: install
+install_all: install install_test
 
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) binary..."
-	(tar xvf cfitsio3390.tar.gz; \
-	cd cfitsio; \
-	./configure --prefix=$(HOME)/NagBody_pkg/local/cfitsio 2>&1 | tee configure_cfitsio.log; \
-	make 2>&1 | tee make_cfitsio.log; \
-	make install 2>&1 | tee install_cfitsio.log)
+	(tar xvf $(CODEPKG); \
+	cd $(CODEVER); \
+	./configure --prefix=$(NAGBODYDIR)/local/$(CODE_NAME) 2>&1 | tee configure_$(CODE_NAME).log; \
+	make 2>&1 | tee make_$(CODE_NAME).log; \
+	make shared; \
+	make install 2>&1 | tee install_$(CODE_NAME).log)
 
 # ==================================================================
 # Test $(CODE_NAME)
@@ -27,7 +39,7 @@ install:
 install_test:
 	@echo " "
 	@echo "Testing $(CODE_NAME)..."
-	(cd cfitsio; make testprog; \
+	(cd $(CODEVER); make testprog; \
 	./testprog > testprog.lis \
 	diff testprog.lis testprog.out \
 	cmp testprog.fit testprog.std)
@@ -38,7 +50,7 @@ install_test:
 clean:
 	@echo " "
 	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
-	(cd cfitsio; $(MAKE) distclean; \
+	(cd $(CODEVER); $(MAKE) distclean; \
 	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
 
 # ==================================================================
@@ -62,7 +74,7 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/cfitsio3390.tar.gz \
+		$(PACK_CODE_DIR)/$(CODEPKG) \
 		$(PACK_CODE_DIR)/doc \
 		$(PACK_CODE_DIR)/NagBody \
 		$(PACK_CODE_DIR)/Readme.txt \
@@ -70,6 +82,7 @@ packing_sources:
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/LICENSE \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
@@ -91,7 +104,7 @@ packing_sources_no_nagbody:
 	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
 		$(CODE_NAME)/doc \
 		$(CODE_NAME)/Readme.txt \
-		$(CODE_NAME)/cfitsio3390.tar.gz \
+		$(CODE_NAME)/$(CODEPKG) \
 		$(CODE_NAME)/tests; \
 	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 

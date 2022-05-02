@@ -9,6 +9,17 @@ INSTALL_PATH = ../../..
 
 
 # ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+CODEVER = Healpix_3.81
+CODEPKG = Healpix_3.81_2022Jan25.tar.gz
+CODEVEREX = Healpix_3.81
+
+# ==================================================================
 # Install $(CODE_NAME) binary
 
 # The installation is manual. See Readme file in $MAKEHEALPIX directory.
@@ -17,8 +28,8 @@ install_all: install
 install:
 	@echo " "
 	@echo "Moving $(CODE_NAME) directory to NagBody local dir..."
-	(tar xvf Healpix_3.30_2015Oct08.tar.gz; \
-	mv -f Healpix_3.30 $(INSTALL_PATH)/local/. )
+	(tar xvf $(CODEPKG); \
+	mv -f $(CODEVER) $(INSTALL_PATH)/local/. )
 
 # ==================================================================
 # Test $(CODE_NAME)
@@ -26,7 +37,7 @@ install:
 install_test:
 	@echo " "
 	@echo "Testing $(CODE_NAME) was done at installing step..."
-	(cd $(INSTALL_PATH)/local/Healpix_3.30; make test)
+	(cd $(INSTALL_PATH)/local/$(CODEVER); make test)
 
 # ==================================================================
 # Clean up $(CODE_NAME) source directory
@@ -35,7 +46,7 @@ clean:
 	@echo " "
 	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
 	(cd $(INSTALL_PATH)/local/; \
-	rm -fR Healpix_3.30 )
+	rm -fR $(CODEVER) )
 
 # ==================================================================
 # Archive all source directories.  
@@ -58,7 +69,7 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/Healpix_3.30_2015Oct08.tar.gz \
+		$(PACK_CODE_DIR)/$(CODEPKG) \
 		$(PACK_CODE_DIR)/doc \
 		$(PACK_CODE_DIR)/NagBody \
 		$(PACK_CODE_DIR)/Readme.txt \
@@ -87,7 +98,7 @@ packing_sources_no_nagbody:
 	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
 		$(CODE_NAME)/doc \
 		$(CODE_NAME)/Readme.txt \
-		$(CODE_NAME)/Healpix_3.30_2015Oct08.tar.gz \
+		$(CODE_NAME)/$(CODEPKG) \
 		$(CODE_NAME)/tests; \
 	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 

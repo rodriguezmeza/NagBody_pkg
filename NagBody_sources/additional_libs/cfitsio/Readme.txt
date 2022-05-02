@@ -73,6 +73,7 @@ Note: read README
 
 ./configure --prefix=$HOME/NagBody_pkg/local/cfitsio 2>&1 | tee configure_cfitsio.log
 make 2>&1 | tee make_cfitsio.log
+make shared
 make install 2>&1 | tee install_cfitsio.log
 
 9. Test:

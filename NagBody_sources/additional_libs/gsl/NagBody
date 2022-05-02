@@ -8,6 +8,17 @@ INSTALL_PATH = ../../../..
 
 
 # ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+CODEVER = gsl-2.7.1
+CODEPKG = gsl-latest.tar.gz
+CODEVEREX = gsl-2.7.1
+
+# ==================================================================
 # Install $(CODE_NAME) binary
 
 install_all: install
@@ -15,12 +26,12 @@ install_all: install
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) binary..."
-	(tar xvf gsl-latest.tar.gz; \
-	cd gsl-2.7.1; \
-	./configure --prefix=$(HOME)/NagBody_pkg/local/gsl 2>&1 | tee configure_gsl.log; \
-	make 2>&1 | tee make_gsl.log; \
-	make check 2>&1 | tee check_gsl.log ; \
-	make install 2>&1 | tee install_gsl.log)
+	(tar xvf $(CODEPKG); \
+	cd $(CODEVER); \
+	./configure --prefix=$(NAGBODYDIR)/local/$(CODE_NAME) 2>&1 | tee configure_$(CODE_NAME).log; \
+	make 2>&1 | tee make_$(CODE_NAME).log; \
+	make check 2>&1 | tee check_$(CODE_NAME).log ; \
+	make install 2>&1 | tee install_$(CODE_NAME).log)
 
 # ==================================================================
 # Test $(CODE_NAME)
@@ -35,7 +46,7 @@ install_test:
 clean:
 	@echo " "
 	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
-	(cd gsl-2.7.1; $(MAKE) distclean; \
+	(cd $(CODEVER); $(MAKE) distclean; \
 	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
 
 # ==================================================================
@@ -59,7 +70,7 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/gsl-latest.tar.gz \
+		$(PACK_CODE_DIR)/$(CODEPKG) \
 		$(PACK_CODE_DIR)/doc \
 		$(PACK_CODE_DIR)/NagBody \
 		$(PACK_CODE_DIR)/Readme.txt \
@@ -88,7 +99,7 @@ packing_sources_no_nagbody:
 	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
 		$(CODE_NAME)/doc \
 		$(CODE_NAME)/Readme.txt \
-		$(CODE_NAME)/gsl-latest.tar.gz \
+		$(CODE_NAME)/$(CODEPKG) \
 		$(CODE_NAME)/tests; \
 	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 

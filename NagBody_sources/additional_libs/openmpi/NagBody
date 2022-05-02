@@ -1,0 +1,111 @@
+# NagBody install file - openmpi code/lib
+# Copyright (c) 2006-2022  Mario A. Rodriguez-Meza, Mexico, D.F.
+
+CODE_NAME = openmpi
+PARENT_CODE_NAME = additional_libs
+
+INSTALL_PATH = ../../../..
+
+
+# ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+CODEVER = openmpi-4.1.3
+CODEPKG = openmpi-4.1.3.tar.gz
+CODEVEREX = openmpi-4.1.3
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+install_all: install install_test
+
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) binary..."
+	(tar xvf $(CODEPKG); \
+	cd $(CODEVER); \
+	export CC=gcc; \
+	export CXX=g++; \
+	export F77=gfortran; \
+	export FC=gfortran; \
+	export F90=gfortran; \
+	./configure --prefix=$(NAGBODYDIR)/local/$(CODE_NAME) 2>&1 | tee configure_$(CODE_NAME).log; \
+	make 2>&1 | tee make_$(CODE_NAME).log; \
+	make shared; \
+	make install 2>&1 | tee install_$(CODE_NAME).log)
+
+# ==================================================================
+# Test $(CODE_NAME)
+
+install_test:
+	@echo " "
+	@echo "Testing $(CODE_NAME)..."
+	(cd $(CODEVER); make test)
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
+	(cd $(CODEVER); $(MAKE) distclean; \
+	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/$(CODEPKG) \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/tests; \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+#####################################
+#####################################
+# PACKING (TAR) (INDEPENDENT of NagBody)
+#
+PACK_NAGBODY_DIR = ../..
+PACK_ZIP_NO_NAGBODY_DIR = $(PACK_NAGBODY_DIR)/zip
+
+#####################################
+packing_sources_no_nagbody:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources no NagBody..."
+	@echo " "
+	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
+		$(CODE_NAME)/doc \
+		$(CODE_NAME)/Readme.txt \
+		$(CODE_NAME)/$(CODEPKG) \
+		$(CODE_NAME)/tests; \
+	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
+

@@ -8,6 +8,17 @@ INSTALL_PATH = ../../../..
 
 
 # ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+CODEVER = fftw-2.1.5
+CODEPKG = fftw-2.1.5.tar.gz
+CODEVEREX = fftw-2.1.5
+
+# ==================================================================
 # Install $(CODE_NAME) binary
 
 install_all: install
@@ -15,21 +26,21 @@ install_all: install
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) double without prefix..."
-	(tar xvf fftw-2.1.5.tar.gz; \
+	(tar xvf $(CODEPKG); \
 	cd fftw-2.1.5; \
-	./configure --prefix=$(HOME)/NagBody_pkg/local/fftw2 --enable-mpi 2>&1 | tee configure_double-without-prefix.log; \
+	./configure --prefix=$(NAGBODYDIR)/local/$(CODE_NAME) --enable-mpi 2>&1 | tee configure_double-without-prefix.log; \
 	make 2>&1 | tee make_gcc.log; \
 	make check; \
 	make install 2>&1 | tee install_gcc.log ; \
 	make distclean; \
 	@echo "Creating $(CODE_NAME) simple precision..." ; \
-	./configure --prefix=$(HOME)/NagBody_pkg/local/fftw2 --enable-float --enable-type-prefix --enable-mpi 2>&1 | tee configure_simple-precision.log; \
+	./configure --prefix=$(NAGBODYDIR)/local/$(CODE_NAME) --enable-float --enable-type-prefix --enable-mpi 2>&1 | tee configure_simple-precision.log; \
 	make 2>&1 | tee make_gcc.log; \
 	make check; \
 	make install 2>&1 | tee install_gcc.log; \
 	make distclean; \
 	@echo "Creating $(CODE_NAME) double precision..." ; \
-	./configure --prefix=$(HOME)/NagBody_pkg/local/fftw2 --enable-type-prefix --enable-mpi 2>&1 | tee configure_double-precision.log; \
+	./configure --prefix=$(NAGBODYDIR)/local/$(CODE_NAME) --enable-type-prefix --enable-mpi 2>&1 | tee configure_double-precision.log; \
 	make 2>&1 | tee make_gcc.log; \
 	make check; \
 	make install 2>&1 | tee install_gcc.log; \
@@ -49,7 +60,7 @@ install_test:
 clean:
 	@echo " "
 	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
-	(cd fftw-2.1.5; $(MAKE) distclean; \
+	(cd $(CODEVER); $(MAKE) distclean; \
 	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
 
 # ==================================================================
@@ -73,7 +84,7 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/fftw-2.1.5.tar.gz \
+		$(PACK_CODE_DIR)/$(CODEPKG) \
 		$(PACK_CODE_DIR)/doc \
 		$(PACK_CODE_DIR)/NagBody \
 		$(PACK_CODE_DIR)/Readme.txt \
@@ -102,7 +113,7 @@ packing_sources_no_nagbody:
 	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
 		$(CODE_NAME)/doc \
 		$(CODE_NAME)/Readme.txt \
-		$(CODE_NAME)/fftw-2.1.5.tar.gz \
+		$(CODE_NAME)/$(CODEPKG) \
 		$(CODE_NAME)/tests; \
 	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 

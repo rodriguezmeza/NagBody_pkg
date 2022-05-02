@@ -6,6 +6,7 @@ plplot INSTALLATION
 
 ===================================================
 Dependencies: swig, LASi, pango, cmake, qt5, tcl...
+(Could help if before gnuplot is installed)
 
 In Mac OS X:
 

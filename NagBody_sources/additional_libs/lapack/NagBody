@@ -8,6 +8,17 @@ INSTALL_PATH = ../../../..
 
 
 # ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+CODEVER = lapack-3.10.1
+CODEPKG = lapack-3.10.1.tar.gz
+CODEVEREX = lapack-3.10.1
+
+# ==================================================================
 # Install $(CODE_NAME) binary
 
 install_all: install
@@ -15,7 +26,7 @@ install_all: install
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) binary..."
-	(tar xvf lapack-3.10.1.tar.gz; \
+	(tar xvf $(CODEPKG); \
 	cd lapack-3.10.1; \
 	make all 2>&1 | tee make_all_lapack.log; \
 	mkdir $(INSTALL_PATH)/local/$(CODE_NAME) ; \
@@ -37,7 +48,7 @@ install:
 install_test:
 	@echo " "
 	@echo "Testing $(CODE_NAME)..."
-	(cd lapack-3.10.1; make test)
+	(cd $(CODEVER); make test)
 
 # ==================================================================
 # Clean up $(CODE_NAME) source directory
@@ -45,7 +56,7 @@ install_test:
 clean:
 	@echo " "
 	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
-	(cd lapack-3.10.1; $(MAKE) clean; \
+	(cd $(CODEVER); $(MAKE) clean; \
 	rm -fR $(INSTALL_PATH)/local/$(CODE_NAME) )
 
 # ==================================================================
@@ -69,7 +80,7 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/lapack-3.10.1.tar.gz \
+		$(PACK_CODE_DIR)/$(CODEPKG) \
 		$(PACK_CODE_DIR)/doc \
 		$(PACK_CODE_DIR)/NagBody \
 		$(PACK_CODE_DIR)/Readme.txt \
@@ -98,7 +109,7 @@ packing_sources_no_nagbody:
 	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
 		$(CODE_NAME)/doc \
 		$(CODE_NAME)/Readme.txt \
-		$(CODE_NAME)/lapack-3.10.1.tar.gz \
+		$(CODE_NAME)/$(CODEPKG) \
 		$(CODE_NAME)/tests; \
 	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 
