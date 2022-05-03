@@ -7,12 +7,15 @@ PARENT_CODE_NAME = additional_libs
 INSTALL_PATH = ../../../..
 
 
+# configure: error: expected an absolute directory name for --prefix: ../../../../local/openmpi
+# Then unpack or clone NagBody where ever you want and make a link to it from $HOME
+# ln -s path-to-NagBody_pkg $HOME/NagBody_pkg
 # ==================================================================
 # NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
 # 	Not absolute as is given by $(HOME)/NagBody_pkg
 # 	It is better to use a relative path
-NAGBODYDIR = $(INSTALL_PATH)
-#NAGBODYDIR = $(HOME)/NagBody_pkg
+#NAGBODYDIR = $(INSTALL_PATH)
+NAGBODYDIR = $(HOME)/NagBody_pkg
 #
 CODEVER = OpenBLAS-0.3.13
 CODEPKG = OpenBLAS-0.3.13.tar.gz
