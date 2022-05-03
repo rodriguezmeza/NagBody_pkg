@@ -24,7 +24,11 @@ PREFIX := $(shell pwd)
 # bewared that cfitsio must have been compiled with the option "make shared"
 #CFITSIOPATH := /usr/local
 # Mar :
-CFITSIOPATH := $(HOME)/NagBody_pkg/local/cfitsio
+# First define NagBody_pkg path:
+NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+¢CFITSIOPATH := $(HOME)/NagBody_pkg/local/cfitsio
+CFITSIOPATH := $(NAGBODYDIR)/local/cfitsio
 #CFITSIOPATH := /softs/cfitsio/3.24
 # you have a CFITSIO lib in a weird location, also set those
 CFITSIO_INCPATH := $(CFITSIOPATH)/include
@@ -58,8 +62,11 @@ IFORTRUNTIME = -L$(IFORTLIBPATH) -lintlc -limf -lsvml -liomp5 -lifportmt -lifcor
 # and check the runtime libs
 #GFORTRANLIBPATH = /usr/lib
 # Mar
+# Mac with Ports:
 #GFORTRANLIBPATH = /opt/local/lib/gcc8
-GFORTRANLIBPATH = /opt/local/lib/gcc11
+#GFORTRANLIBPATH = /opt/local/lib/gcc11
+# Mac with Homebrew:
+GFORTRANLIBPATH = /usr/local/Cellar/gcc/11.3.0/lib/gcc/11
 GFORTRANRUNTIME = -L$(GFORTRANLIBPATH) -lgfortran -lgomp
 
 # if you are on linux and using mkl, you need to set this 
@@ -76,7 +83,9 @@ LAPACKLIBPATHMKL =
 #LAPACK = -L/some/path -lsomefortranlapack -lsomedependencyforyourlapack
 #LAPACKLIBPATH = /some/path
 # Mar
-LAPACKLIBPATH = /opt/local/lib/lapack
+#LAPACKLIBPATH = /opt/local/lib/lapack
+#LAPACKLIBPATH = $(HOME)/NagBody_pkg/local/lapack/lib
+LAPACKLIBPATH = $(NAGBODYDIR)/local/lapack/lib
 
 
 # pretty colors (comment to remove pretty colors or try to change echo to echo -e)

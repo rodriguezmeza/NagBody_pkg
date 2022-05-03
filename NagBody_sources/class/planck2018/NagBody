@@ -7,19 +7,32 @@ PARENT_CODE_NAME = class
 INSTALL_PATH = ../../../..
 
 
+# FIX the relative installation with NAGBODYDIR
+# configure: error: expected an absolute directory name for --prefix: ../../../../local/openmpi
+# Then unpack or clone NagBody where ever you want and make a link to it from $HOME
+# ln -s path-to-NagBody_pkg $HOME/NagBody_pkg
+# ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+#NAGBODYDIR = ../../../$(INSTALL_PATH)
+NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+
 # ==================================================================
 # Install $(CODE_NAME) binary
+
+install_all: install install_man
 
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) binaries..."
-	(cd src/code/plc_3.0/plc-3.01; ./waf --cfitsio_include=$(HOME)/NagBody_pkg/local/cfitsio/include --cfitsio_lib=$(HOME)/NagBody_pkg/local/cfitsio/lib configure; ./waf install; cp bin/* ../../../$(INSTALL_PATH)/bin/.)
+	(cd src/code/plc_3.0/plc-3.01; \
+	./waf --cfitsio_include=$(NAGBODYDIR)/local/cfitsio/include --cfitsio_lib=$(NAGBODYDIR)/local/cfitsio/lib configure; \
+	./waf install; cp bin/* ../../../$(INSTALL_PATH)/bin/.)
 
 # Using make:
 #	(cd src/code/plc_3.0/plc-3.01; make; make install; make install_python; cp bin/* ../../../$(INSTALL_PATH)/bin/.)
-
-#	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.; \ 
-#	make $(CODE_NAME)_fits; cp $(CODE_NAME)_fits $(INSTALL_PATH)/bin/.)
 
 # ==================================================================
 # Install $(CODE_NAME) man page
@@ -27,7 +40,7 @@ install:
 install_man:
 	@echo " "
 	@echo "Copying $(CODE_NAME) man page..."
-	(cd doc; cp $(CODE_NAME).m $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+	(cd doc; cp $(CODE_NAME).1 $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
 
 # ==================================================================
 # Clean up $(CODE_NAME) source directory
@@ -42,12 +55,6 @@ clean:
 
 # Using only make:
 #	(cd src/code/plc_3.0/plc-3.01; $(MAKE) clean; \
-
-# Deprecated
-#clean_dir:
-#	@echo " "
-#	@echo "Cleaning $(CODE_NAME) source dir..."
-#	(cd src/plc-2.0; $(MAKE) clean)
 
 # ==================================================================
 # Archive all source directories.  
@@ -70,18 +77,37 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/src/code \
-		$(PACK_CODE_DIR)/data \
 		$(PACK_CODE_DIR)/doc \
-		$(PACK_CODE_DIR)/tests \
-		$(PACK_CODE_DIR)/Readme.txt \
 		$(PACK_CODE_DIR)/NagBody \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/src/ \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/{compilersrc,gadgetrc,nagbodyrc,profilerc,utilsrc} \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Makefiles/$(PARENT_CODE_NAME)/NagBody_$(CODE_NAME) \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Machines \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Readmes/$(PARENT_CODE_NAME)/Readme-Install_$(CODE_NAME).txt; \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/LICENSE \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/tests; \
 	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
 
+#####################################
+#####################################
+# PACKING (TAR) (INDEPENDENT of NagBody)
+#
+PACK_NAGBODY_DIR = ../..
+PACK_ZIP_NO_NAGBODY_DIR = $(PACK_NAGBODY_DIR)/zip
+
+#####################################
+packing_sources_no_nagbody:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources no NagBody..."
+	@echo " "
+	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
+		$(CODE_NAME)/doc \
+		$(CODE_NAME)/Readme.txt \
+		$(CODE_NAME)/src/ \
+		$(CODE_NAME)/tests; \
+	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 

@@ -77,9 +77,13 @@ cd ..
 Check which classy are in site-packages:
 
 ls -lht /opt/anaconda3/lib/python3.9/site-packages/classy*
-ls -lht /Users/mar/.local/lib/python3.9/
 ls -lht /Users/mar/.local/lib/python3.9/site-packages/
 
 rm /opt/anaconda3/lib/python3.9/site-packages/classy*
 rm /Users/mar/.local/lib/python3.9/site-packages/classy*
 
+%%%%%%
+Remove classy from site-packages:
+
+rm /Users/mar/.local/lib/python3.9/site-packages/classy*
+rm /opt/anaconda3/lib/python3.9/site-packages/classy*
