@@ -1,0 +1,76 @@
+
+
+
+https://www.dartmouth.edu/~rc/classes/intro_mpi/intro_mpi_overview.html
+
+Intro to MPI Course Overview
+
+Topics Covered in this Course:
+
+
+Parallel programming models
+What is MPI?
+Different versions of MPI
+Different approaches to parallelizing via message passing
+Basic MPI routines
+How to compile and run MPI programs
+Some MPI examples
+MPI resources
+
+
+Examples Used in this class
+
+
+
+
+https://www.dartmouth.edu/~rc/classes/intro_mpi/running_mpich2_ex2.html
+
+How to Run MPICH2 Programs in a Batch Queue
+Example of Submitting to discovery PBS batch queue
+
+ Here is an example of a script that you can use to submit a job to the PBS batch queue. Use the command qsub to submit the file to the PBS batch queue. Use the command qstat job# where the job number is the number that was returned by the qsub command. Use the showq command to see the jobs in the PBS batch queue.
+
+The batch queue determines which processors your job runs on. 
+
+
+discovery:~> cat sample_pbs_script
+# start up bash script as if it were a login shell
+#!/bin/bash -l 
+# declare a name for this job to be sample_job
+#PBS -N hello_world 
+# request the default queue for this job
+#PBS -q default
+# request a total of 8 processors for this job (2 nodes and 4 processors per node)
+#PBS -l nodes=2:ppn=4
+# request 1 hour of wall time
+#PBS -l walltime=1:00:00
+# specify your email address so mail can be sent to when the job is finished
+#PBS -M John.Smith@dartmouth.edu
+# have email sent to you when the job is finished
+#PBS -m ae 
+#change to the directory where you submitted the job 
+cd $PBS_O_WORKDIR
+#include the full path to the name of your MPI program
+/opt/mpiexec/0.84/bin/mpiexec -comm mpich2-pmi /home/sas/Classes/intro_mpi/hello_world_c
+
+discovery:~> qsub sample_pbs_script
+40952.endeavor.bw01.dartmouth.edu
+
+discovery:qstat 40952
+Job id           Name             User             Time Use S Queue
+---------------- ---------------- ---------------- -------- - -----
+40952.endeavor   hello_world      sas                     0 R default
+
+discovery: showq
+ACTIVE JOBS--------------------
+JOBNAME            USERNAME      STATE  PROC   REMAINING            STARTTIME
+ 
+40950                jsmith    Running     2 18:16:25:07  Mon Oct 24 09:33:45
+40952                   sas    Running     8 20:20:00:00  Wed Oct 26 13:08:38
+.
+.
+.
+   108 active jobs         204 of 428 processors in use by local jobs 
+                            49 of 91 nodes active      
+
+
