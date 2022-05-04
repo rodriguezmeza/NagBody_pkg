@@ -34,6 +34,9 @@
 
 */
 
+// Mar
+#define global
+
 #include "stuff.h"
 
 
@@ -581,12 +584,6 @@ for (timeStep=0;timeStep<nsteps+1;timeStep++){
 
 
 /*
- * 
- * Extracting displacements from the 2LPTic snapshots.
- * 
- * 
- * 
- */ 
   
 
 void Displacements(void){
@@ -644,11 +641,6 @@ void obtainDisplacements(struct particle_data *P,float *dX,float *dY,float *dZ){
     
   }
 
-/*
- * 
- * Change velocity variable from ds/dy to (ds/d\eta)/(aH(a))
- * 
- */ 
 
 
 void velRSD(struct particle_data *P,float A){
@@ -661,12 +653,6 @@ void velRSD(struct particle_data *P,float A){
         }
 }
 
-/*
- * 
- *  Below follow the time dependent functions used in the code.
- *  Start with growth factors and derivatives.
- * 
- */
 
 
 
@@ -762,13 +748,6 @@ double DprimeQ(double a,float nGrowth){ // returns Q*d(D_{+}^nGrowth*D_{-}^nDeca
    
 
 
-/*
- * 
- *  
- * Functions for our modified time-stepping (used when StdDA=0):
- * 
- * 
- */
 
 
 double fun (double a, void * params) {
@@ -836,13 +815,6 @@ double DERgpQ(double a){ // This must return d(gpQ)/da
 
 
 
-/*
- * 
- *  
- * Functions for Quinn et al time-stepping (used when StdDA=2):
- * 
- * 
- */ 
 
 
 double funSqStd (double a, void * params) {
@@ -916,5 +888,5 @@ double   SphiStd(double ai,double af)
 
 
 
-
+*/
 

@@ -1,0 +1,5 @@
+
+time mglpicola_pofk_rsd_mpi output/snapshot_z0p000. pofk_rsd_z0p000 512 2 > output_pofk_rsd_z0p000 &
+time mglpicola_pofk_rsd_mpi output/snapshot_z0p500. pofk_rsd_z0p500 512 2 > output_pofk_rsd_z0p500 &
+time mglpicola_pofk_rsd_mpi output/snapshot_z1p000. pofk_rsd_z1p000 512 2 > output_pofk_rsd_z1p000 &
+

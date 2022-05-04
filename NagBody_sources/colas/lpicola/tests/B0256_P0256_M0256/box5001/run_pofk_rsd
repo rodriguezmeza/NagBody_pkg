@@ -1,0 +1,4 @@
+
+time mglpicola_pofk_rsd_mpi output/snapshot_z0p000. pofk_rsd 256 0 > output_pofk_rsd &
+
+

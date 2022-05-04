@@ -1,0 +1,5 @@
+
+time powmes infiles/powmes_z0p000.config > output_powmes_z0p000 &
+time powmes infiles/powmes_z0p500.config > output_powmes_z0p500 &
+time powmes infiles/powmes_z1p000.config > output_powmes_z1p000 &
+

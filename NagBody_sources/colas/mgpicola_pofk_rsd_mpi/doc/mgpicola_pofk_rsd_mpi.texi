@@ -1,0 +1,63 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename simplepofk_rsd_mpi.info
+@settitle simplepofk_rsd_mpi 1.0.0
+@c %**end of header
+     
+@copying
+Manual for simplepofk_rsd_mpi version 1.0.0
+@end copying
+     
+@titlepage
+@title simplepofk_rsd_mpi Manual
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+     
+@c Output the table of the contents at the beginning.
+@contents
+     
+@ifnottex
+@node Top
+@top simplepofk_rsd_mpi
+     
+@insertcopying
+@end ifnottex
+     
+@menu
+* Introduction:: Summary of features
+* Install:: How to install the code
+* Input parameters:: Numerical parameters, etc.
+* Output results:: CMB results.
+@end menu
+
+
+@node Introduction
+@chapter Introduction
+ 
+simplepofk_rsd_mpi - a code to compute power spectrum by Hans A. Winther.
+
+
+@node Install
+@chapter Install
+
+./configure
+
+make
+
+make install
+
+
+@node Input parameters
+@chapter Input parameters
+
+See documentation in doc/colas/cola directory.
+
+
+@node Output results
+@chapter Output results
+
+See documentation in doc/colas/cola directory.
+
+@bye

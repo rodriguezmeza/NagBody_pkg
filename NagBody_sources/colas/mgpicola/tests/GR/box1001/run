@@ -1,0 +1,1 @@
+mpirun -np 1 lpicola B0200_P0512_M0512.txt > output_log &

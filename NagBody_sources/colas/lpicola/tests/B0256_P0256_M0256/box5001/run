@@ -1,0 +1,1 @@
+mpirun -np 4 lpicola_fofr B0256_P0256_M0256.txt > output_log &

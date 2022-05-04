@@ -18,6 +18,17 @@
     along with COLAcode.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+// Mar
+#ifndef _stuff_h
+#define _stuff_h
+
+#if !defined(global)                    // global def question must be here
+#  define global extern
+#endif
+
+//#define local     static
+//
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -31,17 +42,18 @@
 
 #include <fftw3.h>
 
+// Mar
+global char input_fname[200];
 
-char input_fname[200];
-
-float Scale,BoxSize;
-int NROW,NGRID,NumPart;
-int GridScale;
-float Om;
-float nLPT;
-float subtractLPT;
-int fullT;
-int StdDA;
+// Mar
+global float Scale,BoxSize;
+global int NROW,NGRID,NumPart;
+global int GridScale;
+global float Om;
+global float nLPT;
+global float subtractLPT;
+global int fullT;
+global int StdDA;
 
 
 
@@ -69,8 +81,8 @@ struct io_header_1
   char     fill[256- 6*4- 6*8- 2*8- 2*4- 6*4- 2*4 - 4*8];  /* fills to 256 Bytes */
 } ;
 
-
-struct particle_data 
+// Mar
+global struct particle_data
 {
   float  Pos[3];
   float  Vel[3];
@@ -82,34 +94,39 @@ struct particle_data
 
 
 
+// Mar
+global float *N11;
+global float *N12;
+global float *N13;
 
-float *N11;
-float *N12;
-float *N13;
-
-fftwf_complex *FN11;
-fftwf_complex *FN12;
-fftwf_complex *FN13;
-
-
-
-fftwf_plan p11,p12,p13;
+// Mar
+global fftwf_complex *FN11;
+global fftwf_complex *FN12;
+global fftwf_complex *FN13;
 
 
-fftwf_complex *P3D;
-float * density;
+// Mar
+global fftwf_plan p11,p12,p13;
 
-float * dX2;
-float * dY2;
-float * dZ2;
 
-float * dX;
-float * dY;
-float * dZ;
+// Mar
+global fftwf_complex *P3D;
+global float * density;
 
-float * dXz;
-float * dYz;
-float * dZz;
+// Mar
+global float * dX2;
+global float * dY2;
+global float * dZ2;
+
+// Mar
+global float * dX;
+global float * dY;
+global float * dZ;
+
+// Mar
+global float * dXz;
+global float * dYz;
+global float * dZz;
 
 
 
@@ -182,3 +199,6 @@ double   SphiStd(double ai,double af);
 double   SqStd(double ai,double af);
 float AofTime(float y) ;
 double   CosmoTime(double af);
+
+
+#endif // ! _stuff_h

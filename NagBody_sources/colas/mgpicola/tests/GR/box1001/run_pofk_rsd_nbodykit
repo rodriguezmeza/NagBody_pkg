@@ -1,0 +1,4 @@
+time python pofk_rsd_z0p000.py > output_pofk_rsd_py_z0p000 &
+time python pofk_rsd_z0p500.py > output_pofk_rsd_py_z0p500 &
+time python pofk_rsd_z1p000.py > output_pofk_rsd_py_z1p000 &
+

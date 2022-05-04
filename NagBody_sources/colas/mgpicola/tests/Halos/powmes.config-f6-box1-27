@@ -1,0 +1,16 @@
+&input
+ verbose=.true.
+ megaverbose=.true.
+ filein='halos_mxyz_F6_Box1_27.dat'
+ nfile=3
+ nmpi=-1
+ read_mass=.true.
+ nfoldpow=-1024
+ ngrid=1024
+ norder=3
+ shift=0.0 0.0 0.0
+ filepower='pofk_halos_mxyz_F6_Box1_27.dat'
+ filepower_fold='#powspec'
+ filetaylor='#powspec.taylor'
+ LboxCommon=1024.0
+/

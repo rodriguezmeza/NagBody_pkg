@@ -1,0 +1,8 @@
+
+time mglpicola_pofk_mpi output/snapshot_z0p000. pofk_z0p000.dat 512 > output_pofk_z0p000 &
+time mglpicola_pofk_mpi output/snapshot_z0p500. pofk_z0p500.dat 512 > output_pofk_z0p500 &
+time mglpicola_pofk_mpi output/snapshot_z1p000. pofk_z1p000.dat 512 > output_pofk_z1p000 &
+time mglpicola_pofk_mpi output/snapshot_z5p000. pofk_z5p000.dat 512 > output_pofk_z5p000 &
+time mglpicola_pofk_mpi output/snapshot_z9p000. pofk_z9p000.dat 512 > output_pofk_z9p000 &
+time mglpicola_pofk_mpi output/snapshot_z19p000. pofk_z19p000.dat 512 > output_pofk_z19p000 &
+
