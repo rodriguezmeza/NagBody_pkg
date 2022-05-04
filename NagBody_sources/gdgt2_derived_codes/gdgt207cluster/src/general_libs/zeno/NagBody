@@ -1,0 +1,32 @@
+INSTALL_PATH = ../lib
+
+# ==================================================================
+# Install clib library 
+
+install_zenolibs: install_clib nbodylib
+
+clean_zenolibs: clean_clib clean_nbodylib
+
+install_clib:
+	@echo " "
+	@echo "Creating zeno nbodylib library..."
+	(cd clib; make; cp libClib.a $(INSTALL_PATH)/.)
+
+nbodylib:
+	@echo " "
+	@echo "Creating zeno nbodylib library..."
+	(cd libnbody; make; cp libNBody.a $(INSTALL_PATH)/.)
+
+clean_dirs: clean_clib clean_nbodylib
+
+clean_clib:
+	@echo " "
+	@echo "Cleaning zeno clib library..."
+	(cd clib; make clean)
+
+clean_nbodylib:
+	@echo " "
+	@echo "Cleaning zeno nbodylib library..."
+	(cd libnbody; make clean)
+
+

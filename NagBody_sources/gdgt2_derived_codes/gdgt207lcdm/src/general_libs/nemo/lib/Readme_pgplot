@@ -1,0 +1,11 @@
+PARTICLE DYNAMICS PROJECT (NagBody)
+M.A. Rodriguez-Meza
+
+Las librerias de pgplot fueron COPIADAS de la
+instalacion de NEMO.
+
+TODO:
+
+Estas librerias se debe generar con el paquete
+original "pgplot" para que se puedan instalar
+en otra maquina.

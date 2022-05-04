@@ -73,7 +73,7 @@ gdgt2_derived_codes (Gadget derived codes of Volker Springel codes)
 2. gdgt207galaxy	: code to evolve N-body galaxies
 3. gdgt207gassphere	: code to evolve a gas sphere using SPH method
 4. gdgt207lcdm		: code to make cosmological simulations
-6. galic		: generates galaxy initial condition
+5. galic		: generates galaxy initial condition
 
 
 gravitation

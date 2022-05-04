@@ -1,0 +1,161 @@
+# ----- Machine FILE FOR Gadget-2.0.7_lapmar -generic- CODE -----
+# Include file for building exe's for a machine # É #
+#
+
+CC       =  mpicc               # sets the C-compiler
+OPTIMIZE =  -O2 -Wall -g        # sets optimization and warning flags
+MPICHLIB =  -lmpich
+
+
+#--------------------------------------- Select target computer
+
+SYSTYPE="lapmar"
+#
+# No funciona usando MacPorts ... faltan fftw2 con openmpi ...
+#SYSTYPE="lapmar-port"
+#SYSTYPE="MPA"
+#SYSTYPE="Mako"
+#SYSTYPE="Regatta"
+#SYSTYPE="RZG_LinuxCluster"
+#SYSTYPE="RZG_LinuxCluster-gcc"
+#SYSTYPE="OpteronMPA"
+#SYSTYPE="OPA-Cluster32"
+#SYSTYPE="OPA-Cluster64"
+
+#--------------------------------------- Adjust settings for target computer
+
+ifeq ($(SYSTYPE),"lapmar")
+CC       =  mpicc   
+OPTIMIZE =  -O2 -Wall -g
+#GSL_INCL =  -I$(HOME)/local/gsl/include
+#GSL_LIBS =  -L$(HOME)/local/gsl/lib
+#GSL_INCL =  -I/opt/local/include
+#GSL_LIBS =  -L/opt/local/lib
+#GSL_INCL =  -I$(HOME)/local/gsl/include
+#GSL_LIBS =  -L$(HOME)/local/gsl/lib
+GSL_INCL =  -I$(HOME)/NagBody_pkg/local/gsl/include
+GSL_LIBS =  -L$(HOME)/NagBody_pkg//local/gsl/lib
+#FFTW_INCL= -I$(HOME)/local/fftw2/include
+#FFTW_LIBS= -L$(HOME)/local/fftw2/lib
+FFTW_INCL= -I$(HOME)/NagBody_pkg/local/fftw2/include
+FFTW_LIBS= -L$(HOME)/NagBody_pkg/local/fftw2/lib
+#MPICHLIB = -lmpi	# En Xiuhcoatl no funciona
+MPICHLIB =
+HDF5INCL =  -I$(HOME)/local/hdf5/include
+HDF5LIB  =  -L$(HOME)/local/hdf5/lib -static -lhdf5 $(HOME)/local/zlib/lib -lz 
+endif
+
+ifeq ($(SYSTYPE),"lapmar-port")
+CC       =  mpicc   
+OPTIMIZE =  -O2 -Wall -g
+GSL_INCL =  -I/opt/local/gsl/include
+GSL_LIBS =  -L/opt/local/lib
+FFTW_INCL= -I/opt/local/include
+FFTW_LIBS= -L/opt/local/lib
+MPICHLIB = -lmpi
+HDF5INCL =  -I/opt/local/include
+HDF5LIB  =  -L/opt/local/lib -static -lhdf5 /opt/local/lib -lz 
+endif
+
+
+ifeq ($(SYSTYPE),"MPA")
+CC       =  mpicc   
+OPTIMIZE =  -O3 -Wall
+GSL_INCL =  -I/usr/common/pdsoft/include
+GSL_LIBS =  -L/usr/common/pdsoft/lib  -Wl,"-R /usr/common/pdsoft/lib"
+FFTW_INCL= 
+FFTW_LIBS= 
+MPICHLIB =
+HDF5INCL =  
+HDF5LIB  =  -lhdf5 -lz 
+endif
+
+
+ifeq ($(SYSTYPE),"OpteronMPA")
+CC       =  mpicc   
+OPTIMIZE =  -O3 -Wall -m64
+GSL_INCL =  -L/usr/local/include
+GSL_LIBS =  -L/usr/local/lib 
+FFTW_INCL=
+FFTW_LIBS=
+MPICHLIB =
+HDF5INCL =  -I/opt/hdf5/include
+HDF5LIB  =  -L/opt/hdf5/lib -lhdf5 -lz  -Wl,"-R /opt/hdf5/lib"
+endif
+
+
+ifeq ($(SYSTYPE),"OPA-Cluster32")
+CC       =  mpicc   
+OPTIMIZE =  -O3 -Wall 
+GSL_INCL =  -I/afs/rzg/bc-b/vrs/opteron32/include
+GSL_LIBS =  -L/afs/rzg/bc-b/vrs/opteron32/lib  -Wl,"-R /afs/rzg/bc-b/vrs/opteron32/lib"
+FFTW_INCL=  -I/afs/rzg/bc-b/vrs/opteron32/include
+FFTW_LIBS=  -L/afs/rzg/bc-b/vrs/opteron32/lib 
+MPICHLIB =
+HDF5INCL =  
+HDF5LIB  =  -lhdf5 -lz 
+endif
+
+
+ifeq ($(SYSTYPE),"OPA-Cluster64")
+CC       =  mpicc   
+OPTIMIZE =  -O3 -Wall -m64
+GSL_INCL =  -I/afs/rzg/bc-b/vrs/opteron64/include
+GSL_LIBS =  -L/afs/rzg/bc-b/vrs/opteron64/lib  -Wl,"-R /afs/rzg/bc-b/vrs/opteron64/lib"
+FFTW_INCL=  -I/afs/rzg/bc-b/vrs/opteron64/include
+FFTW_LIBS=  -L/afs/rzg/bc-b/vrs/opteron64/lib 
+MPICHLIB =
+HDF5INCL =  
+HDF5LIB  =  -lhdf5 -lz 
+endif
+
+
+ifeq ($(SYSTYPE),"Mako")
+CC       =  mpicc   # sets the C-compiler
+OPTIMIZE =  -O3 -march=athlon-mp  -mfpmath=sse
+GSL_INCL = 
+GSL_LIBS = 
+FFTW_INCL= 
+FFTW_LIBS= 
+MPICHLIB =
+HDF5INCL =  
+HDF5LIB  =  -lhdf5 -lz 
+endif
+
+
+ifeq ($(SYSTYPE),"Regatta")
+CC       =  mpcc_r 
+OPTIMIZE =  -O5 -qstrict -qipa -q64
+GSL_INCL =  -I/afs/rzg/u/vrs/gsl_psi64/include
+GSL_LIBS =  -L/afs/rzg/u/vrs/gsl_psi64/lib                
+FFTW_INCL=  -I/afs/rzg/u/vrs/fftw_psi64/include
+FFTW_LIBS=  -L/afs/rzg/u/vrs/fftw_psi64/lib  -q64 -qipa
+MPICHLIB =
+HDF5INCL =  -I/afs/rzg/u/vrs/hdf5_psi64/include
+HDF5LIB  =  -L/afs/rzg/u/vrs/hdf5_psi64/lib  -lhdf5 -lz 
+endif
+
+
+ifeq ($(SYSTYPE),"RZG_LinuxCluster")
+CC       =  mpicci   
+OPTIMIZE =  -O3 -ip     # Note: Don't use the "-rcd" optimization of Intel's compiler! (causes code crashes)
+GSL_INCL =  -I/afs/rzg/u/vrs/gsl_linux/include
+GSL_LIBS =  -L/afs/rzg/u/vrs/gsl_linux/lib  -Wl,"-R /afs/rzg/u/vrs/gsl_linux/lib"
+FFTW_INCL=  -I/afs/rzg/u/vrs/fftw_linux/include
+FFTW_LIBS=  -L/afs/rzg/u/vrs/fftw_linux/lib
+HDF5INCL =  -I/afs/rzg/u/vrs/hdf5_linux/include
+HDF5LIB  =  -L/afs/rzg/u/vrs/hdf5_linux/lib -lhdf5 -lz  -Wl,"-R /afs/rzg/u/vrs/hdf5_linux/lib"
+endif
+
+
+ifeq ($(SYSTYPE),"RZG_LinuxCluster-gcc")
+CC       =  mpiccg
+OPTIMIZE =  -Wall -g -O3 -march=pentium4
+GSL_INCL =  -I/afs/rzg/u/vrs/gsl_linux_gcc3.2/include
+GSL_LIBS =  -L/afs/rzg/u/vrs/gsl_linux_gcc3.2/lib  -Wl,"-R /afs/rzg/u/vrs/gsl_linux_gcc3.2/lib"
+FFTW_INCL=  -I/afs/rzg/u/vrs/fftw_linux_gcc3.2/include
+FFTW_LIBS=  -L/afs/rzg/u/vrs/fftw_linux_gcc3.2/lib  
+HDF5INCL =  -I/afs/rzg/u/vrs/hdf5_linux/include
+HDF5LIB  =  -L/afs/rzg/u/vrs/hdf5_linux/lib  -lhdf5 -lz  -Wl,"-R /afs/rzg/u/vrs/hdf5_linux/lib"
+endif
+

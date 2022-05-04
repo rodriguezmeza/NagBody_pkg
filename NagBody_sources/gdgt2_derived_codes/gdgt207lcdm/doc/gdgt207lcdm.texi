@@ -1,0 +1,69 @@
+\input texinfo   @c -*-texinfo-*-
+@c %**start of header
+@setfilename gdgt207lcdm.info
+@settitle gdgt207lcdm 1.0.0
+@c %**end of header
+     
+@copying
+Manual for gdgt207lcdm version 1.0.0
+@end copying
+     
+@titlepage
+@title gdgt207lcdm Manual
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+     
+@c Output the table of the contents at the beginning.
+@contents
+     
+@ifnottex
+@node Top
+@top gdgt207lcdm
+     
+@insertcopying
+@end ifnottex
+     
+@menu
+* Introduction:: Summary of features
+* Install:: How to install the code
+* Input parameters:: Numerical parameters, etc.
+* Output results:: CMB results.
+@end menu
+
+
+@node Introduction
+@chapter Introduction
+ 
+gdgt207lcdm - a massively parallel code for hydrodynamical cosmological
+simulations by Volker Springel.
+
+GADGET-2 is a massively parallel code for hydrodynamical cosmological
+simulations. It is a flexible code that can be applied to a variety of
+different types of simulations, offering a number of sophisticated
+simulation algorithms.
+
+
+@node Install
+@chapter Install
+
+./configure
+
+make
+
+make install
+
+
+@node Input parameters
+@chapter Input parameters
+
+See documentation in doc/gdgt2_derived_codes/gdgt207lcdm directory.
+
+
+@node Output results
+@chapter Output results
+
+See documentation in doc/gdgt2_derived_codes/gdgt207lcdm directory.
+
+@bye

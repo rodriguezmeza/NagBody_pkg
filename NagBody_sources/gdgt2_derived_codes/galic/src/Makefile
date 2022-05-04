@@ -106,13 +106,17 @@ OPTIMIZE +=  -fopenmp
 MPI_COMPILE_FLAGS = $(shell mpicc --showme:compile)
 CC       =  gcc  $(MPI_COMPILE_FLAGS)      # to replace clang with gcc (mpicc uses clang for some reason)
 endif
-GSL_INCL = -I/sw/include -I/opt/local/include 
-GSL_LIBS = -L/sw/lib     -L/opt/local/lib
-FFTW_INCL= -I/sw/include -I/opt/local/include
-FFTW_LIBS= -L/sw/lib     -L/opt/local/lib
+#GSL_INCL = -I/sw/include -I/opt/local/include 
+#GSL_LIBS = -L/sw/lib     -L/opt/local/lib
+GSL_INCL = -I$(HOME)/NagBody_pkg/local/gsl/include 
+GSL_LIBS = -L$(HOME)/NagBody_pkg/local/gsl/lib
+#FFTW_INCL= -I/sw/include -I/opt/local/include
+#FFTW_LIBS= -L/sw/lib     -L/opt/local/lib
+FFTW_INCL= -I$(HOME)/NagBody_pkg/local/fftw2/include
+FFTW_LIBS= -L$(HOME)/NagBody_pkg/local/fftw2/lib
 MPICHLIB = -lmpi 
-HDF5INCL = -I/sw/lib     -I/opt/local/include -DH5_USE_16_API #-DUSE_SSE
-HDF5LIB  = -L/sw/lib -L/opt/local/lib  -lhdf5 -lz
+#HDF5INCL = -I/sw/lib     -I/opt/local/include -DH5_USE_16_API #-DUSE_SSE
+#HDF5LIB  = -L/sw/lib -L/opt/local/lib  -lhdf5 -lz
 endif
 
 ifeq ($(SYSTYPE),"Darwin-mpich")
@@ -259,7 +263,11 @@ CFLAGS = $(OPTIMIZE) $(OPT) $(HDF5INCL) $(GSL_INCL) $(FFTW_INCL) $(ODE_INCL) $(G
 
 CFLAGS_CUDA = $(CUDA_OPTIMIZE) $(OPT) $(GSL_INCL) $(FFTW_INCL) $(HDF5INCL) $(ODE_INCL) $(GMP_INCL) $(MKL_INCL) $(CUDA_INCL) -I$(BUILD_DIR)
 
-LIBS = $(MATHLIB) $(HDF5LIB) $(MPICHLIB) $(GSL_LIBS) $(GSLLIB) $(FFTW_LIB) $(GMP_LIBS) $(GMPLIB) $(ODE_LIB) $(MKL_LIBS) $(THREAD_LIB) $(CUDA_LIBS)
+# Mar::
+#LIBS = $(MATHLIB) $(HDF5LIB) $(MPICHLIB) $(GSL_LIBS) $(GSLLIB) $(FFTW_LIB) $(GMP_LIBS) $(GMPLIB) $(ODE_LIB) $(MKL_LIBS) $(THREAD_LIB) $(CUDA_LIBS)
+# To find libgmp.a
+LIBS = -L/usr/local/lib
+LIBS += $(MATHLIB) $(HDF5LIB) $(MPICHLIB) $(GSL_LIBS) $(GSLLIB) $(FFTW_LIB) $(GMP_LIBS) $(GMPLIB) $(ODE_LIB) $(MKL_LIBS) $(THREAD_LIB) $(CUDA_LIBS)
 
 
 SUBDIRS := $(addprefix $(BUILD_DIR)/,$(SUBDIRS))

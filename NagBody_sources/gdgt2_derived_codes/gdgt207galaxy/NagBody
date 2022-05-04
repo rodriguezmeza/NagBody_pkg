@@ -1,0 +1,101 @@
+# NagBody install file - gdgt207galaxy code
+# Copyright (c) 2006-2022  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+
+CODE_NAME = gdgt207galaxy
+PARENT_CODE_NAME = gdgt2_derived_codes
+
+INSTALL_PATH = ../../../..
+
+
+# ==================================================================
+# NOTE: INSTALLATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+
+# ==================================================================
+# Install $(CODE_NAME) binary
+
+install_all: install install_man
+
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) binary..."
+	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
+
+# ==================================================================
+# Install $(CODE_NAME) man page
+
+install_man:
+	@echo " "
+	@echo "Copying $(CODE_NAME) man page..."
+	(cd doc; cp $(CODE_NAME).1 $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+# ==================================================================
+# Clean up $(CODE_NAME) source directory
+
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
+	(cd src; $(MAKE) clean; \
+	rm -f $(INSTALL_PATH)/bin/$(CODE_NAME) \
+	rm -f $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+
+# ==================================================================
+# Archive all source directories.  
+#
+# If errors about missing files occur, 
+# use `make -f NagBody packing_sources SHELL=/bin/csh'
+
+
+#####################################
+#####################################
+# PACKING (TAR)
+#
+PACK_PARENT_DIR = ../../../../
+PACK_CODE_NAGBODY_ROOT_DIR = NagBody_pkg
+PACK_CODE_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_sources/$(PARENT_CODE_NAME)/$(CODE_NAME)
+PACK_ZIP_DIR = $(PACK_CODE_NAGBODY_ROOT_DIR)/zip
+
+#####################################
+packing_sources:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources..."
+	@echo " "
+	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
+		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/NagBody \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/src/ \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/LICENSE \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/tests; \
+	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
+
+#####################################
+#####################################
+# PACKING (TAR) (INDEPENDENT of NagBody)
+#
+PACK_NAGBODY_DIR = ../..
+PACK_ZIP_NO_NAGBODY_DIR = $(PACK_NAGBODY_DIR)/zip
+
+#####################################
+packing_sources_no_nagbody:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources no NagBody..."
+	@echo " "
+	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
+		$(CODE_NAME)/doc \
+		$(CODE_NAME)/Readme.txt \
+		$(CODE_NAME)/src/ \
+		$(CODE_NAME)/tests; \
+	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
+

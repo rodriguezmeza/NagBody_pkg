@@ -654,15 +654,6 @@ packing_rockstar:
 packing_nagbody_rockstar:
 	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_rockstar:
-	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_rockstar:
-	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_rockstar:
-	(cd $(MAKEROCKSTAR); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # cute_box code: [cute_box (with some modifications)]
@@ -710,15 +701,6 @@ packing_powmes:
 packing_nagbody_powmes:
 	(cd $(MAKEPOWMES); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_powmes:
-	(cd $(MAKEPOWMES); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_powmes:
-	(cd $(MAKEPOWMES); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_powmes:
-	(cd $(MAKEPOWMES); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # gview code: [gadget viewer by Carsten Frigaard]
@@ -738,14 +720,24 @@ packing_gview:
 packing_nagbody_gview:
 	(cd $(MAKEGVIEW); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_gview:
-	(cd $(MAKEGVIEW); $(MAKE) -f NagBody packing_gnu_sources)
 
-install_gnu_dirs_gview:
-	(cd $(MAKEGVIEW); $(MAKE) -f NagBody install_gnu_dirs)
+# ==================================================================
+# gadgetviewer code: [gadget snaps viewer by John Helly]
+#
 
-clean_gnu_gview:
-	(cd $(MAKEGVIEW); $(MAKE) -f NagBody clean_gnu)
+MAKEGADGETVIEWER = NagBody_sources/cosmo_analysis/gadgetviewer
+
+install_gadgetviewer:
+	(cd $(MAKEGADGETVIEWER); $(MAKE) -f NagBody install_all)
+
+clean_gadgetviewer:
+	(cd $(MAKEGADGETVIEWER); $(MAKE) -f NagBody clean)
+
+packing_gadgetviewer:
+	(cd $(MAKEGADGETVIEWER); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_gadgetviewer:
+	(cd $(MAKEGADGETVIEWER); $(MAKE) -f NagBody packing_sources)
 
 
 # ==================================================================
@@ -768,15 +760,6 @@ packing_ngenic:
 packing_nagbody_ngenic:
 	(cd $(MAKENGENIC); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_ngenic:
-	(cd $(MAKENGENIC); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_ngenic:
-	(cd $(MAKENGENIC); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_ngenic:
-	(cd $(MAKENGENIC); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # 2lptic code: [2LPTic (with some modifications)]
@@ -796,15 +779,6 @@ packing_2lptic:
 packing_nagbody_2lptic:
 	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_2lptic:
-	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_2lptic:
-	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_2lptic:
-	(cd $(MAKE2LPTIC); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # 2lptic_za code: [2LPTic only ZA (with some modifications)]
@@ -823,15 +797,6 @@ packing_2lptic_za:
 
 packing_nagbody_2lptic_za:
 	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_2lptic_za:
-	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_2lptic_za:
-	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_2lptic_za:
-	(cd $(MAKE2LPTICZA); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================

@@ -1,0 +1,10 @@
+# NagBody log hist modification readme file - gadget2 General_libs code
+# Copyright (c) 2006-2011  M.A. Rodriguez-Meza, Mexico, D.F.
+
+
+1. Pasando las estructuras de datos definidas en Gadget2 a las
+estructuras generales y de uso comun en General_libs. EN PROCESO
+
+Se pretende con el punto 1 de poder usarlas por ejemplo en model
+de tal manera de escribir en el formato de gadget2.
+

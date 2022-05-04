@@ -1,0 +1,12 @@
+Execute:
+
+man gdgt207cluster
+gdgt207cluster -help
+gdgt207cluster -clue
+
+to get help on how to use model code.
+
+You may run the code by simply executing:
+
+gdgt207cluster
+
