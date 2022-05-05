@@ -1,0 +1,281 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+(SIRD)
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 aspectratio=1.2
+
+Copy all lines below and paste in the terminal:
+
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 o=snap  icModel=7 tstop=1000 > output &
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 options=type at=snap-anim  aspectratio=1.2
+echo > stop
+md_blj_n2_sird restorefile=stop-state t=0.1 > output &
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory  aspectratio=1.2
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 options=type at=snap-anim aspectratio=1.2
+echo > stop
+md_blj_n2_sird restorefile=stop-state t=1.0 > output &
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 options=type at=snap-anim aspectratio=1.2
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=500 symbolsize=0.5 options=type at=snap-anim aspectratio=1.2
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=500 symbolsize=0.5 options=type at=snap-anim aspectratio=1.2
+echo > stop
+md_blj_n2_sird restorefile=stop-state t=1.0 > output &
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory withsymbols=false wd=true aspectratio=1.2
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory withsymbols=false wd=true aspectratio=1.2
+echo > stop
+
+OTHER CASE:
+
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=200 o=snap  icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=1000 > output &
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.75 options=type4b at=snap-anim  aspectratio=1.2
+echo > stop
+md_blj_n2_sird restorefile=stop-state t=0.1 > output &
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.75 options=type4b at=snap-animtrajectory  aspectratio=1.2
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.75 options=type4b at=snap-anim aspectratio=1.2
+echo > stop
+md_blj_n2_sird restorefile=stop-state t=1.0 > output &
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.75 options=type4b at=snap-anim aspectratio=1.2
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=500 symbolsize=0.75 options=type4b at=snap-anim aspectratio=1.2
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=500 symbolsize=0.75 options=type4b at=snap-anim aspectratio=1.2
+echo > stop
+
+md_blj_n2_sird restorefile=stop-state t=1.0 > output &
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 options=type4b at=snap-animtrajectory withsymbols=false wd=true aspectratio=1.2
+analysis_md in=snap xr=-13:13 yr=-13:13 fsnap=100 symbolsize=0.5 options=type4b at=snap-animtrajectory withsymbols=false wd=true aspectratio=1.2
+echo > stop
+
+%%%%%%%%%%%%%%%%%%% 3200 PARTICLES%%%%%%%%%%%%%%
+uC=40:40 3200 particles:
+md_blj_n2_sird uC=40:40 nbodyprop=1/1 stepAvg=200 o=snap  icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.25 tstop=1000 > output &
+echo > stop
+md_blj_n2_sird restorefile=stop-state t=0.1 > output &
+analysis_md in=snap xr=-60:60 yr=-60:60 fsnap=100 symbolsize=0.25 options=type4b at=snap-animtrajectory  aspectratio=1.2 geo=800x600
+analysis_md in=snap xr=-60:60 yr=-60:60 fsnap=100 symbolsize=0.25 options=type4b at=snap-anim aspectratio=1.2 geo=800x600
+echo > stop
+md_blj_n2_sird restorefile=stop-state t=1.0 > output &
+analysis_md in=snap xr=-60:60 yr=-60:60 fsnap=100 symbolsize=0.25 options=type4b at=snap-anim aspectratio=1.2 geo=800x600
+analysis_md in=snap xr=-60:60 yr=-60:60 fsnap=500 symbolsize=0.25 options=type4b at=snap-anim aspectratio=1.2 geo=800x600
+analysis_md in=snap xr=-60:60 yr=-60:60 fsnap=500 symbolsize=0.25 options=type4b at=snap-anim aspectratio=1.2 geo=800x600
+echo > stop
+md_blj_n2_sird restorefile=stop-state t=1.0 > output &
+analysis_md in=snap xr=-60:60 yr=-60:60 fsnap=100 symbolsize=0.25 options=type4b at=snap-animtrajectory withsymbols=false wd=true aspectratio=1.2 geo=800x600
+analysis_md in=snap xr=-60:60 yr=-60:60 fsnap=100 symbolsize=0.25 options=type4b at=snap-animtrajectory withsymbols=false wd=true aspectratio=1.2 geo=800x600
+echo > stop
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+SAVINGS IMAGES
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 o=snaps/snap%05d  icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=1000 > output &
+analysis_md in=snaps/snap%05d xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=0.75 options=type4b at=snap-anim  aspectratio=1.2
+echo > stop
+
+save images for animation
+analysis_md xr=-13:13 yr=-13:13 symbolsize=0.5 at=snap-anim aspectratio=1.2 options="type4b,save" ofmt=png fsnap=100 out=images/image%04d in=snaps/snap%04d
+
+
+nplot2d in=thermo.dat uc=2:20 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat uc=2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat uc=2:26 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat uc=2:27 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:25,2:26,2:27 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:25,2:26 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:25,2:27 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:25,2:28 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:21,2:22 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:21,2:23 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:21,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:21,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat,thermo.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat,thermo.dat,thermo.dat uc=2:20,2:21,2:22,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:26,2:29 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+
+Test:
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:20,2:30,2:31 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+
+
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:24,2:22,2:23 linecolor=2 linewidth=2 xlabel=Time ylabel=Population o=infectados.png dev=png
+nplot2d in=thermo.dat,thermo.dat,thermo.dat uc=2:24,2:22,2:23 linecolor=2 linewidth=2 xlabel=Time ylabel=Population o=infectados.png dev=png
+
+analysis_md in=snaps/snap%05d xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=0.75 options=type4b at=snap-anim  aspectratio=1.2
+
+CASO1:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 o=snaps1/snap%05d  icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=1000 > output &
+analysis_md in=snaps1/snap%05d xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=0.75 options=type4b at=snap-anim  aspectratio=1.2
+echo > stop
+mv thermo.dat thermo1.dat
+nplot2d in=thermo1.dat,thermo1.dat,thermo1.dat,thermo1.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population
+nplot2d in=thermo1.dat,thermo1.dat,thermo1.dat,thermo1.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population dev=png o=infectados1.png
+analysis_md xr=-13:13 yr=-13:13 symbolsize=0.5 at=snap-anim aspectratio=1.2 options="type4b,save" ofmt=png fsnap=10000 out=images1/image%05d in=snaps1/snap%05d
+
+Run QuickTime Player.  File->Open Image Sequence. Select images1 folder. Then save -> "caso1".
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+CASO1:
+First test without saving:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=500  o=snaps1/snap%05d > output &
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options=type4b at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=1280x760 in=snaps1/snap%05d
+echo > stop
+mv thermo.dat thermo1.dat
+nplot2d in=thermo1.dat,thermo1.dat,thermo1.dat,thermo1.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50
+
+Se hacen dos directorios: snaps1 e images1 limpios:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=500 o=snaps1/snap%05d  > output &
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options="type4b,save" ofmt=png at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=1280x760 out=images1/image%05d in=snaps1/snap%05d
+echo > stop
+mv thermo.dat thermo1.dat
+nplot2d in=thermo1.dat,thermo1.dat,thermo1.dat,thermo1.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50 dev=png o=infectados1.png
+
+Run QuickTime Player.  File->Open Image Sequence. Select images1 folder. Then HigherQuality option. Then save -> "caso1".
+
+CASO2:
+First test without saving:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.5 d=0.5 tstop=500  o=snaps2/snap%05d > output &
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options=type4b at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=1280x760 in=snaps2/snap%05d
+echo > stop
+mv thermo.dat thermo2.dat
+nplot2d in=thermo2.dat,thermo2.dat,thermo2.dat,thermo2.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:100
+nplot2d in=thermo2.dat,Caso1/thermo1.dat uc=2:24,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50
+
+Se hacen dos directorios: snaps1 e images1 limpios:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.5 d=0.5 tstop=500 o=snaps2/snap%05d  > output &
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options="type4b,save" ofmt=png at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=1280x760 out=images2/image%05d in=snaps2/snap%05d
+echo > stop
+mv thermo.dat thermo2.dat
+nplot2d in=thermo2.dat,thermo2.dat,thermo2.dat,thermo2.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:100 dev=png o=infectados2.png
+nplot2d in=thermo2.dat,Caso1/thermo1.dat uc=2:24,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50 dev=png o=infectados_1vs2.png
+
+Run QuickTime Player.  File->Open Image Sequence. Select images1 folder. Then HigherQuality option. Then save -> "caso1".
+
+
+CASO3:
+First test without saving:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=10 statefile=estado stepState=10  o=snaps3/snap%05d > output3_00
+md_blj_n2_sird restorefile=estado t=0.5 tstop=100 > output3_02
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options=type4b at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=800x600 in=snaps3/snap%05d
+mv thermo.dat thermo3.dat
+nplot2d in=thermo3.dat,thermo3.dat,thermo3.dat,thermo3.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:100
+nplot2d in=Caso1/thermo1.dat,Caso2/thermo2.dat,thermo3.dat uc=2:24,2:24,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50
+
+
+Se hacen dos directorios: snaps1 e images1 limpios:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=10 statefile=estado stepState=10  o=snaps3/snap%05d > output3_00
+md_blj_n2_sird restorefile=estado t=0.5 tstop=100 > output3_02
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options="type4b,save" ofmt=png at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=1280x760 out=images3/image%05d in=snaps3/snap%05d
+mv thermo.dat thermo3.dat
+nplot2d in=thermo3.dat,thermo3.dat,thermo3.dat,thermo3.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:100 dev=png o=infectados3.png
+nplot2d in=Caso1/thermo1.dat,Caso2/thermo2.dat,thermo3.dat uc=2:24,2:24,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50 dev=png o=infectados_1vs2vs3.png
+
+Run QuickTime Player.  File->Open Image Sequence. Select images1 folder. Then HigherQuality option. Then save -> "caso3".
+
+CASO4:
+First test without saving:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=10 statefile=estado stepState=10  o=snaps4/snap%05d > output4_00
+md_blj_n2_sird restorefile=estado t=0.25 tstop=100 > output4_02
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options=type4b at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=800x600 in=snaps4/snap%05d
+mv thermo.dat thermo4.dat
+nplot2d in=thermo4.dat,thermo4.dat,thermo4.dat,thermo4.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:100
+nplot2d in=Caso1/thermo1.dat,Caso2/thermo2.dat,thermo4.dat uc=2:24,2:24,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50
+
+
+Se hacen dos directorios: snaps1 e images1 limpios:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=10 statefile=estado stepState=10  o=snaps4/snap%05d > output4_00
+md_blj_n2_sird restorefile=estado t=0.25 tstop=100 > output4_02
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options="type4b,save" ofmt=png at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=1280x760 out=images4/image%05d in=snaps4/snap%05d
+mv thermo.dat thermo4.dat
+nplot2d in=thermo4.dat,thermo4.dat,thermo4.dat,thermo4.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:100 dev=png o=infectados4.png
+nplot2d in=Caso1/thermo1.dat,Caso2/thermo2.dat,Caso3/thermo3.dat,thermo4.dat uc=2:24,2:24,2:24,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50 dev=png o=infectados_1vs2vs3vs4.png
+
+Run QuickTime Player.  File->Open Image Sequence. Select images1 folder. Then HigherQuality option. Then save -> "caso4".
+
+CASO5: same 4 but HighResolution
+First test without saving:
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=10 statefile=estado stepState=10  o=snaps4/snap%05d > output4_00
+md_blj_n2_sird restorefile=estado t=0.25 tstop=100 > output4_02
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options=type4b at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=800x600 in=snaps4/snap%05d
+mv thermo.dat thermo4.dat
+nplot2d in=thermo4.dat,thermo4.dat,thermo4.dat,thermo4.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:100
+nplot2d in=Caso1/thermo1.dat,Caso2/thermo2.dat,thermo4.dat uc=2:24,2:24,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50
+
+
+Se hacen dos directorios: snaps1 e images1 limpios (CHECAR LA GEOMETRY, NO FUNCIONA):
+md_blj_n2_sird uC=15:15 nbodyprop=1/1 stepAvg=300 icModel=7 infectionMinDist=1.0 infectionProb=0.5 t=0.7 d=0.5 tstop=10 statefile=estado stepState=10  o=snaps4/snap%05d > output4_00
+md_blj_n2_sird restorefile=estado t=0.25 tstop=100 > output4_02
+analysis_md xr=-13:13 yr=-13:13 fsnap=10000 symbolsize=1.0 options="type4b,save" ofmt=png at=snap-anim  aspectratio=1.2 labelfontsize=1 xl=X yl=Y labelfontweight=2.5 axeswidth=2 symbolweight=4 geo=1920x1080 out=images4/image%05d in=snaps4/snap%05d
+mv thermo.dat thermo4.dat
+nplot2d in=thermo4.dat,thermo4.dat,thermo4.dat,thermo4.dat uc=2:20,2:21,2:24,2:25 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:100 dev=png o=infectados4.png
+nplot2d in=Caso1/thermo1.dat,Caso2/thermo2.dat,Caso3/thermo3.dat,thermo4.dat uc=2:24,2:24,2:24,2:24 linecolor=2 linewidth=2 xlabel=Time ylabel=Population labelfontweight=2.5 axeswidth=2 geo=800x600 aspectratio=1.2 xr=0:50 dev=png o=infectados_1vs2vs3vs4.png
+
+Run QuickTime Player.  File->Open Image Sequence. Select images1 folder. Then HigherQuality option. Then save -> "caso4".
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+STOPPING THE CODE
+       Once the md_blj_n2 is running you may always stop it by executing the command
+
+       echo > stop
+
+       You must be in the same directory were the process were lunched.  A file named 'stop-state' is saved containing
+       the state of the simulation run. This option permits us to stop the simulation and change some numerical and/or
+       physical parameters such as temperature or density.
+
+EXAMPLES
+       Executing
+
+       md_blj_n2
+
+       will run the default simulation which is consistent with the experimental data reported in: J.L. Yarnell, et al,
+       "Structure factor and radial distribution function for liquid Argon at 85 K", Phys. Rev. A7 (1972) 2130.
+       Parameter eps in the Lennard-Jones potential that fit the experimental data is eps/kB = 119 K.
+
+       With the command: md_blj_n2 nbody=4096 out=snap%03d dtout=2/256
+
+       we run a simulation with 4096 bodies and save snap data every other time step.
+
+       With the command: md_blj_n2 statefile=state
+
+       we run a simulation were a state file is saved every dtout/dtime steps. If for some reasons the simulation run
+       is interrupted you may always restart the run ejecuting the command:
+
+       md_blj_n2 restorefile=state
+
+       Or if you stop it the run using the command 'echo > stop' you may restart the run with the command:
+
+       md_blj_n2 restorefile=stop-state
+
+       Ejecuting the command:
+
+       md_blj_n2 icModel=6 nbodyprop=2/2 tstop=100 d=0.8 o=snap stepvAvg=30 > output &
+
+       a run is launched in the background using an FCC initial condition whose basic cell has 2/2 bodies proportion
+       with a density=0.8, snaps will be saved every 5 time steps and properties will be computed every 30 steps.
+
+       Now, we may stop the simulation using 'echo > stop', then we re-launch the simulation using the command:
+
+       md_blj_n2 restore=stop-state stepAvg=70 > output01 & Therefore, properties are now computed every 70 time steps
+
+
+ANIMATIONS
+       You may run the analysis_md code to see animation plots.  Run a simulation using, for example, the command:
+
+       md_blj_n2 icModel=6 nbodyprop=2/2 tstop=100 d=0.8 o=snap > output &
+       then, use the command:
+
+       analysis_md in=snap analysis_type=snap-anim
+
+       to see the animation of the simulation. Instead of <snap-anim> you may use <snap-animtrajectory> to see the
+       trajectories of the particles.  If you want to distiguish the type of particles use also options=<types>.
+
+       The x and y ranges may change according to particle positions during simulation, then, can be useful to set
+       xrange=<xmin:xmax> and xrange=<ymin:ymax>.
+
+       Then you may execute the command:
+
+       analysis_md in=snap analysis_type=snap-animtrajectory options=type withsymbols=false wd=true xr=-4.5:4.5
+       yr=-4.5:4.5 fsnap=20
+
+       to see trajectory animation distinguishing particles types with a x and y ranges fix and showning up to 20 snaps
+       in total.

@@ -1,0 +1,181 @@
+# ----- MAKE FILE machine defintions -----
+# Copyright (c) 2006-2022  M.A. Rodriguez-Meza, Mexico, D.F.
+#
+# ========================================
+# Choose the machine you are running on. 
+# Set paths to mpicc, FFTW3 GSL... below
+# ========================================
+#
+#MACHINE  = MACPORTS
+MACHINE = MACBREW
+#MACHINE = MACCLANG
+#MACHINE = MACOTHER
+#MACHINE = MACUBUNTU
+#MACHINE = MACINTEL
+
+#
+# NagBody dir can also be defined inside a machine definitions
+NAGBODYDIR = $(HOME)/NagBody_pkg
+
+CCFLAGS =
+LDFLAGS =
+LIBS =
+OPT1 =
+OPT2 =
+
+#--------------------------------------------
+# Set local options to this code
+# 	INCLUDES :: OPT1
+# 	OTHER OPTIONS :: OPT2
+# Some of this definitions can be set in a particular machine
+#
+OPT1    +=  -I ./
+OPT1    +=  -I ./general_libs/general
+OPT1    +=  -I ./general_libs/math
+OPT1    +=  -I ./general_libs/io
+OPT1    +=  -I ./general_libs/NagBody
+OPT1    +=  -I ./general_libs/physics
+OPT1    +=  -I $(HOME)/NagBody_pkg/local/gsl/include
+# Add as many as needed
+#
+#OPT2   +=  -DOPTIONNAME
+# Add as many as needed
+OPT2   +=  -D_FORTIFY_SOURCE=0
+# CON LA DEFINICION ANTERIOR EVITAMOS al correr el codigo
+# EL Abort trap: 6 que aparece la rutina “output” cuando llama a strcp(mode,”w!”)
+
+GSL_INCL= -I$(HOME)/NagBody_pkg/local/gsl/include
+GSL_LIBS= -L$(HOME)/NagBody_pkg/local/gsl/lib
+
+#
+# LINES TO not GNU version and Mac OS X version (Catalina 10.15.3 at least)
+#OPT1    =  -DNOGNU
+# TO SOLVE LINKING ERROR:
+# ld: library not found for -lSystem
+#OPT1   +=  -I/Applications/Xcode.app//Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include
+#OPT2   +=  -L/Applications/Xcode.app//Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib
+
+#OPTIMIZE = -O3 -g
+# To avoid running error: Illegal instruction: 4
+OPT2 += -O2 -mmacosx-version-min=10.0
+
+INCLUDES = $(OPT1) $(GSL_INCL)
+
+LDFLAGS += $(GSL_LIBS)
+
+#PRECISION = DOUBLEPREC
+
+#--------------------------------------------
+# BEGIN MACHINE DEFINITIONS (ARCHITECTURES)
+#
+ifeq ($(MACHINE), MACPORTS)
+  CC = gcc
+  FC = gfortran
+  F90C = gfortran
+  F90 = gfortran
+  OPTIMIZE = -O3 -fopenmp
+endif
+
+ifeq ($(MACHINE), MACBREW)
+  CC = gcc
+  FC = gfortran
+  F90C = gfortran
+  F90 = gfortran
+  OPTIMIZE = -O3 -Wall -std=c99
+  OMPFLAG = -fopenmp
+  CCFLAGS += -g -fPIC
+  LDFLAGS += -g -fPIC
+  MLIBS =
+endif
+
+ifeq ($(MACHINE), MACCLANG)
+  CC = clang
+  F90C = gfortran
+  F90 = gfortran
+  OPTIMIZE = -O2
+endif
+
+ifeq ($(MACHINE), MACOTHER)
+  CC = gcc
+  F90C = gfortran
+  F90 = gfortran
+  OPTIMIZE = -O3 -fopenmp -I/opt/local/lib/gcc8/gcc/x86_64-apple-darwin18/8.3.0/include/ssp/
+endif
+
+ifeq ($(MACHINE), MACUBUNTU)
+  CC = gcc
+  F90C = gfortran
+  F90 = gfortran
+  OPTIMIZE = -O3 -fopenmp
+  MLIBS = -lm
+endif
+
+ifeq ($(MACHINE), MACINTEL)
+  CC = icc
+  F90C = ifort
+  F90 = ifort
+  OPTIMIZE = -O3
+  OMPFLAG = -openmp
+endif
+
+ifeq ($(MACHINE), MACBREWMPI)
+  CC = mpicc
+  FC = mpif77
+  F90C = mpif90
+  F90 = mpif90
+#
+# NagBody dir can also be defined inside a machine definitions
+  NAGBODYDIR = $(HOME)/NagBody_pkg
+
+ifdef SINGLE_PRECISION
+  FFTW_INCL= -I$(NAGBODYDIR)/local/fftw3/include
+  FFTW_LIBS= -L$(NAGBODYDIR)/local/fftw3/lib -lfftw3f_mpi -lfftw3f
+else
+  FFTW_INCL= -I$(NAGBODYDIR)/local/fftw3/include
+  FFTW_LIBS= -L$(NAGBODYDIR)/local/fftw3/lib -lfftw3_mpi -lfftw3
+endif
+  GSL_INCL =  -I$(HOME)/NagBody_pkg/local/gsl/include
+  GSL_LIBS =  -L$(HOME)/NagBody_pkg/local/gsl/lib -lgsl -lgslcblas
+  MPI_INCL  = -I/opt/local/include/openmpi-mp/
+  MPI_LIBS  = -L/opt/local/lib/openmpi-mp/ -lmpi
+
+  OPTIMIZE = -O3
+  OMPFLAG = -fopenmp
+  CCFLAGS += -g -fPIC $(FFTW_INCL) $(GSL_INCL) $(MPI_INCL) $(OPTIONS)
+  LDFLAGS += -g -fPIC
+  LIBS +=  $(MPI_LIBS) $(FFTW_LIBS) $(GSL_LIBS)
+  MLIBS =
+endif
+
+ifeq ($(MACHINE), MACPORTSMPI)
+  CC = mpicc
+  FC = mpif77
+  F90C = mpif90
+  F90 = mpif90
+#
+# NagBody dir can also be defined inside a machine definitions
+  NAGBODYDIR = $(HOME)/NagBody_pkg
+
+ifdef SINGLE_PRECISION
+  FFTW_INCL= -I/opt/local/include
+  FFTW_LIBS= -L/opt/local/lib -lfftw3f_mpi -lfftw3f
+else
+  FFTW_INCL= -I/opt/local/include
+  FFTW_LIBS= -L/opt/local/lib -lfftw3_mpi -lfftw3
+endif
+  GSL_INCL =  -I/opt/local/include
+  GSL_LIBS =  -L/opt/local/lib -lgsl -lgslcblas
+  MPI_INCL  = -I/opt/local/include/openmpi-mp/
+  MPI_LIBS  = -L/opt/local/lib/openmpi-mp/ -lmpi
+
+  OPTIMIZE = -O3
+  OMPFLAG = -fopenmp
+  CCFLAGS += -g -fPIC $(FFTW_INCL) $(GSL_INCL) $(MPI_INCL) $(OPTIONS)
+  LDFLAGS += -g -fPIC
+  LIBS +=  $(MPI_LIBS) $(FFTW_LIBS) $(GSL_LIBS)
+  MLIBS =
+endif
+
+# END MACHINE DEFINITIONS
+#--------------------------------------------
+

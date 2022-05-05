@@ -36,44 +36,21 @@
 #include <sys/stat.h>
 #include <string.h>
 
-#ifndef NOGNU
-#include "../../../general_libs/general/stdinc.h"
-//#include "../../../General_libs/math/vectdefs.h"
-#include "math/vectdefs.h"
-//#include "../../../General_libs/NagBody/nagbody.h"
-//#include "../../../General_libs/math/mathfns.h"
-//#include "../../../General_libs/math/vectmath.h"
-//#include "../../../General_libs/math/mathutil.h"
-#include "math/mathfns.h"
-#include "math/vectmath.h"
-#include "math/mathutil.h"
-#include "../../../general_libs/general/getparam.h"
-//#include "../../../General_libs/io/inout.h"
-#include "io/inout.h"
-#include "../../../general_libs/general/constant.h"
-#include "../../../general_libs/physics/physconstants.h"
-/* #include <strings.h> */							// For unix
-#include "../../../general_libs/general/strings.h"		// For Visual C
-#include "../../../general_libs/general/machines.h"
-//#include "../../../General_libs/general/lic.h"
-#include "NagBody/nagbody.h"
-#else
 #include "stdinc.h"
 #include "vectdefs.h"
 //#include "nagbody.h"
-#include "../math/mathfns.h"
-#include "../math/vectmath.h"
-#include "../math/mathutil.h"
+#include "mathfns.h"
+#include "vectmath.h"
+#include "mathutil.h"
 #include "getparam.h"
-#include "../io/inout.h"
+#include "inout.h"
 #include "constant.h"
 #include "physconstants.h"
 /* #include <strings.h> */							// For unix
 #include "strings.h"		// For Visual C
 #include "machines.h"
 //#include "lic.h"
-#include "../NagBody/nagbody.h"
-#endif
+#include "nagbody.h"
 
 //#include "../NagBody/nagbody.h"
 
@@ -530,14 +507,32 @@ global global_data gd;
 global cmdline_data cmd;
 global io_header_blj hdr;
 
-global_data_tree gdtree;
-global_data_tree_bljforcecalc gdforce;
+global global_data_tree gdtree;
+global global_data_tree_bljforcecalc gdforce;
 
-TBufDiffusion *tBufD;
-TBufVelAcf *tBufVAcf;
-TBufdPressAcf *tBufdPAcf;
-TBuf *tBuf;
-TBufCorr *tBufC;
+global TBufDiffusion *tBufD;
+global TBufVelAcf *tBufVAcf;
+global TBufdPressAcf *tBufdPAcf;
+global TBuf *tBuf;
+global TBufCorr *tBufC;
+
+// STATIC problem: gcc version 11
+// From inout.h
+global real *inout_xval;
+global real *inout_yval;
+global real *inout_zval;
+global real *inout_wval;
+
+// STATIC problem: gcc version 11
+// From diffeqs.h
+//global double dxsav,*xp,**yp;
+//global int kmax,kount;
+//global int nrhs;
+
+// STATIC problem: gcc version 11
+// From stdinc.h
+global long idum;                // seed for random generators
+
 
 #endif /* ! _globaldefs_h */
 
