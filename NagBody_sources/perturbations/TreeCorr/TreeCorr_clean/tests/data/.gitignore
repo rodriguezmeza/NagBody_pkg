@@ -1,0 +1,8 @@
+Aardvark.fit
+Aardvark.hdf5
+Aardvark.parquet
+*.fits
+*.png
+*.dat
+*.csv
+*.txt
