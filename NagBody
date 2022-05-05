@@ -821,15 +821,6 @@ packing_gdgt207galaxy:
 packing_nagbody_gdgt207galaxy:
 	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_gdgt207galaxy:
-	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_gdgt207galaxy:
-	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_gdgt207galaxy:
-	(cd $(MAKEGDGT207GALAXY); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # galic code: [GALIC galaxy initial generator
@@ -850,15 +841,6 @@ packing_galic:
 
 packing_nagbody_galic:
 	(cd $(MAKEGALIC); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_galic:
-	(cd $(MAKEGALIC); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_galic:
-	(cd $(MAKEGALIC); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_galic:
-	(cd $(MAKEGALIC); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -881,15 +863,6 @@ packing_gdgt207lcdm:
 packing_nagbody_gdgt207lcdm:
 	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_gdgt207lcdm:
-	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_gdgt207lcdm:
-	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_gdgt207lcdm:
-	(cd $(MAKEGDGT207LCDM); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # gdgt207cluster code: [Gadget-2.0.7 cluster simulations
@@ -911,15 +884,6 @@ packing_gdgt207cluster:
 packing_nagbody_gdgt207cluster:
 	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_gdgt207cluster:
-	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_gdgt207cluster:
-	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_gdgt207cluster:
-	(cd $(MAKEGDGT207CLUSTER); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # gdgt207gassphere code: [Gadget-2.0.7 gassphere simulations
@@ -940,15 +904,6 @@ packing_gdgt207gassphere:
 
 packing_nagbody_gdgt207gassphere:
 	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_gdgt207gassphere:
-	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_gdgt207gassphere:
-	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_gdgt207gassphere:
-	(cd $(MAKEGDGT207GASSPHERE); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================

@@ -1,0 +1,133 @@
+'t" t
+.TH galaxy_models 1 "January 2006" UNIX "NagBody PROJECT"
+.na
+.nh   
+.SH NAME
+galaxy_models - code to generate initial conditions of galaxy models
+.SH SYNOPSIS
+\fBgalaxy_models\fR [ \fIparameter_file_name\fR ] [ \fIoptions\fR ] 
+.sp
+.SH DESCRIPTION
+galaxy_models - Generates galaxy models to study galactic dynamics. The program generate
+initial conditions for simulations with disk-bulge-halo models. Gas is allowed to be included
+in the disk and enables the user to add a satellite.
+.sp
+Disks are modeled as isothermal sheets (See Spitzer 1942, Ap. J. 95, 329):
+.sp
+	rho[D](R,z) = rho[D](0,0) exp(-R/h) [sech(z/z0)]^2
+.sp
+where rho[D](R,z) is the volume mass density of the disk at cylindrical coordinates (R,z),  
+h is the  exponential scale length of the disk and z0 is the z scale height.
+.sp
+Bulges are modeled by the density profile analyzed by Hernquist (1990;
+Ap. J. 356, 359).  Namely,
+.sp
+	rho[B](r) = M_bulge * a_bulge /(r * (a_bulge + r)^3),
+.sp
+where rho[B](r) is the volume mass density of the bulge at
+spherical coordinate (r), a_bulge is the scale-length of the 
+bulge and M_bulge is the bulge mass.
+.sp
+Halos are modeled either according to the density profile
+.sp
+	rho[H](r)   EXP[-r*r/(r_c*r_c)] 
+.br
+	--------- = -------------------
+.br
+	rho[H](0)   (1 +  [r/gamma]^2)
+.sp 
+where rho[H](r) is the volume mass density of the halo at
+spherical radius r, gamma is the halo mass scale length,
+and r_c is a cut-off radius; or according to the model analyzed
+by Hernquist (1990; Ap. J. 356; 359).  Namely,
+.sp
+	rho[H](r) = M_halo * a_halo /(r * (a_halo + r)^3),
+.sp
+where rho[H](r) is the volume mass density of the halo at
+spherical coordinate (r), a_halo is the scale-length of the
+halo and M_halo is the halo mass.
+.SH OPTIONS
+The options have the structure
+.sp
+\fIoption_name\fR = <option_value>
+.sp
+There are short names and long names for options. In the option description below, 
+short names are in the column at the left and long names are given in brackets in
+the description column.
+Options and their possible values are:
+.IP "paramfile" 12
+[ParameterFile] is the name file with the values of the input parameters. Overwrite parameters
+values below. You may also input this filename by only writing:
+.sp 
+nbody_n2 parameters_input_file_name
+.sp
+Parameter input file may be created by hand with the editor of your choice. Comment lines start
+with an "%". Follow each name option with a blank space and the option value.
+The order of the option lines does not matter.
+.IP "eps" 12
+[Epsilon] it is the energy depth of the potential.
+.IP "nbody" 12
+[NumberBody] it is the number of bodies to simulate.
+.sp
+Note: it is recommended that this number is given as power of 2.
+.IP "freq" 12
+[IntegrationFrequency] is the integration frequency. 1/freq is the time step.
+.IP "tstop" 12
+[TimeStop] is the time to stop the simulation.
+.IP "seed" 12
+[RandomSeed] it is the Random number seed for the test run.
+.IP "icfile" 12
+[InitialConditionFile] you give here the name of the file with the N-body initial data.
+.IP "icfilefmt" 12
+[InitialConditionFileFormat] is the format of the 'InitialConditionFile'. 'snap-bin' (Binary) 
+or 'snap' (ASCII).
+.IP "snapout" 12
+[SnapOutputFile] you give here the name structure for the output of N-body snaps. The format follows
+as the ones used in C-language for integers ("%0#d").
+.IP "snapoutfmt" 12
+[SnapOutputFormat] you tell the code the format of the snaps output. There are two options 'snap',
+'snap-bin', or 'pv'.
+Single quotation marks are not written.
+.IP "freqout" 12
+[FrequencyOutput] this is the output frequency. The out files will be written every freq/freqout time step.
+.IP "statefile" 12
+[RunStateFile] you give here the name of a file where the run state will be saved. If it is null no run
+state will be saved.
+.IP "restorefile" 12
+[RestoreStateFile] if it is not null a run will be restarted from the data stored in this file.
+.IP "options" 12
+[Options] you may give here various code behavior options. They are, "reset-time" (inputdata); 
+"out-phi" (outputdata); "out-acc" (outputdata). If you save a state file, this parameter is saved.
+.SH UNITS
+The code assumes the following dimensionless system of units:
+.br
+G = 1
+.br
+h_disk = 1 (exponential scale-length of disk)
+.br
+M_disk = 1 (disk mass)
+.SH EXAMPLES
+md_lj_n2 nbody=512 freq=1000 out=snap%03d Rcut=3.0
+.SH ANIMATIONS
+You may run gnuplot to see animation plots. Make the following script:
+
+a=a+1
+.br
+plot "rdf.dat" w l
+.br
+pause 1
+.brif(a<50000) reread
+.sp
+Save the script in a file named "rdf.gnu". At the same time that the simulation is running start gnuplot and execute the commands:
+
+a=0
+.br
+load "rdf.gnu"
+
+.SH SEE ALSO
+gbsph(1), md_sl(1)
+.SH COPYRIGHT
+Copyright (C) 1999-2006
+.br
+M.A. Rodriguez-Meza
+.br

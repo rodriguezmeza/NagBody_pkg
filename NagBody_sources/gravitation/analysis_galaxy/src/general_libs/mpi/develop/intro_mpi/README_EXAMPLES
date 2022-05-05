@@ -1,0 +1,28 @@
+Here are the list of examples to be included in the class:
+
+MPI:
+
+
+1. hello_world.f, hello_world.c :
+Simple examples of messaging
+
+2. numerical_integ.c:
+Domain decomposition example of doing numerical integration using the midpt rule using MPI
+
+numerical_integ2.c:
+Domain decomposition example that uses a collective communicator  - MPI_Reduce
+
+3. matmult.f:
+Functional decompostion examples of multiplying two matrices
+
+4. array_search1.c, array_search2.c: 
+Examples of using collective communicators in an MPI program where each
+processor searches a section of a data array until finds a specific number and
+notifies the rest to searching
+
+5. numerical_integ_err.c: 
+Examples of an MPI program with an error.
+
+
+
+

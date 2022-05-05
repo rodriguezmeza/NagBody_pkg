@@ -1,0 +1,19 @@
+# start up bash script as if it were a login shell
+#!/bin/bash -l 
+# declare a name for this job to be sample_job
+#PBS -N hello_world 
+# request the default queue for this job
+#PBS -q default
+# request a total of 8 processors for this job (2 nodes and 4 processors per node)
+#PBS -l nodes=2:ppn=4
+# request 1 hour of wall time
+#PBS -l walltime=1:00:00
+# specify your email address so mail can be sent to when the job is finished
+##PBS -M John.Smith@dartmouth.edu
+# have email sent to you when the job is finished
+##PBS -m ae 
+#change to the directory where you submitted the job 
+cd $PBS_O_WORKDIR
+#include the full path to the name of your MPI program
+mpiexec -comm p4 -np 4 /home/sas/Classes/intro_mpi/hello_world_c
+
