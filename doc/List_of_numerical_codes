@@ -23,6 +23,7 @@ additional_libs
 9. plplot		: PLplot, a cross-platform software package for creating scientific plots
 10. NR			: We include some of the numerical recipes codes: interpolation, quadratures, 
 			: special function, ODE solvers, etc. Isolated in order to be easy to use.
+11. hdf5		: High-performance software library and data format.
 
 class
 1. class		: Julien Lesgourges CLASS

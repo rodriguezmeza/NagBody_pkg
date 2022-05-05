@@ -69,10 +69,10 @@ export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib/plplot5.15.0/drive
 ###################################################################
 # HDF5:
 # INSTALADO CON PORT ... hdf5-18 ...
-#export PATH=${HOME}/NagBody_pkg/local/hdf5/bin:${PATH}
-#export MANPATH=${HOME}/NagBody_pkg/local/hdf5/share/man:${MANPATH}
-#export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/hdf5/lib:${LD_LIBRARY_PATH}
-#export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/hdf5/lib:${DYLD_LIBRARY_PATH}
+export PATH=${HOME}/NagBody_pkg/local/hdf5/bin:${PATH}
+export MANPATH=${HOME}/NagBody_pkg/local/hdf5/share/man:${MANPATH}
+export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/hdf5/lib:${LD_LIBRARY_PATH}
+export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/hdf5/lib:${DYLD_LIBRARY_PATH}
 
 # PHDF5 (Parallel):
 #export PATH=${HOME}/NagBody_pkg/local/phdf5/bin:${PATH}

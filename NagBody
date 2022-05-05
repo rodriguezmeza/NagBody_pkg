@@ -189,6 +189,25 @@ packing_nagbody_plplot:
 
 
 # ==================================================================
+# hdf5 codes/lib: [HDF5 code/lib]
+#
+
+MAKEHDF5 = NagBody_sources/additional_libs/hdf5
+
+install_hdf5:
+	(cd $(MAKEHDF5); $(MAKE) -f NagBody install_all)
+
+clean_hdf5:
+	(cd $(MAKEHDF5); $(MAKE) -f NagBody clean)
+
+packing_hdf5:
+	(cd $(MAKEHDF5); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_hdf5:
+	(cd $(MAKEHDF5); $(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
 # CLASS
 # ==================================================================
 # class code: [class code (with some modifications)]
