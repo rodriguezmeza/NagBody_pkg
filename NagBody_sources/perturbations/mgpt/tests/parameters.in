@@ -33,7 +33,7 @@ rcDGP                             1
 %
 % Background cosmology:
 Om                                 0.281
-OL                                  1-Om
+OL                                  1 - Om
 h                                  0.697
 %
 % Differential equations evolution parameters:
