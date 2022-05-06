@@ -1,0 +1,234 @@
+.TH Cosmo-modules 1 "27 Feb 2008"
+
+.SH NAME
+
+\fIgview\fP - displays a 3D view of a series of gadget snapshot files.
+
+.SH SYNOPSIS
+
+.B gview
+<inputfile>
+
+.SH DESCRIPTION
+
+\fIgview\fP displays a 3D view of a single snapshot file or a series of snapshot files. The snapshot series is recognized via the file basename plus the suffix of '000', '001', etc.
+
+The view is rotatable, translatable and zoomable using the mouse and keyboard a user interactive input.
+
+\fIgview\fP uses the OpenGL rendering library. This requires the GLut library to be installed on your system (or Mesa RPM).
+
+.SH STATE
+
+The state of \fIgview\fP is stored in a file called 'gview.ini'. If no file arguments are given, \fIgview\fP loads the file found in this file, found in our home directory '~/.gview.ini'. The format of the file is
+
+
+gview_settings:
+  axis 1
+  drawbbox 1
+  smoothlens 0
+  migrateparticles 0
+  drawpoints 1
+  colorpoints 0
+  animate 1
+  showtext 1
+  debug 0
+  windowx 900
+  windowy 730
+  windowox 5
+  windowoy 35
+  translatex 0
+  translatey 0
+  rotx -64
+  roty 129
+  zoom 0.0945001
+  timer 0
+  snapshot snapshot_000
+  subsample 1
+  gridsize 0
+  follow 0
+  subsnap 0
+  subsnapstep 0.05
+end
+
+
+
+but the file will be re-created using default values if erased.
+
+.SH OPTIONS
+
+
+
+
+
+.BR <inputfile>
+Gadget2 snapshotfile in format 1 for the 3D view.
+
+
+
+.SH KEYBOARD
+
+
+
+.TP 8
+.BR a
+translate left
+
+.TP 8
+.BR d
+translate right
+
+.TP 8
+.BR s
+translate down
+.TP 8
+
+.BR w
+translate up
+.TP 8
+
+.BR z
+zoom in
+.TP 8
+
+.BR x
+zoom out
+.TP 8
+
+.BR g
+show grid and increase grid refinement
+.TP 8
+
+.BR G
+decrease grid refinement
+.TP 8
+
+.BR h
+show this help string
+.TP 8
+
+.BR i
+show snapshot info text on screen
+.TP 8
+
+.BR n
+load next snapshot
+.TP 8
+
+.BR p
+load previous snapshot
+.TP 8
+
+.BR q
+quits program
+.TP 8
+
+.BR r
+resets view
+.TP 8
+
+.BR t
+autoplay, rotate and zoom animation (start/stops),
+increase animation rate
+.TP 8
+
+.BR T
+decrease animation rate
+.TP 8
+
+.BR u
+subsample particles (for big files)
+.TP 8
+.BR U
+re-subsample particles (for smaller files)
+.TP 8
+
+.BR m
+encrease migration stepsize
+.TP 8
+
+.BR M
+decrease migration stepsize
+.TP 8
+
+.BR u
+increase subsample particle rate (for big files)
+.TP 8
+
+.BR U
+decrease subasmple particle rate (for smaller files)
+.TP 8
+
+.BR k
+k or K: follow next (k: +1, K:+100), particle
+.TP 8
+
+.BR j
+j or J: follow previous (j: -1, J:-100), particle
+.TP 8
+
+.BR l
+follow no particle
+.TP 8
+
+
+
+
+
+.BR 1
+enable/disable axis
+.TP 8
+
+.BR 2
+enable/disable bounding box
+.TP 8
+
+.BR 3
+enable/disable drawing of points
+.TP 8
+
+.BR 4
+enable/disable drawing of smoothing lengths.
+.TP 8
+
+.BR 5
+enable/disable animate particle migration (snapshotfiles must be sorted on particles id)
+.TP 8
+
+.BR %
+enable/disable animation
+.TP 8
+
+.BR 6
+enable/disable particle colors
+
+
+
+
+.SH EXAMPLE
+View test file:
+
+\ \ \ \ \ gview test-snapshot-021
+
+
+.SH BUGS
+
+Framehandling not correct under Linux with Beryl window manager. Frame not drawn at all, but works correctly otherwise. The horizontal sync in swapping of buffers does also not work under Linux/Beryl, output error:
+
+
+: libGL warning: 3D driver claims to
+   not support visual 0x5b
+
+: do_wait: drmWaitVBlank returned -1,
+  IRQs don't seem to be working correctly.
+  Try running with LIBGL_THROTTLE_REFRESH
+ and LIBL_SYNC_REFRESH unset.
+
+
+
+.SH SEE ALSO
+.B ghead(1),
+.B gadget2(1)
+
+.SH COPYRIGHT
+
+© 2008 Carsten Frigaard. Permission to use, copy, modify, and distribute this software and its documentation for any purpose and without fee is hereby granted, provided that the above copyright notice appear in all copies and that both that copyright notice and this permission notice appear in supporting documentation.
