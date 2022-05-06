@@ -81,7 +81,7 @@ ifeq ($(MACHINE), MACBREW)
   OMPFLAG = -fopenmp
   CCFLAGS += -g -fPIC
   LDFLAGS += -g -fPIC
-  MLIBS =
+  MLIBS = -lm
 # To avoid running error: Illegal instruction: 4
   OPT2 += -O2 -mmacosx-version-min=10.0
 endif

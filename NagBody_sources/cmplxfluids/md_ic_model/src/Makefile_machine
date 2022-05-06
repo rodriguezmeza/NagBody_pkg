@@ -63,7 +63,7 @@ ifeq ($(MACHINE), MACBREW)
   OMPFLAG = -fopenmp
   CCFLAGS += -g -fPIC
   LDFLAGS += -g -fPIC
-  MLIBS =
+  MLIBS = -lm
 endif
 
 ifeq ($(MACHINE), MACCLANG)

@@ -1,0 +1,231 @@
+'t" t
+.TH md_lj_tree 1 "January 2006" UNIX "NagBody PROJECT"
+.na
+.nh   
+.SH NAME
+md_lj_tree - (Hierarchical force calculation) simulation of a Lennard-Jones liquid
+.SH SYNOPSIS
+\fBmd_lj_tree\fR [ \fIparameter_file_name\fR ] [ \fIoptions\fR ] 
+.sp
+.SH DESCRIPTION
+md_lj_tree - Simulates the evolution of a N-body system interacting with a Lennard-Jones potential.
+The force is computed Hierarchically following a treecode scheme. 
+Code complexity is O(N Log N). Periodic boundary condition is used and temperature is kept constant.
+.SH OPTIONS
+The options have the structure
+.sp
+\fIoption_name\fR = <option_value>
+.sp
+Options and their possible values are:
+.IP "paramfile" 12
+is the name file with the values of the input parameters. Overwrite parameters
+values below. You may also input this filename by only writing:
+.sp 
+md_lj_tree parameters_input_file_name
+.sp
+Parameter input file may be created by hand with the editor of your choice. Comment lines start
+with an "%". Follow each name option with a blank space and the option value.
+The order of the option lines does not matter. Also you may create an example input file
+by executing
+.sp
+md_lj_tree
+.sp
+This will run the \fBmd_lj_tree\fR code with default values and when it finish you will have in your
+running directory the file "parameters_null-usedvalues". Now you may edit this file to adapt
+to your own simulation parameters. It may be helpful to change this file name to whatever apropriate.
+.IP "forcecalc_method" 12
+is the force calculation method to use. We have implemented four methods: direct (direct), 
+nearest neighborh list (nblist), cells method (cells), 
+and tree walk method (normal) which is the default value.
+.IP "theta" 12
+is a force acuracy parameter. Not in use by now. 
+.IP "usequad" 12
+is the option to include quadrupoles in the force calculation. Not in use by now.
+.IP "temperature" 12
+is the temperature of the simulation in units such that eps/kB is the unit of temperature
+(see below section on "UNITS").
+.IP "density" 12
+is the density of the liquid in code units.
+.IP "stepEquil" 12
+is the step to begin equilibrium computations. Its default value is 100 time steps.
+.IP "stepVel" 12
+is the number of steps jumps to save a velocity histogram.
+.IP "stepAvgVel" 12
+is the number of velocity histograms to average. Its default value is 4.
+.IP "sizeHistVel" 12
+is the array size for the velocity histogram. Its default value is 50.
+.IP "rangeVel" 12
+is the range of velocities for the histogram computation.
+.IP "stepRdf" 12
+is the number of steps jumps to save a radial distribution function (RDF) histogram.
+.IP "stepAvgRdf" 12
+is the number of RDF histograms to average. Its default value is 20.
+.IP "sizeHistRdf" 12
+is the array size for the RDF histogram. Its default value is 200.
+.IP "rangeRdf" 12
+is the range of positions for the RDF histogram computation.
+.IP "nbody" 12
+it is the number of bodies to simulate. If icfile option is null the code will generate
+a initial condition (a test run) were all the particles are distributed uniformly in a cubic box
+with gaussian random velocities.
+Therefore, nbody will be of the form n^3.
+.IP "dtime" 12
+is the time step integration in code units. Can also be given in the form of p/q,
+where q is expressed as powers of 2 so we can think in terms of integration frequency.
+.IP "tstop" 12
+is the time to stop the simulation.
+.IP "seed" 12
+it is the Random number seed for the test run.
+.IP "icfile" 12
+you give here the name of the file with the N-body initial data.
+.IP "icfilefmt" 12
+is the format of the initial condition file: 'snap-bin' (binary)
+or 'snap' (ASCII) or 'snap-pv'. See snapoutfmt option below for a description of the file formats.
+.IP "snapout" 12
+you give here the name structure for the output of N-body snaps. The format follows
+as the ones used in C-language for integers ("%0#d").
+.IP "snapoutfmt" 12
+you tell the code the format of the snaps output. There are three options: the standard ASCII
+snap n-body format (snap-ascii); the binary standard n-body format (snap-bin); and the columns format
+(snap-pv). The n-body standard format binary or ASCII is a file with n-body data written as follows:
+
+nbody
+.br
+NDIM
+.br
+time
+.br
+x y z (position for all the particles)
+.br
+vx vy vz (velocity for all the particles)
+.br
+
+And in the colummns format the particle data is written in column form as
+
+# nbody NDIM time
+.br
+# nbody value NDIM value time value
+.br
+Id mass x y z vx vy vz (for all the particles)
+.IP "dtout" 12
+this is the time for output a snap file. The out files will be written every dtout time.
+Can also be given in the form of p/q,
+where q is expressed as powers of 2.
+.IP "dtoutinfo" 12
+this is the time for output in the stadar output (stdout). The output to the stdout
+will be written every dtoutinfo time. Can also be given in the form of p/q,
+where q is expressed as powers of 2. This option is useful for controlling the cpu time
+consumed by output processing.
+.IP "statefile" 12
+you give here the name of a file where the run state will be saved. If it is null no run
+state will be saved.
+.IP "restorefile" 12
+if it is not null a run will be restarted from the data stored in this file.
+.IP "options" 12
+you may give here various code behavior options. They are, "reset-time" (inputdata); 
+"out-phi" (outputdata); "out-acc" (outputdata). If you save a state file, this parameter is saved.
+.SH UNITS
+Units are such that eps=sigma=m=1, where eps is the potential depth of the Lennard-Jones potential,
+sigma the cut radius, and m is the mass of each particle. 
+We also have that the Boltzmann
+constant kB=1 such that eps/kB is the unit of temperature.
+.SH OUTPUT AND THERMODYNAMICS
+\fBmd_lj_tree\fR code produces several output files by default: md_lj_tree.log, thermo.dat, snap.dat, 
+vel.dat,  rdf.dat, and if you instruct other additional files are produced, such as those instructed 
+by snapout options. The file md_lj_tree.log is the log file were some simulation parameters are 
+save such as size of the simulation box, number of particle created if a initial condition file were
+not used, and so on. The files snap.dat, vel.dat, and rdf.dat are intended to be used in combination
+with gnuplot. In files vel.dat and rdf.dat are saved the velocity and radial distribution function
+histograms, they are produced in steps greater than stepEquil, and its frequency is controled
+by the options stepVel, stepAvgVel, stepRdf, and stepAvgRdf. In snap.dat file a snapshot of
+the system is saved and this file is produced every dtout/dtime steps. Thermodynamics parameters
+such as pressure and its fluctuation are saved in file thermo.dat every dtout/dtime steps.
+.SH SPATIAL DIMENSIONS
+\fBmd_lj_tree\fR code may be run in two or three spatial dimensions. To choose two dimensions 
+edit the file
+"vectdefs.h" in directory "NagBody_pkg/General_libs" and choose TWODIM. Recompile again the code.
+.SH STOPPING THE CODE
+Once the \fBmd_lj_tree\fR is running you may allways stop it by executing the command
+
+echo > stop
+
+You must be in the same directory were the process were lunched. A file named 'stop-state' is 
+saved containing the state of the simulation run. This option permits us to
+stop the simulation and change numerical and/or physical parameters such as temperature or
+density.
+.SH EXAMPLES
+Executing
+
+md_lj_tree
+
+will run the default simulation which is consistent with the experimental data reported
+in: J.L. Yarnell, et al, "Structure factor and radial distribution function for liquid
+Argon at 85 K", Phys. Rev. A7 (1972) 2130. Parameter eps in the Lennard-Jones potential
+that fit the experimental data is eps/kB = 119 K.
+
+
+With the command
+md_lj_tree nbody=4096 out=snap%03d dtout=2/256
+
+we run a simulation with 4096 bodies and save snap data every other time step.
+
+With the command
+md_lj_tree statefile=state
+
+we run a simulation were a state file is saved every dtout/dtime steps. If for some
+reasons the simulation run is interrupted you may always restart the run ejecuting
+the command
+
+md_lj_tree restorefile=state
+
+Or if you stop it the run using the command 'echo > stop' you may restart the run with
+the command
+
+md_lj_tree restorefile=stop-state
+.SH ANIMATIONS
+You may run gnuplot to see animation plots. Make the following script:
+
+a=a+1
+.br
+plot "rdf.dat" w l
+.br
+pause 1
+.br
+if(a<50000) reread
+
+Save the script in a file named "rdf.gnu". At the same time that the simulation is running start gnuplot and execute the commands:
+
+a=0
+.br
+load "rdf.gnu"
+
+Also, you may see animation of the particles positions. Make the following script:
+
+a=a+1
+.br
+plot "snap.dat" w p pointtype 6
+.br
+pause 1
+.br
+if(a<50000) reread
+
+Save the script in a file named "snap.gnu". Again, at the same time that the simulation is running 
+start gnuplot and execute the commands:
+
+a=0
+.br
+set xrange[-5:5]
+.br
+set yrange[-5:5]
+.br
+load "snap.gnu"
+
+The values of "xrange" and "yrange" options may change according to particle positions ranges.
+
+.SH SEE ALSO
+md_lj_n2(1)
+.SH COPYRIGHT
+Copyright (C) 1999-2006
+.br
+M.A. Rodriguez-Meza
+.br

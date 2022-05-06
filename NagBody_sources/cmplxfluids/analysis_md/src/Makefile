@@ -1,7 +1,6 @@
 # ----- MAKE FILE FOR analysis_md CODE -----
 # Copyright (c) 2006-2018  Mario A. Rodriguez-Meza, Ciudad de Mexico.
 #
-#
 # Machine definitions
 MACHINES_DIR = ./
 include $(MACHINES_DIR)Makefile_machine
