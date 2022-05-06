@@ -8,7 +8,7 @@ INSTALL_PATH = ../../../..
 
 
 # ==================================================================
-# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# NOTE: INSTALLATION MUST BE RELATIVE TO $(INSTALL_PATH)
 # 	Not absolute as is given by $(HOME)/NagBody_pkg
 # 	It is better to use a relative path
 NAGBODYDIR = $(INSTALL_PATH)
@@ -74,6 +74,7 @@ packing_sources:
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/LICENSE \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \

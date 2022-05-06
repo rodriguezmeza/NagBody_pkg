@@ -7,9 +7,7 @@ include $(MACHINES_DIR)Makefile_machine
 
 # OPTIMIZE is to set some particular architecture. See MACHINE section in Makefile_machine.
 
-OPTIONS =  $(OPTIMIZE) \
-	   $(OPT11) $(OPT12) $(OPT13) $(OPT14) $(OPT15) \
-	   $(OPT16) $(OPT17) $(OPT18) $(OPT19) $(OPT20)
+OPTIONS =  $(OPTIMIZE) $(OPT2)
 
 CCFLAGS += $(OPTIONS) $(OMPFLAG)
 CPPFLAGS = $(CCFLAGS) $(INCLUDES)

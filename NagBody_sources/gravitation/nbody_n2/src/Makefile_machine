@@ -13,6 +13,10 @@ MACHINE = MACBREW
 #MACHINE = MACUBUNTU
 #MACHINE = MACINTEL
 
+#
+# NagBody dir can also be defined inside a machine definitions
+NAGBODYDIR = $(HOME)/NagBody_pkg
+
 CCFLAGS =
 LDFLAGS =
 LIBS =
@@ -54,11 +58,23 @@ ifeq ($(MACHINE), MACBREW)
   FC = gfortran
   F90C = gfortran
   F90 = gfortran
+  OPTIMIZE = -O3
+  OMPFLAG = -fopenmp
+  CCFLAGS +=
+  LDFLAGS +=
+  MLIBS = -lm
+endif
+
+ifeq ($(MACHINE), MACBREWOPT)
+  CC = gcc
+  FC = gfortran
+  F90C = gfortran
+  F90 = gfortran
   OPTIMIZE = -O3 -Wall -std=c99
   OMPFLAG = -fopenmp
   CCFLAGS += -g -fPIC
   LDFLAGS += -g -fPIC
-  MLIBS =
+  MLIBS = -lm
 endif
 
 ifeq ($(MACHINE), MACCLANG)
@@ -96,7 +112,8 @@ ifeq ($(MACHINE), MACBREWMPI)
   FC = mpif77
   F90C = mpif90
   F90 = mpif90
-
+#
+# NagBody dir can also be defined inside a machine definitions
   NAGBODYDIR = $(HOME)/NagBody_pkg
 
 ifdef SINGLE_PRECISION
@@ -124,7 +141,8 @@ ifeq ($(MACHINE), MACPORTSMPI)
   FC = mpif77
   F90C = mpif90
   F90 = mpif90
-
+#
+# NagBody dir can also be defined inside a machine definitions
   NAGBODYDIR = $(HOME)/NagBody_pkg
 
 ifdef SINGLE_PRECISION
