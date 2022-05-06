@@ -74,6 +74,18 @@ ifeq ($(MACHINE), MACBREW)
   FC = gfortran
   F90C = gfortran
   F90 = gfortran
+  OPTIMIZE = -O3
+  OMPFLAG = -fopenmp
+  CCFLAGS +=
+  LDFLAGS +=
+  MLIBS = -lm
+endif
+
+ifeq ($(MACHINE), MACBREWOPT)
+  CC = gcc
+  FC = gfortran
+  F90C = gfortran
+  F90 = gfortran
   OPTIMIZE = -O3 -Wall -std=c99
   OMPFLAG = -fopenmp
   CCFLAGS += -g -fPIC
