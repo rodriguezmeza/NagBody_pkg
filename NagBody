@@ -447,15 +447,6 @@ packing_cola:
 packing_nagbody_cola:
 	(cd $(MAKECOLA); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_cola:
-	(cd $(MAKECOLA); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_cola:
-	(cd $(MAKECOLA); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_cola:
-	(cd $(MAKECOLA); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # cola_simple code: [cola (with some modifications)]
@@ -474,15 +465,6 @@ packing_cola_simple:
 
 packing_nagbody_cola_simple:
 	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_cola_simple:
-	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_cola_simple:
-	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_cola_simple:
-	(cd $(MAKECOLASIMPLE); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -503,15 +485,6 @@ packing_lpicola:
 packing_nagbody_lpicola:
 	(cd $(MAKELPICOLA); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_lpicola:
-	(cd $(MAKELPICOLA); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_lpicola:
-	(cd $(MAKELPICOLA); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_lpicola:
-	(cd $(MAKELPICOLA); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # mgpicola code: [MG-Picola (with some modifications)]
@@ -530,15 +503,6 @@ packing_mgpicola:
 
 packing_nagbody_mgpicola:
 	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_mgpicola:
-	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_mgpicola:
-	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_mgpicola:
-	(cd $(MAKEMGPICOLA); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -559,15 +523,6 @@ packing_mgpicola_fofr:
 packing_nagbody_mgpicola_fofr:
 	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_mgpicola_fofr:
-	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_mgpicola_fofr:
-	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_mgpicola_fofr:
-	(cd $(MAKEMGPICOLAFOFR); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # mgpicola_pofk code: [Simple_pofk (minimum)]
@@ -586,15 +541,6 @@ packing_mgpicola_pofk:
 
 packing_nagbody_mgpicola_pofk:
 	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_mgpicola_pofk:
-	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_mgpicola_pofk:
-	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_mgpicola_pofk:
-	(cd $(MAKEMGPICOLAPOFK); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -615,15 +561,6 @@ packing_mgpicola_pofk_mpi:
 packing_nagbody_mgpicola_pofk_mpi:
 	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_mgpicola_pofk_mpi:
-	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_mgpicola_pofk_mpi:
-	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_mgpicola_pofk_mpi:
-	(cd $(MAKEMGPICOLAPOFKMPI); $(MAKE) -f NagBody clean_gnu)
-
 
 # ==================================================================
 # mgpicola_pofk_rsd_mpi code: [Simple_pofk_rsd_mpi (minimum)]
@@ -642,15 +579,6 @@ packing_mgpicola_pofk_rsd_mpi:
 
 packing_nagbody_mgpicola_pofk_rsd_mpi:
 	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_mgpicola_pofk_rsd_mpi:
-	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_mgpicola_pofk_rsd_mpi:
-	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_mgpicola_pofk_rsd_mpi:
-	(cd $(MAKEMGPICOLAPOFKRSDMPI); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================
@@ -691,15 +619,6 @@ packing_cute_box:
 
 packing_nagbody_cute_box:
 	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_cute_box:
-	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_cute_box:
-	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_cute_box:
-	(cd $(MAKECUTEBOX); $(MAKE) -f NagBody clean_gnu)
 
 
 # ==================================================================

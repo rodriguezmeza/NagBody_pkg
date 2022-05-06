@@ -3,6 +3,8 @@
 #
 #
 
+alias nmake='make -f NagBody'
+
 #
 #To solve some configuration problems related to zsh visit:
 #https://scriptingosx.com/2019/06/moving-to-zsh-part-2-configuration-files/
