@@ -1,0 +1,2 @@
+#    FILENUM      XMIN         YMIN        ZMIN         XMAX         YMAX         ZMAX         NPART    
+           0        0.000000        0.000000        0.000000      512.000000      512.000000      512.000000       262144
