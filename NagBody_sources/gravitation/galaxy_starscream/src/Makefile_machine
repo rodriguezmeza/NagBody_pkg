@@ -40,6 +40,9 @@ OPT1    +=  -I ./general_libs/io
 
 #PRECISION = DOUBLEPREC
 
+GSL_CFLAGS = -I$(HOME)/NagBody_pkg/local/gsl/include 
+GSL_LIBS   = -L$(HOME)/NagBody_pkg/local/gsl/lib -lgsl -lgslcblas -lm 
+
 #--------------------------------------------
 # BEGIN MACHINE DEFINITIONS (ARCHITECTURES)
 #
@@ -52,6 +55,18 @@ ifeq ($(MACHINE), MACPORTS)
 endif
 
 ifeq ($(MACHINE), MACBREW)
+  CC = gcc
+  FC = gfortran
+  F90C = gfortran
+  F90 = gfortran
+  OPTIMIZE = -O3
+  OMPFLAG = -fopenmp
+  CCFLAGS +=
+  LDFLAGS +=
+  MLIBS = -lm
+endif
+
+ifeq ($(MACHINE), MACBREWOPT)
   CC = gcc
   FC = gfortran
   F90C = gfortran
