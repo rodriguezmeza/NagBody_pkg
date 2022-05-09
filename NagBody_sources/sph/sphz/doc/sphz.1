@@ -1,0 +1,105 @@
+'t" t
+.TH sphz 1 "January 2022" UNIX "NagBody PROJECT"
+.na
+.nh   
+
+.SH NAME
+\fBsphz\fR - SPH/N-body simulation code.
+
+.SH SYNOPSIS
+\fBsphz\fR [ \fIoptions\fR ]
+.sp
+
+.SH DESCRIPTION
+\fBsphz\fR - Simulates the evolution of a SPH/N-body system interacting with a potential
+proportional to 1/r. The sph variant is sphcode_u.
+
+.SH OPTIONS
+The options have the structure
+.sp
+\fIoption_name\fR = <option_value>
+
+.sp
+except option \fB-help\fR.
+.sp
+Options and their possible values are:
+
+.IP "\fB-help\fR" 12
+By writting
+
+.sp
+sphz -help
+.sp
+
+you will get the list of all parameters and their default values.
+An option may have an alias which is a short name of the option. If an option
+has an alias in the list above it comes after its description
+surrounded by brackets tagged with 'a:'. For example,
+
+.sp
+option_name=<option_value>	... Description
+
+
+.IP "\fBeps\fR" 12
+It is the smoothing force length. The interaction potential is proportional
+to 1/Sqrt(r^2 + eps^2). In this way the singularity is avoided.
+
+.IP "\fBtestnbody\fR" 12
+It is the number of bodies to simulate.
+.sp
+Note: it is recommended that this number is given as power of 2.
+
+.IP "\fBdtime\fR" 12
+[a: dt] is the time step integration. It can be given as an integration
+frequency just type in <dt1/dt2>.
+
+.IP "\fBtstop\fR" 12
+is the time to stop the simulation.
+
+.IP "\fBtestseed\fR" 12
+It is the Random number seed for the test run.
+
+.IP "\fBin\fR" 12
+you give here the name of the file with the N-body initial data.
+
+.IP "\fBout\fR" 12
+Output file patern for SPH frames.
+The format follows as the ones used in C-language for integers ("%0#d").
+
+.IP "\fBdtout\fR" 12
+This is the time step for a snap output. It can be given as an output frequency, just
+type in <dt1/dt2>.
+
+.IP "\fBsave\fR" 12
+you give here the name of a file where the run state will be saved.
+If it is null no run
+state will be saved.
+
+.IP "\fBrestore\fR" 12
+if it is not null a run will be restarted from the data stored in this file.
+
+.IP "\fBoptions\fR" 12
+you may give here various code behavior options.
+
+
+.SH EXAMPLES
+By executing the command,
+
+.br
+sphz testbody=4096 dtime=1/32 out=snap%03d
+
+.br
+will run the code, generating internally a Plummer sphere
+sampled with 4096 particles and then evolving it up to t=2
+with a time step of 1/32.
+Snaps of the evolution will be saved as 
+snap000, snap004, ..., snap064.
+
+.SH SEE ALSO
+gbsph(1), analysis_grav(1), nplot2d(1)
+
+.SH
+2022
+.br
+man page by M.A. Rodriguez-Meza
+.br

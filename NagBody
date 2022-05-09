@@ -1418,15 +1418,6 @@ packing_sphz:
 packing_nagbody_sphz:
 	(cd $(MAKESPHZ); $(MAKE) -f NagBody packing_sources)
 
-packing_gnu_sphz:
-	(cd $(MAKESPHZ); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_sphz:
-	(cd $(MAKESPHZ); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_sphz:
-	(cd $(MAKESPHZ); $(MAKE) -f NagBody clean_nagbody_gnu)
-
 
 # ==================================================================
 # TEMPLATES

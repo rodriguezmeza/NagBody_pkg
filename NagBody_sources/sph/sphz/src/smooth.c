@@ -1,17 +1,21 @@
-//
-// Edited and modified by M.A. Rodriguez-Meza (2010)
-//
-// Adapted from zeno
-// (see http://www.ifa.hawaii.edu/faculty/barnes/barnes.html)
+/****************************************************************************/
+/* SMOOTH.C: routines to perform smoothing for SPH.  Public routines:       */
+/* init_smooth, finish_smooth, density, derivatives, sphreport.             */
+/* Copyright (c) 2000 by Joshua E. Barnes, Santa Barbara, CA.               */
+/* Adapted from SMOOTH V2.01; see http://www-hpcc.astro.washington.edu/     */
+/****************************************************************************/
 
-#include "../../../General_libs/zeno/clib/stdinc.h"
-#include "../../../General_libs/zeno/clib/mathfns.h"
-#include "../../../General_libs/zeno/clib/vectmath.h"
-#include "../../../General_libs/zeno/clib/getparam.h"
+#include "stdinc.h"
+#include "mathfns.h"
+#include "vectmath.h"
+#include "getparam.h"
 #include "sphdefs.h"
 #include "kdtree.h"
 #include "smooth.h"
 
+/*
+ * PQINIT, PQBUILD, PQREPLACE: macros to manipulate priority queues.
+ */
 
 #define PQInit(pq, n)							\
 {									\
@@ -51,6 +55,9 @@
     }									\
 }
 
+/*
+ * INTERSECT: macro to determine if node intersects search ball.
+ */
 
 #define Intersect(node, r2ball, pos, done)				\
 {									\
@@ -85,10 +92,16 @@
     }									\
 }
 
+/* 
+ * Prototypes for local routines.
+ */
 
 local void ball_search(smxptr, real, real *);
 local int  ball_gather(smxptr, real, real *);
 
+/*
+ * INIT_SMOOTH: create smoothing context and initialize arrays.
+ */
 
 smxptr init_smooth(kdxptr kd, int nsmooth, real slope)
 {
@@ -114,6 +127,9 @@ smxptr init_smooth(kdxptr kd, int nsmooth, real slope)
     return (sm);
 }
 
+/*
+ * FINISH_SMOOTH: clean up after smoothing operations.
+ */
 
 void finish_smooth(smxptr sm)
 {
@@ -124,6 +140,9 @@ void finish_smooth(smxptr sm)
     free(sm);
 }
 
+/*
+ * SMOOTH: construct neighbor lists and invoke smoothing function.
+ */
 
 void smooth(smxptr sm, void (*smproc)(smxptr, int, int))
 {
@@ -133,64 +152,64 @@ void smooth(smxptr sm, void (*smproc)(smxptr, int, int))
     pqnode *pque = sm->pque, *pqend = sm->pque + nsmooth, *pq;
     real h2, xb2;
 
-    for (pi = 0; pi < sm->kd->ngas; ++pi) {
-        ClrFlag(bptr[pi], INQUE);
-        ClrFlag(bptr[pi], DONE);
+    for (pi = 0; pi < sm->kd->ngas; ++pi) {     /* loop over gas bodies     */
+        ClrFlag(bptr[pi], INQUE);               /* reset in-que flag        */
+        ClrFlag(bptr[pi], DONE);		/* and done flag            */
     }
-    pj = 0;
-    for (pq = pque; pq < pqend; ++pq) {
-        pq->pind = pj;
-        SetFlag(bptr[pj++], INQUE);
+    pj = 0;                                     /* start at zeroth body     */
+    for (pq = pque; pq < pqend; ++pq) {         /* and preload priority que */
+        pq->pind = pj;                          /* place each body in que   */
+        SetFlag(bptr[pj++], INQUE);             /* and flag it as such      */
     }
-    pnext = 0;
-    pscan = 0;
-    nmisc = 0;
-    for ( ; ; ) {
-        if (! Done(bptr[pnext]))
-            pi = pnext;
-        else {
+    pnext = 0;                                  /* set next body to process */
+    pscan = 0;                                  /* set high-water mark      */
+    nmisc = 0;					/* count miscounts of que   */
+    for ( ; ; ) {                               /* loop processing bodies   */
+        if (! Done(bptr[pnext]))                /* is pnext not yet done?   */
+            pi = pnext;                         /* do it using current que  */
+        else {                                  /* else restart at next one */
             while (pscan < sm->kd->ngas && Done(bptr[pscan]))
-                ++pscan;
-            if (pscan == sm->kd->ngas)
+                ++pscan;                        /* scan for one to do       */
+            if (pscan == sm->kd->ngas)          /* exit loop if all done    */
                 break;
-            pi = pscan;
-            for (pq = pque; pq < pqend; ++pq)
-		ClrFlag(bptr[pq->pind], INQUE);
-            cell = KDROOT;
-            while (cell < sm->kd->nsplit) {
+            pi = pscan;                         /* else do this one         */
+            for (pq = pque; pq < pqend; ++pq)   /* loop over priority que   */
+		ClrFlag(bptr[pq->pind], INQUE);	/* remove all old bodies    */
+            cell = KDROOT;                      /* start at root of tree    */
+            while (cell < sm->kd->nsplit) {     /* find bucket holding pi   */
                 if (Pos(bptr[pi])[ntab[cell].dim] < ntab[cell].split)
-                    cell = Lower(cell);
+                    cell = Lower(cell);         /* follow lower branch      */
                 else
-                    cell = Upper(cell);
+                    cell = Upper(cell);         /* follow upper branch      */
             }
             pj = MIN(ntab[cell].first, sm->kd->ngas - nsmooth);
-
-            for (pq = pque; pq < pqend; ++pq) {
-                pq->pind = pj;
-		SetFlag(bptr[pj++], INQUE);
+						/* start with local bucket  */
+            for (pq = pque; pq < pqend; ++pq) { /* and reload priority que  */
+                pq->pind = pj;                  /* place local body in que  */
+		SetFlag(bptr[pj++], INQUE);     /* and flag it as such      */
             }
         }
-        for (pq = pque; pq < pqend; ++pq) {
+        for (pq = pque; pq < pqend; ++pq) {     /* loop over current que    */
 	    DISTSQV(pq->pqkey, Pos(bptr[pi]), Pos(bptr[pq->pind]));
-
+						/* store dist to each body  */
         }
-        PQBuild(pque, nsmooth, sm->pqhead);
+        PQBuild(pque, nsmooth, sm->pqhead);     /* build que of candidates  */
         ball_search(sm, sm->pqhead->pqkey, Pos(bptr[pi]));
-
-        sm->r2ball[pi] = sm->pqhead->pqkey;
-	SetFlag(bptr[pi], DONE);
-        nball = 0;
-        pnext = pi;
-        h2 = sm->pqhead->pqkey;
-        for (pq = pque; pq < pqend; ++pq)
-            if (pq != sm->pqhead) {
+						/* and search for neighbors */
+        sm->r2ball[pi] = sm->pqhead->pqkey;     /* record dist to outer one */
+	SetFlag(bptr[pi], DONE);		/* flag this body as done   */
+        nball = 0;                              /* init count of neighbors  */
+        pnext = pi;                             /* look for next body to do */
+        h2 = sm->pqhead->pqkey;                 /* within radius of ball    */
+        for (pq = pque; pq < pqend; ++pq)       /* loop over bodies in que  */
+            if (pq != sm->pqhead) {             /* if not most distant one  */
 		pj = pq->pind;
-                sm->r2list[nball] = pq->pqkey;
-                sm->inlist[nball++] = pj;
+                sm->r2list[nball] = pq->pqkey;  /* store dist^2 in r2list   */
+                sm->inlist[nball++] = pj;	/* store index in inlist    */
                 if (! Done(bptr[pj]) && pq->pqkey < h2) {
-
-                    pnext = pj;
-                    h2 = pq->pqkey;
+						/* not yet done, & closer?  */
+                    pnext = pj;                 /* then make it the next    */
+                    h2 = pq->pqkey;             /* and keep track of dist   */
                 }
             }
         if (nball != nsmooth - 1)
@@ -208,11 +227,16 @@ void smooth(smxptr sm, void (*smproc)(smxptr, int, int))
                 }
             }
     }
+#if defined(NOTEMISCOUNT)
     if (nmisc != 0)
         eprintf("[%s.smooth: %d miscount%s]\n", getargv0(), nmisc,
 		nmisc > 1 ? "s" : "");
+#endif
 }
 
+/*
+ * RESMOOTH: reconstruct neighbor lists and invoke smoothing function.
+ */
 
 void resmooth(smxptr sm, void (*smproc)(smxptr, int, int))
 {
@@ -226,63 +250,79 @@ void resmooth(smxptr sm, void (*smproc)(smxptr, int, int))
 	    nmisc++;
 	(*smproc)(sm, pi, nball);
     }
+#if defined(NOTEMISCOUNT)
     if (nmisc != 0)
         eprintf("[%s.resmooth: %d miscount%s]\n", getargv0(), nmisc,
 		nmisc > 1 ? "s" : "");
+#endif
 }
 
+/*
+ * REPORT_SMOOTH: output report on smoothing operations.
+ */
 
-void report_smooth(smxptr sm, stream ostr, string options)
+void sphreport(stream ostr, smxptr sm, string options)
 {
-    bodyptr *bptr = sm->kd->bptr;
-    real rbmin, rbsum, xi[NRPROF-1];
-    int *rprof = sm->rprof, nlev[MAXLEV+1], nupd, i;
+  bodyptr *bptr = sm->kd->bptr;
+  int i, nupd, nlev[MAXLEV+1], *rprof = sm->rprof;
+  real rbsum, rbmin, rbmax, flev[MAXLEV+1], flev4, xi[NRPROF-1];
 
-    rbmin = Smooth(bptr[0]);
-    rbsum = 0.0;
-    nupd = 0;
-    for (i = 0; i <= MAXLEV; i++)
-	nlev[i] = 0;
-    for (i = 0; i < sm->kd->ngas; i++) {
-        if (Update(bptr[i])) {
-	    nlev[NewLevel(bptr[i])]++;
-            rbmin = MIN(rbmin, Smooth(bptr[i]));
-            rbsum += Smooth(bptr[i]);
-            nupd++;
-        }
+  nupd = 0;
+  for (i = 0; i <= MAXLEV; i++)
+    nlev[i] = 0;
+  rbsum = 0.0;
+  for (i = 0; i < sm->kd->ngas; i++) {
+    if (Update(bptr[i])) {
+      nupd++;
+      nlev[NewLevel(bptr[i])]++;
+      rbsum += Smooth(bptr[i]);
+      rbmin = (nupd == 1 ? Smooth(bptr[i]) : MIN(rbmin, Smooth(bptr[i])));
+      rbmax = (nupd == 1 ? Smooth(bptr[i]) : MAX(rbmin, Smooth(bptr[i])));
     }
+  }
+  flev4 = 0.0;
+  for (i = 0; i <= MAXLEV; i++) {
+    flev[i] = 100.0 * ((real) nlev[i]) / ((real) nupd);
+    if (i >= 4)
+      flev4 += flev[i];
+  }
+  fprintf(ostr, "\n%9s %9s %9s %9s %29s %9s\n",
+	  "log hmin", "log havg", "log hmax", "freqavg",
+	  "timestep level distribution", "CPUsph"); 
+  fprintf(ostr,
+	  "%9.4f %9.4f %9.4f %9.2f %5.1f %5.1f %5.1f %5.1f %5.1f %9.3f\n",
+	  rlog10(rbmin), rlog10(rbsum / nupd), rlog10(rbmax),
+	  sm->freqsum / nupd, flev[0], flev[1], flev[2], flev[3], flev4,
+	  cputime() - sm->cpustart);
+  if (scanopt(options, "corrfunc")) {
     for (i = 0; i <= NRPROF - 2; i++)
-	xi[i] = -1 + rpow(8.0, i/2.0) * (rprof[i] - rprof[i+1]) /
-                       ((1 - rsqrt(0.125)) * rprof[0]);
-    fprintf(ostr, "\n%10s %5s %5s %5s %11s %9s %9s %9s %7s\n",
-            "xi8", "xi6", "xi4", "xi2", "hmin", "havg",
-	    "freqmax", "freqavg", "CPUsph"); 
-    fprintf(ostr, "%10.2f %5.2f %5.2f %5.2f %11.4f %9.4f %9.2f %9.2f %7.3f\n",
-	    xi[8], xi[6], xi[4], xi[2], rbmin, rbsum / nupd,
-	    sm->freqmax, sm->freqsum / nupd, cputime() - sm->cpustart);
-    if (scanopt(options, "corrfunc")) {
-	fprintf(ostr, "\n     ");
-	for (i = NRPROF - 2; i >= 0; i--)
-	    fprintf(ostr, "   xi%d", i);
-	fprintf(ostr, "\n     ");
-	for (i = NRPROF - 2; i >= 0; i--)
-	    fprintf(ostr, "%6.2f", xi[i]);
-	fprintf(ostr, "\n");
-    }	
-    if (scanopt(options, "levelhist")) {
-	fprintf(ostr, "\n     ");
-	for (i = 0; i <= MAXLEV; i++)
-	    if (nlev[i] != 0)
-		fprintf(ostr, i<10 ? "  lev%d" : " lev%d", i);
-	fprintf(ostr, "\n     ");
-	for (i = 0; i <= MAXLEV; i++)
-	    if (nlev[i] != 0)
-		fprintf(ostr, "%6d", nlev[i]);
-	fprintf(ostr, "\n");
-    }	
-    fflush(ostr);
+      xi[i] = -1 + rpow(8.0, i/2.0) * (rprof[i] - rprof[i+1]) /
+	((1 - rsqrt(0.125)) * rprof[0]);
+    fprintf(ostr, "\n     ");
+    for (i = NRPROF - 2; i >= 0; i--)
+      fprintf(ostr, "   xi%d", i);
+    fprintf(ostr, "\n     ");
+    for (i = NRPROF - 2; i >= 0; i--)
+      fprintf(ostr, "%6.2f", xi[i]);
+    fprintf(ostr, "\n");
+  }	
+  if (scanopt(options, "levelhist")) {
+    fprintf(ostr, "\n     ");
+    for (i = 0; i <= MAXLEV; i++)
+      if (nlev[i] != 0)
+	fprintf(ostr, i<10 ? "  lev%d" : " lev%d", i);
+    fprintf(ostr, "\n     ");
+    for (i = 0; i <= MAXLEV; i++)
+      if (nlev[i] != 0)
+	fprintf(ostr, "%6d", nlev[i]);
+    fprintf(ostr, "\n");
+  }	
+  fflush(ostr);
 }
 
+/*
+ * BALL_SEARCH: given approximate priority que, construct final version.
+ */
 
 local void ball_search(smxptr sm, real r2ball, real *ri)
 {
@@ -292,40 +332,40 @@ local void ball_search(smxptr sm, real r2ball, real *ri)
     int cell, cp, ct, pj;
     real dist2;
 
-    cell = KDROOT;
-    while (cell < sm->kd->nsplit) {
+    cell = KDROOT;                              /* start at root of tree    */
+    while (cell < sm->kd->nsplit) {             /* descend to local bucket  */
         if (ri[ntab[cell].dim] < ntab[cell].split)
             cell = Lower(cell);
         else
             cell = Upper(cell);
     }
     for (pj = ntab[cell].first; pj <= ntab[cell].last; ++pj)
-	if (! InQue(bptr[pj])) {
-	    DISTSQV(dist2, ri, Pos(bptr[pj]));
-	    if (dist2 < r2ball) {
-		ClrFlag(bptr[pq->pind], INQUE);
-		SetFlag(bptr[pj], INQUE);
-		pq->pqkey = dist2;
-		pq->pind = pj;
-		PQReplace(pq);
-		r2ball = pq->pqkey;
+	if (! InQue(bptr[pj])) {		/* in bucket, but not que?  */
+	    DISTSQV(dist2, ri, Pos(bptr[pj]));  /* compute dist^2 to center */
+	    if (dist2 < r2ball) {		/* within current ball?     */
+		ClrFlag(bptr[pq->pind], INQUE);	/* drop furthest from que   */
+		SetFlag(bptr[pj], INQUE);	/* and add this one to que  */
+		pq->pqkey = dist2;              /* store its distance       */
+		pq->pind = pj;                  /* and its index            */
+		PQReplace(pq);                  /* move to rightful place   */
+		r2ball = pq->pqkey;             /* adopt new search radius  */
 	    }
 	}
-    while (cell != KDROOT) {
+    while (cell != KDROOT) {			/* scan back toward root    */
         cp = Sibling(cell);
         ct = cp;
         SetNext(ct);
 	do {
             Intersect(ntab[cp], r2ball, ri, GetNextCell);
-
-            if (cp < sm->kd->nsplit) {
+						/* got intersection to test */
+            if (cp < sm->kd->nsplit) {          /* not yet down to bucket?  */
                 cp = Lower(cp);
                 continue;
-            } else
+            } else                              /* scan bucket for winners  */
                 for (pj = ntab[cp].first; pj <= ntab[cp].last; ++pj)
-		    if (! InQue(bptr[pj])) {
+		    if (! InQue(bptr[pj])) {	/* not already in the que?  */
 			DISTSQV(dist2, ri, Pos(bptr[pj]));
-			if (dist2 < r2ball) {
+			if (dist2 < r2ball) {	/* but within current ball? */
 			    ClrFlag(bptr[pq->pind], INQUE);
 			    SetFlag(bptr[pj], INQUE);
 			    pq->pqkey = dist2;
@@ -337,11 +377,14 @@ local void ball_search(smxptr sm, real r2ball, real *ri)
           GetNextCell:
             SetNext(cp);
         } while (cp != ct);
-        cell = Parent(cell);
+        cell = Parent(cell);			/* climb down towards root  */
     }
     sm->pqhead = pq;
 }
 
+/*
+ * BALL_GATHER: search tree for all bodies strictly within search radius.
+ */
 
 local int ball_gather(smxptr sm, real r2ball, real *ri)
 {
@@ -354,7 +397,7 @@ local int ball_gather(smxptr sm, real r2ball, real *ri)
     cp = KDROOT;
     do {
         Intersect(ntab[cp], r2ball, ri, GetNextCell);
-
+						/* got intersection to test */
         if (cp < sm->kd->nsplit) {
             cp = Lower(cp);
             continue;

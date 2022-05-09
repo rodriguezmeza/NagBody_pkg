@@ -1,19 +1,24 @@
-//
-// Edited and modified by M.A. Rodriguez-Meza (2010)
-//
-// Adapted from zeno
-// (see http://www.ifa.hawaii.edu/faculty/barnes/barnes.html)
-
+/****************************************************************************/
+/* SMOOTH.H: include file for SPH smoothing routines in smooth.c.           */
+/* Copyright (c) 2000 by Joshua E. Barnes, Santa Barbara, CA.               */
+/* Adapted from SMOOTH V2.01; see http://www-hpcc.astro.washington.edu/     */
+/****************************************************************************/
 
 #ifndef _smooth_h
 #define _smooth_h
 
+/* 
+ * Misc. constants.
+ */
 
-#define MAXLEV   20
-#define NCOEFS    5
-#define NRPROF   11
-#define EXTLIST  10
+#define MAXLEV   20			/* max levels in timestep hierarchy */
+#define NCOEFS    5			/* coefficients in smoothing func   */
+#define NRPROF   11			/* bins in smoothing ball profile   */
+#define EXTLIST  10                     /* extra room on neighbor lists     */
 
+/*
+ * PQNODE: item in priority que.
+ */
 
 typedef struct _pqnode {
     real pqkey;
@@ -24,22 +29,28 @@ typedef struct _pqnode {
     struct _pqnode *pqWinner;
 } pqnode;
 
+/*
+ * SMCONTEXT, SMXPTR: context for smoothing process.
+ */
 
 typedef struct {
-    kdxptr kd;
-    int  nsmooth;
-    real coefs[NCOEFS];
-    int  rprof[NRPROF];
-    real freqmax;
-    real freqsum;
-    pqnode *pque;
-    pqnode *pqhead;
-    real *r2ball;
-    real *r2list;
-    int *inlist;
-    real cpustart;
+    kdxptr kd;				/* KD context from init_kdtree	    */
+    int  nsmooth;			/* bodies within smoothing sphere   */
+    real coefs[NCOEFS];			/* coefficients for SPH kernel	    */
+    int  rprof[NRPROF];			/* counts of bodies within sphere   */
+    real freqmax;			/* maximum integration frequency    */
+    real freqsum;			/* sum of integration frequencies   */
+    pqnode *pque;			/* priority que for neighbor search */
+    pqnode *pqhead;			/* most distant neighbor in que     */
+    real *r2ball;			/* array of smoothing radii	    */
+    real *r2list;			/* list of neighbor distances^2     */
+    int *inlist;			/* list of neighbor indicies        */
+    real cpustart;			/* CPU time at start of smoothing   */
 } smcontext, *smxptr;
 
+/*
+ * WSMOOTH, DWSMOOTH: macros to compute kernel and gradient.
+ */
 
 #define WSmooth(wsm, wsc, x2, cf)					\
 {									\
@@ -59,11 +70,14 @@ typedef struct {
         dsm = dsc * cf[4] * -3 * (2-_x)*(2-_x);                         \
 }
 
+/*
+ * Smoothing procedure prototypes.
+ */
 
 smxptr init_smooth(kdxptr, int, real);
 void smooth(smxptr, void (*)(smxptr, int, int));
 void resmooth(smxptr, void (*)(smxptr, int, int));
-void report_smooth(smxptr, stream, string);
+void sphreport(stream, smxptr, string);
 void finish_smooth(smxptr);
 
-#endif  // ! _smooth_h
+#endif  /* ! _smooth_h */

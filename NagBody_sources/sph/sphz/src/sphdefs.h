@@ -1,24 +1,25 @@
-//
-// Edited and modified by M.A. Rodriguez-Meza (2010)
-//
-// Adapted from zeno
-// (see http://www.ifa.hawaii.edu/faculty/barnes/barnes.html)
-
+/*
+ * sphdefs.h: include file for hierarchical SPH force calculation routines.
+ * Copyright (c) 2016 by Joshua E. Barnes, Honolulu, Hawaii.
+ */
  
 #ifndef _sphdefs_h
 #define _sphdefs_h
  
+//  node: data common to body and cell structures.
+//  ______________________________________________
 
 typedef struct _node {
-    byte type;
-    byte flags;
-    byte curlevel;
-    byte newlevel;
-    struct _node *next;   
-    real mass;
-    vector pos;
+  byte type;				// code for type of node
+  byte flags;				// status in force calculation
+  byte curlevel;			// level in timestep hierarchy
+  byte newlevel;			// level set by latest force calc.
+  struct _node *next;			// link to next in threaded tree
+  real mass;				// total mass of node
+  vector pos;				// position of node
 } node, *nodeptr;
  
+//  Accessor macros for node fields.
 
 #define Type(x)      (((nodeptr) (x))->type)
 #define Flags(x)     (((nodeptr) (x))->flags)
@@ -28,23 +29,25 @@ typedef struct _node {
 #define Mass(x)      (((nodeptr) (x))->mass)
 #define Pos(x)       (((nodeptr) (x))->pos)
 
+//  Bits used to construct node type. Note that low 4 bits are free.
 
-#define CELL  001
-#define BODY  002
-#define GAS   004
-#define STAR  010
+#define CELL  0x80			// node is cell of oct-tree 
+#define BODY  0x40			// node is any kind of body 
+#define GAS   0x20			// node is smooth hydro body 
+#define STAR  0x10			// node has become a star 
 
 #define Cell(x)  ((Type(x) & CELL) != 0)
 #define Body(x)  ((Type(x) & BODY) != 0)
 #define Gas(x)   ((Type(x) & GAS) != 0)
 #define Star(x)  ((Type(x) & STAR) != 0)
 
+//  Bits governing gravity and hydro updates.
 
-#define INCLUDE  001
-#define UPDATE   002
-#define INQUE    004
-#define DONE     010
-#define SURFACE  020
+#define INCLUDE  0x01			// include body in tree construction
+#define UPDATE   0x02			// update body, or bodies within cell
+#define INQUE    0x04			// body listed in current priority que
+#define DONE     0x08			// smoothing operation is complete
+#define SURFACE  0x10			// body has optically thin neighbors
 
 #define Include(x)  ((Flags(x) & INCLUDE) != 0)
 #define Update(x)   ((Flags(x) & UPDATE) != 0)
@@ -55,37 +58,44 @@ typedef struct _node {
 #define SetFlag(x,f)  (Flags(x) |= (f))
 #define ClrFlag(x,f)  (Flags(x) &= ~(f))
 
+//  body: structure representing both gas and collisionless bodies.
+//  _______________________________________________________________
  
 typedef struct {
-    node bodynode;
-    vector vel;
-    vector vmid;
-    vector acc;
-    real smooth;
-    real phi;
-    real rho;
+  node bodynode;			// data common to all nodes
+  vector vel;				// velocity of body
+  vector vmid;				// velocity at midpoint
+  vector acc;				// acceleration of body
+  real smooth;				// smoothing length
+  real phi;				// gravitational potential at body
+  real rho;				// interpolated gas density
 #if defined(ENTROPY)
-    real entf;
+  real entf;				// thermodynamic variable: a(s)
 #else
-    real uint;
+  real uint;				// thermodynamic variable: u
 #endif
-    real udotint;
+  real udotint;				// internal change in uint
 #if defined(RADIATING)
-    real udotrad;
+  real udotrad;				// radiative change in uint
 #endif
 #if defined(COMPVISC)
-    real udotvis;
+  real udotvis;				// viscous change in uint
 #endif
-    real press;
-    real frequency;
+  real press;				// gas pressure	
+  real freq;				// inverse of time-step	
 #if defined(DIFFUSING) || defined(OPAQUE)
-    real tau;
+  real tau;				// optical depth estimate
 #endif
-#if defined(STARFORM)
-    real birth;
+#if defined(STARFORM) || defined(MASSLOSS)
+  real birth;				// time of star formation event
+#endif
+#if defined(MASSLOSS)
+  real death;				// time particle reverts to gas
 #endif
 } body, *bodyptr;
 
+//  Accessor macros for bodies.  Note that these are defined for all fields,
+//  even though only some of these fields may exist in any given version.
 
 #define Vel(x)       (((bodyptr) (x))->vel)
 #define Vmid(x)      (((bodyptr) (x))->vmid)
@@ -99,64 +109,72 @@ typedef struct {
 #define UdotRad(x)   (((bodyptr) (x))->udotrad)
 #define UdotVis(x)   (((bodyptr) (x))->udotvis)
 #define Press(x)     (((bodyptr) (x))->press)
-#define Frequency(x) (((bodyptr) (x))->frequency)
+#define Freq(x)      (((bodyptr) (x))->freq)
 #define Tau(x)       (((bodyptr) (x))->tau)
 #define Birth(x)     (((bodyptr) (x))->birth)
+#define Death(x)     (((bodyptr) (x))->death)
 
 #define NthBody(bp,n)  ((bp) + (n))
 
+//  cell: structure used to represent internal nodes of oct-tree.
+//  _____________________________________________________________
   
-#define NSUB (1 << NDIM)
+#define NSUB (1 << NDIM)		// subcells per cell 
  
 typedef struct {
-    node cellnode;
-#if !defined(QUICKSCAN)
-    real rcrit2;
-#endif
-    nodeptr more;  
-    union {
-	nodeptr subp[NSUB];
-	matrix quad;
-    } sorq;
+  node cellnode;			// data common to all nodes 
+  real rcrit2;				// critical c-of-m radius^2 
+  union {
+    nodeptr more;			// link to first descendent
+    real trace;				// trace for softening correction
+  } mort;
+  union {
+    nodeptr subp[NSUB];			// descendents of cell 
+    matrix quad;			// quad. moment of cell 
+  } sorq;
 } cell, *cellptr;
  
+//  Accessor macros for cells.
 
 #define Rcrit2(x)    (((cellptr) (x))->rcrit2)
-#define More(x)      (((cellptr) (x))->more)
+#define More(x)      (((cellptr) (x))->mort.more)
+#define Trace(x)     (((cellptr) (x))->mort.trace)
 #define Subp(x)      (((cellptr) (x))->sorq.subp)
 #define Quad(x)      (((cellptr) (x))->sorq.quad)
 
+//  global: pseudo-keyword for storage class.
+//  _________________________________________
 
 #if !defined(global)
 #define global extern
 #endif
  
+//  Parameters for tree construction and force calculation.
  
-#if !defined(QUICKSCAN)
-global real theta;
-#endif
+global real theta;			// force accuracy parameter 
+global string options;			// various option keywords 
+global bool usequad;			// use quadrupole corrections 
+global real eps;			// density smoothing parameter 
 
-global string options;
-global bool usequad;
-global real eps;
-
+//  Tree construction routines.
  
-void maketree(bodyptr, int);
+void maketree(bodyptr, int);		// construct tree structure 
 
-global cellptr root;
-global real rsize;
-global int ncell;
-global int tdepth;
-global real cputree;
+global cellptr root;			// pointer to root cell 
+global real rsize;			// side-length of root cell 
+global int ncell;			// count of cells in tree 
+global int tdepth;			// count of levels in tree 
+global real cputree;			// CPU time to build tree	
  
+//  Force calculation routines.
 
-void gravforce(void);
-void report_force(stream, int);
+void gravforce(void);			// update force on bodies 
+void gravreport(stream, int);		// report on force calculation 
 
-global int actmax;
-global int nfcalc;
-global int nbbcalc;
-global int nbccalc;
-global real cpuforce;
+global int actmax;			// maximum length of active list 
+global int nfcalc;			// total force calculations 
+global long nbbcalc;			// total body-body interactions 
+global long nbccalc;			// total body-cell interactions 
+global real cpuforce;			// CPU time for force calc	
 
-#endif // ! _sphdefs_h
+#endif /* ! _sphdefs_h */

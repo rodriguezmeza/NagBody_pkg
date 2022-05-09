@@ -1,250 +1,243 @@
-##############################################################################
-# MAKEFILE: compile SPH programs.                                            #
-# Copyright (c) 2003, Joshua E. Barnes, Honolulu, Hawaii                     #
-##############################################################################
+##  zeno/src/nbody/sph/sphcode1.6/Makefile: compile SPH programs.
+##  Copyright (c) 2017, Joshua E. Barnes, Honolulu, Hawaii.
+##  _____________________________________________________________
 
-all: sphcode_u
-#all: sphcode_e sphcode_u
+NAGBODYDIR = $(HOME)/NagBody_pkg/
 
-BINFILES = sphcode_e sphcode_u sphcode_ui sphcode_ux
-
-INCFILES = sphcode.h sphdefs.h kdtree.h smooth.h globaldefs.h protodefs.h \
-	cmdline_defs.h switches.h
-
-SRCFILES = sphcode.c sph.c sphio.c kdtree.c smooth.c sphload.c sphgrav.c
-
-# Optimization flags; use second version for SunOS.
-OPT = -O3
-# OPT = -xO3
-
-# Uncomment next line for correct compilation under Linux.
-FSF = -ffloat-store
-
-# Libraries location:
-
-# SI LAS LIBRERIAS NO ESTAN HECHAS IR A: $(ZENOPATH)/lib y hacerlas 
-# con make -f NagBody install_zenolibs
+# Mar
+ZCC = gcc
+#ZCCFLAGS = -DMACOSX -Izeno/inc -I/opt/local/include
+ZCCFLAGS = -DMACOSX -Izeno/inc -I$(NAGBODYDIR)/local/gsl/include
+#ZLDFLAGS = -Lzeno/nbody/library -Lzeno/nbody/gspmodels -Lzeno/lib/clib -L/opt/local/lib
+ZLDFLAGS = -Lzeno/nbody/library -Lzeno/nbody/gspmodels -Lzeno/lib/clib -L$(NAGBODYDIR)/local/gsl/lib
+ZENO_SAFE_SELECT = true
+ZENO_MSG_OPTION = all
 #
-ZENOPATH = $(HOME)/NagBody_pkg/NagBody_sources/General_libs/zeno
-ZENOLIBS = $(ZENOPATH)/lib
 
-#CCFLAGS = -DMACOSX -I$(ZENOPATH)/inc
-CCFLAGS = -DMACOSX
-LDFLAGS = -L$(ZENOLIBS)
+BINFILES = sphcode_e$X sphcode_ea$X sphcode_u$X sphcode_ui$X sphcode_ux$X\
+	   sphcode_ur$X sphcode_uo$X sphcode_ud$X sphcode_uc$X sphcode_us$X\
+	   sphcode_uis$X sphcode_uir$X sphdensity$X
 
-########################################################################
-# sphcode_e: entropy is thermodynamic variable.
+INCFILES = sphcode.h sphdefs.h kdtree.h smooth.h
+SRCFILES = sphcode.c sphload.c sphgrav.c sphio.c kdtree.c smooth.c
 
-sphcode_e: $(INCFILES) $(SRCFILES)
+##  Compilation options are selected by changing OPTIONS (and X):
+##	make make_all OPTIONS="-DDOUBLEPREC" X=_dp
+##  compiles BINFILES in double precision, with "_dp" suffixes.
+##  _____________________________________________________________
+
+OPTIONS =
+
+##  Optimization flags.
+##  ___________________
+
+OPT = -O3
+
+##  Uncomment next line for correct compilation under Linux.
+##  ________________________________________________________
+
+## FSF = -ffloat-store
+
+make_all: $(BINFILES)
+
+##  sphcode_e: entropy is thermodynamic variable.
+##  _____________________________________________
+
+sphcode_e$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=e \
 		FLAGS="-DENTROPY -DGRAVITY"
 
-sphcode_eq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=eq \
-		FLAGS="-DENTROPY -DGRAVITY -DQUICKSCAN"
-
-sphcode_ex: $(INCFILES) $(SRCFILES)
+sphcode_ex$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=ex \
 		FLAGS="-DENTROPY -DEXTGRAV"
 
-########################################################################
-# sphcode_ea: entropy is thermodynamic parameter.
+##  sphcode_ea: entropy is thermodynamic parameter.
+##  _______________________________________________
 
-sphcode_ea: $(INCFILES) $(SRCFILES)
+sphcode_ea$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=ea \
 		FLAGS="-DENTROPY -DADIABATIC -DGRAVITY"
 
-sphcode_eaq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=eaq \
-		FLAGS="-DENTROPY -DADIABATIC -DGRAVITY -DQUICKSCAN"
-
-sphcode_eax: $(INCFILES) $(SRCFILES)
+sphcode_eax$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=eax \
 		FLAGS="-DENTROPY -DADIABATIC -DEXTGRAV"
 
-########################################################################
-# sphcode_u: energy is thermodynamic variable.
+##  sphcode_u: energy is thermodynamic variable.
+##  ____________________________________________
 
-sphcode_u: $(INCFILES) $(SRCFILES)
+sphcode_u$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=u \
-		FLAGS="-DGRAVITY"
+		FLAGS="-DGRAVITY -DCOMPVISC"
 
-sphcode_uq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=uq \
-		FLAGS="-DGRAVITY -DQUICKSCAN"
-
-sphcode_ux: $(INCFILES) $(SRCFILES)
+sphcode_ux$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=ux \
-		FLAGS="-DEXTGRAV"
+		FLAGS="-DEXTGRAV -DCOMPVISC"
 
-########################################################################
-# sphcode_ui: energy is thermodynamic parameter.
+##  sphcode_ui: energy is thermodynamic parameter.
+##  ______________________________________________
 
-sphcode_ui: $(INCFILES) $(SRCFILES)
+sphcode_ui$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=ui \
-		FLAGS="-DISOTHERMAL -DGRAVITY"
+		FLAGS="-DISOTHERMAL -DGRAVITY -DCOMPVISC"
 
-sphcode_uiq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=uiq \
-		FLAGS="-DISOTHERMAL -DGRAVITY -DQUICKSCAN"
-
-sphcode_uix: $(INCFILES) $(SRCFILES)
+sphcode_uix$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=uix \
-		FLAGS="-DISOTHERMAL -DEXTGRAV"
+		FLAGS="-DISOTHERMAL -DEXTGRAV -DCOMPVISC"
 
-########################################################################
-# sphcode_ur: energy is thermodynamic variable, cooling included.
+##  sphcode_ur: energy is thermodynamic variable, cooling included.
+##  _______________________________________________________________
 
-sphcode_ur: $(INCFILES) $(SRCFILES)
+sphcode_ur$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=ur \
-		FLAGS="-DRADIATING -DGRAVITY"
+		FLAGS="-DRADIATING -DGRAVITY -DCOMPVISC"
 
-sphcode_urq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=urq \
-		FLAGS="-DRADIATING -DGRAVITY -DQUICKSCAN"
-
-sphcode_urx: $(INCFILES) $(SRCFILES)
+sphcode_urx$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=urx \
-		FLAGS="-DRADIATING -DEXTGRAV"
+		FLAGS="-DRADIATING -DEXTGRAV -DCOMPVISC"
 
-########################################################################
-# sphcode_uo: energy is thermodynamic variable, cooling from optically
-# thin regions included.
+##  sphcode_uo: energy is thermodynamic variable, cooling from optically
+##  thin regions included.
+##  ____________________________________________________________________
 
-sphcode_uo: $(INCFILES) $(SRCFILES)
+sphcode_uo$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=uo \
-		FLAGS="-DRADIATING -DOPAQUE -DGRAVITY"
+		FLAGS="-DRADIATING -DOPAQUE -DGRAVITY -DCOMPVISC"
 
-sphcode_uoq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=uoq \
-		FLAGS="-DRADIATING -DOPAQUE -DGRAVITY -DQUICKSCAN"
-
-sphcode_uox: $(INCFILES) $(SRCFILES)
+sphcode_uox$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=uox \
-		FLAGS="-DRADIATING -DOPAQUE -DEXTGRAV"
+		FLAGS="-DRADIATING -DOPAQUE -DEXTGRAV -DCOMPVISC"
 
-########################################################################
-# sphcode_ud: energy is thermodynamic variable, cooling from optically
-# thin regions and diffusion in optically thick regions included.
+##  sphcode_ud: energy is thermodynamic variable, cooling from optically
+##  thin regions and diffusion in optically thick regions included.
+##  ____________________________________________________________________
 
-sphcode_ud: $(INCFILES) $(SRCFILES)
+sphcode_ud$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=ud \
-		FLAGS="-DRADIATING -DDIFFUSING -DGRAVITY"
+		FLAGS="-DRADIATING -DDIFFUSING -DGRAVITY -DCOMPVISC"
 
-sphcode_udq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=udq \
-		FLAGS="-DRADIATING -DDIFFUSING -DGRAVITY -DQUICKSCAN"
-
-sphcode_udx: $(INCFILES) $(SRCFILES)
+sphcode_udx$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=udx \
-		FLAGS="-DRADIATING -DDIFFUSING -DEXTGRAV"
+		FLAGS="-DRADIATING -DDIFFUSING -DEXTGRAV -DCOMPVISC"
 
-sphcode_udz: $(INCFILES) $(SRCFILES)
+sphcode_udz$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=udz \
 		FLAGS="-DRADIATING -DDIFFUSING -DNOACCEL"
 
-########################################################################
-# sphcode_uc: energy is thermodynamic variable, conduction included.
+##  sphcode_uc: energy is thermodynamic variable, conduction included.
+##  __________________________________________________________________
 
-sphcode_uc: $(INCFILES) $(SRCFILES)
+sphcode_uc$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=uc \
-		FLAGS="-DCONDUCTING -DGRAVITY"
+		FLAGS="-DCONDUCTING -DGRAVITY -DCOMPVISC"
 
-sphcode_ucq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=ucq \
-		FLAGS="-DCONDUCTING -DGRAVITY -DQUICKSCAN"
-
-sphcode_ucx: $(INCFILES) $(SRCFILES)
+sphcode_ucx$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=ucx \
-		FLAGS="-DCONDUCTING -DEXTGRAV"
+		FLAGS="-DCONDUCTING -DEXTGRAV -DCOMPVISC"
 
-########################################################################
-# sphcode_us: energy is thermodynamic variable, starformation included.
+##  sphcode_us: energy is thermodynamic variable, starformation included.
+##  _____________________________________________________________________
 
-sphcode_us: $(INCFILES) $(SRCFILES)
+sphcode_us$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=us \
-		FLAGS="-DSTARFORM -DGRAVITY"
+		FLAGS="-DSTARFORM -DGRAVITY -DCOMPVISC"
 
-sphcode_usq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=usq \
-		FLAGS="-DSTARFORM -DGRAVITY -DQUICKSCAN"
-
-sphcode_usx: $(INCFILES) $(SRCFILES)
+sphcode_usx$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=usx \
-		FLAGS="-DSTARFORM -DEXTGRAV"
+		FLAGS="-DSTARFORM -DEXTGRAV -DCOMPVISC"
 
-########################################################################
-# sphcode_uis: energy is thermodynamic parameter, starformation included.
+##  sphcode_uis: energy is thermodynamic parameter, starformation included.
+##  _______________________________________________________________________
 
-sphcode_uis: $(INCFILES) $(SRCFILES)
+sphcode_uis$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_con_grav V=uis \
-		FLAGS="-DISOTHERMAL -DSTARFORM -DGRAVITY"
+		FLAGS="-DISOTHERMAL -DSTARFORM -DGRAVITY -DCOMPVISC"
 
-sphcode_uisq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=uisq \
-		FLAGS="-DISOTHERMAL -DSTARFORM -DGRAVITY -DQUICKSCAN"
-
-sphcode_uiSq: $(INCFILES) $(SRCFILES)
-	$(MAKE) code_con_grav V=uiSq \
-		FLAGS="-DISOTHERMAL -DSTARFORM -DGRAVITY -DQUICKSCAN \
-		       -DCOMPVISC"
-
-sphcode_uisx: $(INCFILES) $(SRCFILES)
+sphcode_uisx$X: $(INCFILES) $(SRCFILES)
 	$(MAKE) code_sin_grav V=uisx \
-		FLAGS="-DISOTHERMAL -DSTARFORM -DEXTGRAV"
+		FLAGS="-DISOTHERMAL -DSTARFORM -DEXTGRAV -DCOMPVISC"
 
-########################################################################
-# Build sphcode with self-gravity.
+##  sphcode_uir: energy is thermodynamic parameter, recycling included.
+##  ___________________________________________________________________
 
-code_con_grav: sphcode_$V.o sph_$V.o sphio_$V.o kdtree_$V.o smooth_$V.o \
-	       sphload_$V.o sphgrav_$V.o
-	$(CC) $(LDFLAGS) -o sphcode_$V \
-	   sphcode_$V.o sph_$V.o sphio_$V.o kdtree_$V.o smooth_$V.o \
-	   sphload_$V.o sphgrav_$V.o -lNBody -lClib -lm
+sphcode_uir$X: $(INCFILES) $(SRCFILES)
+	$(MAKE) code_con_grav V=uir \
+		FLAGS="-DISOTHERMAL -DSTARFORM -DMASSLOSS -DGRAVITY -DCOMPVISC"
 
-########################################################################
-# Build sphcode with external gravity.
+##  Build sphcode with self-gravity.
+##  ________________________________
 
-code_sin_grav: sphcode_$V.o sph_$V.o sphio_$V.o kdtree_$V.o smooth_$V.o
-	$(CC) $(LDFLAGS) -o sphcode_$V \
-	   sphcode_$V.o sph_$V.o sphio_$V.o kdtree_$V.o smooth_$V.o \
-	   -lNBody -lGSP -lClib -lm
+code_con_grav: sphcode_$V$X.o sphload_$V$X.o sphgrav_$V$X.o sphio_$V$X.o \
+	       kdtree_$V$X.o smooth_$V$X.o
+	$(ZCC) $(ZLDFLAGS) -o sphcode_$V$X \
+	       sphcode_$V$X.o sphload_$V$X.o sphgrav_$V$X.o sphio_$V$X.o \
+	       kdtree_$V$X.o smooth_$V$X.o -lNBody -lClib -lgsl -lgslcblas -lm
 
-########################################################################
-# Build individual object files.
+##  Build sphcode with external gravity.
+##  ____________________________________
 
-sphcode_$V.o: sphcode.c sphcode.h sphdefs.h cmdline_defs.h protodefs.h switches.h
-	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
-	   -o sphcode_$V.o -c sphcode.c
+code_sin_grav: sphcode_$V$X.o sphio_$V$X.o kdtree_$V$X.o smooth_$V$X.o
+	$(ZCC) $(ZLDFLAGS) -o sphcode_$V$X \
+	   sphcode_$V$X.o sphio_$V$X.o kdtree_$V$X.o smooth_$V$X.o \
+	   -lNBody -lGSP -lClib -lgsl -lgslcblas -lm
 
-sph_$V.o: sph.c sphcode.h sphdefs.h globaldefs.h protodefs.h switches.h
-	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
-	   -o sph_$V.o -c sph.c
+##  Build individual object files.
+##  ______________________________
 
-sphio_$V.o: sphio.c sphcode.h sphdefs.h
-	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
-	   -o sphio_$V.o -c sphio.c
+sphcode_$V$X.o: sphcode.c sphcode.h sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FLAGS) $(OPTIONS) \
+	   -o sphcode_$V$X.o -c sphcode.c
 
-kdtree_$V.o: kdtree.c kdtree.h sphdefs.h
-	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
-	   -o kdtree_$V.o -c kdtree.c
+sphio_$V$X.o: sphio.c sphcode.h sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FLAGS) $(OPTIONS) \
+	   -o sphio_$V$X.o -c sphio.c
 
-smooth_$V.o: smooth.c smooth.h kdtree.h sphdefs.h
-	$(CC) $(CCFLAGS) $(OPT) $(FSF) $(FLAGS) \
-	    -o smooth_$V.o -c smooth.c
+kdtree_$V$X.o: kdtree.c kdtree.h sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FLAGS) $(OPTIONS) \
+	   -o kdtree_$V$X.o -c kdtree.c
 
-sphload_$V.o: sphload.c sphdefs.h
-	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
-	   -o sphload_$V.o -c sphload.c
+smooth_$V$X.o: smooth.c smooth.h kdtree.h sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FSF) $(FLAGS) $(OPTIONS) \
+	    -o smooth_$V$X.o -c smooth.c
 
-sphgrav_$V.o: sphgrav.c sphdefs.h
-	$(CC) $(CCFLAGS) $(OPT) $(FLAGS) \
-	   -o sphgrav_$V.o -c sphgrav.c
+sphload_$V$X.o: sphload.c sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FLAGS) $(OPTIONS) \
+	   -o sphload_$V$X.o -c sphload.c
 
-########################################################################
+sphgrav_$V$X.o: sphgrav.c sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FLAGS) $(OPTIONS) \
+	   -o sphgrav_$V$X.o -c sphgrav.c
 
-EXEC   = sphcode_e sphcode_u sphcode_ui sphcode_ux
+##  sphdensity: utility to compute density and smoothing length.
+##  ____________________________________________________________
 
-.PHONY : clean
-clean:
-	rm -f *.o $(EXEC)
+sphdensity$X: sphdensity$X.o kdtree_sd$X.o smooth_sd$X.o
+	$(ZCC) $(ZLDFLAGS) -o sphdensity$X \
+	   sphdensity$X.o kdtree_sd$X.o smooth_sd$X.o \
+	   -lNBody -lGSP -lClib -lgsl -lgslcblas -lm
+
+sphdensity$X.o: sphdensity.c sphcode.h sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FLAGS) \
+	   -o sphdensity$X.o -c sphdensity.c
+
+kdtree_sd$X.o: kdtree.c kdtree.h sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FLAGS) \
+	   -o kdtree_sd$X.o -c kdtree.c
+
+smooth_sd$X.o: smooth.c smooth.h kdtree.h sphdefs.h
+	$(ZCC) $(ZCCFLAGS) $(OPT) $(FSF) $(FLAGS) \
+	    -o smooth_sd$X.o -c smooth.c
+
+##  zeno_sphcode.ps: source code listing.
+##  _____________________________________
+
+zeno_sphcode.ps: kdtree.c kdtree.h smooth.c smooth.h sphcode.c sphcode.h \
+	         sphdefs.h sphdensity.c sphgrav.c sphio.c  sphload.c
+	enscript -r2 -M Letterdj -o zeno_sphcode.ps \
+	         sphcode.c sphcode.h sphload.c sphgrav.c sphio.c sphdefs.h \
+	         kdtree.c kdtree.h smooth.c smooth.h sphdensity.c
+
+# Mar
+clean: tidy
+
+tidy:
+	rm -f *.o $(BINFILES)
