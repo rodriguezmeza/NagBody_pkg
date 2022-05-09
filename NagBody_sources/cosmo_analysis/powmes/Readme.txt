@@ -2,11 +2,19 @@
 https://www.vlasix.org/index.php?n=Main.Powmes
 
 ########################################################################
-PARA COMPILAR E INSTALAR powmes.0.2
+PARA COMPILAR E INSTALAR powmes
+
+Set these options (not working with gcc11):
+
+export CC=gcc-10
+export CXX=g++-10
+export F77=gfortran-10
+export FC=gfortran-10
+export F90=gfortran-10
 
 SE NECESITA instalar OpenMPI y FFTW2. Vienen en Additional libs:
 
-$(NAGBODY_ROOT_DIR)/NagBody_sources/Additional_libs/Gadget
+$(NAGBODY_ROOT_DIR)/NagBody_sources/additional_libs/
 
 Las anteriores librerias se empaqueten en $(NAGBODY_ROOT_DIR) usando:
 

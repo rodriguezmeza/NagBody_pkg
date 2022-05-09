@@ -6,6 +6,12 @@ PARENT_CODE_NAME = cosmo_analysis
 
 INSTALL_PATH = ../../../..
 
+# Was tested with this options (see install section):
+#	export CC=gcc-10; \
+#	export CXX=g++-10; \
+#	export F77=gfortran-10; \
+#	export FC=gfortran-10; \
+#	export F90=gfortran-10; \
 
 # ==================================================================
 # NOTE: INSTALLATION MUST BE RELATIVE TO $(INSTALL_PATH)
@@ -23,7 +29,13 @@ install_all: install install_man
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) binary..."
-	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
+	(cd src; make; \
+	export CC=gcc-10; \
+	export CXX=g++-10; \
+	export F77=gfortran-10; \
+	export FC=gfortran-10; \
+	export F90=gfortran-10; \
+	cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
 
 # ==================================================================
 # Install $(CODE_NAME) man page
@@ -31,7 +43,7 @@ install:
 install_man:
 	@echo " "
 	@echo "Copying $(CODE_NAME) man page..."
-	(cd doc; cp $(CODE_NAME).11 $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+	(cd doc; cp $(CODE_NAME).1 $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
 
 # ==================================================================
 # Clean up $(CODE_NAME) source directory
