@@ -22,7 +22,9 @@ install_all: install install_man
 install:
 	@echo " "
 	@echo "Creating $(CODE_NAME) binary..."
-	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
+	(cd src; \
+	make; \
+	cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
 
 # ==================================================================
 # Install $(CODE_NAME) man page

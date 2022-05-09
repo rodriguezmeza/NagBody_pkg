@@ -29,7 +29,7 @@ INCL	= globaldefs.h cmdlinedefs.h protodefs.h $(H_PATH)visual/pldefs.h \
 	 $(H_PATH)io/inout.h $(H_PATH)NagBody/nagbody.h $(H_PATH)NagBody/nagbody_proto.h 
 
 $(EXEC): $(OBJS) 
-	$(CC) $(OBJS) $(LIBS) $(LDFLAGS) -o $(EXEC) $(RPATHCMD) `$(PKG_CONFIG_ENV) pkg-config --cflags --libs plplot$(LIB_TAG)`
+	$(CC) $(OBJS) $(LIBS) $(LDFLAGS) -o $(EXEC) $(RPATHCMD) `$(PKG_CONFIG_ENV) pkg-config --cflags --libs plplot$(LIB_TAG)` $(MLIBS)
 
 $(OBJS): $(INCL) 
 

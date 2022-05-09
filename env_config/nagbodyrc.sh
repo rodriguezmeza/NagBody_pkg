@@ -65,6 +65,8 @@ export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/lapack/lib:${LD_LIBRARY_PATH}
 export PATH=${HOME}/NagBody_pkg/local/plplot/bin:${PATH}
 export MANPATH=${HOME}/NagBody_pkg/local/plplot/share/man:${MANPATH}
 export PKG_CONFIG_PATH=${HOME}/NagBody_pkg/local/plplot/lib/pkgconfig:${PKG_CONFIG_PATH}
+export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib/plplot5.15.0/driversd:${LD_LIBRARY_PATH}
 export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib:${DYLD_LIBRARY_PATH}
 export DYLD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/plplot/lib/plplot5.15.0/driversd:${DYLD_LIBRARY_PATH}
 

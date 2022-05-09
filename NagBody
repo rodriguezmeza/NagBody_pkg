@@ -1476,6 +1476,44 @@ packing_nagbody_templateBessel:
 
 
 # ==================================================================
+# ADDITIONAL CODES NOT PUBLIC YET...
+# ==================================================================
+# gizmo code: [GIZMO acting like gdgt207galaxy]
+
+MAKEGIZMO = NagBody_sources/gizmo/gizmo
+
+install_gizmo:
+	(cd $(MAKEGIZMO); $(MAKE) -f NagBody install_all)
+
+clean_gizmo:
+	(cd $(MAKEGIZMO); $(MAKE) -f NagBody clean)
+
+packing_gizmo:
+	(cd $(MAKEGIZMO); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_gizmo:
+	(cd $(MAKEGIZMO); $(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
+# nemo codes: [Nemo codes and libs]
+
+MAKENEMO = NagBody_sources/nemo/nemo
+
+install_nemo:
+	(cd $(MAKENEMO); $(MAKE) -f NagBody install_all)
+
+clean_nemo:
+	(cd $(MAKENEMO); $(MAKE) -f NagBody clean)
+
+packing_nemo:
+	(cd $(MAKENEMO); $(MAKE) -f NagBody packing_sources_no_nagbody)
+
+packing_nagbody_nemo:
+	(cd $(MAKENEMO); $(MAKE) -f NagBody packing_sources)
+
+
+# ==================================================================
 # ADDITIONAL TASKS ...
 # ==================================================================
 # Making additional directories:
