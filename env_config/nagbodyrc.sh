@@ -55,6 +55,7 @@ export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gsl/lib:${LD_LIBRARY_PATH}
 
 # modifications by HEALPixAutoConf 3.81
 [ -r /Users/mar/.healpix/3_81_Darwin/config ] && . /Users/mar/.healpix/3_81_Darwin/config
+# Be aware that $HOME is different in other platforms. Change accordingly.
 
 
 # LAPACK (can be installed with ports en Mac):

@@ -1,5 +1,5 @@
 # NagBody install file - montepython code
-# Copyright (c) 2006-2019  Mario A. Rodriguez-Meza, Ciudad de Mexico.
+# Copyright (c) 2006-2022  Mario A. Rodriguez-Meza, Ciudad de Mexico.
 
 CODE_NAME = montepython
 PARENT_CODE_NAME = class
@@ -8,36 +8,46 @@ INSTALL_PATH = ../../../..
 
 
 # ==================================================================
+# NOTE: INSTALATION MUST BE RELATIVE TO $(INSTALL_PATH)
+# 	Not absolute as is given by $(HOME)/NagBody_pkg
+# 	It is better to use a relative path
+NAGBODYDIR = $(INSTALL_PATH)
+#NAGBODYDIR = $(HOME)/NagBody_pkg
+#
+CODEVER = montepython_public
+CODEPKG = montepython_public.tar.gz
+CODEVEREX = montepython_public
+
+# ==================================================================
 # Install $(CODE_NAME) binary
 
-# Dummy install
-#install:
-#	@echo " "
-#	@echo "Creating $(CODE_NAME) binary..."
-#	(cd src; make; cp $(CODE_NAME) $(INSTALL_PATH)/bin/.)
+install_all: install install_man
+
+# Dummy
+install:
+	@echo " "
+	@echo "Creating $(CODE_NAME) files (dummy)..."
+#	(tar xvf $(CODEPKG))
 
 # ==================================================================
 # Install $(CODE_NAME) man page
 
-#install_man:
-#	@echo " "
-#	@echo "Copying $(CODE_NAME) man page..."
-#	(cd doc; cp $(CODE_NAME).m $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+install_man:
+	@echo " "
+	@echo "Copying $(CODE_NAME) man page..."
+	(cd doc; cp $(CODE_NAME).1 $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
 
 # ==================================================================
 # Clean up $(CODE_NAME) source directory
 
-#clean:
-#	@echo " "
-#	@echo "Cleaning $(CODE_NAME) source dir, binary and man page files..."
-#	(cd src; $(MAKE) clean; \
-#	rm -f $(INSTALL_PATH)/bin/$(CODE_NAME) \
-#	rm -f $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
+# Dummy
+clean:
+	@echo " "
+	@echo "Cleaning $(CODE_NAME) source dir and binary dir (dummy) and man page files)..."
+	(cd $(CODEVER); \
+	rm -f $(INSTALL_PATH)/man/man1/$(CODE_NAME).1)
 
-#clean_dir:
-#	@echo " "
-#	@echo "Cleaning $(CODE_NAME) source dir..."
-#	(cd src; $(MAKE) clean)
+#	rm -fR  * ; \
 
 # ==================================================================
 # Archive all source directories.  
@@ -60,16 +70,37 @@ packing_sources:
 	@echo "Packing $(CODE_NAME) sources..."
 	@echo " "
 	(cd $(PACK_PARENT_DIR); tar cvf $(PACK_ZIP_DIR)/$(CODE_NAME).tar \
-		$(PACK_CODE_DIR)/python/ \
 		$(PACK_CODE_DIR)/doc \
+		$(PACK_CODE_DIR)/$(CODEVER) \
 		$(PACK_CODE_DIR)/NagBody \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_DIR)/Readme.txt \
+		$(PACK_CODE_DIR)/tests \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/doc \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/nagbodyrc.sh \
 		$(PACK_CODE_NAGBODY_ROOT_DIR)/INSTALL \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/env_config/{compilersrc,gadgetrc,nagbodyrc,profilerc,utilsrc} \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Makefiles/$(PARENT_CODE_NAME)/NagBody_$(CODE_NAME) \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Machines \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody_Tests/$(PARENT_CODE_NAME)/$(CODE_NAME) \
-		$(PACK_CODE_NAGBODY_ROOT_DIR)/Readmes/$(PARENT_CODE_NAME)/Readme-Install_$(CODE_NAME); \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/LICENSE \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/make_all \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/NagBody \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/README.md \
+		$(PACK_CODE_NAGBODY_ROOT_DIR)/tests; \
 	 gzip $(PACK_ZIP_DIR)/$(CODE_NAME).tar )
 
+#####################################
+#####################################
+# PACKING (TAR) (INDEPENDENT of NagBody)
+#
+PACK_NAGBODY_DIR = ../..
+PACK_ZIP_NO_NAGBODY_DIR = $(PACK_NAGBODY_DIR)/zip
+
+#####################################
+packing_sources_no_nagbody:
+	@echo " "
+	@echo "Packing $(CODE_NAME) sources no NagBody..."
+	@echo " "
+	(cd ../; tar cvf $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar \
+		$(CODE_NAME)/doc \
+		$(CODE_NAME)/$(CODEVER) \
+		$(CODE_NAME)/Readme.txt; \
+		$(CODE_NAME)/tests; \
+	 gzip $(PACK_ZIP_NO_NAGBODY_DIR)/$(CODE_NAME).tar )
 

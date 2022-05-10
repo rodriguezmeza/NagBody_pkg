@@ -16,14 +16,14 @@ additional_libs
 4. fftw-3		: FFTW-3, a free collection of fast C routines for computing 
 			: the Discrete Fourier Transform in one or more dimensions. COLA codes use it.
 5. gsl			: GSL - GNU Scientific Library. It is use by gadget codes.
-6. healpix		: HEALPix, Hierarchical Equal Area isoLatitude Pixelation of the sphere
-7. lapack		: LAPACK, a library of Fortran 90 with subroutines for solving
+6. lapack		: LAPACK, a library of Fortran 90 with subroutines for solving
 			: the most commonly occurring problems in numerical linear algebra.
-8. OpenBLAS		: OpenBLAS, an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+7. OpenBLAS		: OpenBLAS, an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
+8. hdf5		: High-performance software library and data format.
 9. plplot		: PLplot, a cross-platform software package for creating scientific plots
-10. NR			: We include some of the numerical recipes codes: interpolation, quadratures, 
+10. Healpix		: HEALPix, Hierarchical Equal Area isoLatitude Pixelation of the sphere
+11. NR			: We include some of the numerical recipes codes: interpolation, quadratures, 
 			: special function, ODE solvers, etc. Isolated in order to be easy to use.
-11. hdf5		: High-performance software library and data format.
 
 class
 1. class		: Julien Lesgourges CLASS
