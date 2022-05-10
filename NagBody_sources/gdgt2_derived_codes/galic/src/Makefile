@@ -61,7 +61,9 @@
 # If you add an ifeq for a new system below, also add that systype to
 # Template-Makefile.systype
 
-EXEC   = GalIC
+# Mar
+#EXEC   = GalIC
+EXEC   = galic
 CONFIG   = Config.sh
 BUILD_DIR = build
 # Mar

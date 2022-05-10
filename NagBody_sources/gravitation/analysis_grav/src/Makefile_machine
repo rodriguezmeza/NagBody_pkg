@@ -53,9 +53,11 @@ RPATHCMD =
 #OPT2   +=  -DOPTIONNAME
 # Add as many as needed
 
+PLPLIBS    =  -L$(NAGBODYDIR)/local/plplot/lib
+
 INCLUDES = $(OPT1) $(GSL_INCL)
 
-LIBS += $(GSL_LIBS)
+LIBS += $(GSL_LIBS) $(PLPLIBS)
 
 #PRECISION = DOUBLEPREC
 

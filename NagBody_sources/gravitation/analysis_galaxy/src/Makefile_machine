@@ -34,6 +34,7 @@ OPT1    +=  -I ./
 OPT1    +=  -I ./general_libs/general
 OPT1    +=  -I ./general_libs/math
 OPT1    +=  -I ./general_libs/io
+OPT1    +=  -I ./general_libs/visual
 OPT1    +=  -I $(NAGBODYDIR)/local/plplot/include/plplot
 GSL_INCL= -I$(NAGBODYDIR)/local/gsl/include
 GSL_LIBS= -L$(NAGBODYDIR)/local/gsl/lib
@@ -55,9 +56,11 @@ RPATHCMD =
 #OPT2   +=  -DOPTIONNAME
 # Add as many as needed
 
+PLPLIBS    =  -L$(NAGBODYDIR)/local/plplot/lib
+
 INCLUDES = $(OPT1) $(GSL_INCL)
 
-LIBS += $(GSL_LIBS)
+LIBS += $(GSL_LIBS) $(PLPLIBS)
 
 #PRECISION = DOUBLEPREC
 

@@ -38,7 +38,7 @@ INCL   = cmdline_defs.h \
 	 $(H_PATH)general/times.h $(H_PATH)general/switchs.h $(H_PATH)general/lic.h
 
 $(EXEC): $(OBJS) 
-	$(CC) $(OBJS) $(LIBS)   -o  $(EXEC)  
+	$(CC) $(OBJS) $(LIBS)   -o  $(EXEC) $(MLIBS)
 
 $(OBJS): $(INCL) 
 

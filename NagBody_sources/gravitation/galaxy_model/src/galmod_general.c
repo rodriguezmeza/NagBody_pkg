@@ -28,17 +28,10 @@
 #include <config.h>
 #endif
 
-#ifndef NOGNU
-#include "../../../General_libs/general/stdinc.h"
-#include "../../../General_libs/general/constant.h"
-#include "../../../General_libs/math/mathfns.h"
-#include "../../../General_libs/math/numrec.h"
-#else
 #include "stdinc.h"
 #include "constant.h"
 #include "mathfns.h"
 #include "numrec.h"
-#endif
 
 //#include "globaldefs.h"
 #include "protodefs.h"

@@ -31,7 +31,7 @@ INCL	= globaldefs.h cmdlinedefs.h protodefs.h \
 	$(H_PATH)general/precision.h $(H_PATH)io/inout.h
 
 $(EXEC): $(OBJS) 
-	$(CC) $(OBJS) $(LDFLAGS) -o $(EXEC)
+	$(CC) $(OBJS) $(LDFLAGS) -o $(EXEC) $(MLIBS)
 
 $(OBJS): $(INCL) 
 

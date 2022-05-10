@@ -175,4 +175,4 @@ endif
 #--------------------------------------------
 
 INCLUDES = $(OPT1) $(GSL_CFLAGS) $(FFTW_CFLAGS) $(OPENMPFLAG)
-LIBS   +=   -g  $(GSL_LIBS) $(OPENMPFLAG) -lgsl -lgslcblas -lm 
+LIBS   +=   -g  $(GSL_LIBS) $(OPENMPFLAG) -lgsl -lgslcblas

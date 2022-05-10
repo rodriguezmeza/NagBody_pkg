@@ -41,7 +41,7 @@ INCL   = cmdline_defs.h \
 	 $(H_PATH)times.h $(H_PATH)switchs.h $(H_PATH)lic.h
 
 $(EXEC): $(OBJS) 
-	$(CC) $(OBJS) $(LDFLAGS) -o $(EXEC) $(RPATHCMD) `$(PKG_CONFIG_ENV) pkg-config --cflags --libs plplot$(LIB_TAG)`
+	$(CC) $(OBJS) $(LDFLAGS) -o $(EXEC) $(RPATHCMD) `$(PKG_CONFIG_ENV) pkg-config --cflags --libs plplot$(LIB_TAG)` $(MLIBS)
 
 $(OBJS): $(INCL) 
 

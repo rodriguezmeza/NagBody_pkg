@@ -53,7 +53,7 @@ INCL   = cmdline_defs.h \
 CFLAGS =   $(OPTIONS)
 
 $(EXEC): $(OBJS) 
-	$(CC) $(OPTIONS) $(OBJS) $(LIBS)   -o  $(EXEC)  
+	$(CC) $(OPTIONS) $(OBJS) $(LIBS)   -o  $(EXEC) $(MLIBS)
 
 $(OBJS): $(INCL) 
 
