@@ -33,7 +33,7 @@ INCL	= globaldefs.h cmdline_defs.h protodefs.h \
 	 $(H_PATH)constant.h $(H_PATH)physconstants.h $(H_PATH)switchs.h
 
 $(EXEC): $(OBJS)
-	$(CC) $(OBJS) $(LDFLAGS) -o $(EXEC)
+	$(CC) $(OBJS) $(LDFLAGS) -o $(EXEC) $(MLIBS)
 
 $(OBJS): $(INCL) 
 

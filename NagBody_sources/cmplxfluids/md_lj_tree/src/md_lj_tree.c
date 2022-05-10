@@ -30,9 +30,9 @@
 !	use.																		!
 !==============================================================================*/
 
-#include "../../../General_libs/general/stdinc.h"
-#include "../../../General_libs/math/vectmath.h"
-#include "../../../General_libs/general/getparam.h"
+#include "stdinc.h"
+#include "vectmath.h"
+#include "getparam.h"
 #define global
 #include "global_defs.h"
 #include "cmdline_defs.h"

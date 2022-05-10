@@ -29,7 +29,7 @@ INCL	= global_defs.h data_struc_defs.h cmdline_defs.h proto_defs.h \
 	$(H_PATH)math/vectdefs.h $(H_PATH)math/vectmath.h $(H_PATH)math/numrec.h $(H_PATH)general/lic.h
 
 $(EXEC): $(OBJS) 
-	$(CC) $(OBJS) $(LIBS) -o $(EXEC)
+	$(CC) $(OBJS) $(LIBS) -o $(EXEC) $(MLIBS)
 
 $(OBJS): $(INCL) 
 

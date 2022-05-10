@@ -50,7 +50,7 @@ INCL	= globaldefs.h cmdline_defs.h protodefs.h \
 	 $(NEMOPATH)include/filefn.h $(NEMOPATH)lib/maxsizes.h $(NEMOPATH)lib/config.h
 
 $(EXEC): $(OBJS) 
-	$(CC) $(OBJS) $(LDFLAGS) -o $(EXEC)
+	$(CC) $(OBJS) $(LDFLAGS) -o $(EXEC) $(MLIBS)
 
 $(OBJS): $(INCL) 
 
