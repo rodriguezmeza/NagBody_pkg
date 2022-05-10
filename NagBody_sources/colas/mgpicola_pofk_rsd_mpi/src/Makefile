@@ -28,7 +28,7 @@ main.o		: rsd_main.c io_gadget.h Makefile
 HEADERS = io_gadget.h
 
 mgpicola_pofk_rsd_mpi: $(OBJS)
-	${CC} -o $@ $^ $C $I $L $(SFML)
+	${CC} -o $@ $^ $C $I $L $(SFML) -lm
 
 %.o: %.cpp $(HEADERS)
 	${CC} -c -o $@ $< $C $I $L

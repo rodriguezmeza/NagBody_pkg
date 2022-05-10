@@ -1487,24 +1487,6 @@ packing_nagbody_gizmo:
 
 
 # ==================================================================
-# gadget4 code: [Gadget-4]
-
-MAKEGADGET4 = NagBody_sources/gadget4/gadget4
-
-install_gadget4:
-	(cd $(MAKEGADGET4); $(MAKE) -f NagBody install_all)
-
-clean_gadget4:
-	(cd $(MAKEGADGET4); $(MAKE) -f NagBody clean)
-
-packing_gadget4:
-	(cd $(MAKEGADGET4); $(MAKE) -f NagBody packing_sources_no_nagbody)
-
-packing_nagbody_gadget4:
-	(cd $(MAKEGADGET4); $(MAKE) -f NagBody packing_sources)
-
-
-# ==================================================================
 # nemo codes: [Nemo codes and libs]
 
 MAKENEMO = NagBody_sources/nemo/nemo
