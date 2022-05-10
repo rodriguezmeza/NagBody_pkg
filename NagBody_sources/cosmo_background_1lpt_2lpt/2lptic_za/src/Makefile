@@ -1,5 +1,5 @@
 #EXEC   = 2LPTic
-EXEC   = 2lptic_za_only
+EXEC   = 2lptic_za
 
 OBJS   = main.o power.o allvars.o save.o read_param.o  read_glass.o  \
          nrsrc/nrutil.o nrsrc/qromb.o nrsrc/polint.o nrsrc/trapzd.o

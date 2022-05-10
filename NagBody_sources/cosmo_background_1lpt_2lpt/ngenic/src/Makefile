@@ -53,18 +53,18 @@ OPTIMIZE =  -O2 -Wall -g
 #GSL_LIBS =  -L$(HOME)/local/gsl/lib
 #
 # Working:
-GSL_INCL =  -I/opt/local/include
-GSL_LIBS =  -L/opt//local/lib
+#GSL_INCL =  -I/opt/local/include
+#GSL_LIBS =  -L/opt//local/lib
 #
-#GSL_INCL =  -I$(HOME)/NagBody_pkg/local/gsl/include
-#GSL_LIBS =  -L$(HOME)/NagBody_pkg/local/gsl/lib
+GSL_INCL =  -I$(HOME)/NagBody_pkg/local/gsl/include
+GSL_LIBS =  -L$(HOME)/NagBody_pkg/local/gsl/lib
 #FFTW_INCL= -I$(HOME)/local/fftw2/include
 #FFTW_LIBS= -L$(HOME)/local/fftw2/lib
 FFTW_INCL= -I$(HOME)/NagBody_pkg/local/fftw2/include
 FFTW_LIBS= -L$(HOME)/NagBody_pkg/local/fftw2/lib
 MPICHLIB = -lmpi
-HDF5INCL =  -I$(HOME)/local/hdf5/include
-HDF5LIB  =  -L$(HOME)/local/hdf5/lib -static -lhdf5 $(HOME)/local/zlib/lib -lz 
+#HDF5INCL =  -I$(HOME)/local/hdf5/include
+#HDF5LIB  =  -L$(HOME)/local/hdf5/lib -static -lhdf5 $(HOME)/local/zlib/lib -lz 
 endif
 
 ifeq ($(SYSTYPE),"OpenSuse")
