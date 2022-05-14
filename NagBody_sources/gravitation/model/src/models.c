@@ -23,7 +23,8 @@
 	and he disclaims all liability from any consequences arising from their	use.
 ==============================================================================*/
 
-#define global
+// STATIC problem: gcc version 11
+//#define global
 #include "globaldefs.h"
 
 

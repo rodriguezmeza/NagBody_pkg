@@ -1,8 +1,8 @@
-#include "../general/machines.h"						// Verificar su uso...
+#include "machines.h"						// Verificar su uso...
 
-#include "../general/stdinc.h"
-#include "../math/mathfns.h"
-#include "../math/vectmath.h"
+#include "stdinc.h"
+#include "mathfns.h"
+#include "vectmath.h"
 
 #include "nagbody.h"
 

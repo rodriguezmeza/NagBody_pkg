@@ -26,7 +26,7 @@
 #ifndef _inout_h
 #define _inout_h
 
-#include "../math/vectdefs.h"
+#include "vectdefs.h"
 
 // ------------[	inout normal definitions	 	]------------
 

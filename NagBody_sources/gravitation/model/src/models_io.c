@@ -114,12 +114,15 @@ void InputData(void)
 	gd.headerfmt = "snap-blj-ascii";
 
 	for (ifile=0; ifile<gd.nfiles; ifile++) {
-		fprintf(gd.outlog,"\nReading file %s, snap format %s (%d/%d) ...",
-			gd.filenames[ifile], gd.filenamefmts[ifile], ifile+1, gd.nfiles);
+        fprintf(gd.outlog,"\nReading file %s, snap format %s (%d/%d) ...",
+            gd.filenames[ifile], gd.filenamefmts[ifile], ifile+1, gd.nfiles);
+
 		inputdata(gd.filenames[ifile], gd.filenamefmts[ifile], gd.headerfmt,
 			step,&nbodies[ifile], &ndim[ifile], &gd.tnow, &exist_snap, 
 			&hdr,cmd.options, gd.model_comment);
+
 		btab[ifile] = (bodyptr) allocate(nbodies[ifile] * sizeof(body));
+
 		q = btab[ifile];
 		DO_BODY(p, bodytab, bodytab+nbodies[ifile]) {
 			Mass(q) = Mass(p);
@@ -138,7 +141,7 @@ void InputData(void)
 	for (ifile=0; ifile<gd.nfiles; ifile++)
 		tnbodies += nbodies[ifile];
 
-	fprintf(gd.outlog,"\ntotal bodies : %d\n", tnbodies);
+    fprintf(gd.outlog,"\ntotal bodies : %d\n", tnbodies);
 
 	cmd.nbody=tnbodies;
     bodytab = (bodyptr) allocate(tnbodies * sizeof(body));

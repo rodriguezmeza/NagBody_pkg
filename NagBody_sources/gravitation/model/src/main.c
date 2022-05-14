@@ -30,7 +30,7 @@
 ==============================================================================*/
 
 
-#define global
+//#define global
 #include "globaldefs.h"
 #include "cmdline_defs.h"
 

@@ -58,7 +58,7 @@ void snap_anim_plplot_trajectory(string snapname, string snapnametmp)
 	bool exist_snap;
 	int ndim;
 	double cpustart;
-	char mode[2];
+	char mode[3];
 
 	cpustart = cputime();
 
@@ -232,7 +232,7 @@ void snap_anim_plplot(string snapname, string snapnametmp)
     char namebuf[200], namebuf1[200];
 	int ndim;
 	double cpustart;
-	char mode[2];
+	char mode[3];
 
 	cpustart = cputime();
 
@@ -253,7 +253,7 @@ void snap_anim_plplot(string snapname, string snapnametmp)
 	if (!strnull(cmd.pl_ncol1))
 		plsetopt("-ncol1",cmd.pl_ncol1);
 
-	if (scanopt(cmd.options, "save")) {
+    if (scanopt(cmd.options, "save")) {
 		strcpy(mode,"w!");
 		while (moreSteps) {
 			if (step >= cmd.isnap && step <= cmd.fsnap) {
@@ -297,7 +297,8 @@ void snap_anim_plplot(string snapname, string snapnametmp)
 				if (exist_snap) {
 					++snapcount;
 //					Header_to_Global();
-					PrintSnap(snapname, snapnametmp, gd.nbody, cmd.options, mode);
+                    PrintSnap(snapname, snapnametmp, gd.nbody, cmd.options, mode);
+//
 					if (scanopt(cmd.options, "type"))
 						animation_xy_type(snapname, snapcount);
 					else
@@ -321,7 +322,7 @@ void bodies_anim_plplot(string snapname, string snapnametmp)
     char namebuf[200], namebuf1[200];
 	int ndim;
 	double cpustart;
-	char mode[2];
+	char mode[3];
 
 	cpustart = cputime();
 
@@ -420,7 +421,7 @@ void bodies_anim_plplot_trajectory(string snapname, string snapnametmp)
     char namebuf[200], namebuf1[200];
 	int ndim;
 	double cpustart;
-	char mode[2];
+	char mode[3];
 
 	cpustart = cputime();
 

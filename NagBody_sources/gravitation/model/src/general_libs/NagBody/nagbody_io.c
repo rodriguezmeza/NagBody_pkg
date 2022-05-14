@@ -1179,7 +1179,6 @@ void inputdata(char *file, char *filefmt, char *outfmt, int step,
 	infilefmt_string_to_int(filefmt, &infmt_int);
     outfilefmt_string_to_int(outfmt, &outfmt_int);
 
-//printf("\nAqui voy dentro de inputdata(2)\n");
 	switch(infmt_int) {
 		case IO_SNAP_FMT:
 			inputdata_ascii(file, step, nbodies, ndim, tnow, exist_snap, 
@@ -3685,7 +3684,7 @@ void outputdata(char *file, char *outfmt, char *infmt, int snapcount,
 				outputdata_gadget11_bin_double(file, snapcount, nbody, tnow, hdr, options); break;
 // GADGET207 COMIENZO //////////////////////////////////////////////////////////
 //            case IO_GADGET207_FMT_BIN:
-//                printf("\n\tgadget207-bin format output"); 
+//                printf("\n\tgadget207-bin format output");
 //				outputdata_gadget207_bin(file, snapcount, nbody, tnow, hdr, options); break;
 // GADGET207 FIN ///////////////////////////////////////////////////////////
                 
@@ -3782,8 +3781,8 @@ local void outfilefmt_string_to_int(string outfmt_str,int *outfmt_int)
 		*outfmt_int = IO_GADGET11_FMT_BIN_DOUBLE;
 
 // GADGET207 COMIENZO //////////////////////////////////////////////////////////
-//    if (strcmp(outfmt_str,"gadget207-bin") == 0)
-//		*outfmt_int = IO_GADGET207_FMT_BIN;
+    if (strcmp(outfmt_str,"gadget207-bin") == 0)
+		*outfmt_int = IO_GADGET207_FMT_BIN;
 // GADGET207 FIN ///////////////////////////////////////////////////////////
     
 // IBERO COMIENZO //////////////////////////////////////////////////////////

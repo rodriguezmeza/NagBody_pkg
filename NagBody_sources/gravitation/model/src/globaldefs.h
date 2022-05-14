@@ -138,14 +138,19 @@ typedef struct {
 
 
 // gcc11 :: To avoid Error :: duplicate symbol '_gd' in:
-/*
+
 global global_data gd;
 global cmdline_data cmd;
 global io_header_blj hdr;
-*/
-local global_data gd;
-local cmdline_data cmd;
-local io_header_blj hdr;
+
+// Debug:: ESTÁ MUY MAL!!!
+//local global_data gd;
+//local cmdline_data cmd;
+//local io_header_blj hdr;
+
+//global_data gd;
+//cmdline_data cmd;
+//io_header_blj hdr;
 
 // STATIC problem: gcc version 11
 // From inout.h

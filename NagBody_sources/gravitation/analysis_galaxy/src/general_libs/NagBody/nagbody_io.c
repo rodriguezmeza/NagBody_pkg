@@ -25,13 +25,13 @@
 	and he disclaims all liability from any consequences arising from their	use.
 ==============================================================================*/
 
-#include "../general/stdinc.h"
-#include "../math/mathfns.h"
-#include "../io/inout.h"
-#include "../math/vectdefs.h"
-#include "../math/vectmath.h"
+#include "stdinc.h"
+#include "mathfns.h"
+#include "inout.h"
+#include "vectdefs.h"
+#include "vectmath.h"
 #include "nagbody.h"
-#include "../physics/physconstants.h"
+#include "physconstants.h"
 
 #include <string.h>								// For Unix
 //#include "../../../../General_libs/strings.h"	// For Visual C

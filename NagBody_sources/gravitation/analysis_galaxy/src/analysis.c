@@ -54,7 +54,7 @@ void data_analysis(void)
 	snapfilename="snap-analysis.dat";
 	snapfilenametmp="snap-analysis.tmp";
 
-	datanaly_type_string_to_int(cmd.data_analysis_type, &datanaly_type_int);
+    datanaly_type_string_to_int(cmd.data_analysis_type, &datanaly_type_int);
 	switch (datanaly_type_int) {
 	case SNAP_ANIM: snap_anim_plplot(snapfilename, snapfilenametmp); break;
 	case SNAP_ANIMTRAJECTORY: 

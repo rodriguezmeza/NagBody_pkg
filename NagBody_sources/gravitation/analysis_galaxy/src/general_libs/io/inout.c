@@ -29,10 +29,10 @@
 //#include <math.h>
 
 // STATIC problem: gcc version 11
-#include "../../globaldefs.h"
+#include "globaldefs.h"
 
-#include "../general/stdinc.h"
-#include "../math/vectmath.h"
+#include "stdinc.h"
+#include "vectmath.h"
 #include "inout.h"
 #include <string.h>
 

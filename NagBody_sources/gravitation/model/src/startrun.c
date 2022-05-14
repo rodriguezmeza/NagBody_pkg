@@ -142,7 +142,10 @@ local void startrun_Common(void)
 			fprintf (gd.outlog,"%s\n",gd.filenames[gd.nfiles-1]);
 			pch = strtok (NULL, " ,");
 		}
-		fprintf (gd.outlog,"num. of inputfiles %s =%d\n",cmd.in,gd.nfiles);
+//        fprintf (gd.outlog,"num. of inputfiles %s =%d\n",cmd.in,gd.nfiles);
+        // Debug:: Quitar
+        fprintf (stdout,"num. of inputfiles %s =%d\n",cmd.in,gd.nfiles);
+        fflush(gd.outlog);
 //
 		if (!strnull(cmd.infmt)) {
 			strcpy(inputfilefmttmp,cmd.infmt);
@@ -176,7 +179,17 @@ local void startrun_Common(void)
 			InputData_long();
 			SnapDataTransform_long();
 		} else {
+            // Debug:: Quitar
+                fprintf (stdout,"\n\nnum. of inputfiles (2....) %d\n",gd.nfiles);
+                fflush(stdout);
+            //
+
 			InputData();
+            // Debug:: Quitar
+                fprintf (stdout,"\n\nnum. of inputfiles (3....) %d\n",gd.nfiles);
+                fflush(stdout);
+            //
+
 			SnapDataTransform();
 		}
 
@@ -203,7 +216,12 @@ local void startrun_Common(void)
 	}
 
 	gd.tout = gd.tnow;
-	return;
+
+// Debug:: Quitar
+    fprintf (stdout,"num. of inputfiles %d\n",gd.nfiles);
+    fflush(stdout);
+//
+    return;
 }
 
 #undef logfile

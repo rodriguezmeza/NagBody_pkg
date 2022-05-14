@@ -218,8 +218,9 @@ typedef struct {
 // ------------------------START GLOBAL DEFINITIONS--------------------------
 //global int nbody;								// Command line... normaly
 // gcc11 :: To avoid Error :: duplicate symbol '_bodytab' in:
-//global bodyptr bodytab;
-local bodyptr bodytab;
+// Debug
+global bodyptr bodytab;
+//local bodyptr bodytab;
 // Particle data structure to manipulate I/O
 // N > 10^6 purpose...
 //global bodyptr_long bodytab_long;
@@ -744,8 +745,8 @@ typedef struct {	// this struct contains data which is the same for all tasks
 } global_data_all_processes, *global_data_all_processes_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_All' in:
-//global global_data_all_processes All;
-local global_data_all_processes All;
+global global_data_all_processes All;
+//local global_data_all_processes All;
 
 
 // The following structure holds all the information that is
@@ -781,8 +782,8 @@ typedef struct {
 } particle_data, *particle_data_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_P_data' in:
-//global particle_data_ptr P, P_data;
-local particle_data_ptr P, P_data;
+global particle_data_ptr P, P_data;
+//local particle_data_ptr P, P_data;
 
 
 
@@ -1382,8 +1383,8 @@ typedef struct
 } global_data_all_processes_GADGET207;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_All_GADGET' in:
-//global global_data_all_processes_GADGET207 All_GADGET;
-local global_data_all_processes_GADGET207 All_GADGET;
+global global_data_all_processes_GADGET207 All_GADGET;
+//local global_data_all_processes_GADGET207 All_GADGET;
 
 // BORRAR DESPUES DE REVISAR USO DE LA ESTRUCTURA ANTERIOR ...
 //All;                                          /*!< a container variable for global variables that are equal on all processors */
@@ -1425,8 +1426,8 @@ typedef struct
 } particle_data_GADGET207, *particle_data_ptr_GADGET207;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_P_GADGET' in:
-//global particle_data_ptr_GADGET207 P_GADGET;
-local particle_data_ptr_GADGET207 P_GADGET;
+global particle_data_ptr_GADGET207 P_GADGET;
+//local particle_data_ptr_GADGET207 P_GADGET;
 
 // BORRAR DESPUES DE REVISAR USO DE LA ESTRUCTURA ANTERIOR ...
 //*P,              /*!< holds particle data on local processor */
@@ -1457,8 +1458,8 @@ typedef struct
 } io_header_GADGET207, *io_header_ptr_GADGET207;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_header_GADGET' in:
-//global io_header_ptr_GADGET207 header_GADGET;
-local io_header_ptr_GADGET207 header_GADGET;
+global io_header_ptr_GADGET207 header_GADGET;
+//local io_header_ptr_GADGET207 header_GADGET;
 
 // BORRAR DESPUES DE REVISAR USO DE LA ESTRUCTURA ANTERIOR ...
 //header;                               /*!< holds header for snapshot files */
