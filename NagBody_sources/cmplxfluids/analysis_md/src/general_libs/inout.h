@@ -119,11 +119,12 @@ real *inout_wval;
  */
 
 // To work with gcc11  :: Error found: duplicate symbol '_inout_xval' in:
+/*
 static real *inout_xval;
 static real *inout_yval;
 static real *inout_zval;
 static real *inout_wval;
-
+*/
 
 // END: PARA IMPLEMENTAR LECTURA GENERAL DE ARCHIVOS DE DATOS CON FORMATO DE COLUMNAS
 

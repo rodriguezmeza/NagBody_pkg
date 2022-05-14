@@ -30,6 +30,9 @@
 
 #include "stdinc.h"
 #include "vectmath.h"
+
+#include "globaldefs.h"
+
 #include "inout.h"
 #include <string.h>
 

@@ -218,13 +218,13 @@ typedef struct {
 // ------------------------START GLOBAL DEFINITIONS--------------------------
 //global int nbody;								// Command line... normaly
 // gcc11 :: To avoid Error :: duplicate symbol '_bodytab' in:
-//global bodyptr bodytab;
-local bodyptr bodytab;
+global bodyptr bodytab;
+//local bodyptr bodytab;
 // Particle data structure to manipulate I/O
 // N > 10^6 purpose...
-//global bodyptr_long bodytab_long;
+global bodyptr_long bodytab_long;
 // gcc11 :: To avoid Error :: duplicate symbol '_bodytab_long' in:
-local bodyptr_long bodytab_long;
+//local bodyptr_long bodytab_long;
 //
 
 
@@ -435,10 +435,10 @@ typedef struct _pointForcePot {
 } pointForcePot, *pointForcePotptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_nforcepot' in:
-//global int nforcepot;
-//global pointForcePotptr forcepottab;
-local int nforcepot;
-local pointForcePotptr forcepottab;
+global int nforcepot;
+global pointForcePotptr forcepottab;
+//local int nforcepot;
+//local pointForcePotptr forcepottab;
 
 #define POTTYPE_LJ			0
 #define POTTYPE_SLJ			1
@@ -488,8 +488,8 @@ typedef struct {
 } nplt, *npltptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_npltd' in:
-//global nplt npltd;
-local nplt npltd;
+global nplt npltd;
+//local nplt npltd;
 
 // -----------------------------------------------------------------------------
 
@@ -516,22 +516,22 @@ extern int    TimeTreeRoot;
 extern int    Num_nodeupdates, Num_nodeupdate_particles;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_RestartFlag' in:
-//global int    RestartFlag;        // Se inicializa en 0, el valor por defecto...
-local int    RestartFlag;        // Se inicializa en 0, el valor por defecto...
+global int    RestartFlag;        // Se inicializa en 0, el valor por defecto...
+//local int    RestartFlag;        // Se inicializa en 0, el valor por defecto...
 
 #define MAX_PARTICLE_TYPES	6		// MAX_PARTICLE_TYPES>=MaxParticlesTypes
 // gcc11 :: To avoid Error :: duplicate symbol '_NumPart' in:
-/*
+
 global int     NumParticleTypes;        // Number of particles types
 
 global int    NumPart,        // Note: these are the LOCAL process values
               N_gas;
-*/
 
+/*
 local int     NumParticleTypes;        // Number of particles types
 local int    NumPart,        // Note: these are the LOCAL process values
               N_gas;
-
+*/
 
 // variables for input/output ,  usually only used on process 0
 
@@ -744,8 +744,8 @@ typedef struct {	// this struct contains data which is the same for all tasks
 } global_data_all_processes, *global_data_all_processes_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_All' in:
-//global global_data_all_processes All;
-local global_data_all_processes All;
+global global_data_all_processes All;
+//local global_data_all_processes All;
 
 
 // The following structure holds all the information that is
@@ -781,8 +781,8 @@ typedef struct {
 } particle_data, *particle_data_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_P_data' in:
-//global particle_data_ptr P, P_data;
-local particle_data_ptr P, P_data;
+global particle_data_ptr P, P_data;
+//local particle_data_ptr P, P_data;
 
 
 
@@ -819,8 +819,8 @@ typedef struct {
 } particle_data_double, *particle_data_double_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_P_data_double' in:
-//global particle_data_ptr P_double, P_data_double;
-local particle_data_ptr P_double, P_data_double;
+global particle_data_ptr P_double, P_data_double;
+//local particle_data_ptr P_double, P_data_double;
 
 
 // Particle data structure to manipulate I/O
@@ -855,8 +855,8 @@ typedef struct {
 } particle_data_long, *particle_data_long_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_P_data_long' in:
-//global particle_data_long_ptr P_long, P_data_long;
-local particle_data_long_ptr P_long, P_data_long;
+global particle_data_long_ptr P_long, P_data_long;
+//local particle_data_long_ptr P_long, P_data_long;
 //
 
 typedef struct {
@@ -885,8 +885,8 @@ typedef struct {
 } sph_particle_data, *sph_particle_data_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_SphP_data' in:
-//global sph_particle_data_ptr SphP, SphP_data;
-local sph_particle_data_ptr SphP, SphP_data;
+global sph_particle_data_ptr SphP, SphP_data;
+//local sph_particle_data_ptr SphP, SphP_data;
 
 typedef struct {
   double  Density;         // particle density at its current time
@@ -914,8 +914,8 @@ typedef struct {
 } sph_particle_data_double, *sph_particle_data_double_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_SphP_data_double' in:
-//global sph_particle_data_double_ptr SphP_double, SphP_data_double;
-local sph_particle_data_double_ptr SphP_double, SphP_data_double;
+global sph_particle_data_double_ptr SphP_double, SphP_data_double;
+//local sph_particle_data_double_ptr SphP_double, SphP_data_double;
 
 // this structure holds nodes for the ordered binary tree of the timeline.
 typedef struct {
@@ -923,8 +923,8 @@ typedef struct {
 } timetree_data, *timetree_data_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_PTimeTree' in:
-//global timetree_data_ptr PTimeTree;        // for ordered binary tree of max pred.
-local timetree_data_ptr PTimeTree;        // for ordered binary tree of max pred.
+global timetree_data_ptr PTimeTree;        // for ordered binary tree of max pred.
+//local timetree_data_ptr PTimeTree;        // for ordered binary tree of max pred.
 										// times
 
 // state of total system
@@ -949,8 +949,8 @@ typedef struct {
 } state_of_system, *state_of_system_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_SysStateAtStart' in:
-//global  state_of_system SysState,SysStateAtStart,SysStateAtEnd;
-local  state_of_system SysState,SysStateAtStart,SysStateAtEnd;
+global  state_of_system SysState,SysStateAtStart,SysStateAtEnd;
+//local  state_of_system SysState,SysStateAtStart,SysStateAtEnd;
 
 
 // Headers for the snap file formats...
@@ -973,8 +973,8 @@ typedef struct {
 } io_header_1, *io_header_1_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_header1' in:
-//global io_header_1 header1;
-local io_header_1 header1;
+global io_header_1 header1;
+//local io_header_1 header1;
 
 typedef struct {
   int4byte npart[6];
@@ -989,8 +989,8 @@ typedef struct {
 
 
 // gcc11 :: To avoid Error :: duplicate symbol '_header_reducido' in:
-//global io_header_reducido header_reducido;
-local io_header_reducido header_reducido;
+global io_header_reducido header_reducido;
+//local io_header_reducido header_reducido;
 
 typedef struct {
 	int nbody;
@@ -1082,8 +1082,8 @@ typedef struct  {
 } gas_particle, *gas_particle_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_gas_particles' in:
-//global gas_particle_ptr gas_particles;
-local gas_particle_ptr gas_particles;
+global gas_particle_ptr gas_particles;
+//local gas_particle_ptr gas_particles;
 
 typedef struct  {
     Real mass;
@@ -1094,8 +1094,8 @@ typedef struct  {
 } dark_particle, *dark_particle_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_dark_particles' in:
-//global dark_particle_ptr dark_particles;
-local dark_particle_ptr dark_particles;
+global dark_particle_ptr dark_particles;
+//local dark_particle_ptr dark_particles;
 
 typedef struct {
     Real mass;
@@ -1108,8 +1108,8 @@ typedef struct {
 } star_particle, *star_particle_ptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_star_particles' in:
-//global star_particle_ptr star_particles;
-local star_particle_ptr star_particles;
+global star_particle_ptr star_particles;
+//local star_particle_ptr star_particles;
 
 typedef struct {
     double time ;
@@ -1121,8 +1121,8 @@ typedef struct {
 } dump, *dumptr;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_header' in:
-//global dump header ;
-local dump header ;
+global dump header ;
+//local dump header ;
 
 // FIN de TIPSY STRUCTURE ------------------------------------------------------
 
@@ -1382,8 +1382,8 @@ typedef struct
 } global_data_all_processes_GADGET207;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_All_GADGET' in:
-//global global_data_all_processes_GADGET207 All_GADGET;
-local global_data_all_processes_GADGET207 All_GADGET;
+global global_data_all_processes_GADGET207 All_GADGET;
+//local global_data_all_processes_GADGET207 All_GADGET;
 
 // BORRAR DESPUES DE REVISAR USO DE LA ESTRUCTURA ANTERIOR ...
 //All;                                          /*!< a container variable for global variables that are equal on all processors */
@@ -1425,8 +1425,8 @@ typedef struct
 } particle_data_GADGET207, *particle_data_ptr_GADGET207;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_P_GADGET' in:
-//global particle_data_ptr_GADGET207 P_GADGET;
-local particle_data_ptr_GADGET207 P_GADGET;
+global particle_data_ptr_GADGET207 P_GADGET;
+//local particle_data_ptr_GADGET207 P_GADGET;
 
 // BORRAR DESPUES DE REVISAR USO DE LA ESTRUCTURA ANTERIOR ...
 //*P,              /*!< holds particle data on local processor */
@@ -1457,8 +1457,8 @@ typedef struct
 } io_header_GADGET207, *io_header_ptr_GADGET207;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_header_GADGET' in:
-//global io_header_ptr_GADGET207 header_GADGET;
-local io_header_ptr_GADGET207 header_GADGET;
+global io_header_ptr_GADGET207 header_GADGET;
+//local io_header_ptr_GADGET207 header_GADGET;
 
 // BORRAR DESPUES DE REVISAR USO DE LA ESTRUCTURA ANTERIOR ...
 //header;                               /*!< holds header for snapshot files */
@@ -1504,8 +1504,8 @@ typedef struct {
 } particle_data_IBERO, *particle_data_ptr_IBERO;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_P_IBERO_data' in:
-//global particle_data_ptr_IBERO P_IBERO, P_IBERO_data;
-local particle_data_ptr_IBERO P_IBERO, P_IBERO_data;
+global particle_data_ptr_IBERO P_IBERO, P_IBERO_data;
+//local particle_data_ptr_IBERO P_IBERO, P_IBERO_data;
 
 
 typedef struct {
@@ -1526,8 +1526,8 @@ typedef struct {
 } io_header_1_IBERO, *io_header_1_ptr_IBERO;
 
 // gcc11 :: To avoid Error :: duplicate symbol '_header1_IBERO' in:
-//global io_header_1_IBERO header1_IBERO;
-local io_header_1_IBERO header1_IBERO;
+global io_header_1_IBERO header1_IBERO;
+//local io_header_1_IBERO header1_IBERO;
 
 // IBERO FIN ///////////////////////////////////////////////////////////
 

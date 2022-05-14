@@ -31,10 +31,7 @@ OPT2 =
 # Some of this definitions can be set in a particular machine
 #
 OPT1    +=  -I ./
-OPT1    +=  -I ./general_libs/general
-OPT1    +=  -I ./general_libs/math
-OPT1    +=  -I ./general_libs/io
-OPT1    +=  -I ./general_libs/visual
+OPT1    +=  -I ./general_libs
 OPT1    +=  -I $(NAGBODYDIR)/local/plplot/include/plplot
 GSL_INCL= -I$(NAGBODYDIR)/local/gsl/include
 GSL_LIBS= -L$(NAGBODYDIR)/local/gsl/lib

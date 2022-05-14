@@ -37,22 +37,6 @@
 #include <sys/types.h>
 #include <string.h>
 
-#ifndef NOGNU
-#include "./general_libs/stdinc.h"
-#include "./general_libs/vectdefs.h"
-#include "./general_libs/nagbody.h"
-#include "./general_libs/physconstants.h"
-#include "./general_libs/mathfns.h"
-#include "./general_libs/vectmath.h"
-#include "./general_libs/getparam.h"
-#include "./general_libs/inout.h"
-#include "./general_libs/constant.h"
-/* #include <strings.h> */							// For unix
-#include "./general_libs/strings.h"	// For Visual C
-#include "./general_libs/pldefs.h"
-#include "./general_libs/lic.h"
-#include "./general_libs/machines.h"
-#else
 #include "stdinc.h"
 #include "vectdefs.h"
 #include "nagbody.h"
@@ -67,7 +51,6 @@
 #include "pldefs.h"
 #include "lic.h"
 #include "machines.h"
-#endif
 
 #include "protodefs.h"
 
@@ -344,6 +327,11 @@ global global_data_tree gdtree;
 global global_data_tree_bljforcecalc gdforce;
 global TBuf *tBuf;
 //
+
+global real *inout_xval;
+global real *inout_yval;
+global real *inout_zval;
+global real *inout_wval;
 
 #endif /* !_global_defs_h */
 
