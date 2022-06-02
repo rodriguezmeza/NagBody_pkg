@@ -71,9 +71,9 @@ Or you may change the format of a single file.
 
 .IP "\fBinfmt\fR" 12
 is the format of the files in the option \fBin\fR. They are <snap-ascii>
-(the standard format) <snap-bin> (Binary), <snap-pv>
-(in columns), <gadget11-bin> (standar Gadget2), <gadget11-ascii>, <gadget11-bin-double>, 
-<heitmann-ascii>. For more than 10^6 bodies we have <gadget11-ascii-long> and
+(the standard format), <snap-bin> (Binary), <snap-pv>
+(in columns), <gadget11-bin> (also: <gadget>) (standar Gadget2), <gadget11-ascii>, <gadget11-bin-double>,
+<heitmann-ascii>, and <rocskstar-ascii>. For more than 10^6 bodies we have <gadget11-ascii-long> and
 <heitmann-ascii-long>. 
 Default value is <snap-ascii>.
 If in option \fBin\fR you give more than one input files you must give in
@@ -87,8 +87,8 @@ option \fBinfmt\fR a snap format for each one.
 There are several options <snap-ascii>, <snap-bin>, <snap-pv>, <gadget11-sph-ascii>,
 <gadget11-normal-body-ascii>,
 <gadget11-ascii-reducido>,
-<typsy-bin>, <nemo>, <powmes-ascii>, <powmes-ascii-long>.
-The last format added is <snap-gadget>, the standard gadget format, particles are written as dark matter particles, gadget type 1.
+<typsy-bin>, <nemo>, <powmes-ascii>, <powmes-ascii-long>. Note that in powmes format you must give the size of the simulation box: options=512, here as an example it is 512.
+The last format added is <snap-gadget> (also <gadget>), the standard gadget format, particles are written as dark matter particles, gadget type 1.
 Angular brackets are not written.  Default value is <snap-ascii>.
 .sp
 Note that when changing snap format

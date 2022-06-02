@@ -31,6 +31,7 @@
 // ------------[	inout normal definitions	 	]------------
 
 void in_int(stream, int *);
+void in_int_long(stream, long *);
 void in_short(stream, short *);
 void in_real(stream, real *);
 void in_vector(stream, vector);
@@ -96,5 +97,10 @@ void ReadInLineString(stream, char *);
 
 // InputData (like the one used by nplot2d)
 void inout_InputData(string, int, int, int *);
+void inout_InputData_1c(string, int, int *);
+void inout_InputData_3c(string filename, int col1, int col2, int col3,
+                  int *npts);
+void inout_InputData_4c(string filename, int col1, int col2, int col3, int col4,
+                        int *npts);
 
 #endif	// ! _inout_h

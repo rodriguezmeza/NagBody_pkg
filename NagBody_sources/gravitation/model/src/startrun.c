@@ -1,6 +1,6 @@
 /*==============================================================================
 	MODULE: startrun.c			[model]
-	Written by: M.A. Rodr'guez-Meza
+	Written by: Mario A. Rodr'guez-Meza
 	Starting date: January 2005
 	Purpose: Initialize model
 	Language: C
@@ -15,7 +15,7 @@
 		http://www.astro.inin.mx/mar
 
 	Mayor revisions: July 23, 2007
-	Copyright: (c) 2005-2010 Mar.  All Rights Reserved
+	Copyright: (c) 2005-2022 Mar.  All Rights Reserved
 ================================================================================
 	Legal matters:
 	The author does not warrant that the program and routines it contains
@@ -24,7 +24,6 @@
 ==============================================================================*/
 
 #include "globaldefs.h"
-
 
 local void ReadParameterFile(char *);
 local void PrintParameterFile(char *);
@@ -118,7 +117,9 @@ local void ReadParametersCmdline(void)
 local void startrun_Common(void)
 {
 	char *pch;
-	char inputfiletmp[100], inputfilefmttmp[100];
+// Debug:: increasing size of the arrays 100->200
+//          to avoid error: "Illegal instruction: 4"
+	char inputfiletmp[200], inputfilefmttmp[200];
 	int i;
 
     if(!(gd.outlog=fopen(logfile,"w"))) {
@@ -126,26 +127,24 @@ local void startrun_Common(void)
         exit(0);
     }
 
-	gd.headerfmt = "snap-blj-ascii";	// headerfmt debe de inicializarse siempre!!
+	gd.headerfmt = "snap-blj-ascii";	// ¡¡headerfmt debe de inicializarse siempre!!
 
 	if (! strnull(cmd.in))	{
-//
 		strcpy(inputfiletmp,cmd.in);
 		fprintf (gd.outlog,"\nSplitting string \"%s\" in tokens:\n",
 			inputfiletmp);
 		gd.nfiles=0;
 		pch = strtok(inputfiletmp," ,");
 		while (pch != NULL) {
-			gd.filenames[gd.nfiles] = (string) malloc(30);
+// Debug:: increasing the array size
+//            gd.filenames[gd.nfiles] = (string) malloc(30);
+            gd.filenames[gd.nfiles] = (string) malloc(60);
 			strcpy(gd.filenames[gd.nfiles],pch);
 			++gd.nfiles;
 			fprintf (gd.outlog,"%s\n",gd.filenames[gd.nfiles-1]);
 			pch = strtok (NULL, " ,");
 		}
-//        fprintf (gd.outlog,"num. of inputfiles %s =%d\n",cmd.in,gd.nfiles);
-        // Debug:: Quitar
-        fprintf (stdout,"num. of inputfiles %s =%d\n",cmd.in,gd.nfiles);
-        fflush(gd.outlog);
+        fprintf (gd.outlog,"num. of inputfiles %s =%d\n",cmd.in,gd.nfiles);
 //
 		if (!strnull(cmd.infmt)) {
 			strcpy(inputfilefmttmp,cmd.infmt);
@@ -179,33 +178,9 @@ local void startrun_Common(void)
 			InputData_long();
 			SnapDataTransform_long();
 		} else {
-            // Debug:: Quitar
-                fprintf (stdout,"\n\nnum. of inputfiles (2....) %d\n",gd.nfiles);
-                fflush(stdout);
-            //
-
 			InputData();
-            // Debug:: Quitar
-                fprintf (stdout,"\n\nnum. of inputfiles (3....) %d\n",gd.nfiles);
-                fflush(stdout);
-            //
-
 			SnapDataTransform();
 		}
-
-//		if (strcmp(cmd.outfmt,"snap-ascii-long") == 0) {
-//			InputData_long();
-//			SnapDataTransform_long();
-//		} else {
-//			if (strcmp(cmd.outfmt,"powmes-ascii-long") == 0) {
-//				InputData_long();
-//				SnapDataTransform_long();
-//			} else {
-//				InputData();
-//				SnapDataTransform();
-//			}
-//		}
-
 		CheckParameters();
 	} else {
 		CheckParameters();
@@ -217,10 +192,6 @@ local void startrun_Common(void)
 
 	gd.tout = gd.tnow;
 
-// Debug:: Quitar
-    fprintf (stdout,"num. of inputfiles %d\n",gd.nfiles);
-    fflush(stdout);
-//
     return;
 }
 
@@ -458,7 +429,6 @@ local void SnapDataTransform(void)
 	}
 }
 
-
 local void SnapDataTransform_long(void)
 {
 	bodyptr_long p;
@@ -482,7 +452,6 @@ local void SnapDataTransform_long(void)
 		}
 	}
 }
-
 
 local void CheckInOutFmt(void)
 {

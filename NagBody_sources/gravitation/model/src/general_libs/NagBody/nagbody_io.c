@@ -25,6 +25,8 @@
 	and he disclaims all liability from any consequences arising from their	use.
 ==============================================================================*/
 
+#include "globaldefs.h"
+
 #include "stdinc.h"
 #include "mathfns.h"
 #include "inout.h"
@@ -57,6 +59,7 @@ local void inputdata_ascii(char *, int, int *, int *, realptr, bool *, char *);
 local void inputdata_ascii_long(char *, int, int *, int *, realptr, bool *, char *);
 local void inputdata_bin(char *, int, int *, int *, realptr, bool *, char *);
 local void inputdata_pv(char *, int, int *, int *, realptr, bool *, char *);
+local void inputdata_pvidtype(char *, int, int *, int *, realptr, bool *, char *);
 local void inputdata_gadget11_bin(char *, int, int *, int *, realptr, bool *,
 	char *, short);
 local void inputdata_gadget11_bin_double(char *, int, int *, int *, realptr,
@@ -72,8 +75,10 @@ local void inputdata_gadget11_bin_double_reducido(char *, int, int *, int *,
 	realptr, bool *, char *, short);
 local void inputdata_gadget11_ascii_reducido(char *, int, int *, int *, 
 	realptr, bool *, char *, short);
+local void inputdata_rockstar_ascii(char *, int, int *, int *, realptr,
+                                    bool *, char *);
 local void inputdata_heitmann_ascii(char *, int, int *, int *, realptr,
-									bool *, char *);
+                                    bool *, char *);
 local void inputdata_heitmann_ascii_long(char *, int, int *, int *, realptr,
 									bool *, char *);
 local void inputdata_gadget11_bin_swab(char *, int, int *, int *, realptr,
@@ -112,6 +117,7 @@ local void outputdata_gadget11_ascii_reducido(char *, int, int, real, io_header_
 	char *, short);
 
 local void outputdata_tipsy_bin(char *, int, int, real, io_header_blj *, char *);
+local void outputdata_cute_box_ascii(char *, int, int, real, io_header_blj *, char *);
 local void outputdata_powmes_ascii(char *, int, int, real, io_header_blj *, char *);
 local void outputdata_powmes_ascii_long(char *, int, int, real, io_header_blj *, char *);
 // BEGIN NEMO REMOVE :: 2019-05-14
@@ -1192,11 +1198,15 @@ void inputdata(char *file, char *filefmt, char *outfmt, int step,
 			inputdata_ascii(file, step, nbodies, ndim, tnow, exist_snap,
 				options);
 			break;
-		case IO_PV_FMT:
-			inputdata_pv(file, step, nbodies, ndim, tnow, exist_snap,
-				options);
-			break;
-		case IO_SNAP_FMT_BIN: 
+        case IO_PV_FMT:
+            inputdata_pv(file, step, nbodies, ndim, tnow, exist_snap,
+                options);
+            break;
+        case IO_PVIDTYPE_FMT:
+            inputdata_pvidtype(file, step, nbodies, ndim, tnow, exist_snap,
+                options);
+            break;
+		case IO_SNAP_FMT_BIN:
 			inputdata_bin(file, step, nbodies, ndim, tnow, exist_snap,
 				options);
 			break;
@@ -1227,11 +1237,16 @@ void inputdata(char *file, char *filefmt, char *outfmt, int step,
 			allocate_mode = 2;
 			inputdata_gadget11_bin_double(file, step, nbodies, ndim, tnow,
 			 exist_snap, options, allocate_mode); break;
-		case IO_HEITMANN_FMT_ASCII:
-			printf("\nInput data heitmann format\n");
-			inputdata_heitmann_ascii(file, step, nbodies, ndim, tnow,
-									 exist_snap, options);
-			break;
+        case IO_ROCKSTAR_FMT_ASCII:
+            printf("\nInput data rockstar format\n");
+            inputdata_rockstar_ascii(file, step, nbodies, ndim, tnow,
+                                     exist_snap, options);
+            break;
+        case IO_HEITMANN_FMT_ASCII:
+            printf("\nInput data heitmann format\n");
+            inputdata_heitmann_ascii(file, step, nbodies, ndim, tnow,
+                                     exist_snap, options);
+            break;
 		case IO_HEITMANN_FMT_ASCII_LONG:
 			printf("\nInput data heitmann long format\n");
 			inputdata_heitmann_ascii_long(file, step, nbodies, ndim, tnow,
@@ -1271,13 +1286,17 @@ local void infilefmt_string_to_int(string infmt_str,int *infmt_int)
 		*infmt_int = IO_SNAP_FMT_LONG;
     if (strnull(infmt_str))								
 		*infmt_int = IO_NULL_FMT;
-    if (strcmp(infmt_str,"snap-pv") == 0)				
-		*infmt_int = IO_PV_FMT;
-    if (strcmp(infmt_str,"snap-bin") == 0)				
+    if (strcmp(infmt_str,"snap-pv") == 0)
+        *infmt_int = IO_PV_FMT;
+    if (strcmp(infmt_str,"snap-pvidtype") == 0)
+        *infmt_int = IO_PVIDTYPE_FMT;
+    if (strcmp(infmt_str,"snap-bin") == 0)
 		*infmt_int = IO_SNAP_FMT_BIN;
-    if (strcmp(infmt_str,"gadget11-bin") == 0)			
-		*infmt_int = IO_GADGET11_FMT_BIN;
-    if (strcmp(infmt_str,"gadget11-ascii") == 0)		
+    if (strcmp(infmt_str,"gadget11-bin") == 0)
+        *infmt_int = IO_GADGET11_FMT_BIN;
+    if (strcmp(infmt_str,"gadget") == 0)
+        *infmt_int = IO_GADGET11_FMT_BIN;
+    if (strcmp(infmt_str,"gadget11-ascii") == 0)
 		*infmt_int = IO_GADGET11_FMT_ASCII;
 // Particle data structure to manipulate I/O
 // N > 10^6 purpose...
@@ -1286,8 +1305,10 @@ local void infilefmt_string_to_int(string infmt_str,int *infmt_int)
 //
     if (strcmp(infmt_str,"gadget11-bin-double") == 0)
 		*infmt_int = IO_GADGET11_FMT_BIN_DOUBLE;
+    if (strcmp(infmt_str,"rockstar-ascii") == 0)
+        *infmt_int = IO_ROCKSTAR_FMT_ASCII;
     if (strcmp(infmt_str,"heitmann-ascii") == 0)
-		*infmt_int = IO_HEITMANN_FMT_ASCII;
+        *infmt_int = IO_HEITMANN_FMT_ASCII;
     if (strcmp(infmt_str,"heitmann-ascii-long") == 0)
 		*infmt_int = IO_HEITMANN_FMT_ASCII_LONG;
     if (strcmp(infmt_str,"gadget11-bin-swab") == 0)
@@ -1500,6 +1521,61 @@ local void inputdata_pv(char *file, int step, int *nbody, int *ndim,
     printf("\ndone reading.\n");
 }
 
+local void inputdata_pvidtype(char *file, int step, int *nbody, int *ndim,
+                        realptr tnow, bool *exist_snap, char *options)
+{
+    char namebuf[256];
+    struct stat buf;
+    stream instr;
+    bodyptr p;
+    char gato[1], firstline[20];
+    
+    sprintf(namebuf, file, step);
+    if (stat(namebuf, &buf) != 0) {
+        *exist_snap = FALSE;
+        return;
+    } else {
+        *exist_snap = TRUE;
+        instr = stropen(namebuf, "r");
+    }
+    
+    printf("\n\nReading file in snap-pvidtype format...\n");
+//    fgets(firstline,200,instr);
+    fscanf(instr,"%1s",gato);
+    in_int(instr, nbody);
+    if (*nbody < 1)
+        error("inputdata: nbody = %d is absurd\n", *nbody);
+    in_int(instr, ndim);
+    if (*ndim != NDIM)
+        error("inputdata: ndim = %d; expected %d\n", *ndim, NDIM);
+    in_real(instr, tnow);
+//    *nbody = ;
+//    *ndim = 3;
+//    *tnow = 0.0;
+    bodytab = (bodyptr) allocate(*nbody * sizeof(body));
+    
+    printf("nbody ndim tnow : %d %d %g\n", *nbody, *ndim, *tnow);
+    
+    DO_BODY(p, bodytab, bodytab+*nbody) {
+        in_vector(instr, Pos(p));
+        in_vector(instr, Vel(p));
+        in_real(instr, &Mass(p));
+        in_int(instr, &Id(p));
+//        in_int_long(instr, &Id(p));
+        in_short(instr, &Type(p));
+//        Id(p) = bodytab - p +1;
+    }
+    
+    fclose(instr);
+    
+    if (scanopt(options, "reset-time"))
+        *tnow = 0.0;
+//    DO_BODY(p, bodytab, bodytab+*nbody)
+//    Type(p) = BODY;
+    
+    printf("\ndone reading.\n");
+}
+
 
 local void inputdata_bin(char *file, int step, int *nbody, int *ndim, 
 	realptr tnow, bool *exist_snap, char *options)
@@ -1561,7 +1637,7 @@ local void inputdata_gadget11_bin(char *file, int step, int *nbody, int *ndim,
 
   if((fd=fopen(namebuf,"r")))
     {
-      fprintf(stdout,"Reading file '%s'\n",namebuf); fflush(stdout);
+      fprintf(stdout,"\nReading file '%s'\n",namebuf); fflush(stdout);
 
       SKIP; 
       if(blklen!=256)
@@ -1739,10 +1815,16 @@ local void inputdata_gadget11_bin(char *file, int step, int *nbody, int *ndim,
 			Pos(p)[k] = P[i].Pos[k];
 			Vel(p)[k] = P[i].Vel[k];
 		}
+        Type(p) = P[i].Type;
 	}
 
-	DO_BODY(p, bodytab, bodytab+*nbody)
-        Type(p) = BODY;                         
+// Note:
+// In nagbody_struct.h
+// BODY = 0
+// Here Type will be the ones given by gadget file
+//
+//	DO_BODY(p, bodytab, bodytab+*nbody)
+//        Type(p) = BODY;
 
 	fprintf(stdout, "done\n");
 
@@ -2983,6 +3065,97 @@ local void readin_header_reducido(FILE *fd)
     in_real(fd,&header_reducido.BoxSize);
 }
 
+// Rockstar format are in columns:
+//
+// id num_p mvir mbound_vir rvir vmax rvmax vrms                (8)
+// x y z vx vy vz Jx Jy Jz E Spin                               (19)
+// PosUncertainty VelUncertainty bulk_vx bulk_vy bulk_vz        (24)
+// BulkVelUnc n_core m200b m200c m500c m2500c Xoff Voff
+// spin_bullock b_to_a c_to_a A[x] A[y] A[z]
+// b_to_a(500c) c_to_a(500c) A[x](500c) A[y](500c) A[z](500c)
+// Rs Rs_Klypin T/|U| M_pe_Behroozi M_pe_Diemer Halfmass_Radius
+// idx i_so i_ph num_cp mmetric
+//
+// Tiene 16 lineas de header
+//
+local void inputdata_rockstar_ascii(char *file, int step, int *nbody, int *ndim,
+    realptr tnow, bool *exist_snap, char *options)
+{
+    char namebuf[256];
+    struct stat buf;
+    bodyptr p;
+    int tmpmem;
+    int i;
+
+    sprintf(namebuf, file, step);
+    if (stat(namebuf, &buf) != 0) {
+        *exist_snap = FALSE;
+        return;
+    } else {
+        *exist_snap = TRUE;
+        fprintf(stdout,"\n\nReading snap from file %s...",namebuf);
+        inout_InputData(namebuf, 1, 2, nbody);
+    }
+
+    if (*nbody < 1)
+        error("inputdata_rockstar_ascii: nbody = %d is absurd\n", *nbody);
+
+    tmpmem = *nbody * sizeof(body);
+    fprintf(stdout,"\n\nSize of body struct %ld; and total bytes reserved %ld\n",
+            sizeof(body),tmpmem);
+    printf("Allocating %ld bytes of memory for %d particles\n",
+        tmpmem, *nbody);
+
+    bodytab = (bodyptr) allocate(tmpmem);
+
+    fprintf(stdout,"\nbodytab, bodytab+nbody: %ld %ld\n", bodytab, bodytab + *nbody);
+
+// Reading positions
+    inout_InputData_3c(namebuf, 9, 10, 11, nbody);
+    fprintf(stdout,"Read %d particles\n", *nbody);
+    fprintf(stdout,"Positions first particle: %g %g %g\n", inout_xval[1],inout_yval[1],inout_zval[1]);
+    fflush(stdout);
+    i = 0;
+    DO_BODY(p, bodytab, bodytab+*nbody) {
+        Pos(p)[0] = inout_xval[i];
+        Pos(p)[1] = inout_yval[i];
+        Pos(p)[2] = inout_zval[i];
+        ++i;
+    }
+
+// Reading velocities
+        inout_InputData_3c(namebuf, 12, 13, 14, nbody);
+        i = 0;
+        DO_BODY(p, bodytab, bodytab+*nbody) {
+            Vel(p)[0] = inout_xval[i];
+            Vel(p)[1] = inout_yval[i];
+            Vel(p)[2] = inout_zval[i];
+            ++i;
+        }
+        
+// Reading Id, num_p
+    inout_InputData(namebuf, 1, 2, nbody);
+    i = 0;
+    DO_BODY(p, bodytab, bodytab+*nbody) {
+        Id(p) = (int)inout_xval[i];
+        NBodies(p) = (int)inout_yval[i];
+        ++i;
+    }
+
+// Reading masses as type m200c column 28
+    inout_InputData_1c(namebuf, 28, nbody);
+    i = 0;
+    DO_BODY(p, bodytab, bodytab+*nbody) {
+        Mass(p) = inout_xval[i];
+        ++i;
+    }
+
+    fprintf(stdout,"\nRead %d total particles, last Id %d\n",p-bodytab, Id(p-1));
+
+    DO_BODY(p, bodytab, bodytab+*nbody)
+        Type(p) = BODY;
+}
+
 
 local void inputdata_heitmann_ascii(char *file, int step, int *nbody, int *ndim, 
 	realptr tnow, bool *exist_snap, char *options)
@@ -3708,9 +3881,12 @@ void outputdata(char *file, char *outfmt, char *infmt, int snapcount,
             case IO_TIPSY_FMT_BIN:
                 printf("\n\ttipsy-bin format output"); 
 				outputdata_tipsy_bin(file, snapcount, nbody, tnow, hdr, options); break;
+            case IO_CUTE_BOX_FMT_ASCII:
+                printf("\n\tcute_box-ascii format output");
+                outputdata_cute_box_ascii(file, snapcount, nbody, tnow, hdr, options); break;
             case IO_POWMES_FMT_ASCII:
-                printf("\n\tpowmes-ascii format output"); 
-				outputdata_powmes_ascii(file, snapcount, nbody, tnow, hdr, options); break;
+                printf("\n\tpowmes-ascii format output");
+                outputdata_powmes_ascii(file, snapcount, nbody, tnow, hdr, options); break;
             case IO_POWMES_FMT_ASCII_LONG:
                 fprintf(stdout,"\n\tpowmes-ascii-long format output");
 				outputdata_powmes_ascii_long(file, snapcount, nbody, tnow, hdr, options); break;
@@ -3794,8 +3970,10 @@ local void outfilefmt_string_to_int(string outfmt_str,int *outfmt_int)
 		*outfmt_int = IO_GADGET11_FMT_ASCII;
     if (strcmp(outfmt_str,"tipsy-bin") == 0)
 		*outfmt_int = IO_TIPSY_FMT_BIN;
+    if (strcmp(outfmt_str,"cute_box-ascii") == 0)
+        *outfmt_int = IO_CUTE_BOX_FMT_ASCII;
     if (strcmp(outfmt_str,"powmes-ascii") == 0)
-		*outfmt_int = IO_POWMES_FMT_ASCII;
+        *outfmt_int = IO_POWMES_FMT_ASCII;
     if (strcmp(outfmt_str,"powmes-ascii-long") == 0)
 		*outfmt_int = IO_POWMES_FMT_ASCII_LONG;
 // BEGIN NEMO REMOVE :: 2019-05-14
@@ -4028,33 +4206,52 @@ local void outputdata_tipsy_bin(char *file, int snapcount,
     printf("\n\tdata output (tipsy bin format) to file %s at time %f\n", namebuf, tnow);
 }
 
-local void outputdata_powmes_ascii(char *file, int snapcount, 
-	int nbody, real tnow, io_header_blj *hdr, char *options)
+local void outputdata_cute_box_ascii(char *file, int snapcount,
+    int nbody, real tnow, io_header_blj *hdr, char *options)
 {
     char namebuf[256];
     stream outstr;
     bodyptr p;
-	int k;
-
-// Normalizacion de las coordenadas ... esta bajo desarrollo ...
-// Solo si se conoce el L (BoxSize) podremos hacerla...
-    printf("\n\tSize of the box is (from gadget file) %f\n", header1.BoxSize);
+    int k;
 
     sprintf(namebuf, file, snapcount);
     outstr = stropen(namebuf, "w!");
-	fprintf(outstr,"%d\n",nbody);
     for (p = bodytab; p < bodytab+nbody; p++) {
-		for (k=0; k<NDIM; k++)
-			Pos(p)[k] /= header1.BoxSize;
         out_vector_mar(outstr, Pos(p));
-		out_real_mar(outstr, Mass(p));
+        fprintf(outstr,"\n");
+    }
+    fclose(outstr);
+    printf("\n\tdata output (cute_box ascii format) to file %s at time %f\n", namebuf, tnow);
+}
+
+local void outputdata_powmes_ascii(char *file, int snapcount,
+    int nbody, real tnow, io_header_blj *hdr, char *options)
+{
+    char namebuf[256];
+    stream outstr;
+    bodyptr p;
+    int k;
+    real BoxSize;
+
+// Given in the option: options=512
+    BoxSize=atof(options);
+    fprintf(stdout,"\n\tSize of the box is %f\n",BoxSize);
+
+    sprintf(namebuf, file, snapcount);
+    outstr = stropen(namebuf, "w!");
+    fprintf(outstr,"%d\n",nbody);
+    for (p = bodytab; p < bodytab+nbody; p++) {
+        for (k=0; k<NDIM; k++)
+            Pos(p)[k] /= BoxSize;
+        out_vector_mar(outstr, Pos(p));
+        out_real_mar(outstr, Mass(p));
         fprintf(outstr,"\n");
     }
     fclose(outstr);
     printf("\n\tdata output (powmes ascii format) to file %s at time %f\n", namebuf, tnow);
 }
 
-local void outputdata_powmes_ascii_long(char *file, int snapcount, 
+local void outputdata_powmes_ascii_long(char *file, int snapcount,
 	int nbody, real tnow, io_header_blj *hdr, char *options)
 {
     char namebuf[256];

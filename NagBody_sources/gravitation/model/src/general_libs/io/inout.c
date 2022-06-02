@@ -39,6 +39,12 @@ void in_int(stream str, int *iptr)
         error("in_int: input conversion error\n");
 }
 
+void in_int_long(stream str, long *iptr)
+{
+    if (fscanf(str, "%ld", iptr) != 1)
+        error("in_int_long: input conversion error\n");
+}
+
 void in_short(stream str, short *iptr)
 {
 	int tmp;
@@ -472,6 +478,356 @@ void inout_InputData(string filename, int col1, int col2, int *npts)
 //    fprintf(stdout,"\n... done.\n");
 }
 
+//
+// All routines below came from inout.c in mgpt inout.c
+//
+void inout_InputData_1c(string filename, int col2, int *npts)
+{
+    stream instr;
+    int ncol, nrow;
+    real *row;
+    int c, nl, nw, nc, state, salto, nwxc, i, npoint, ip;
+    short int *lineQ;
+    
+    instr = stropen(filename, "r");
+//    fprintf(stdout,
+//            "\nReading column %d from file %s... ",col2,filename);
+//    fflush(stdout);
+
+    state = OUT;
+    nl = nw = nc = 0;
+    while ((c = getc(instr)) != EOF) {
+        ++nc;
+        if (c=='\n')
+            ++nl;
+        if (c==' ' || c=='\n' || c=='\t')
+            state = OUT;
+        else if (state == OUT) {
+            state = IN;
+            ++nw;
+        }
+    }
+    
+//    fprintf(stdout,"\n\nGeneral statistics : ");
+//    fprintf(stdout,"number of lines, words, and characters : %d %d %d\n", nl, nw, nc);
+//    fflush(stdout);
+
+    rewind(instr);
+    
+    lineQ = (short int *) allocate(nl * sizeof(short int));
+    for (i=0; i<nl; i++) lineQ[i]=FALSE;
+    
+    nw = nrow = ncol = nwxc = 0;
+    state = OUT;
+    salto = NO;
+    
+    i=0;
+    
+    while ((c = getc(instr)) != EOF) {
+        
+        if(c=='%' || c=='#') {
+            while ((c = getc(instr)) != EOF)
+                if (c=='\n') break;
+            ++i;
+            continue;
+        }
+        
+        if (c=='\n' && nw > 0)
+            if (salto==NO) {
+                ++nrow;
+                salto=SI;
+                if (ncol != nwxc && nrow>1) {
+                    printf("\nvalores diferentes : ");
+                    error("(nrow, ncol before, ncol after) : %d %d %d\n\n",
+                          nrow, ncol, nwxc);
+                }
+                ncol = nwxc;
+                lineQ[i]=TRUE;
+                ++i;
+                nwxc=0;
+            } else {
+                ++i;
+            }
+        
+        if (c==' ' || c=='\n' || c=='\t')
+            state = OUT;
+        else
+            if (state == OUT) {
+                state = IN;
+                ++nw; ++nwxc;
+                salto=NO;
+            }
+    }
+//    fprintf(stdout,"\nValid numbers statistics : ");
+//    fprintf(stdout,"nrow, ncol, nvalues : %d %d %d\n", nrow, ncol, nw);
+//    fflush(stdout);
+    
+    rewind(instr);
+    
+    npoint=nrow;
+//    npoint=nrow-1;
+    row = (realptr) allocate(ncol*sizeof(real));
+    
+    *npts = npoint;
+//    inout_xval = (real *) allocate(npoint * sizeof(real));
+    inout_yval = (real *) allocate(npoint * sizeof(real));
+//    fprintf(stdout,"nl, nrow, nvalues : %d %d %d\n",nl, nrow, nw);
+//    fflush(stdout);
+    
+    ip = 0;
+    for (i=0; i<nl; i++) {
+        if (lineQ[i]) {
+            in_vector_ndim(instr, row, ncol);
+//            inout_xval[ip] = row[col1-1];
+            inout_yval[ip] = row[col2-1];
+            ++ip;
+        } else {
+            while ((c = getc(instr)) != EOF)        // Reading dummy line ...
+                if (c=='\n') break;
+        }
+    }
+    
+    fclose(instr);
+//    fprintf(stdout,"ending...\n");
+//    fflush(stdout);
+}
+
+
+void inout_InputData_3c(string filename, int col1, int col2, int col3,
+                  int *npts)
+{
+    stream instr;
+    int ncol, nrow;
+    real *row;
+    int c, nl, nw, nc, state, salto, nwxc, i, npoint, ip;
+    short int *lineQ;
+    
+    instr = stropen(filename, "r");
+    
+    fprintf(stdout,
+            "\nReading columns %d, %d, and %d from file %s... ",col1,col2,col3,filename);
+    
+    state = OUT;
+    nl = nw = nc = 0;
+    while ((c = getc(instr)) != EOF) {
+        ++nc;
+        if (c=='\n')
+            ++nl;
+        if (c==' ' || c=='\n' || c=='\t')
+            state = OUT;
+        else if (state == OUT) {
+            state = IN;
+            ++nw;
+        }
+    }
+    printf("\n\nGeneral statistics : ");
+    printf("number of lines, words, and characters : %d %d %d\n", nl, nw, nc);
+    
+    rewind(instr);
+    
+    lineQ = (short int *) allocate(nl * sizeof(short int));
+    for (i=0; i<nl; i++) lineQ[i]=FALSE;
+    
+    nw = nrow = ncol = nwxc = 0;
+    state = OUT;
+    salto = NO;
+    
+    i=0;
+    
+    while ((c = getc(instr)) != EOF) {
+        
+        if(c=='%' || c=='#') {
+            while ((c = getc(instr)) != EOF)
+                if (c=='\n') break;
+            ++i;
+            continue;
+        }
+        
+        if (c=='\n' && nw > 0)
+            if (salto==NO) {
+                ++nrow;
+                salto=SI;
+                if (ncol != nwxc && nrow>1) {
+                    printf("\nvalores diferentes : ");
+                    error("(nrow, ncol before, ncol after) : %d %d %d\n\n",
+                          nrow, ncol, nwxc);
+                }
+                ncol = nwxc;
+                lineQ[i]=TRUE;
+                ++i;
+                nwxc=0;
+            } else {
+                ++i;
+            }
+        
+        if (c==' ' || c=='\n' || c=='\t')
+            state = OUT;
+        else
+            if (state == OUT) {
+                state = IN;
+                ++nw; ++nwxc;
+                salto=NO;
+            }
+    }
+    printf("\nValid numbers statistics : ");
+    printf("nrow, ncol, nvalues : %d %d %d\n", nrow, ncol, nw);
+    
+    if (ncol<3)
+        error("\n\nInputData_4c: Error : ncol must be >=4\n");
+    
+    rewind(instr);
+    
+    npoint=nrow;
+    row = (realptr) allocate(ncol*sizeof(real));
+    
+    *npts = npoint;
+//    gd.xval = (real *) allocate(npoint * sizeof(real));
+//    gd.yval = (real *) allocate(npoint * sizeof(real));
+//    gd.yminval = (real *) allocate(npoint * sizeof(real));
+    inout_xval = (real *) allocate(npoint * sizeof(real));
+    inout_yval = (real *) allocate(npoint * sizeof(real));
+    inout_zval = (real *) allocate(npoint * sizeof(real));
+    
+    ip = 0;
+    for (i=0; i<nl; i++) {
+        if (lineQ[i]) {
+            in_vector_ndim(instr, row, ncol);
+            inout_xval[ip] = row[col1-1];
+            inout_yval[ip] = row[col2-1];
+            inout_zval[ip] = row[col3-1];
+            ++ip;
+        } else {
+            while ((c = getc(instr)) != EOF)        // Reading dummy line ...
+                if (c=='\n') break;
+        }
+    }
+    
+    fclose(instr);
+    
+    fprintf(stdout,"\n... done.\n");
+}
+
+void inout_InputData_4c(string filename, int col1, int col2, int col3, int col4,
+                  int *npts)
+{
+    stream instr;
+    int ncol, nrow;
+    real *row;
+    int c, nl, nw, nc, state, salto, nwxc, i, npoint, ip;
+    short int *lineQ;
+    
+    instr = stropen(filename, "r");
+    
+    fprintf(stdout,
+            "\nReading columns %d, %d, %d, and %d from file %s... ",
+            col1,col2,col3,col4,filename);
+    
+    state = OUT;
+    nl = nw = nc = 0;
+    while ((c = getc(instr)) != EOF) {
+        ++nc;
+        if (c=='\n')
+            ++nl;
+        if (c==' ' || c=='\n' || c=='\t')
+            state = OUT;
+        else if (state == OUT) {
+            state = IN;
+            ++nw;
+        }
+    }
+    printf("\n\nGeneral statistics : ");
+    printf("number of lines, words, and characters : %d %d %d\n", nl, nw, nc);
+    
+    rewind(instr);
+    
+    lineQ = (short int *) allocate(nl * sizeof(short int));
+    for (i=0; i<nl; i++) lineQ[i]=FALSE;
+    
+    nw = nrow = ncol = nwxc = 0;
+    state = OUT;
+    salto = NO;
+    
+    i=0;
+    
+    while ((c = getc(instr)) != EOF) {
+        
+        if(c=='%' || c=='#') {
+            while ((c = getc(instr)) != EOF)
+                if (c=='\n') break;
+            ++i;
+            continue;
+        }
+        
+        if (c=='\n' && nw > 0)
+            if (salto==NO) {
+                ++nrow;
+                salto=SI;
+                if (ncol != nwxc && nrow>1) {
+                    printf("\nvalores diferentes : ");
+                    error("(nrow, ncol before, ncol after) : %d %d %d\n\n",
+                          nrow, ncol, nwxc);
+                }
+                ncol = nwxc;
+                lineQ[i]=TRUE;
+                ++i;
+                nwxc=0;
+            } else {
+                ++i;
+            }
+        
+        if (c==' ' || c=='\n' || c=='\t')
+            state = OUT;
+        else
+            if (state == OUT) {
+                state = IN;
+                ++nw; ++nwxc;
+                salto=NO;
+            }
+    }
+    printf("\nValid numbers statistics : ");
+    printf("nrow, ncol, nvalues : %d %d %d\n", nrow, ncol, nw);
+    
+    if (ncol<4)
+        error("\n\nInputData_4c: Error : ncol must be >=4\n");
+    
+    rewind(instr);
+    
+    npoint=nrow;
+    row = (realptr) allocate(ncol*sizeof(real));
+    
+    *npts = npoint;
+//    gd.xval = (real *) allocate(npoint * sizeof(real));
+//    gd.yval = (real *) allocate(npoint * sizeof(real));
+//    gd.yminval = (real *) allocate(npoint * sizeof(real));
+//    gd.ymaxval = (real *) allocate(npoint * sizeof(real));
+    inout_xval = (real *) allocate(npoint * sizeof(real));
+    inout_yval = (real *) allocate(npoint * sizeof(real));
+    inout_zval = (real *) allocate(npoint * sizeof(real));
+    inout_wval = (real *) allocate(npoint * sizeof(real));
+    
+    ip = 0;
+    for (i=0; i<nl; i++) {
+        if (lineQ[i]) {
+            in_vector_ndim(instr, row, ncol);
+//            gd.xval[ip] = row[col1-1];
+//            gd.yval[ip] = row[col2-1];
+//            gd.yminval[ip] = row[col3-1];
+//            gd.ymaxval[ip] = row[col4-1];
+            inout_xval[ip] = row[col1-1];
+            inout_yval[ip] = row[col2-1];
+            inout_zval[ip] = row[col3-1];
+            inout_wval[ip] = row[col4-1];
+            ++ip;
+        } else {
+            while ((c = getc(instr)) != EOF)        // Reading dummy line ...
+                if (c=='\n') break;
+        }
+    }
+    
+    fclose(instr);
+    
+    fprintf(stdout,"\n... done.\n");
+}
 #undef IN
 #undef OUT
 #undef SI

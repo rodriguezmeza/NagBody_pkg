@@ -154,10 +154,16 @@ global io_header_blj hdr;
 
 // STATIC problem: gcc version 11
 // From inout.h
-local real *inout_xval;
-local real *inout_yval;
-local real *inout_zval;
-local real *inout_wval;
+//local real *inout_xval;
+//local real *inout_yval;
+//local real *inout_zval;
+//local real *inout_wval;
+// Can not be local but global
+global real *inout_xval;
+global real *inout_yval;
+global real *inout_zval;
+global real *inout_wval;
+//
 
 // STATIC problem: gcc version 11
 // From diffeqs.h

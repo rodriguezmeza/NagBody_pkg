@@ -193,6 +193,10 @@
 #define IO_HEITMANN_FMT_ASCII_LONG			23
 #define IO_GADGET11_FMT_NORMAL_BODY_ASCII_LONG	24
 
+#define IO_PVIDTYPE_FMT                     40
+#define IO_ROCKSTAR_FMT_ASCII               41
+#define IO_CUTE_BOX_FMT_ASCII               42
+
 // -----------------------------------------------------------------------------
 
 // Other useful definitions

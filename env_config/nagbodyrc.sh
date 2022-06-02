@@ -52,7 +52,21 @@ export LD_LIBRARY_PATH=${HOME}/NagBody_pkg/local/gsl/lib:${LD_LIBRARY_PATH}
 # (Note: see this particular user path, change it properly as it si done in the following line)
 #[ -r /Users/mar/.healpix/3_30_Darwin/config ] && . /Users/mar/.healpix/3_30_Darwin/config
 #[ -r ${HOME}/.healpix/3_30_Darwin/config ] && . ${HOME}/.healpix/3_30_Darwin/config
-
+#
+#
+# Modification suggested by Healpix in the configuration process:
+#  Where the file /global/homes/m/mrodrig/.healpix/3_81_Linux/config contains:
+# configuration for Healpix 3.81
+#HEALPIX=/global/homes/m/mrodrig/NagBody_pkg/local/Healpix_3.81 ; export HEALPIX
+#HPX_CONF_DIR=/global/homes/m/mrodrig/.healpix/3_81_Linux
+#if [ -r ${HPX_CONF_DIR}/idl.sh ] ; then . ${HPX_CONF_DIR}/idl.sh ; fi
+#if [ -r ${HPX_CONF_DIR}/gdl.sh ] ; then . ${HPX_CONF_DIR}/gdl.sh ; fi
+#if [ -r ${HPX_CONF_DIR}/fl.sh ]  ; then . ${HPX_CONF_DIR}/fl.sh  ; fi
+#if [ -r ${HPX_CONF_DIR}/f90.sh ] ; then . ${HPX_CONF_DIR}/f90.sh ; fi
+#if [ -r ${HPX_CONF_DIR}/cpp.sh ] ; then . ${HPX_CONF_DIR}/cpp.sh ; fi
+#if [ -r ${HPX_CONF_DIR}/c.sh ] ;   then . ${HPX_CONF_DIR}/c.sh ;   fi
+#
+#
 # modifications by HEALPixAutoConf 3.81
 [ -r /Users/mar/.healpix/3_81_Darwin/config ] && . /Users/mar/.healpix/3_81_Darwin/config
 # Be aware that $HOME is different in other platforms. Change accordingly.
@@ -97,8 +111,10 @@ source $HOME/NagBody_pkg/bin/clik_profile.sh
 
 
 ###################################################################
-# Python environment (ver 3.9):
+# Python environment (ver 3.9 and 3.10): Useful for TreeCorr
 #export PYTHONPATH=${HOME}/.local/lib/python3.9/site-packages:${PYTHONPATH}
+export PYTHONPATH=${HOME}/NagBody_pkg/local/TreeCorr/lib/python3.10/site-packages:${PYTHONPATH}
+export PATH=${HOME}/NagBody_pkg/local/TreeCorr/bin:${PATH}
 
 ###################################################################
 # Open MPI (ver 4.1):

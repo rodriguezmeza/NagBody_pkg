@@ -7,13 +7,12 @@ Mario A. Rodriguez-Meza (collector and developer)
 
 Numerical codes list:
 
-
 additional_libs
 1. openmpi		: Open MPI
 2. cfitsio		: CFITSIO, a library of ANSI C routines for reading and writing FITS files
-3. fftw-2		: FFTW-2, a collection of fast C routines to compute the 
+3. fftw2		: FFTW-2, a collection of fast C routines to compute the 
 			: Discrete Fourier Transform in one or more dimensions. Gadget depends on it.
-4. fftw-3		: FFTW-3, a free collection of fast C routines for computing 
+4. fftw3		: FFTW-3, a free collection of fast C routines for computing 
 			: the Discrete Fourier Transform in one or more dimensions. COLA codes use it.
 5. gsl			: GSL - GNU Scientific Library. It is use by gadget codes.
 6. lapack		: LAPACK, a library of Fortran 90 with subroutines for solving

@@ -1527,7 +1527,7 @@ packing_nagbody_nemo:
 # ==================================================================
 # Making additional directories:
 
-INSTALLDIRS = bin man zip tests man/man1 local
+INSTALLDIRS = bin man zip tests man/man1 local results pythonEnvs
 
 install_dirs:
 	-@for i in $(INSTALLDIRS) ; do \
