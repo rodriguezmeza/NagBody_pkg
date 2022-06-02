@@ -1,0 +1,1003 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     29167,        994]
+NotebookOptionsPosition[     23524,        819]
+NotebookOutlinePosition[     24766,        859]
+CellTagsIndexPosition[     24660,        853]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["El borrachito", "Section",
+ CellChangeTimes->{{3.466895680240613*^9, 3.466895682663828*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Inicializaci\[OAcute]n", "Subsubsection"],
+
+Cell[TextData[{
+ "Ser\[AAcute] \[UAcute]til ejecutar los siguientes comandos para iniciar \
+apropiadamente esta sesi\[OAcute]n ",
+ StyleBox["Mathematica.",
+  FontSlant->"Italic"]
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"General", "::", "\"\<spell\>\""}], "]"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"General", "::", "\"\<spell1\>\""}], "]"}], ";"}]}]}]], "Input",
+ FontSize->14],
+
+Cell[TextData[{
+ "Puede ser \[UAcute]til tambi\[EAcute]n limpiar nombres de variables o par\
+\[AAcute]metros que pueden haber sido usados anterioremente en esta sesi\
+\[OAcute]n de ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ","
+}], "Text"],
+
+Cell["Clear[\"Global`*\"];", "Input",
+ AspectRatioFixed->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "Subsection"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["El borrachito en 1D", "Section",
+ CellChangeTimes->{{3.4668957751535273`*^9, 3.466895779945273*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RandomWalk", "[", "n_", "]"}], ":=", 
+  RowBox[{"NestList", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"#", "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"-", "1"}], ")"}], "^", 
+        RowBox[{"Random", "[", "Integer", "]"}]}]}], ")"}], "&"}], ",", "0", 
+    ",", "n"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"RandomWalk", "[", "10", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"RandomWalk", "[", "1000", "]"}], ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.466977609507977*^9, 3.4669776347550488`*^9}}],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "El borrachito en 2D - El concepto de ",
+ StyleBox["Iteraci\[OAcute]n",
+  FontSlant->"Italic"]
+}], "Section",
+ CellChangeTimes->{{3.466895808895423*^9, 3.466895818774365*^9}}],
+
+Cell[TextData[{
+ "Generamos una caminata al azar en dos dimensiones para ejemplificar el \
+concepto de iteraci\[OAcute]n en ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ "."
+}], "Text"],
+
+Cell[TextData[{
+ "Mientras que la recursi\[OAcute]n involucra explicitamente la definici\
+\[OAcute]n de una funci\[OAcute]n en t\[EAcute]rminos de ella misma (como en \
+el caso de la funci\[OAcute]n factorial, ",
+ StyleBox["fac[n_]:=n fac[n-1]",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ ", en la que el nombre de la funci\[OAcute]n aparece tanto en el lado \
+izquierdo como en el derecho de la definici\[OAcute]n), la iteraci\[OAcute]n \
+usa funciones de alto nivel definidas especificamente para hacer que una \
+funci\[OAcute]n se llame a si misma."
+}], "Text"],
+
+Cell[TextData[{
+ StyleBox["NestList",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " acepta una funci\[OAcute]n para iterar, un valor de partida, y un n\
+\[UAcute]mero de iteraciones, y regresa una lista de valores anidados de la \
+funci\[OAcute]n. (",
+ StyleBox["Nest",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " regresa el \[UAcute]ltimo valor de ",
+ StyleBox["NestList",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ ")."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NestList", "[", 
+   RowBox[{"f", ",", "x", ",", "4"}], "]"}], " ", "//", " ", 
+  "ColumnForm"}]], "Input"],
+
+Cell[TextData[{
+ "Aqu\[IAcute] est\[AAcute]n los primeros diez iterados de ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "\[Rule]", " ", 
+    RowBox[{"1", "+", 
+     FractionBox["1", "x"]}]}], TraditionalForm]]],
+ ", comenzando con ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", "=", "1.0"}], TraditionalForm]]],
+ "."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"flip", "[", "x_", "]"}], ":=", 
+  RowBox[{"1", "+", 
+   FractionBox["1", "x"]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"NestList", "[", 
+   RowBox[{"flip", ",", "1.0", ",", "10"}], "]"}], "//", 
+  "ColumnForm"}]], "Input"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell[TextData[{
+ "El borrachito en 2D - ",
+ StyleBox["La caminata",
+  FontSlant->"Italic"]
+}], "Section",
+ CellChangeTimes->{{3.466895855772305*^9, 3.466895864875265*^9}}],
+
+Cell[TextData[{
+ "Aqu\[IAcute] est\[AAcute] una forma de generar una caminata al azar en dos \
+dimensiones. Comenzamos con el par ordenado ",
+ StyleBox["{0, 0}",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ ", e iteramos una funci\[OAcute]n que agrega un entero al azar entre -1 y 1 \
+a cada coordenada. El resultado es una lista de pares ordenados."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"onestep", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", "y_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x", "+", 
+     RowBox[{"Random", "[", 
+      RowBox[{"Integer", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"y", "+", 
+     RowBox[{"Random", "[", 
+      RowBox[{"Integer", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]}]}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"onestep", "[", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0"}], "}"}], "]"}]], "Input"],
+
+Cell[TextData[{
+ "La siguiente instrucci\[OAcute]n genera una lista de iterados de ",
+ StyleBox["onestep",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ ". La salida es suprimida terminando la instrucci\[OAcute]n con punto y coma."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"walkdata", "=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"onestep", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", "999"}], "]"}]}], ";"}]], "Input"],
+
+Cell["\<\
+Aqu\[IAcute] est\[AAcute] una versi\[OAcute]n abreviada de la lista de puntos.\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"Short", "[", "walkdata", "]"}]], "Input"],
+
+Cell[TextData[{
+ "Para convertir ",
+ StyleBox["walkdata",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " en una gr\[AAcute]fica, conectamos y graficamos los pares ordenados usando \
+",
+ StyleBox["ListPlot",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " con la opci\[OAcute]n ",
+ StyleBox["PlotJoined",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " puesta en ",
+ StyleBox["True",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ "."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"walkdata", ",", 
+   RowBox[{"Joined", " ", "\[Rule]", " ", "True"}], ",", " ", 
+   RowBox[{"Axes", "\[Rule]", " ", "False"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", " ", "Automatic"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4669776614011383`*^9, 3.4669776644235477`*^9}}],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["El borrachito - El n\[UAcute]mero \[Pi]", "Section",
+ CellChangeTimes->{{3.466895912336658*^9, 3.4668959188005943`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["Preliminares", "Subsubsection"],
+
+Cell[TextData[{
+ "Otras funciones \[UAcute]tiles respecto al concepto de iteraci\[OAcute]n \
+son ",
+ StyleBox["FoldList",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " y ",
+ StyleBox["Fold",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " las cuales son usadas para iterar funciones de dos variables. Aqu\[IAcute] \
+usamos ",
+ StyleBox["FoldList",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " con argumentos simb\[OAcute]licos."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FoldList", "[", 
+   RowBox[{"f", ",", "x1", ",", 
+    RowBox[{"{", 
+     RowBox[{"x2", ",", "x3", ",", "x4"}], "}"}]}], "]"}], "//", 
+  "TableForm"}]], "Input"],
+
+Cell[TextData[{
+ "Aqu\[IAcute] generamos una lista de productos parciales de elementos en una \
+lista usando ",
+ StyleBox["FoldList",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " con el operador ",
+ StyleBox["Times",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ "."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"FoldList", "[", 
+  RowBox[{"Times", ",", "1", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "a", ",", "3", ",", "b", ",", "5", ",", "c"}], "}"}]}], 
+  "]"}]], "Input"],
+
+Cell["\<\
+Aqu\[IAcute] est\[AAcute]n dos formas de obtener el resultado final.\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"Apply", "[", 
+  RowBox[{"Times", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "a", ",", "3", ",", "b", ",", "5", ",", "c"}], "}"}]}], 
+  "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Fold", "[", 
+  RowBox[{"Times", ",", "1", ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "a", ",", "3", ",", "b", ",", "5", ",", "c"}], "}"}]}], 
+  "]"}]], "Input"],
+
+Cell[TextData[{
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " contiene una funci\[OAcute]n llamada ",
+ StyleBox["IntegerDigits",
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ " que regresa una lista de digitos de un n\[UAcute]mero dado en una base \
+dada. Aqu\[IAcute] est\[AAcute]n los digitos base-2 de el n\[UAcute]mero \
+decimal 714."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"IntegerDigits", "[", 
+  RowBox[{"714", ",", "2"}], "]"}]], "Input"],
+
+Cell[TextData[{
+ "Para revertir el proceso, aqu\[IAcute] est\[AAcute] una forma de convertir \
+una lista de digitos binarios en un n\[UAcute]mero decimal usando ",
+ StyleBox["Fold",
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ "."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"bitlist", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "1", ",", "1", ",", "0", ",", "0", ",", "1", ",", "0",
+      ",", "1", ",", "0"}], "}"}]}], ";"}]], "Input"],
+
+Cell[TextData[{
+ "Usando ",
+ StyleBox["Fold",
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ ", iteramos una funci\[OAcute]n que multiplica su primer argumento por 2, \
+entonces agrega el segundo argumento."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"shiftbits", "[", 
+   RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"2", "x"}], "+", "y"}]}]], "Input"],
+
+Cell[TextData[{
+ "Aplicando ",
+ StyleBox["Fold",
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ " a ",
+ StyleBox["shiftbits",
+  FontFamily->"Courier",
+  FontWeight->"Bold"],
+ " sobre una lista de bits regresa el valor decimal."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Fold", "[", 
+  RowBox[{"shiftbits", ",", "0", ",", "bitlist"}], "]"}]], "Input"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["El n\[UAcute]mero \[Pi]", "Subsubsection"],
+
+Cell[TextData[{
+ "El n\[UAcute]mero ",
+ Cell[BoxData[
+  FormBox["\[Pi]", TraditionalForm]], "DisplayFormula"],
+ " con diez d\[IAcute]gitos se as\[IAcute]"
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{"\[Pi]", ",", "10"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"RealDigits", "[", 
+  RowBox[{"\[Pi]", ",", "10", ",", "10", ",", 
+   RowBox[{"-", "1"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"RealDigits", "[", 
+  RowBox[{"\[Pi]", ",", "2", ",", "10", ",", 
+   RowBox[{"-", "1"}]}], "]"}]], "Input"],
+
+Cell["\<\
+Ahora dise\[NTilde]amos una funci\[OAcute]n para cambiar los \"ceros\" por \
+\"-1\".\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f1m1", "[", "n_", "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"n", "\[Equal]", "0"}], ",", 
+    RowBox[{"-", "1"}], ",", "1"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"f1m1", "[", "0", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"piList2", "=", 
+   RowBox[{
+    RowBox[{"RealDigits", "[", 
+     RowBox[{"\[Pi]", ",", "2", ",", "60000", ",", 
+      RowBox[{"-", "1"}]}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f1m1PiList2", "=", 
+   RowBox[{"Map", "[", 
+    RowBox[{"f1m1", ",", "piList2"}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"cumulativesumPiList2", "=", 
+   RowBox[{"FoldList", "[", 
+    RowBox[{"Plus", ",", "0", ",", "f1m1PiList2"}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tablePi", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"cumulativesumPiList2", "[", 
+        RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "cumulativesumPiList2", "]"}]}], "}"}]}], 
+    "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"tablePi", ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}], ",", 
+   RowBox[{"AspectRatio", "\[Rule]", "0.4"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.466977672584414*^9, 3.466977676154213*^9}}],
+
+Cell[TextData[{
+ "Hemos visto una manera alternativa de generar una caminata al \"azar\" en \
+donde el generador de los n\[UAcute]meros aleatorios es el n\[UAcute]mero ",
+ Cell[BoxData[
+  FormBox["\[Pi]", TraditionalForm]], "DisplayFormula"],
+ ". Tambi\[EAcute]n nos podemos preguntar por la existencia de patrones en el \
+propio n\[UAcute]mero ",
+ Cell[BoxData[
+  FormBox["\[Pi]", TraditionalForm]], "DisplayFormula"],
+ "."
+}], "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "Subsection"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["El borrachito en d Dimensiones", "Section",
+ CellChangeTimes->{{3.466895971748912*^9, 3.4668959773560266`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"RandomWalk", "[", 
+   RowBox[{"n_", ",", "d_"}], "]"}], ":=", 
+  RowBox[{"NestList", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"#", "+", 
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{"-", "1"}], ")"}], "^", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"Random", "[", "Integer", "]"}], ",", 
+          RowBox[{"{", "d", "}"}]}], "]"}]}]}], ")"}], "&"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"{", "d", "}"}]}], "]"}], ",", "n"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"Graphics3D", "[", 
+   RowBox[{"Line", "[", 
+    RowBox[{"RandomWalk", "[", 
+     RowBox[{"1000", ",", "3"}], "]"}], "]"}], "]"}], "]"}]], "Input"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Preguntas, ejercicios, y problemas", "Section",
+ CellChangeTimes->{{3.46689600975408*^9, 3.4668960170014668`*^9}}],
+
+Cell[TextData[{
+ "[1] Haga varios experimentos con la caminata al azar en una \
+dimensi\[OAcute]n. Calcule el valor promedio de la posici\[OAcute]n final \
+despu\[EAcute]s de ",
+ Cell[BoxData[
+  FormBox["N", TraditionalForm]]],
+ " pasos. Compruebe los resultados del cap\[IAcute]tulo 1 del texto de Reif."
+}], "Text"],
+
+Cell[TextData[{
+ "[2] Haga varios experimentos con la caminata al azar en varias dimensiones. \
+\[DownQuestion]C\[OAcute]mo depende la distancia al origen del n\[UAcute]mero \
+",
+ Cell[BoxData[
+  FormBox["N", TraditionalForm]], "DisplayFormula"],
+ " en dos dimensiones? \[DownQuestion]Qu\[EAcute] sucede en 3 dimensiones?"
+}], "Text"],
+
+Cell[TextData[{
+ "[3] Haga varios experimentos con la caminata al azar en una \
+dimensi\[OAcute]n y pruebe los resultados del cap\[IAcute]tulo uno del texto \
+de Reif para ",
+ Cell[BoxData[
+  FormBox["N", TraditionalForm]], "DisplayFormula"],
+ " muy grande."
+}], "Text"],
+
+Cell[TextData[{
+ "[4] Dise\[NTilde]e una caminata al azar en una dimensi\[OAcute]n de tal \
+manera que de como datos la probabilidad de paso a la izquierda ",
+ Cell[BoxData[
+  FormBox["q", TraditionalForm]], "DisplayFormula"],
+ " y la probabilidad de paso a la derecha ",
+ Cell[BoxData[
+  FormBox["p", TraditionalForm]], "DisplayFormula"],
+ ". Repita lo mismo en tres dimensiones y haga experimentos de \"sedimentaci\
+\[OAcute]n\" en tres dimensiones en donde hay gravedad en la \
+direcci\[OAcute]n ",
+ Cell[BoxData[
+  FormBox["z", TraditionalForm]], "DisplayFormula"],
+ "."
+}], "Text"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Referencias", "Section",
+ CellChangeTimes->{{3.466896035144596*^9, 3.466896037152162*^9}}],
+
+Cell[TextData[{
+ "Reif F 1965 ",
+ StyleBox["Fundamentals of statistical and thermal physics",
+  FontSlant->"Italic"],
+ " (New York, N.Y.: McGraw-Hill Book Co.)."
+}], "Text",
+ CellTags->"Reif:1965"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"SlideShow",
+WindowSize->{889, 573},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Reif:1965"->{
+  Cell[22515, 789, 197, 6, 73, "Text",
+   CellTags->"Reif:1965"]},
+ "SlideShowHeader"->{
+  Cell[567, 22, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[2545, 95, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[4239, 151, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[7334, 257, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[10890, 380, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[17957, 647, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[19766, 706, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[22327, 781, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Reif:1965", 23850, 830},
+ {"SlideShowHeader", 23939, 833}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[656, 27, 98, 1, 113, "Section"],
+Cell[CellGroupData[{
+Cell[779, 32, 47, 0, 42, "Subsubsection"],
+Cell[829, 34, 190, 5, 73, "Text"],
+Cell[1022, 41, 302, 10, 56, "Input"],
+Cell[1327, 53, 249, 7, 73, "Text"],
+Cell[1579, 62, 62, 1, 47, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1678, 68, 22, 0, 58, "Subsection"],
+Cell[1703, 70, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2545, 95, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[2634, 100, 106, 1, 113, "Section"],
+Cell[2743, 103, 362, 12, 78, "Input"],
+Cell[3108, 117, 64, 1, 47, "Input"],
+Cell[3175, 120, 231, 5, 47, "Input"],
+Cell[3409, 127, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4239, 151, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[4328, 156, 192, 5, 163, "Section"],
+Cell[4523, 163, 192, 6, 73, "Text"],
+Cell[4718, 171, 574, 11, 193, "Text"],
+Cell[5295, 184, 463, 15, 111, "Text"],
+Cell[5761, 201, 141, 4, 47, "Input"],
+Cell[5905, 207, 326, 12, 57, "Text"],
+Cell[6234, 221, 127, 4, 80, "Input"],
+Cell[6364, 227, 137, 4, 47, "Input"],
+Cell[6504, 233, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7334, 257, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[7423, 262, 171, 5, 113, "Section"],
+Cell[7597, 269, 370, 8, 134, "Text"],
+Cell[7970, 279, 534, 18, 108, "Input"],
+Cell[8507, 299, 107, 3, 47, "Input"],
+Cell[8617, 304, 250, 6, 76, "Text"],
+Cell[8870, 312, 206, 6, 47, "Input"],
+Cell[9079, 320, 102, 2, 44, "Text"],
+Cell[9184, 324, 65, 1, 47, "Input"],
+Cell[9252, 327, 473, 19, 79, "Text"],
+Cell[9728, 348, 329, 6, 78, "Input"],
+Cell[10060, 356, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10890, 380, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[10979, 385, 126, 1, 113, "Section"],
+Cell[CellGroupData[{
+Cell[11130, 390, 37, 0, 42, "Subsubsection"],
+Cell[11170, 392, 466, 16, 111, "Text"],
+Cell[11639, 410, 195, 6, 47, "Input"],
+Cell[11837, 418, 295, 11, 76, "Text"],
+Cell[12135, 431, 190, 5, 47, "Input"],
+Cell[12328, 438, 92, 2, 44, "Text"],
+Cell[12423, 442, 177, 5, 47, "Input"],
+Cell[12603, 449, 186, 5, 47, "Input"],
+Cell[12792, 456, 359, 10, 102, "Text"],
+Cell[13154, 468, 91, 2, 47, "Input"],
+Cell[13248, 472, 246, 7, 73, "Text"],
+Cell[13497, 481, 213, 6, 47, "Input"],
+Cell[13713, 489, 221, 7, 73, "Text"],
+Cell[13937, 498, 154, 5, 47, "Input"],
+Cell[14094, 505, 241, 10, 44, "Text"],
+Cell[14338, 517, 104, 2, 47, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14479, 524, 48, 0, 42, "Subsubsection"],
+Cell[14530, 526, 166, 5, 44, "Text"],
+Cell[14699, 533, 82, 2, 47, "Input"],
+Cell[14784, 537, 131, 3, 47, "Input"],
+Cell[14918, 542, 130, 3, 47, "Input"],
+Cell[15051, 547, 108, 3, 44, "Text"],
+Cell[15162, 552, 197, 6, 47, "Input"],
+Cell[15362, 560, 57, 1, 47, "Input"],
+Cell[15422, 563, 242, 7, 47, "Input"],
+Cell[15667, 572, 142, 4, 47, "Input"],
+Cell[15812, 578, 170, 4, 47, "Input"],
+Cell[15985, 584, 380, 12, 78, "Input"],
+Cell[16368, 598, 246, 5, 47, "Input"],
+Cell[16617, 605, 436, 10, 102, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17090, 620, 22, 0, 58, "Subsection"],
+Cell[17115, 622, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17957, 647, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[18046, 652, 117, 1, 113, "Section"],
+Cell[18166, 655, 570, 18, 108, "Input"],
+Cell[18739, 675, 194, 5, 47, "Input"],
+Cell[18936, 682, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19766, 706, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[19855, 711, 120, 1, 113, "Section"],
+Cell[19978, 714, 317, 7, 102, "Text"],
+Cell[20298, 723, 334, 7, 102, "Text"],
+Cell[20635, 732, 270, 7, 73, "Text"],
+Cell[20908, 741, 586, 14, 131, "Text"],
+Cell[21497, 757, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22327, 781, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[22416, 786, 96, 1, 113, "Section"],
+Cell[22515, 789, 197, 6, 73, "Text",
+ CellTags->"Reif:1965"],
+Cell[22715, 797, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

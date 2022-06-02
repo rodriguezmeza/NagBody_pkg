@@ -1,0 +1,1138 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     35686,       1129]
+NotebookOptionsPosition[     31257,        994]
+NotebookOutlinePosition[     32127,       1024]
+CellTagsIndexPosition[     32048,       1019]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Movimiento Browniano", "Section",
+ CellChangeTimes->{{3.466896238237588*^9, 3.466896242330624*^9}}],
+
+Cell["\<\
+Un movimiento browniano en una dimension es una caminata al azar con la \
+siguiente secuencia\
+\>", "Text"],
+
+Cell[BoxData[{
+ RowBox[{
+  SubscriptBox["x", "0"], "=", "0"}], "\[IndentingNewLine]", 
+ RowBox[{
+  SubscriptBox["x", 
+   RowBox[{"i", "+", "1"}]], "=", 
+  RowBox[{
+   SubscriptBox["x", "i"], "+", "r"}]}]}], "DisplayFormulaNumbered",
+ FontSize->14],
+
+Cell[TextData[{
+ "donde ",
+ Cell[BoxData["r"]],
+ " est\[AAcute] distribuido uniformemente en el rango ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "1"}], ",", "1"}], ")"}]]],
+ " y es obtenido con"
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Random", "[", " ", 
+  RowBox[{"Real", ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]], "Input"],
+
+Cell["\<\
+El proposito en esta secci\[OAcute]n es generar esta clase de movimientos.\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell["Inicializaci\[OAcute]n", "Subsubsection"],
+
+Cell[TextData[{
+ "Ser\[AAcute] \[UAcute]til ejecutar los siguientes comandos para iniciar \
+apropiadamente esta sesi\[OAcute]n ",
+ StyleBox["Mathematica.",
+  FontSlant->"Italic"]
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{" ", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"General", "::", "\"\<spell\>\""}], "]"}], ";"}], " ", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Off", "[", 
+     RowBox[{"General", "::", "\"\<spell1\>\""}], "]"}], ";"}]}]}]], "Input",
+ FontSize->14],
+
+Cell[TextData[{
+ "Puede ser \[UAcute]til tambi\[EAcute]n limpiar nombres de variables o par\
+\[AAcute]metros que pueden haber sido usados anterioremente en esta sesi\
+\[OAcute]n de ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ","
+}], "Text"],
+
+Cell["Clear[\"Global`*\"];", "Input",
+ AspectRatioFixed->True]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "Subsection"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Movimiento browniano - gr\[AAcute]ficas\
+\>", "Section"],
+
+Cell[TextData[{
+ "Como ya vimos antes, definimos la caminata usando la funci\[OAcute]n de \
+iteraci\[OAcute]n ya construida en ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ","
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BrownianRandomWalk", "[", 
+   RowBox[{"n_Integer", "?", "NonNegative"}], "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"NestList", "[", 
+   RowBox[{
+    RowBox[{"Function", "[", 
+     RowBox[{"x", ",", 
+      RowBox[{"x", "+", 
+       RowBox[{"Random", "[", " ", 
+        RowBox[{"Real", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]}]}], "]"}], ",", 
+    "0.0", ",", "n"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"walk", "=", 
+   RowBox[{"BrownianRandomWalk", "[", "10000", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"walk", ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.46697775367242*^9, 3.466977755582299*^9}}],
+
+Cell["\<\
+Otra variante de la definici\[OAcute]n y que puede resultar muy \[UAcute]til \
+es,\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BrownianRandomWalk", "[", "list_List", "]"}], ":=", 
+  "\[IndentingNewLine]", 
+  RowBox[{"FoldList", "[", 
+   RowBox[{"Plus", ",", "0.0", ",", "list"}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rands", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Random", "[", " ", 
+      RowBox[{"Real", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}], ",", 
+     RowBox[{"{", "1000", "}"}]}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"walk", "=", 
+   RowBox[{"BrownianRandomWalk", "[", "rands", "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{"walk", ",", 
+   RowBox[{"Joined", "\[Rule]", "True"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.466977759446548*^9, 3.466977763273484*^9}}],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Movimiento Browniano en 2D", "Section"],
+
+Cell[TextData[{
+ "Puede ser \[UAcute]til limpiar nombres de variables o par\[AAcute]metros \
+que pueden haber sido usados anterioremente en esta sesi\[OAcute]n de ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ","
+}], "Text"],
+
+Cell["Clear[\"Global`*\"];", "Input",
+ AspectRatioFixed->True],
+
+Cell[TextData[{
+ "Aqu\[IAcute] est\[AAcute] una forma de generar una caminata al azar en dos \
+dimensiones. Comenzamos con el par ordenado ",
+ StyleBox["{0, 0}",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ ", e iteramos una funci\[OAcute]n que agrega un entero al azar entre -1 y 1 \
+a cada coordenada. El resultado es una lista de pares ordenados."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"?", "Random"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"SeedRandom", "[", "1", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"onestep", "[", 
+   RowBox[{"{", 
+    RowBox[{"x_", ",", "y_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"x", "+", 
+     RowBox[{"Random", "[", 
+      RowBox[{"Real", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"y", "+", 
+     RowBox[{"Random", "[", 
+      RowBox[{"Real", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", "1"}], "}"}]}], "]"}]}]}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"onestep", "[", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0"}], "}"}], "]"}]], "Input"],
+
+Cell[TextData[{
+ "La siguiente instrucci\[OAcute]n genera una lista de iterados de ",
+ StyleBox["onestep",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ ". La salida es suprimida terminando la instrucci\[OAcute]n con punto y coma."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"walkdata", "=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"onestep", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", "20"}], "]"}]}], ";"}]], "Input"],
+
+Cell["\<\
+Aqu\[IAcute] est\[AAcute] una versi\[OAcute]n abreviada de la lista de puntos.\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"Short", "[", "walkdata", "]"}]], "Input"],
+
+Cell[TextData[{
+ "Para convertir ",
+ StyleBox["walkdata",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " en una gr\[AAcute]fica, conectamos y graficamos los pares ordenados usando \
+",
+ StyleBox["ListPlot",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " con la opci\[OAcute]n ",
+ StyleBox["PlotJoined",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ " puesta en ",
+ StyleBox["True",
+  FontFamily->"Courier New",
+  FontWeight->"Bold"],
+ "."
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Brownian2d", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"walkdata", ",", 
+     RowBox[{"Joined", " ", "\[Rule]", " ", "True"}], ",", " ", 
+     RowBox[{"Axes", "\[Rule]", " ", "False"}], ",", 
+     RowBox[{"AspectRatio", "\[Rule]", " ", "Automatic"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"Thickness", "[", "0.0055", "]"}]}], "}"}]}]}], "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.466977773835441*^9, 3.466977774441298*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"inicial", "=", 
+   RowBox[{"walkdata", "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+  RowBox[{"final", "=", 
+   RowBox[{"walkdata", "[", 
+    RowBox[{"[", "21", "]"}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"Brownian2d", ",", "\[IndentingNewLine]", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Thickness", "[", "0.0091", "]"}], ",", 
+      RowBox[{"Circle", "[", 
+       RowBox[{"inicial", ",", "0.12"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"PointSize", "[", "0.05", "]"}], ",", 
+        RowBox[{"Point", "[", "final", "]"}]}], "}"}]}], 
+     "\[IndentingNewLine]", "}"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], 
+  RowBox[{"(*", 
+   RowBox[{",", "\[IndentingNewLine]", 
+    RowBox[{"Background", "\[Rule]", "Yellow"}]}], "*)"}], 
+  "\[IndentingNewLine]", "]"}]], "Input",
+ CellChangeTimes->{3.4669777766400843`*^9}],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Movimiento Browniano sobre una esfera", "Section"],
+
+Cell[TextData[{
+ "Puede ser \[UAcute]til limpiar nombres de variables o par\[AAcute]metros \
+que pueden haber sido usados anterioremente en esta sesi\[OAcute]n de ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ","
+}], "Text"],
+
+Cell["Clear[\"Global`*\"];", "Input",
+ AspectRatioFixed->True],
+
+Cell["\<\
+La idea para genearar el movimiento Browniano sobre la esfera es construir \
+los incrementos de longitud sobre los paralelos y los meridianos, esto es,\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["dl", "\[Theta]"], "=", 
+   RowBox[{"r", " ", "d\[Theta]"}]}], ",", " ", 
+  RowBox[{
+   SubscriptBox["dl", "\[Phi]"], "=", 
+   RowBox[{"r", " ", "sin\[Theta]", " ", "d\[Phi]"}]}]}]], "DisplayFormula"],
+
+Cell["\<\
+Vemos que basicamente los incrementos son proporcionales a los cambios en los \
+\[AAcute]ngulos azimutal y polar.\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"SeedRandom", "[", "1", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "=", "0.12"}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"onestep", "[", 
+   RowBox[{"{", 
+    RowBox[{"\[Theta]_", ",", "\[Phi]_"}], "}"}], "]"}], ":=", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\[Theta]", "+", 
+     RowBox[{"Random", "[", 
+      RowBox[{"Real", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "f"}], "*", 
+          RowBox[{"\[Pi]", "/", "2"}]}], ",", 
+         RowBox[{"f", "*", 
+          RowBox[{"\[Pi]", "/", "2"}]}]}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\[Phi]", "+", 
+     RowBox[{"Random", "[", 
+      RowBox[{"Real", ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"-", "f"}], "*", "\[Pi]"}], ",", 
+         RowBox[{"f", "*", "\[Pi]"}]}], "}"}]}], "]"}]}]}], "}"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"onestep", "[", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "0"}], "}"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"walkdata", "=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"onestep", ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], "}"}], ",", "1000"}], "]"}]}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Short", "[", "walkdata", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "walkdata", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"walkdata", "[", 
+   RowBox[{"[", "21", "]"}], "]"}], "[", 
+  RowBox[{"[", "2", "]"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"EsferaOneStep", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{
+          RowBox[{"walkdata", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{
+          RowBox[{"walkdata", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"Sin", "[", 
+         RowBox[{
+          RowBox[{"walkdata", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{
+          RowBox[{"walkdata", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ",", 
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"walkdata", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "]"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", 
+       RowBox[{"Length", "[", "walkdata", "]"}]}], "}"}]}], "]"}]}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"Graphics3D", "[", 
+   RowBox[{"Point", "/@", "EsferaOneStep"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{3.466977784294097*^9}],
+
+Cell[BoxData[
+ RowBox[{"Show", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Graphics3D", "[", 
+     RowBox[{"Line", "[", "EsferaOneStep", "]"}], "]"}], ",", 
+    RowBox[{"Graphics3D", "[", 
+     RowBox[{"Point", "/@", "EsferaOneStep"}], "]"}]}], "}"}], "]"}]], "Input",\
+
+ CellChangeTimes->{3.466977787196885*^9}],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Arbol - random", "Section"],
+
+Cell[TextData[{
+ "Puede ser \[UAcute]til limpiar nombres de variables o par\[AAcute]metros \
+que pueden haber sido usados anterioremente en esta sesi\[OAcute]n de ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ ","
+}], "Text"],
+
+Cell["Clear[\"Global`*\"];", "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"tree", "[", 
+    RowBox[{
+    "nestingDepth_", ",", "rotation_", ",", "shrinkage_", ",", 
+     "thicknessShrinkage_", ",", "originalThickness_", ",", "options___"}], 
+    "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"twinLine", ",", "doTwins"}], "}"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"twinLine", "[", 
+        RowBox[{"Line", "[", 
+         RowBox[{"{", 
+          RowBox[{"start_", ",", "end_"}], "}"}], "]"}], "]"}], ":=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{"end", ",", 
+            RowBox[{"end", "+", 
+             RowBox[{"shrinkage", " ", 
+              RowBox[{"Rotate2D", "[", 
+               RowBox[{
+                RowBox[{"end", "-", "start"}], ",", "rotation", ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}]}]}], "}"}], "]"}], 
+         ",", 
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{"end", ",", 
+            RowBox[{"end", "+", 
+             RowBox[{"shrinkage", " ", 
+              RowBox[{"Rotate2D", "[", 
+               RowBox[{
+                RowBox[{"end", "-", "start"}], ",", 
+                RowBox[{"-", "rotation"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}]}]}], "}"}], 
+          "]"}]}], "}"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"twinLine", "[", 
+        RowBox[{"Thickness", "[", "th_", "]"}], "]"}], ":=", 
+       RowBox[{"Thickness", "[", 
+        RowBox[{"th", " ", "thicknessShrinkage"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"doTwins", "[", "lines_", "]"}], ":=", 
+       RowBox[{"Flatten", "[", 
+        RowBox[{"Map", "[", 
+         RowBox[{"twinLine", ",", "lines"}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Show", "[", 
+       RowBox[{
+        RowBox[{"Graphics", "[", 
+         RowBox[{"NestList", "[", 
+          RowBox[{"doTwins", ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Thickness", "[", "originalThickness", "]"}], ",", 
+             RowBox[{"Line", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], ",",
+            "nestingDepth"}], "]"}], "]"}], ",", "options", ",", 
+        RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+        RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}]}], "]"}]}], "\n", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "rotateLine", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"rotateLine", "[", 
+     RowBox[{
+      RowBox[{"Line", "[", 
+       RowBox[{"{", 
+        RowBox[{"start_", ",", "end_"}], "}"}], "]"}], ",", "angle_"}], "]"}],
+     ":=", 
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{"end", ",", 
+       RowBox[{"end", "+", 
+        RowBox[{"branchShortening", "*", 
+         RowBox[{"Rotate2D", "[", 
+          RowBox[{
+           RowBox[{"end", "-", "start"}], ",", 
+           RowBox[{"angle", " ", 
+            RowBox[{"Random", "[", 
+             RowBox[{"Real", ",", 
+              RowBox[{"{", 
+               RowBox[{"0.5", ",", "1.5"}], "}"}]}], "]"}]}]}], "]"}]}]}]}], 
+      "}"}], "]"}]}], ";"}], "\n", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "twinLine", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"twinLine", "[", 
+     RowBox[{"Line", "[", "points_", "]"}], "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"rotateLine", "[", 
+       RowBox[{
+        RowBox[{"Line", "[", "points", "]"}], ",", "branchRotation"}], "]"}], 
+      ",", 
+      RowBox[{"rotateLine", "[", 
+       RowBox[{
+        RowBox[{"Line", "[", "points", "]"}], ",", 
+        RowBox[{"-", "branchRotation"}]}], "]"}]}], "}"}]}], ";"}], "\n", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"twinLine", "[", 
+     RowBox[{"Thickness", "[", "th_", "]"}], "]"}], ":=", 
+    RowBox[{"Thickness", "[", 
+     RowBox[{"th", " ", "branchThinning"}], "]"}]}], ";"}], "\n", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"twinLine", "[", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"r_", ",", "g_", ",", "b_"}], "]"}], "]"}], ":=", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"branchColors", "=", 
+       RowBox[{"RotateLeft", "[", "branchColors", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"First", "[", "branchColors", "]"}]}], ")"}]}], ";"}], "\n", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Clear", "[", "doTwins", "]"}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"doTwins", "[", "lines_", "]"}], ":=", 
+    RowBox[{"Flatten", "[", 
+     RowBox[{"Map", "[", 
+      RowBox[{"twinLine", ",", "lines"}], "]"}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"Options", "[", "BeautifulTree", "]"}], "=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Generations", "\[Rule]", "10"}], ",", 
+      RowBox[{"BranchRotation", "\[Rule]", "0.65"}], ",", 
+      RowBox[{"BranchShortening", "\[Rule]", "0.75"}], ",", 
+      RowBox[{"BranchThinning", "\[Rule]", "0.7"}], ",", 
+      RowBox[{"OriginalThickness", "\[Rule]", "0.07"}], ",", 
+      RowBox[{"BranchColors", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"RGBColor", "[", 
+         RowBox[{"0", ",", "0", ",", "0"}], "]"}], "}"}]}]}], "}"}]}], ";"}], 
+  "\n", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"BeautifulTree", "[", "options___", "]"}], ":=", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "generations", ",", "branchRotation", ",", "branchShortening", ",", 
+        "branchThinning", ",", "originalThickness", ",", "branchColors"}], 
+       "}"}], ",", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+         "generations", ",", "branchRotation", ",", "branchShortening", ",", 
+          "branchThinning", ",", "originalThickness", ",", "branchColors"}], 
+         "}"}], "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "Generations", ",", "BranchRotation", ",", "BranchShortening", ",",
+             "BranchThinning", ",", "OriginalThickness", ",", 
+            "BranchColors"}], "}"}], "/.", 
+          RowBox[{"{", "options", "}"}]}], "/.", 
+         RowBox[{"Options", "[", "BeautifulTree", "]"}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Show", "[", 
+        RowBox[{
+         RowBox[{"Graphics", "[", 
+          RowBox[{"NestList", "[", 
+           RowBox[{"doTwins", ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"First", "[", "branchColors", "]"}], ",", 
+              RowBox[{"Thickness", "[", "originalThickness", "]"}], ",", 
+              RowBox[{"Line", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "0"}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", "1"}], "}"}]}], "}"}], "]"}]}], "}"}], 
+            ",", "generations"}], "]"}], "]"}], ",", 
+         RowBox[{"FilterOptions", "[", 
+          RowBox[{"Show", ",", "options"}], "]"}], ",", 
+         RowBox[{"AspectRatio", "\[Rule]", "Automatic"}], ",", 
+         RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}]}], "]"}]}], ";"}],
+   "\n", "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"FilterOptions", "[", 
+   RowBox[{"command_Symbol", ",", "opts___"}], "]"}], ":=", 
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"keywords", "=", 
+      RowBox[{"First", "/@", 
+       RowBox[{"Options", "[", "command", "]"}]}]}], "}"}], ",", 
+    RowBox[{"Sequence", "@@", 
+     RowBox[{"Select", "[", 
+      RowBox[{
+       RowBox[{"{", "opts", "}"}], ",", 
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"keywords", ",", 
+          RowBox[{"First", "[", "#", "]"}]}], "]"}], "&"}]}], "]"}]}]}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.4669778580629053`*^9, 3.466977882559663*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BeautifulTree", "[", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"$Aborted", "[", "]"}]], "Output",
+ CellChangeTimes->{3.466978663254828*^9}]
+}, Open  ]],
+
+Cell["tree[6, 0.3, 0.8, 0.7, 0.05];", "Input",
+ AspectRatioFixed->False,
+ ImageRegion->{{0, 1}, {0, 1}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"tree", "[", 
+     RowBox[{"7", ",", "r", ",", 
+      RowBox[{"0.5", "+", "r"}], ",", "0.75", ",", 
+      RowBox[{"0.005", "+", 
+       RowBox[{"0.07", " ", "r"}]}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "6"}], ",", "6"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "8"}], "}"}]}], "}"}]}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"r", ",", "0", ",", "0.5", ",", "0.02"}], "}"}]}], "]"}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeautifulTree", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Generarions", "\[Rule]", "10"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"BranchRotation", "\[Rule]", "0.65"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"BranchShortening", "\[Rule]", "0.75"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"BranchThinning", "\[Rule]", "0.7"}], ",", "\[IndentingNewLine]", 
+    
+    RowBox[{"OriginalThickness", "\[Rule]", "0.07"}]}], "\[IndentingNewLine]",
+    "]"}], ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeautifulTree", "[", "\[IndentingNewLine]", 
+   RowBox[{"BranchRotation", "\[Rule]", "0.3"}], "\[IndentingNewLine]", "]"}],
+   ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeautifulTree", "[", "\[IndentingNewLine]", 
+   RowBox[{"BranchColors", "\[Rule]", "\[IndentingNewLine]", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.562", ",", "0.236", ",", "0.071"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.547", ",", "0.229", ",", "0.069"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.500", ",", "0.210", ",", "0.063"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.469", ",", "0.196", ",", "0.059"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.033", ",", "0.281", ",", "0.035"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.046", ",", "0.395", ",", "0.050"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.055", ",", "0.469", ",", "0.059"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.070", ",", "0.602", ",", "0.076"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.085", ",", "0.727", ",", "0.092"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.109", ",", "0.937", ",", "0.118"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.013", ",", "0.750", ",", "0.028"}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"BeautifulTree", "[", "\[IndentingNewLine]", 
+   RowBox[{"BranchColors", "\[Rule]", "\[IndentingNewLine]", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.562", ",", "0.236", ",", "0.071"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.547", ",", "0.229", ",", "0.069"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.500", ",", "0.210", ",", "0.063"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.469", ",", "0.196", ",", "0.059"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.033", ",", "0.281", ",", "0.035"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.562", ",", "0.154", ",", "0.084"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.750", ",", "0.206", ",", "0.112"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.875", ",", "0.240", ",", "0.131"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.902", ",", "0.248", ",", "0.135"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.902", ",", "0.160", ",", "0.125"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"RGBColor", "[", 
+       RowBox[{"0.977", ",", "0.048", ",", "0.039"}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "]"}], 
+  ";"}]], "Input"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"SlideShow",
+WindowSize->{955, 623},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "SlideShowHeader"->{
+  Cell[567, 22, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[3415, 132, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[6361, 236, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[11433, 408, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[16521, 583, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"SlideShowHeader", 31589, 1005}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[656, 27, 105, 1, 113, "Section"],
+Cell[764, 30, 117, 3, 73, "Text"],
+Cell[884, 35, 247, 8, 51, "DisplayFormulaNumbered"],
+Cell[1134, 45, 226, 9, 44, "Text"],
+Cell[1363, 56, 160, 5, 47, "Input"],
+Cell[1526, 63, 98, 2, 44, "Text"],
+Cell[CellGroupData[{
+Cell[1649, 69, 47, 0, 42, "Subsubsection"],
+Cell[1699, 71, 190, 5, 73, "Text"],
+Cell[1892, 78, 302, 10, 56, "Input"],
+Cell[2197, 90, 249, 7, 73, "Text"],
+Cell[2449, 99, 62, 1, 47, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2548, 105, 22, 0, 58, "Subsection"],
+Cell[2573, 107, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3415, 132, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[3504, 137, 66, 2, 113, "Section"],
+Cell[3573, 141, 195, 6, 73, "Text"],
+Cell[3771, 149, 492, 15, 78, "Input"],
+Cell[4266, 166, 120, 3, 47, "Input"],
+Cell[4389, 171, 190, 4, 47, "Input"],
+Cell[4582, 177, 106, 3, 44, "Text"],
+Cell[4691, 182, 206, 5, 78, "Input"],
+Cell[4900, 189, 311, 10, 47, "Input"],
+Cell[5214, 201, 120, 3, 47, "Input"],
+Cell[5337, 206, 191, 4, 47, "Input"],
+Cell[5531, 212, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6361, 236, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[6450, 241, 45, 0, 113, "Section"],
+Cell[6498, 243, 231, 6, 73, "Text"],
+Cell[6732, 251, 62, 1, 47, "Input"],
+Cell[6797, 254, 370, 8, 134, "Text"],
+Cell[7170, 264, 49, 1, 47, "Input"],
+Cell[7222, 267, 63, 1, 47, "Input"],
+Cell[7288, 270, 528, 18, 78, "Input"],
+Cell[7819, 290, 107, 3, 47, "Input"],
+Cell[7929, 295, 250, 6, 76, "Text"],
+Cell[8182, 303, 205, 6, 47, "Input"],
+Cell[8390, 311, 102, 2, 44, "Text"],
+Cell[8495, 315, 65, 1, 47, "Input"],
+Cell[8563, 318, 473, 19, 79, "Text"],
+Cell[9039, 339, 541, 13, 108, "Input"],
+Cell[9583, 354, 233, 7, 47, "Input"],
+Cell[9819, 363, 781, 19, 228, "Input"],
+Cell[10603, 384, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11433, 408, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[11522, 413, 56, 0, 113, "Section"],
+Cell[11581, 415, 231, 6, 73, "Text"],
+Cell[11815, 423, 62, 1, 47, "Input"],
+Cell[11880, 426, 175, 3, 73, "Text"],
+Cell[12058, 431, 251, 7, 38, "DisplayFormula"],
+Cell[12312, 440, 137, 3, 73, "Text"],
+Cell[12452, 445, 63, 1, 47, "Input"],
+Cell[12518, 448, 70, 2, 47, "Input"],
+Cell[12591, 452, 752, 24, 108, "Input"],
+Cell[13346, 478, 107, 3, 47, "Input"],
+Cell[13456, 483, 207, 6, 47, "Input"],
+Cell[13666, 491, 65, 1, 47, "Input"],
+Cell[13734, 494, 66, 1, 47, "Input"],
+Cell[13803, 497, 137, 4, 47, "Input"],
+Cell[13943, 503, 1247, 37, 138, "Input"],
+Cell[15193, 542, 177, 4, 47, "Input"],
+Cell[15373, 548, 315, 9, 78, "Input"],
+Cell[15691, 559, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16521, 583, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[16610, 588, 33, 0, 113, "Section"],
+Cell[16646, 590, 231, 6, 73, "Text"],
+Cell[16880, 598, 62, 1, 47, "Input"],
+Cell[16945, 601, 8522, 233, 2268, "Input"],
+Cell[CellGroupData[{
+Cell[25492, 838, 61, 1, 47, "Input"],
+Cell[25556, 841, 99, 2, 67, "Output"]
+}, Open  ]],
+Cell[25670, 846, 104, 2, 47, "Input"],
+Cell[25777, 850, 616, 19, 78, "Input"],
+Cell[26396, 871, 524, 11, 228, "Input"],
+Cell[26923, 884, 178, 4, 108, "Input"],
+Cell[27104, 890, 1669, 39, 498, "Input"],
+Cell[28776, 931, 1669, 39, 498, "Input"],
+Cell[30448, 972, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

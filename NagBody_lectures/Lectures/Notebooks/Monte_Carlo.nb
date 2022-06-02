@@ -1,0 +1,1114 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     32260,       1105]
+NotebookOptionsPosition[     28321,        987]
+NotebookOutlinePosition[     29104,       1015]
+CellTagsIndexPosition[     29026,       1010]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["M\[EAcute]todo de Monte Carlo", "Section",
+ CellChangeTimes->{{3.466895123533454*^9, 3.4668951285968027`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["La distribuci\[OAcute]n normal", "Subsection"],
+
+Cell[TextData[{
+ "Entonces, se da el nombre de variable aleatoria normal o gaussiana a toda \
+variable aleatoria ",
+ Cell[BoxData["\[Zeta]"]],
+ " que esta definida en todo el eje ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"-", "\[Infinity]"}], ",", "\[Infinity]"}], ")"}]]],
+ " y que tiene como densidad de probabilidad a"
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"p", 
+   RowBox[{"(", "x", ")"}]}], "=", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{
+     SqrtBox[
+      RowBox[{"2", "\[Pi]"}]], "\[Sigma]"}]], 
+   RowBox[{"Exp", "[", 
+    RowBox[{"-", 
+     FractionBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"x", "-", "a"}], ")"}], "2"], 
+      RowBox[{"2", 
+       SuperscriptBox["\[Sigma]", "2"]}]]}], "]"}]}]}]], "NumberedEquation"],
+
+Cell[TextData[{
+ "donde ",
+ Cell[BoxData["a"], "NumberedEquation"],
+ " y ",
+ Cell[BoxData["\[Sigma]"], "NumberedEquation"],
+ " son dos par\[AAcute]metros num\[EAcute]ricos. El par\[AAcute]metro ",
+ Cell[BoxData["a"], "NumberedEquation"],
+ " no influye en la forma de la curva ",
+ Cell[BoxData[
+  RowBox[{"p", 
+   RowBox[{"(", "x", ")"}]}]], "NumberedEquation"],
+ ", su variaci\[OAcute]n s\[OAcute]lo conduce a un desplazamiento de la curva \
+a lo largo del eje ",
+ Cell[BoxData["x"], "NumberedEquation"],
+ ". En cambia si variamos ",
+ Cell[BoxData["\[Sigma]"], "NumberedEquation"],
+ " s\[IAcute] se altera la forma de la curva. En efecto, es f\[AAcute]cil ver \
+que"
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"m\[AAcute]x", " ", "[", 
+   RowBox[{"p", 
+    RowBox[{"(", "x", ")"}]}], "]"}], "=", 
+  FractionBox["1", 
+   RowBox[{"\[Sigma]", 
+    SqrtBox[
+     RowBox[{"2", "\[Pi]"}]]}]]}]], "NumberedEquation"],
+
+Cell[TextData[{
+ "Si disminuimos ",
+ Cell[BoxData["\[Sigma]"], "NumberedEquation"],
+ ", aumentar\[AAcute] el ",
+ Cell[BoxData[
+  RowBox[{"m\[AAcute]x", " ", "[", 
+   RowBox[{"p", 
+    RowBox[{"(", "x", ")"}]}], "]"}]]],
+ ". Pero toda el \[AAcute]rea que encierra la curva ",
+ Cell[BoxData[
+  RowBox[{"p", 
+   RowBox[{"(", "x", ")"}]}]], "NumberedEquation"],
+ " es igual a ",
+ Cell[BoxData["1"], "NumberedEquation"],
+ ". Por eso la curva tendr\[AAcute] que estirarse hacia arriba en la vecindad \
+de ",
+ Cell[BoxData[
+  RowBox[{"x", "=", "a"}]], "NumberedEquation"],
+ " y decrecer para todos los valores suficientemente grandes de ",
+ Cell[BoxData["x"], "NumberedEquation"],
+ "."
+}], "Text"],
+
+Cell["\<\
+El promedio y la varianza de la distribuci\[OAcute]n normal son\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[LeftAngleBracket]", "\[Zeta]", "\[RightAngleBracket]"}], "=", 
+   "a"}], " ", ",", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"\[LeftAngleBracket]", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"\[Zeta]", "-", 
+       RowBox[{"\[LeftAngleBracket]", "\[Zeta]", "\[RightAngleBracket]"}]}], 
+      ")"}], "2"], "\[RightAngleBracket]"}], "=", 
+   SuperscriptBox["\[Sigma]", "2"]}]}]], "NumberedEquation"],
+
+Cell["Podemos calcular f\[AAcute]cilmente", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubsuperscriptBox["\[Integral]", 
+    RowBox[{"a", "-", 
+     RowBox[{"3", "\[Sigma]"}]}], 
+    RowBox[{"a", "+", 
+     RowBox[{"3", "\[Sigma]"}]}]], 
+   RowBox[{"p", 
+    RowBox[{"(", "x", ")"}], 
+    RowBox[{"\[DifferentialD]", "x"}]}]}], "=", "0.997"}]], "NumberedEquation"],
+
+Cell[TextData[{
+ "sin importar los valores de ",
+ Cell[BoxData["a"], "NumberedEquation"],
+ " y ",
+ Cell[BoxData["\[Sigma]"], "NumberedEquation"],
+ ". Lo anterior significa que la probabilidad de que la variable aleatoria ",
+ Cell[BoxData["\[Zeta]"], "NumberedEquation"],
+ " tome cualquier valor en el intervalo ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"a", "-", 
+     RowBox[{"3", "\[Sigma]"}]}], ",", 
+    RowBox[{"a", "+", 
+     RowBox[{"3", "\[Sigma]"}]}]}], ")"}]], "NumberedEquation"],
+ " es casi ",
+ Cell[BoxData["1"], "NumberedEquation"],
+ ". Entonces, al hacer un experimento con esta variable el resultado de que \
+ella tome un valor que difiera de ",
+ Cell[BoxData["a"], "NumberedEquation"],
+ " en m\[AAcute]s de ",
+ Cell[BoxData[
+  RowBox[{"3", "\[Sigma]"}]], "NumberedEquation"],
+ " es pr\[AAcute]cticamente imposible."
+}], "Text"],
+
+Cell["\<\
+Las variables aletorias normales aparecen con mucha frecuencia al analizar \
+cuestiones de la m\[AAcute]s diversa \[IAcute]ndole y la raz\[OAcute]n de \
+esto est\[AAcute] en el siguiente teorema.\
+\>", "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Teorema del l\[IAcute]mite central", "Subsection"],
+
+Cell["\<\
+Laplace fue el primero en enunciar este teorema. Varios matem\[AAcute]ticos \
+como Ch\[EAcute]bishev, M\[AAcute]rkov, y Liapunov, estudiaron su \
+generalizaci\[OAcute]n. Su demostraci\[OAcute]n no es sencilla.\
+\>", "Text"],
+
+Cell[TextData[{
+ "Consideremos ",
+ Cell[BoxData["N"]],
+ " variables aleatorias ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["\[Xi]", "1"], ",", " ", 
+   SubscriptBox["\[Xi]", "2"], ",", "...", ",", 
+   SubscriptBox["\[Xi]", "N"]}]]],
+ " independientes e id\[EAcute]nticas de modo que las contribuciones de \
+probabilidad de estas variables coinciden. Por consiguiente tambi\[EAcute]n \
+coinciden su valores promedio y sus varianzas. Escribamos"
+}], "Text"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[LeftAngleBracket]", 
+   SubscriptBox["\[Xi]", "1"], "\[RightAngleBracket]"}], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[LeftAngleBracket]", 
+      SubscriptBox["\[Xi]", "2"], "\[RightAngleBracket]"}], "=."}], ".."}], 
+   "=", 
+   RowBox[{
+    RowBox[{"\[LeftAngleBracket]", 
+     SubscriptBox["\[Xi]", "N"], "\[RightAngleBracket]"}], "=", 
+    OverscriptBox["\[Xi]", "_"]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[LeftAngleBracket]", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox["\[Xi]", "1"], "-", 
+      OverscriptBox["\[Xi]", "_"]}], ")"}], "2"], "\[RightAngleBracket]"}], 
+  "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"\[LeftAngleBracket]", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{
+         SubscriptBox["\[Xi]", "2"], "-", 
+         OverscriptBox["\[Xi]", "_"]}], ")"}], "2"], "\[RightAngleBracket]"}],
+      "=."}], ".."}], "=", 
+   RowBox[{
+    RowBox[{"\[LeftAngleBracket]", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{
+        SubscriptBox["\[Xi]", "N"], "-", 
+        OverscriptBox["\[Xi]", "_"]}], ")"}], "2"], "\[RightAngleBracket]"}], 
+    "=", 
+    SuperscriptBox[
+     SubscriptBox["\[Sigma]", "\[Xi]"], "2"]}]}]}]}], "NumberedEquation"],
+
+Cell[TextData[{
+ "Designemos por ",
+ Cell[BoxData[
+  SubscriptBox["\[Rho]", "N"]]],
+ " la suma de todas las variables:"
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["\[Rho]", "N"], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SubscriptBox["\[Xi]", "1"], "+", 
+     SubscriptBox["\[Xi]", "2"]}], "..."}], "+", 
+   SubscriptBox["\[Xi]", "N"]}]}]], "NumberedEquation"],
+
+Cell["Entonces,", "Text"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"\[LeftAngleBracket]", 
+   SubscriptBox["\[Rho]", "N"], "\[RightAngleBracket]"}], "=", 
+  RowBox[{
+   RowBox[{"\[LeftAngleBracket]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       SubscriptBox["\[Xi]", "1"], "+", 
+       SubscriptBox["\[Xi]", "2"]}], "..."}], "+", 
+     SubscriptBox["\[Xi]", "N"]}], "\[RightAngleBracket]"}], "=", 
+   RowBox[{"N", " ", 
+    OverscriptBox["\[Xi]", "_"]}]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[LeftAngleBracket]", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["\[Rho]", "N"], "-"}], "\[InvisibleComma]", 
+      RowBox[{"\[LeftAngleBracket]", 
+       SubscriptBox["\[Rho]", "N"], "\[RightAngleBracket]"}]}], ")"}], "2"], 
+   "\[RightAngleBracket]"}], "=", 
+  RowBox[{"N", " ", 
+   SuperscriptBox[
+    SubscriptBox["\[Sigma]", "\[Xi]"], "2"]}]}]}], "NumberedEquation"],
+
+Cell[TextData[{
+ "La \[UAcute]ltima relaci\[OAcute]n se obtiene ya que para dos variables \
+independientes ",
+ Cell[BoxData[
+  SubscriptBox["\[Xi]", "1"]]],
+ " y ",
+ Cell[BoxData[
+  SubscriptBox["\[Xi]", "2"]]]
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"\[LeftAngleBracket]", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      SubscriptBox["\[Xi]", "1"], "+", 
+      SubscriptBox["\[Xi]", "2"], "-", 
+      RowBox[{"\[LeftAngleBracket]", 
+       RowBox[{"(", 
+        RowBox[{
+         SubscriptBox["\[Xi]", "1"], "+", 
+         SubscriptBox["\[Xi]", "2"]}], ")"}], "\[RightAngleBracket]"}]}], 
+     ")"}], "2"], "\[RightAngleBracket]"}], "=", 
+  RowBox[{
+   RowBox[{"\[LeftAngleBracket]", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["\[Xi]", "1"], "-", 
+       RowBox[{"\[LeftAngleBracket]", 
+        SubscriptBox["\[Xi]", "1"], "\[RightAngleBracket]"}]}], ")"}], "2"], 
+    "\[RightAngleBracket]"}], "+", 
+   RowBox[{"\[LeftAngleBracket]", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SubscriptBox["\[Xi]", "2"], "-", 
+       RowBox[{"\[LeftAngleBracket]", 
+        SubscriptBox["\[Xi]", "2"], "\[RightAngleBracket]"}]}], ")"}], "2"], 
+    "\[RightAngleBracket]"}]}]}]], "NumberedEquation"],
+
+Cell[TextData[{
+ "Consideremos ahora la variable aleatoria normal ",
+ Cell[BoxData[
+  SubscriptBox["\[Zeta]", "N"]]],
+ " con valor medio ",
+ Cell[BoxData[
+  RowBox[{"N", " ", 
+   OverscriptBox["\[Xi]", "_"]}]]],
+ " y con varianza ",
+ Cell[BoxData[
+  RowBox[{"N", " ", 
+   SuperscriptBox[
+    SubscriptBox["\[Sigma]", "\[Xi]"], "2"]}]]],
+ ","
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   SubscriptBox["p", "N"], 
+   RowBox[{"(", "x", ")"}]}], "=", 
+  RowBox[{
+   FractionBox["1", 
+    RowBox[{
+     SqrtBox[
+      RowBox[{"2", "\[Pi]", " ", "N"}]], 
+     SubscriptBox["\[Sigma]", "\[Xi]"]}]], 
+   RowBox[{"Exp", "[", 
+    RowBox[{"-", 
+     FractionBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"x", "-", 
+         RowBox[{"N", " ", 
+          OverscriptBox["\[Xi]", "_"]}]}], ")"}], "2"], 
+      RowBox[{"2", "N", " ", 
+       SuperscriptBox[
+        SubscriptBox["\[Sigma]", "\[Xi]"], "2"]}]]}], 
+    "]"}]}]}]], "NumberedEquation"],
+
+Cell[TextData[{
+ "El teorema del l\[IAcute]mite central afirma que cualquiera que sea el \
+intervalo ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   RowBox[{"a", ",", "b"}], ")"}]]],
+ " se tiene para valores grandes de ",
+ Cell[BoxData["N"]]
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", 
+   RowBox[{"(", 
+    RowBox[{"a", "<", 
+     SubscriptBox["\[Rho]", "N"], "<", "b"}], ")"}]}], "\[TildeTilde]", 
+  RowBox[{
+   SubsuperscriptBox["\[Integral]", "a", "b"], 
+   RowBox[{
+    SubscriptBox["p", "N"], 
+    RowBox[{"(", "x", ")"}], 
+    RowBox[{"\[DifferentialD]", "x"}]}]}]}]], "NumberedEquation"],
+
+Cell[TextData[{
+ "El significado real de este teorema es obvio: la suma ",
+ Cell[BoxData[
+  SubscriptBox["\[Rho]", "N"]]],
+ " de una gran cantidad de variables aleatorias id\[EAcute]nticas es \
+aproximadamente normal."
+}], "Text"],
+
+Cell[TextData[{
+ "En realidad, este teorema es v\[AAcute]lido en situaciones mucho \
+m\[AAcute]s generales: los sumandos ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["\[Xi]", "1"], ",", " ", 
+   SubscriptBox["\[Xi]", "2"], ",", "...", ",", 
+   SubscriptBox["\[Xi]", "N"]}]]],
+ " pueden no ser id\[EAcute]nticos e independientes; lo que importa es s\
+\[OAcute]lo que cada sumando por separado no influya considerablemente en la \
+suma."
+}], "Text"],
+
+Cell["\<\
+Es este teorema el que explica porque las  variables aleatorias normales \
+aparecen con tanta frecuencia en la pr\[AAcute]ctica. En efecto, siempre que \
+tropezamos con el efecto sumario de una gran cantidad de factores aleatorios \
+insignificantes, la variable aleatoria resultante es normal. Por ejemplo, la \
+desviaci\[OAcute]n del proyectil respecto al objetivo es casi siempre una \
+variable aleatoria normal por cuanto depende de las condiciones meteorol\
+\[OAcute]gicas en las diferentes partes de la trayectoria y de otros muchos \
+factores.\
+\>", "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Esquema general del m\[EAcute]todo de Monte Carlo\
+\>", "Subsection"],
+
+Cell[TextData[{
+ "Supongamos que debemos calcular una magnitud ",
+ Cell[BoxData["a"]],
+ " que desconocemos. Tratemos de idear una variable aleatoria ",
+ Cell[BoxData["\[Xi]"]],
+ " tal que ",
+ Cell[BoxData[
+  RowBox[{
+   RowBox[{"\[LeftAngleBracket]", "\[Xi]", "\[RightAngleBracket]"}], "=", 
+   "a"}]]],
+ ". Sea, adem\[AAcute]s, ",
+ Cell[BoxData[
+  RowBox[{
+   SuperscriptBox["\[Sigma]", "2"], "=", 
+   RowBox[{"\[LeftAngleBracket]", 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"\[Xi]", "-", 
+       RowBox[{"\[LeftAngleBracket]", "\[Xi]", "\[RightAngleBracket]"}]}], 
+      ")"}], "2"], "\[RightAngleBracket]"}]}]]],
+ "."
+}], "Text"],
+
+Cell[TextData[{
+ "Consideremos ",
+ Cell[BoxData["N"]],
+ " variables aleatorias independientes ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["\[Xi]", "1"], ",", " ", 
+   SubscriptBox["\[Xi]", "2"], ",", "...", ",", 
+   SubscriptBox["\[Xi]", "N"]}]]],
+ " con la misma distribuci\[OAcute]n que tiene ",
+ Cell[BoxData["\[Xi]"]],
+ ". Si ",
+ Cell[BoxData["N"]],
+ " es suficientemente grande, la distribuci\[OAcute]n de la suma ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["\[Rho]", "N"], "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      SubscriptBox["\[Xi]", "1"], "+", 
+      SubscriptBox["\[Xi]", "2"], "+"}], "..."}], "+", 
+    SubscriptBox["\[Xi]", "N"]}]}]]],
+ " ser\[AAcute], seg\[UAcute]n el teorema del l\[IAcute]mite central, una \
+distribuci\[OAcute]n aproximadamente normal con media y varianza ",
+ Cell[BoxData[
+  RowBox[{"N", " ", "a"}]]],
+ " y ",
+ Cell[BoxData[
+  RowBox[{"N", " ", 
+   SuperscriptBox["\[Sigma]", "2"]}]]],
+ ". Se deduce que"
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"N", " ", "a"}], "-", 
+      RowBox[{"3", "\[Sigma]", " ", 
+       SqrtBox["N"]}]}], "<", 
+     SubscriptBox["\[Rho]", "N"], "<", 
+     RowBox[{
+      RowBox[{"N", " ", "a"}], "+", 
+      RowBox[{"3", "\[Sigma]", " ", 
+       SqrtBox["N"]}]}]}], ")"}]}], "\[TildeTilde]", 
+  "0.997"}]], "NumberedEquation"],
+
+Cell[TextData[{
+ "Si dividimos entre ",
+ Cell[BoxData["N"]],
+ " la desigualdad que est\[AAcute] en el lado izquierdo de la \
+expresi\[OAcute]n anterior obtendremos una desigualdad equivalente y la \
+probabilidad continuar\[AAcute] siendo la misma,"
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", 
+   RowBox[{"(", " ", 
+    RowBox[{
+     RowBox[{"a", "-", 
+      FractionBox[
+       RowBox[{"3", "\[Sigma]"}], 
+       SqrtBox["N"]]}], "<", 
+     FractionBox[
+      SubscriptBox["\[Rho]", "N"], "N"], "<", 
+     RowBox[{"a", "+", 
+      FractionBox[
+       RowBox[{"3", "\[Sigma]"}], 
+       SqrtBox["N"]]}]}], ")"}]}], "\[TildeTilde]", 
+  "0.997"}]], "NumberedEquation"],
+
+Cell["\<\
+Podemos representar este \[UAcute]ltimo resultado en la siguiente forma\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"P", 
+   RowBox[{"(", " ", 
+    RowBox[{"|", 
+     RowBox[{
+      RowBox[{
+       FractionBox["1", "N"], 
+       RowBox[{
+        UnderoverscriptBox["\[Sum]", 
+         RowBox[{"j", "=", "1"}], "N"], 
+        SubscriptBox["\[Xi]", "j"]}]}], "-", "a"}], "|", 
+     RowBox[{"<", 
+      FractionBox[
+       RowBox[{"3", "\[Sigma]"}], 
+       SqrtBox["N"]]}]}], ")"}]}], "\[TildeTilde]", 
+  "0.997"}]], "NumberedEquation"],
+
+Cell[TextData[{
+ "Esta es una relaci\[OAcute]n de suma importancia para el m\[EAcute]todo de \
+Monte Carlo. Ofrece un m\[EAcute]todo de calcular ",
+ Cell[BoxData["a"]],
+ " y a la vez permite estimar el error."
+}], "Text"],
+
+Cell[TextData[{
+ "En efecto, determinemos ",
+ Cell[BoxData["N"]],
+ " valores de la variable aleatoria ",
+ Cell[BoxData["\[Xi]"]],
+ " (que es lo mismo que determinar un valor de cada una de las variables ",
+ Cell[BoxData[
+  RowBox[{
+   SubscriptBox["\[Xi]", "1"], ",", " ", 
+   SubscriptBox["\[Xi]", "2"], ",", "...", ",", 
+   SubscriptBox["\[Xi]", "N"]}]]],
+ ", ya que todas estas variables aleatorias son id\[EAcute]nticas y tienen la \
+misma distribuci\[OAcute]n que ",
+ Cell[BoxData["\[Xi]"]],
+ "). Entonces, seg\[UAcute]n la f\[OAcute]rmula anterior la media aritm\
+\[EAcute]tica de estos valores ser\[AAcute] igual aproximadamente a ",
+ Cell[BoxData["a"]],
+ ". Con una elevada probabilidad podemos afirmar que el error de esta \
+aproximaci\[OAcute]n no pasa de ",
+ Cell[BoxData[
+  RowBox[{"3", 
+   RowBox[{"b", "/", 
+    SqrtBox["N"]}]}]]],
+ ". El error tiende a cero cuando ",
+ Cell[BoxData["N"]],
+ " crece."
+}], "Text"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["", "Subsection"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Proposito", "Section",
+ CellChangeTimes->{{3.466895173603306*^9, 3.466895178065485*^9}}],
+
+Cell["\<\
+El proposito de este tutorial es calcular el valor de \[Pi] usando el m\
+\[EAcute]todo de Monte Carlo.\
+\>", "Text"],
+
+Cell[TextData[Cell[GraphicsData["PostScript", "\<\
+%!
+%%Creator: Mathematica
+%%AspectRatio: 1 
+MathPictureStart
+/Mabs {
+Mgmatrix idtransform
+Mtmatrix dtransform
+} bind def
+/Mabsadd { Mabs
+3 -1 roll add
+3 1 roll add
+exch } bind def
+%% Graphics
+%%IncludeResource: font Courier
+%%IncludeFont: Courier
+/Courier findfont 10  scalefont  setfont
+% Scaling calculations
+0.0238095 0.952381 0.0238095 0.952381 [
+[ 0 0 0 0 ]
+[ 1 1 0 0 ]
+] MathScale
+% Start of Graphics
+1 setlinecap
+1 setlinejoin
+newpath
+0 0 m
+1 0 L
+1 1 L
+0 1 L
+closepath
+clip
+newpath
+.8 g
+.02381 .02381 m
+.02381 .02381 .95238 0 90 arc
+F
+0 g
+.5 Mabswid
+[ ] 0 setdash
+.02381 .02381 m
+.02381 .97619 L
+.97619 .97619 L
+.97619 .02381 L
+.02381 .02381 L
+s
+.025 w
+.04241 .06528 Mdot
+.85999 .60146 Mdot
+.76419 .4437 Mdot
+.65244 .03607 Mdot
+.73373 .09896 Mdot
+.27455 .65171 Mdot
+.46263 .13861 Mdot
+.6687 .25065 Mdot
+.92852 .60506 Mdot
+.9455 .26613 Mdot
+.81207 .75659 Mdot
+.83158 .6336 Mdot
+.79347 .71511 Mdot
+.94779 .05595 Mdot
+.0531 .29522 Mdot
+.31916 .04369 Mdot
+.29555 .22008 Mdot
+.06842 .36817 Mdot
+.80911 .10527 Mdot
+.37591 .14133 Mdot
+.85678 .4764 Mdot
+.4066 .8514 Mdot
+.06852 .69601 Mdot
+.55121 .24161 Mdot
+.25124 .95709 Mdot
+.57961 .20947 Mdot
+.22195 .68567 Mdot
+.28426 .18959 Mdot
+.90259 .48941 Mdot
+.23965 .79761 Mdot
+.11729 .40794 Mdot
+.83994 .68009 Mdot
+.2367 .90773 Mdot
+.45715 .80488 Mdot
+.19199 .23553 Mdot
+.88213 .58708 Mdot
+.91694 .25463 Mdot
+.32633 .40142 Mdot
+.7188 .54515 Mdot
+.06588 .23564 Mdot
+.7924 .07956 Mdot
+.80242 .41422 Mdot
+.69892 .64781 Mdot
+.93867 .71032 Mdot
+.48604 .71627 Mdot
+.50533 .88163 Mdot
+.31786 .50455 Mdot
+.59939 .31835 Mdot
+.37711 .27372 Mdot
+.29687 .89312 Mdot
+% End of Graphics
+MathPictureEnd
+\
+\>"], "Graphics",
+ Evaluatable->False,
+ PageBreakAbove->False,
+ ImageSize->{181, 181},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ ImageCache->GraphicsData["CompressedBitmap", "\<\
+eJy9mv1TVGUUx6/sRVl1VSQg32AFmwnEUppmELUhmsC3JDUzzV4IdcDEVMi0
+csISs5rJsnKa6dVf6pd+9c/gb6I9Z5fvc6+dlf2edWNmD8/eez/fc+55nvu8
+7X1ldHr8zOTo9MTYaH748ujF8YmxqfzQB5cLhzJLoih6IJ98JOX5QrFkHswX
+/gonHvEvln//yOX1iQNRRo7Mz83NySeaFKuH+vR78Wzpr/CtLLgjDcYOie0A
+d1YfRX8C/O/ZDCfba4idR7SEmNRVndg/Kw6lXs7cNwKoc7j9azEmTrqQ8iwC
+bedyNov8kOAtr8dPATYY6WrjxD5B+Mshu9EbTxZipMR140ay3ni+NsQ2cBJ/
+ly4vXhGVmszjuvwA7uwEB+4CuBKZJiX6Aeaqj2KVkek3OLHdhsR4TbOvfUNd
+4kQF7eH/YrYitVcddDfq1kNX57vHqMcrRUVK511EMeig30EGPPQ2+N5eVRQ9
+iGKHkZWB4llnZNMOOgbdhFKjEdmUQzuDe12L0gvwMvSYot2T9pJBbknteuOu
+m4xje9J5Us/dOBY7PJ8yvDRCsQteNJ/1nPYlQ7sL2nUokc34d0M2dujsRgBj
+3lB2IT+nE0EtgGRX9VA8Sxej03PFBXankZ33KtIzMvqbFJf5AqmMLT+nXjj2
+q0PnvoM5nU5hA0ePoSV46Op8nzGy1ufQ+UNstvaMPsDLa89oC1zBMaGXv+eg
+w6jjoYPvn6S0kqOtMeRHh84vYnO1Z3pxt9p+V3F0WCVsRs49OmHB0gHFoyit
+riqyTqNGDsOfR9ta2HwEf3p2Naf4laGYc+j8LHYNx9xA5E846BlkUmdKjV7f
+HvpzI2s6a1rL6dxzMNo3NHHM3cTdUuD3iSQ7PeqkUUtkd/hDIsmpy2OH2F2M
+h55Qws7l2+XGO3JsCputb0mp1RuPh7a2U98U+ySn852DuSN2Hcd8K3Y9x1xD
+hvS53MDRV1E7a6S00evbQ39s1I727Js4nW8cjG5RtnGMjiDttWduY1QqDXYU
+/SXo2EHfwhjh8a10DrS1LIxxllymzUJb76sBJVLnZjq7WW88N8uN5FafSe4n
+fCH2KY7RkXoF7obsrW6Ajh30TLreSfoKepFlUrLaHNnvh72Xfejflkqpi9N5
+GvR+KOraZas3ngNGn5dxKHYbOiNiezgd7YOfcTDNqO0Wjs4jF69DJ3botKNu
+jmFm4IknrEXXofRaubG7mdMOq+T1Rn0dEdvrjfYCarvULCkdaw09DG1dITal
+Mxo7vBzC/W+Gon5t9cY9ghi1/lugU77PqVj7VSMnbWhbD+mQ842LYvs4Rmu4
+v/bMpNhNyCQ5g3xfbBtqlqTPic17fU+I7TAYcg6tv3cOcMxZsYMco/s2L3GM
+7re+zDGdeEp0q32Iozvw1G6Bju5bDHuj6ISi/nq0j9PZYjyXQVtXPfs5RWsU
+1pXHQU7npNhDtWf0/YARjjku9jDHvJjO6lGOHkAt647fMa9v3ZU7ztGDRo3q
++zQnOB0dsU5yzEGxpzhG55Nh7XGEo/eK1X2Y2EFvQ6ZbpJTzRhF+ZS+7q0m2
+vxCZ9hNnOTrsa2eN1qCt6hynGHbcW6V03htPs5QucLS1p65P5SVO53mxUxzz
+nNgPOeZZsdc4Rt94uc4xuiab4ZjiCBIXr4uihQ+ponNB3SWIHbSuAML6nKT1
+CbP2zz9bRCf5Hu6jXtqNlvwLxgBj0w==\
+\>"],
+ ImageRangeCache->{{{0, 180}, {180, 0}} -> {0, 0, 0, 0}}]], "Text"],
+
+Cell[TextData[{
+ "Se generan al azar los puntos ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   RowBox[{"x", ",", "y"}], ")"}]]],
+ " en el cuadrado unitario. La frecuencia de los puntos que aparecen en la \
+regi\[OAcute]n de color gris nos dar\[AAcute] el valor de ",
+ Cell[BoxData[
+  RowBox[{"\[Pi]", "/", "4"}]]],
+ "."
+}], "Text"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+El m\[EAcute]todo de Monte Carlo - Soluci\[OAcute]n\
+\>", "Section"],
+
+Cell["\<\
+Hacemos una definici\[OAcute]n que nos sirva para obtener un punto aleatorio \
+cada vez que se invoque,\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"randPoint", ":=", 
+  RowBox[{"RandomReal", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}], ",", "2"}], "]"}]}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[TextData[{
+ "Un punto ",
+ Cell[BoxData[
+  RowBox[{"(", 
+   RowBox[{"x", ",", "y"}], ")"}]]],
+ " est\[AAcute] en el circulo unitario si ",
+ Cell[BoxData[
+  RowBox[{
+   SqrtBox[
+    RowBox[{
+     SuperscriptBox["x", "2"], "+", 
+     SuperscriptBox["y", "2"]}]], "\[LessEqual]", "1"}]]],
+ ". Esto lo probamos con"
+}], "Text"],
+
+Cell[BoxData[
+ RowBox[{"Plus", "@@", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"x", ",", "y"}], "}"}], "^", "2"}], ")"}]}]], "Input"],
+
+Cell["\<\
+Para la simulaci\[OAcute]n generamos repetidamente un punto aleatorio y \
+probamos si est\[AAcute] en el circulo unitario. Si est\[AAcute] actualizamos \
+un contador,\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"simulation", "[", "n_Integer", "]"}], ":=", "\[IndentingNewLine]", 
+  
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"in", "=", "0"}], ",", "pi"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Do", "[", 
+      RowBox[{
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Plus", "@@", 
+           RowBox[{"(", 
+            RowBox[{"randPoint", "^", "2"}], ")"}]}], "\[LessEqual]", "1"}], 
+         ",", 
+         RowBox[{"in", "++"}]}], "]"}], ",", 
+       RowBox[{"{", "n", "}"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"pi", "=", 
+      RowBox[{"4.0", " ", 
+       RowBox[{"in", "/", "n"}]}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"pi", ",", 
+       RowBox[{"Abs", "[", 
+        RowBox[{"\[Pi]", "-", "pi"}], "]"}]}], "}"}]}]}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
+ AspectRatioFixed->True],
+
+Cell[BoxData[
+ RowBox[{"simulation", "[", "1000", "]"}]], "Input"],
+
+Cell["\<\
+Mostramos en seguida una serie de simulaciones con n\[UAcute]mero creciente \
+de puntos y mostramos los resultados en forma tabular,\
+\>", "Text"],
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"#", ",", 
+       RowBox[{"simulation", "[", "#", "]"}]}], "}"}], "&"}], "/@", 
+    RowBox[{"(", 
+     RowBox[{"10", "^", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5"}], "}"}]}], 
+     ")"}]}], ",", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"None", ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<n\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{"\[Pi]", ",", "\"\<error\>\""}], "}"}]}], "}"}]}], "}"}]}], 
+   ",", 
+   RowBox[{"TableDepth", "\[Rule]", "2"}]}], "]"}]], "Input"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Referencias", "Section",
+ CellChangeTimes->{{3.4668952774195633`*^9, 3.466895279075124*^9}}],
+
+Cell[TextData[{
+ "S\[OAcute]bol I M 1983 ",
+ StyleBox["M\[EAcute]todo de Monte Carlo",
+  FontSlant->"Italic"],
+ " (Mosc\[UAcute]: Editorial MIR)."
+}], "Text"],
+
+Cell[TextData[{
+ ButtonBox["\[FilledLeftTriangle]\[ThickSpace]\[ThickSpace]\[ThickSpace]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPagePrevious"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowPrevSlideText"]],
+ "\[ThickSpace]\[ThickSpace]|\[ThickSpace]\[ThickSpace]",
+ ButtonBox["\[ThickSpace]\[ThickSpace]\[ThickSpace]\[FilledRightTriangle]",
+  BaseStyle->"SlidePreviousNextLink",
+  Appearance->{Automatic, None},
+  ButtonFunction:>FrontEndExecute[{
+     FrontEndToken[
+      FrontEnd`ButtonNotebook[], "ScrollPageNext"]}],
+  ButtonNote->FEPrivate`FrontEndResource[
+   "FEStrings", "SlideshowNextSlideText"]]
+}], "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"SlideShow",
+WindowSize->{905, 558},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "SlideShowHeader"->{
+  Cell[567, 22, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[18129, 625, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[23304, 813, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[27161, 950, 64, 1, 4, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"SlideShowHeader", 28653, 998}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[656, 27, 116, 1, 113, "Section"],
+Cell[CellGroupData[{
+Cell[797, 32, 52, 0, 58, "Subsection"],
+Cell[852, 34, 349, 10, 102, "Text"],
+Cell[1204, 46, 428, 16, 48, "NumberedEquation"],
+Cell[1635, 64, 678, 18, 131, "Text"],
+Cell[2316, 84, 233, 8, 43, "NumberedEquation"],
+Cell[2552, 94, 690, 21, 131, "Text"],
+Cell[3245, 117, 87, 2, 44, "Text"],
+Cell[3335, 121, 461, 12, 47, "NumberedEquation"],
+Cell[3799, 135, 51, 0, 44, "Text"],
+Cell[3853, 137, 315, 10, 40, "NumberedEquation"],
+Cell[4171, 149, 860, 24, 160, "Text"],
+Cell[5034, 175, 219, 4, 102, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[5290, 184, 56, 0, 44, "Subsection"],
+Cell[5349, 186, 233, 4, 102, "Text"],
+Cell[5585, 192, 456, 12, 131, "Text"],
+Cell[6044, 206, 1289, 41, 51, "NumberedEquation"],
+Cell[7336, 249, 131, 5, 44, "Text"],
+Cell[7470, 256, 241, 8, 22, "NumberedEquation"],
+Cell[7714, 266, 25, 0, 44, "Text"],
+Cell[7742, 268, 892, 26, 51, "NumberedEquation"],
+Cell[8637, 296, 222, 8, 44, "Text"],
+Cell[8862, 306, 1028, 30, 31, "NumberedEquation"],
+Cell[9893, 338, 353, 14, 80, "Text"],
+Cell[10249, 354, 602, 22, 55, "NumberedEquation"],
+Cell[10854, 378, 242, 8, 73, "Text"],
+Cell[11099, 388, 348, 11, 40, "NumberedEquation"],
+Cell[11450, 401, 230, 6, 73, "Text"],
+Cell[11683, 409, 447, 11, 131, "Text"],
+Cell[12133, 422, 573, 9, 218, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[12743, 436, 79, 2, 45, "Subsection"],
+Cell[12825, 440, 644, 21, 112, "Text"],
+Cell[13472, 463, 962, 32, 163, "Text"],
+Cell[14437, 497, 404, 14, 28, "NumberedEquation"],
+Cell[14844, 513, 260, 6, 102, "Text"],
+Cell[15107, 521, 412, 15, 45, "NumberedEquation"],
+Cell[15522, 538, 95, 2, 44, "Text"],
+Cell[15620, 542, 452, 16, 59, "NumberedEquation"],
+Cell[16075, 560, 221, 5, 73, "Text"],
+Cell[16299, 567, 926, 26, 229, "Text"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[17262, 598, 22, 0, 44, "Subsection"],
+Cell[17287, 600, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18129, 625, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[18218, 630, 94, 1, 113, "Section"],
+Cell[18315, 633, 126, 3, 73, "Text"],
+Cell[18444, 638, 3703, 137, 201, "Text"],
+Cell[22150, 777, 321, 10, 73, "Text"],
+Cell[22474, 789, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23304, 813, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[23393, 818, 78, 2, 113, "Section"],
+Cell[23474, 822, 127, 3, 73, "Text"],
+Cell[23604, 827, 195, 6, 47, "Input"],
+Cell[23802, 835, 327, 13, 92, "Text"],
+Cell[24132, 850, 151, 5, 47, "Input"],
+Cell[24286, 857, 190, 4, 73, "Text"],
+Cell[24479, 863, 963, 30, 198, "Input"],
+Cell[25445, 895, 66, 1, 47, "Input"],
+Cell[25514, 898, 156, 3, 73, "Text"],
+Cell[25673, 903, 655, 21, 108, "Input"],
+Cell[26331, 926, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27161, 950, 64, 1, 4, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[27250, 955, 98, 1, 113, "Section"],
+Cell[27351, 958, 158, 5, 44, "Text"],
+Cell[27512, 965, 781, 18, 40, "PreviousNext"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
