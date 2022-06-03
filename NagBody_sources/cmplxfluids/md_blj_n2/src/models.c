@@ -949,6 +949,9 @@ local void testdata_sp_06(void)						// FCC structure default ...
 
     cpustart = cputime();                       
 
+    fprintf(stdout,"\nFCC-IC - creating IC : \n\n");
+    fflush(stdout);
+
 	fprintf(gd.outlog,
 		"\ntestdata_sp_06: Simple parallelepiped box : smaller cubic boxes (FCC)\n");
 
@@ -966,6 +969,7 @@ local void testdata_sp_06(void)						// FCC structure default ...
 	fprintf(stdout,"\nSimulation box : %g %g %g", 
 		gdforce.Box[0], gdforce.Box[1], gdforce.Box[2]);
 	fprintf(stdout,"\nUnit cell (Gap) : %g %g %g", gap[0], gap[1], gap[2]);
+    fflush(stdout);
 #else
 	fprintf(stdout,"\nSimulation box : %g %g", gdforce.Box[0], gdforce.Box[1]);
 	fprintf(stdout,"\nUnit cel (Gap) : %g %g",gap[0],gap[1]);
@@ -1089,6 +1093,7 @@ local void testdata_sp_06(void)						// FCC structure default ...
 #endif
 
     fprintf(stdout,"\nFCC-IC - cpu time : %g\n\n", cputime() - cpustart);
+    fflush(stdout);
 } // End icModel 6
 
 local void MinimumDistanceBBodies(real lmax)			// CHECK 2D --- OK!!!

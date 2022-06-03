@@ -23,10 +23,7 @@
 	and he disclaims all liability from any consequences arising from their	use.
 ==============================================================================*/
 
-//#include <stdio.h>
-//#include <stddef.h>
-//#include <stdlib.h>
-//#include <math.h>
+#include "globaldefs.h"
 
 #include "stdinc.h"
 #include "vectmath.h"
@@ -131,8 +128,6 @@ void out_vector(stream str, vector vec)
         error("out_vector: fprintf failed\n");
 #endif
 }
-
-
 
 // ------------[	inout mar definitions	 		]------------
 
@@ -274,7 +269,7 @@ void in_vector_ndim(stream str, double *vec, int ndim)
 
 
 // Routines for binary gdgt in/out
-/*
+//
 size_t my_fread(void *ptr, size_t size, size_t nmemb, FILE *stream)
 {
   size_t nread;
@@ -300,7 +295,6 @@ size_t my_fwrite(void *ptr, size_t size, size_t nmemb, FILE *stream)
     }
   return nwritten;
 }
-*/
 
 // Pasar todas las invocaciones de "my_fread" y "my_fwrite" 
 // a "gdgt_fread" y "gdgt_fwrite" respectivamente.

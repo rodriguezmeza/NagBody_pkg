@@ -66,8 +66,11 @@
 #include "lic.h"
 #endif
 
-#include "protodefs.h"
+#if !defined(global)
+#  define global extern
+#endif
 
+#include "protodefs.h"
 
 typedef struct {										// CHECK 2D --- OK!!!
 	string paramfile;
@@ -479,6 +482,14 @@ global TBufdPressAcf *tBufdPAcf;
 global TBuf *tBuf;
 global TBufCorr *tBufC;
 //
+
+// To work with gcc11  :: Error found: duplicate symbol '_inout_xval' in:
+global long idum;                // seed for random generators
+
+global real *inout_xval;
+global real *inout_yval;
+global real *inout_zval;
+global real *inout_wval;
 
 #endif /* ! _globaldefs_h */
 

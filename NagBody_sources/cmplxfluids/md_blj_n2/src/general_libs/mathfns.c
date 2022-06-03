@@ -2,6 +2,8 @@
 // Incluido por haber puesto las funciones de bessel abajo ...
 //#include <math.h>
 
+#include "globaldefs.h"
+
 #include "machines.h"
 
 #include "stdinc.h"

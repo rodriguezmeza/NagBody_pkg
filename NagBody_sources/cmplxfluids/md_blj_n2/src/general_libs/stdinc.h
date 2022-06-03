@@ -10,7 +10,7 @@
 
 //long idum;                // seed for random generators
 // To work with gcc11 :: Error found: duplicate symbol '_idum' in:
-static long idum;                // seed for random generators
+//static long idum;                // seed for random generators
 
 #if !defined(NULL)
 #define NULL 0L
