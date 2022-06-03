@@ -16,4 +16,7 @@ module powmes_common
   integer, allocatable, dimension(:) :: wavenum
   integer, allocatable, dimension(:,:) :: waven
   real(kind=8), allocatable, dimension(:,:) :: pow,powdebiased,nmod,staterr
+! Mar ::
+  real(kind=4) :: LboxCommon
+!
 end module powmes_common

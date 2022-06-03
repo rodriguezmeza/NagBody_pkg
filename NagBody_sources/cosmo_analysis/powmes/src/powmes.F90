@@ -368,6 +368,9 @@ subroutine default
   filepower_fold='powspec'
   filetaylor='taylor'
   shift=0.0d0
+! Mar:
+  LboxCommon=1.0d0
+!
 end subroutine default
 
 !=======================================================================
@@ -379,8 +382,10 @@ subroutine input_parms
   character*255 argument
   integer, parameter :: lsin=15
 
+! Mar
   namelist/input/verbose,megaverbose,filein,nfile,nmpi,nfoldpow,ngrid, &
- &               norder,filepower,filepower_fold,filetaylor,shift,read_mass
+ &               norder,filepower,filepower_fold,filetaylor,shift,read_mass,LboxCommon
+! &               norder,filepower,filepower_fold,filetaylor,shift,read_mass
 
   if (iargc() == 1) then
      call getarg(1,config)
@@ -587,6 +592,9 @@ subroutine read_part
   do ipar=1,npart
      pos(1:3,ipar)=pos(1:3,ipar)*(TWOPI/Lbox)
   enddo
+! Mar ::
+!    LboxCommon = Lbox
+!
 end subroutine read_part
 
 !=======================================================================
@@ -652,6 +660,9 @@ end subroutine read_binary
 subroutine output_results
 !=======================================================================
   use powmes_common
+! Mar ::
+  use twopidef
+!
   implicit none
 
   integer :: ifold,k
@@ -660,9 +671,21 @@ subroutine output_results
 
   if (verbose) write(*,*) 'Output '//trim(filepower)
   open(file=filepower,form='formatted',status='unknown',unit=lunit,err=1)
+!
+! Mar:
+  write(lunit,'(a)') '# wave num; nmodes; power; powerdebiased; shotnoisefack; staterror, wntwopi/L, (pdebias-W/npart)'
+  write(lunit,'(a)') '# ... (pdebias-W/npart)*L**3'
+  write(lunit,'(a)') '# <1>; <2>; <3>; <4>; <5>; <6>; <7>; <8>; <9>'
+!
   do k=0,nkmax
-     write(lunit,'(I12,E25.16,E25.16,E25.16,E25.16,E25.16)') &
-          & wavenum(k),nmodes(k),power(k),powerdebiased(k),shotnoisefac(k),staterror(k)
+! Mar
+!     write(lunit,'(I12,E25.16,E25.16,E25.16,E25.16,E25.16)') &
+!          & wavenum(k),nmodes(k),power(k),powerdebiased(k),shotnoisefac(k),staterror(k)
+     write(lunit,'(I12,E25.16,E25.16,E25.16,E25.16,E25.16,E25.16,E25.16,E25.16)') &
+          & wavenum(k),nmodes(k),power(k),powerdebiased(k),shotnoisefac(k),staterror(k), &
+          & wavenum(k) * TWOPI/LboxCommon, (powerdebiased(k)-shotnoisefac(k)/npart), &
+          & (powerdebiased(k)-shotnoisefac(k)/npart)*LboxCommon**3
+!
   enddo
   close(lunit)
   
