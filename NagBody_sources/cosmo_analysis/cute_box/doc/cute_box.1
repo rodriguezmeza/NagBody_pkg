@@ -1,30 +1,49 @@
 't" t
-.TH powmes 1 "January 2019" UNIX "NagBody PROJECT"
+.TH cut_box 1 "January 2022" UNIX "NagBody PROJECT"
 .na
 .nh   
 
 .SH NAME
-powmes - measures the power spectrum in a 3D simulation using Fourier Taylor expansion of some order on the cosine and sine transforms.
+cute_box - compute 2-point correlation function of a cosmological point distributions.
 .SH SYNOPSIS
 \fBpowmes\fR
 .sp
 
 .SH DESCRIPTION
-\fBpowmes\fR - measures the power spectrum in a 3D simulation using Fourier Taylor expansion of some order on the cosine and sine transforms.
+\fBcute_box\fR - CUTE_box provides a set of tools to calculate 2-point correlation functions of cosmological point distributions. For the periodic-box case a homogeneous and isotropic distribution is assumed, and therefore only the monopole correlation function is supported (i.e.: particles are correlated according to their three-dimensional relative distance r)..
 
 
 .SH OPTIONS
-See documentation in doc/cola/powmes directory.
+See documentation in doc/ directory.
 .sp
 
 .SH EXAMPLES
-See documentation in doc/cola/powmes directory.
+See documentation in doc/ directory.
+
+.sp
+In data.dat there is a configuration space sample. Can be visualized with
+.sp
+
+$ nplot2d in=data.dat plotjoined=0  ws=1
+.sp
+
+Correlation can be done:
+.sp
+
+$ cute_box params.txt
+
+.sp
+For a gadget input (check the params_cola_064.txt for details):
+.sp
+
+$ cute_box params_cola_064.txt
+$ nplot2d in=corr128_cola_064.dat
 
 .SH SEE ALSO
-camb(1), class(1), ngenic(1) and mglpicola(1)
+powmes(1), mglpicola: fof, pk and rsd(1), TreeCorr(1) and nplot2d(1)
 
 .SH COPYRIGHT
-Copyright (C) 1999-2019
+Copyright (C) 1999-2022 of the NagBody structure
 .br
 Mario A. Rodriguez-Meza
 .br

@@ -22,7 +22,7 @@ all: $(TARGETS)
 OBJS = rsd_main.c
 
 # DEPENDENCIES
-main.o		: rsd_main.c io_gadget.h Makefile
+main.o		: rsd_main.c global.h io_gadget.h Makefile
 
 # HEADERS
 HEADERS = io_gadget.h

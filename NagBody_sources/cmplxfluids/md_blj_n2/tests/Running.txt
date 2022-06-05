@@ -1,90 +1,25 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+Try (assuming you compile your code having define NDIM=3)
 
-md_blj_n2 icModel=6 nbodyprop=1/1 o=snap d=0.8 tstop=1000 > output &
+md_blj_n2 icModel=6 nbodyprop=2/2 o=snap d=0.8 tstop=1000 > output &
+nplot2d in=thermo.dat uc=2:4
 echo > stop
 nplot2d in=thermo.dat uc=2:4
 md_blj_n2 restorefile=stop-state t=1.5 > output &
+nplot2d in=thermo.dat uc=2:4
+
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
+
+analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type
+
+
+Try (assuming you compile your code having define NDIM=2)
+
+md_blj_n2 icModel=6 nbodyprop=1/1 o=snap d=0.8 tstop=1000 > output &
+nplot2d in=thermo.dat uc=2:4
 echo > stop
 nplot2d in=thermo.dat uc=2:4
-md_blj_n2 restorefile=stop-state t=0.5 > output &
-echo > stop
+md_blj_n2 restorefile=stop-state t=1.5 > output &
 nplot2d in=thermo.dat uc=2:4
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true 
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-echo > stop
-md_blj_n2 restorefile=stop-state t=0.1 > output &
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-echo > stop
-md_blj_n2 restorefile=stop-state t=1 > output &
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-echo > stop
-
-md_blj_n2 icModel=6 nbodyprop=1/1 o=snap d=0.5 tstop=1000 > output &
-analysis_md in=snap xr=-5:5 yr=-5:5 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-5:5 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-echo > stop
-md_blj_n2 restorefile=stop-state t=0.1 > output &
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type
-echo > stop
-md_blj_n2 restorefile=stop-state t=1. > output &
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-anim options=type
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-echo > stop
-md_blj_n2 restorefile=stop-state t=0.1 > output &
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=200
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
-
-
-md_blj_n2 uC=10:10 nbodyprop=1/1 o=snap tstop=1000 > output &
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
-echo > stop
-md_blj_n2 restorefile=stop-state t=1. > output &
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
-echo > stop
-md_blj_n2 restorefile=stop-state t=0.1 > output &
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
-analysis_md in=snap xr=-8:8 yr=-10:10 at=snap-animtrajectory options=type withsymbols=false wd=true fsnap=500
-echo > stop
-
-Copy all lines below and paste in the terminal:
-md_blj_n2 uC=20:20 nbodyprop=1/1 o=snap tstop=1000 > output &
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5
-echo > stop
-md_blj_n2 restorefile=stop-state t=0.1 > output &
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-anim
-echo > stop
-md_blj_n2 restorefile=stop-state t=1.0 > output &
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-anim
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=snap-anim
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=snap-anim
-echo > stop
-md_blj_n2 restorefile=stop-state t=1.0 > output &
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory withsymbols=false wd=true
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=snap-animtrajectory withsymbols=false wd=true
-echo > stop
-
-md_blj_n2 uC=20:20 nbodyprop=1/1 o=snap tstop=1000 > output &
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=bodies-anim bodiesID=1,2,3
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=bodies-anim bodiesID=1,2,3
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=100 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3 withsymbols=false wd=true
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3,5,6,7,8 withsymbols=false wd=true
-analysis_md in=snap xr=-18:18 yr=-18:18 fsnap=500 symbolsize=0.5 options=type at=bodies-animtrajectory bodiesID=1,2,3,5,6,7,8 withsymbols=false wd=true
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 STOPPING THE CODE

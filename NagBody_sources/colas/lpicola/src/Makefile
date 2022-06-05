@@ -20,6 +20,10 @@ OPTIMIZE  = -O3 -Wall
 MEMORY_MODE = -DMEMORY_MODE             # Save memory by making sure to allocate and deallocate arrays only when we need them
 OPTIONS += $(MEMORY_MODE)               # and by making the particle data single precision
 
+# Mar :: commented to not use an extra 8 bytes to the storage:: Is commented in the original
+# Be aware of the kind of input needed by rockstar, gadget itself (gdgt_read_snapshot) and gadgetviewer or powmes
+# gadgetviewer can not read without unsigned long long ID's, but powmes can. And rockstar can not.
+#
 PARTICLE_ID = -DPARTICLE_ID             # Assigns unsigned long long ID's to each particle and outputs them. This adds
 OPTIONS += $(PARTICLE_ID)               # an extra 8 bytes to the storage required for each particle
 

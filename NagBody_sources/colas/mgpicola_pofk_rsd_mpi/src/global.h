@@ -13,8 +13,8 @@
 // If positions are in Mpc/h then 1.0
 // If kpc/h then use 1000.0
 //====================================
-//#define MPC_UNIT 1.0
-#define MPC_UNIT 1000.0
+#define MPC_UNIT 1.0
+//#define MPC_UNIT 1000.0
 
 //==============================================
 // Types used for the arrays. If one wants to use 
