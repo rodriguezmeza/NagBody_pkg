@@ -97,8 +97,7 @@ mcmc
 
 
 nagbody_plplots
-1. nplot2d		: plotting code (2D plots, data in columns format)
-2. nxls			: basic operation on the columns of data files. Under development. Not ready yet.
+1. nplot2d		: plotting code (2D plots, data in columns format) and simple operations on columns.
 
 
 perturbations (Mario A. Rodr’guez-Meza and Alejadro Aviles)

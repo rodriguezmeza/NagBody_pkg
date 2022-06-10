@@ -598,7 +598,7 @@ Other posible values for the parameters are:
 	R_pgs = 1.0;
 */
 
-	real rsen,Mtotal,mass_i,omega_0; 
+	real rsen,Mtotal=1.0,mass_i,omega_0;
 	real rphi,rtheta,r;
 	int np;
 	bodyptr p;
@@ -964,7 +964,7 @@ local void UniformCubicBox_model(void)
 	real rphi,rtheta,r;
 	int np;
 	bodyptr p;
-        real absvel;
+    real absvel=1.0;
 
 	strcpy(gd.model_comment, "Uniform cubic box model");
 

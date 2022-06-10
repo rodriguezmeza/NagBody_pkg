@@ -133,6 +133,7 @@ void InputData(void)
 			Mass(q) = Mass(p);
 			Type(q) = Type(p);
             Id(q) = Id(p);
+            NBodies(q) = NBodies(p);
 			for (k=0; k<NDIM; k++) {
 				Pos(q)[k] = Pos(p)[k];
 				Vel(q)[k] = Vel(p)[k];
@@ -152,6 +153,7 @@ void InputData(void)
 	cmd.nbody=tnbodies;
     bodytab = (bodyptr) allocate(tnbodies * sizeof(body));
 
+// These is useful for HDB galaxies
     real hMass, dMass, bMass, tMass;
     vector rcmH, rcmD, rcmB;
     vector vcmH, vcmD, vcmB;
@@ -172,6 +174,8 @@ void InputData(void)
 		DO_BODY(p, btab[ifile], btab[ifile]+nbodies[ifile]) {
 			Mass(q) = Mass(p);
 			Type(q) = Type(p);
+            Id(q) = Id(p);
+            NBodies(q) = NBodies(p);
             if (Type(p)==1) {
                 hType++;
                 hMass += Mass(p);
@@ -246,17 +250,22 @@ void InputData(void)
         }
     }
 
-    fprintf(stdout,"\nNumber and mass of DM type = %d %g\n",hType, hMass);
-    fprintf(stdout,"Number and mass of Disk type = %d %g\n",dType, dMass);
-    fprintf(stdout,"Number and mass of Bulge type = %d %g\n",bType, bMass);
-    fprintf(stdout,"DM CM Pos and Vel : %g %g %g %g %g %g\n",
-            rcmH[0],rcmH[1],rcmH[2], vcmH[0], vcmH[1], vcmH[2]);
-    fprintf(stdout,"Disk CM Pos and Vel : %g %g %g %g %g %g\n",
-        rcmD[0],rcmD[1],rcmD[2], vcmD[0], vcmD[1], vcmD[2]);
-    fprintf(stdout,"Bulge CM Pos and Vel : %g %g %g %g %g %g\n",
-        rcmB[0],rcmB[1],rcmB[2], vcmB[0], vcmB[1], vcmB[2]);
-    fprintf(stdout,"Total CM Pos and Vel : %g %g %g %g %g %g\n",
-        rcm[0],rcm[1],rcm[2], vcm[0], vcm[1], vcm[2]);
+    if (scanopt(cmd.options, "fix-CM-HDB")) {
+        fprintf(stdout,"\nNumber and mass of DM type = %d %g\n",hType, hMass);
+        fprintf(stdout,"Number and mass of Disk type = %d %g\n",dType, dMass);
+        fprintf(stdout,"Number and mass of Bulge type = %d %g\n",bType, bMass);
+    }
+
+    if (scanopt(cmd.options, "fix-CM")) {
+        fprintf(stdout,"DM CM Pos and Vel : %g %g %g %g %g %g\n",
+                rcmH[0],rcmH[1],rcmH[2], vcmH[0], vcmH[1], vcmH[2]);
+        fprintf(stdout,"Disk CM Pos and Vel : %g %g %g %g %g %g\n",
+                rcmD[0],rcmD[1],rcmD[2], vcmD[0], vcmD[1], vcmD[2]);
+        fprintf(stdout,"Bulge CM Pos and Vel : %g %g %g %g %g %g\n",
+                rcmB[0],rcmB[1],rcmB[2], vcmB[0], vcmB[1], vcmB[2]);
+        fprintf(stdout,"Total CM Pos and Vel : %g %g %g %g %g %g\n",
+                rcm[0],rcm[1],rcm[2], vcm[0], vcm[1], vcm[2]);
+    }
 }
 
 // Inputdata_gadget driver for SPECIAL 

@@ -285,7 +285,8 @@ local void ReadParameterFile(char *fname)
             if(sscanf(buf,"%s%s%s",buf1,buf2,buf3)<1)
 				continue;
             if(sscanf(buf,"%s%s%s",buf1,buf2,buf3)<2)
-                *buf2=(int) NULL;
+                *buf2= INTNULL;
+//            *buf2=(int) NULL;
             if(buf1[0]=='%')
 				continue;
             for(i=0,j=-1;i<nt;i++)

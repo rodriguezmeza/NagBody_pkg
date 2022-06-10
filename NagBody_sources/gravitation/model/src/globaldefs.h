@@ -37,24 +37,6 @@
 #include <sys/types.h>
 
 #include "switches.h"
-
-/*
-#ifndef NOGNU
-#include "./general_libs/stdinc.h"
-#include "./general_libs/vectdefs.h"
-#include "./general_libs/nagbody.h"
-#include "./general_libs/mathfns.h"
-#include "./general_libs/vectmath.h"
-#include "./general_libs/constant.h"
-#include "./general_libs/numrec.h"
-#include "./general_libs/mathutil.h"
-#include "./general_libs/inout.h"
-#include "./general_libs/getparam.h"
-#include "./general_libs/strings.h"
-#include "./general_libs/physconstants.h"
-#include "./general_libs/machines.h"
-#else
- */
 #include "stdinc.h"
 #include "vectdefs.h"
 #include "nagbody.h"
@@ -68,10 +50,7 @@
 #include "strings.h"
 #include "physconstants.h"
 #include "machines.h"
-//#endif
-
 #include "models.h"
-
 #include "protodefs.h"
 
 
@@ -159,6 +138,7 @@ global io_header_blj hdr;
 //local real *inout_zval;
 //local real *inout_wval;
 // Can not be local but global
+// Moved to inout.h and main
 global real *inout_xval;
 global real *inout_yval;
 global real *inout_zval;
@@ -167,13 +147,13 @@ global real *inout_wval;
 
 // STATIC problem: gcc version 11
 // From diffeqs.h
-local double dxsav,*xp,**yp;
-local int kmax,kount;
-local int nrhs;
+global double dxsav,*xp,**yp;
+global int kmax,kount;
+global int nrhs;
 
 // STATIC problem: gcc version 11
 // From stdinc.h
-local long idum;                // seed for random generators
+global long idum;                // seed for random generators
 
 #endif // !_globaldefs_h
 

@@ -27,7 +27,7 @@
 
 #include "stdinc.h"
 #include "mathfns.h"
-#include "inout.h"
+//#include "inout.h"
 #include "vectdefs.h"
 #include "vectmath.h"
 #include "nagbody.h"

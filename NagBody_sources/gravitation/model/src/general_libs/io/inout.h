@@ -103,4 +103,11 @@ void inout_InputData_3c(string filename, int col1, int col2, int col3,
 void inout_InputData_4c(string filename, int col1, int col2, int col3, int col4,
                         int *npts);
 
+void inout_InputData_1c_jump_header(string filename, int col2,
+                                    int nhlines, int *npts);
+void inout_InputData_3c_jump_header(string filename, int col1, int col2, int col3,
+                                    int nhlines, int *npts);
+void inout_InputData_4c_jump_header(string filename, int col1, int col2, int col3,
+                                    int col4, int nhlines, int *npts);
+
 #endif	// ! _inout_h

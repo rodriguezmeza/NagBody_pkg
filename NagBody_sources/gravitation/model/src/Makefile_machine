@@ -72,6 +72,11 @@ ifeq ($(MACHINE), MACBREW)
   OPTIMIZE = -O3
   OMPFLAG = -fopenmp
   CCFLAGS +=
+#  CCFLAGS += -W
+#  CCFLAGS += -Wall
+#  CCFLAGS += -Werror			# until the warning is solve you won't get error!
+#  CCFLAGS += -Wpointer-to-int-cast	# do not use this flag. It is better to receive warnings!
+#  CCFLAGS += -Wno-pointer-to-int-cast	# do not use this flag. It is better to receive warnings!
   LDFLAGS +=
   MLIBS = -lm
 endif

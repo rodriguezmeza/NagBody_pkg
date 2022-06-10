@@ -309,11 +309,13 @@ local string ParName(string arg)
     if (*ap == '<' || *ap == '>')
         ap++;
     strncpy(namebuf, ap, 63);
-    namebuf[63] = (char)NULL;
+//    namebuf[63] = (char)NULL;
+    namebuf[63] = CHARNULL;
     ep = strchr(namebuf, '=');
     if (ep == NULL)
         return (NULL);
-    *ep = (char)NULL;
+//    *ep = (char)NULL;
+    *ep = CHARNULL;
     return (namebuf);
 }
 

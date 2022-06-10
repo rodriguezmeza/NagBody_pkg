@@ -26,7 +26,6 @@
 ==============================================================================*/
 
 #include "globaldefs.h"
-
 #include "stdinc.h"
 #include "mathfns.h"
 #include "inout.h"
@@ -75,6 +74,8 @@ local void inputdata_gadget11_bin_double_reducido(char *, int, int *, int *,
 	realptr, bool *, char *, short);
 local void inputdata_gadget11_ascii_reducido(char *, int, int *, int *, 
 	realptr, bool *, char *, short);
+local void inputdata_bdmhalocatalog_ascii(char *, int, int *, int *, realptr,
+                                    bool *, char *);
 local void inputdata_rockstar_ascii(char *, int, int *, int *, realptr,
                                     bool *, char *);
 local void inputdata_heitmann_ascii(char *, int, int *, int *, realptr,
@@ -1237,6 +1238,11 @@ void inputdata(char *file, char *filefmt, char *outfmt, int step,
 			allocate_mode = 2;
 			inputdata_gadget11_bin_double(file, step, nbodies, ndim, tnow,
 			 exist_snap, options, allocate_mode); break;
+        case IO_BDMHALOCATALOG_FMT_ASCII:
+            printf("\nInput data bdmhalocatalog format\n");
+            inputdata_bdmhalocatalog_ascii(file, step, nbodies, ndim, tnow,
+                                     exist_snap, options);
+            break;
         case IO_ROCKSTAR_FMT_ASCII:
             printf("\nInput data rockstar format\n");
             inputdata_rockstar_ascii(file, step, nbodies, ndim, tnow,
@@ -1305,6 +1311,8 @@ local void infilefmt_string_to_int(string infmt_str,int *infmt_int)
 //
     if (strcmp(infmt_str,"gadget11-bin-double") == 0)
 		*infmt_int = IO_GADGET11_FMT_BIN_DOUBLE;
+    if (strcmp(infmt_str,"bdmhalocatalog") == 0)
+        *infmt_int = IO_BDMHALOCATALOG_FMT_ASCII;
     if (strcmp(infmt_str,"rockstar-ascii") == 0)
         *infmt_int = IO_ROCKSTAR_FMT_ASCII;
     if (strcmp(infmt_str,"heitmann-ascii") == 0)
@@ -1454,8 +1462,8 @@ local void inputdata_pvm(char *file, int step, int *nbody, int *ndim,
 	printf("nbody ndim tnow : %d %d %g\n", *nbody, *ndim, *tnow);
 
 	DO_BODY(p, bodytab, bodytab+*nbody) {
-//		in_int(instr, &Id(p));
-        Id(p) = bodytab - p +1;
+		in_int(instr, &Id(p));
+//        Id(p) = bodytab - p +1;
 //        in_real(instr, &Mass(p));
         in_vector(instr, Pos(p));               
         in_vector(instr, Vel(p));
@@ -1491,7 +1499,7 @@ local void inputdata_pv(char *file, int step, int *nbody, int *ndim,
     }
     
     printf("\n\nReading file in snap-pv format ...\n");
-    fgets(firstline,200,instr);
+//    fgets(firstline,200,instr);
     fscanf(instr,"%1s",gato);
     in_int(instr, nbody);
     if (*nbody < 1)
@@ -1506,9 +1514,10 @@ local void inputdata_pv(char *file, int step, int *nbody, int *ndim,
     
     DO_BODY(p, bodytab, bodytab+*nbody) {
         in_int(instr, &Id(p));
-        in_real(instr, &Mass(p));
+//        in_real(instr, &Mass(p));
         in_vector(instr, Pos(p));
         in_vector(instr, Vel(p));
+        in_real(instr, &Mass(p));
     }
     
     fclose(instr);
@@ -3065,6 +3074,175 @@ local void readin_header_reducido(FILE *fd)
     in_real(fd,&header_reducido.BoxSize);
 }
 
+// BDM Halo catalog (24 columns)
+// 8 lines must be jumped:
+// 1. N=2048x4096L=1024zi100da=4.00E-04f0.040
+// 2. A    =    0.47975 Step =    0.01025
+// 3. I    =     106 Nrow =    2048 Ngrid=    4096
+// 4. Omega_0=   0.3089 Omega_L=   0.0000 hubble =   0.6774 buffer width (Mpch) =                    5.0000
+// 5. Number of radial bins                =  100
+// 6. Mass of smallest particle (Msunh)    =   1.0711E+10
+// 7. Overdensity limit                    = 199.8078
+// 8. XYZ(Mpch)                          Vxyz(km/s)                  Mbound             (7)
+//      Mtot/Msunh    Rvir(kpch) Vrms(km/s) Vcirc(km/s)       Nhalo  Cvir               (13)
+//      Nparticles  Distinct/Sub   Xoff      2K/Ep-1   Lambda   RadRMS/k  b/a  c/a      (21)
+//      MajorAxis:  x      y      z
+//
+local void inputdata_bdmhalocatalog_ascii(char *file, int step, int *nbody, int *ndim,
+    realptr tnow, bool *exist_snap, char *options)
+{
+    char namebuf[256];
+    struct stat buf;
+    bodyptr p;
+    int tmpmem;
+    int i, j;
+    real mmin, mmax;
+    real massmin, massmax;
+    short mrangeflag=0;
+    int nbodyTotal;
+
+    sprintf(namebuf, file, step);
+    if (stat(namebuf, &buf) != 0) {
+        *exist_snap = FALSE;
+        return;
+    } else {
+        *exist_snap = TRUE;
+        fprintf(stdout,"\nReading snap from file %s...",namebuf);
+        inout_InputData(namebuf, 1, 2, nbody);
+    }
+
+    if (*nbody < 1)
+        error("inputdata_bdmhalocatalog_ascii: nbody = %d is absurd\n", *nbody);
+
+    if (!(sscanf(options, "%lf:%lf", &mmin, &mmax) == 2))
+        fprintf(stdout,"\nNot mass range given.\n");
+    else {
+        fprintf(stdout,"\nMass range given: %g, %g\n",mmin,mmax);
+        mrangeflag=1;
+    }
+
+// 12.5 < log10 M < 13 :: 3.16228e12 < log10 M < 1e13
+    fprintf(stdout,"\nFiltering (%d) bodies: %d\n", mrangeflag, *nbody);
+    inout_InputData_1c_jump_header(namebuf, 8, 8, nbody);
+    i=0;
+    massmin=inout_yval[i];
+    massmax=inout_yval[i];
+    for (j=0; j<*nbody; j++){
+        if (massmin>inout_yval[j]) massmin=inout_yval[j];
+        if (massmax<inout_yval[j]) massmax=inout_yval[j];
+        if (mrangeflag==1) {
+            if (mmin<inout_yval[j] && inout_yval[j]<mmax) {
+                ++i;
+            }
+        }else{
+            ++i;
+        }
+    }
+    
+    if (mrangeflag==1 && i==0)
+        error("\nNo particles to read. Exiting... range of masses in file: %g %g\n",massmin,massmax);
+        
+    fprintf(stdout,"\nAllocating memory for nbody: %d\n", i);
+    nbodyTotal = i;
+    tmpmem = i * sizeof(body);
+    bodytab = (bodyptr) allocate(tmpmem);
+
+// Reading masses as column 8
+    inout_InputData_1c_jump_header(namebuf, 8, 8, nbody);
+    fprintf(stdout,"Read mass of %d particles\n", *nbody);
+    i = 0;
+    p = bodytab;
+    for (j=0; j<*nbody; j++){
+        if (mrangeflag==1) {
+            if (mmin<inout_yval[j] && inout_yval[j]<mmax) {
+                Mass(p) = inout_yval[j];
+                ++i;
+                ++p;
+            }
+        } else {
+            Mass(p) = inout_yval[i];
+            ++i;
+            ++p;
+        }
+    }
+
+// Reading positions
+    inout_InputData_4c_jump_header(namebuf, 1, 2, 3, 8, 8, nbody);
+    fprintf(stdout,"Read positions of %d particles\n", *nbody);
+    i = 0;
+    p = bodytab;
+    for (j=0; j<*nbody; j++){
+        if (mrangeflag==1){
+            if (mmin<inout_wval[j] && inout_wval[j]<mmax) {
+                Pos(p)[0] = inout_xval[j];
+                Pos(p)[1] = inout_yval[j];
+                Pos(p)[2] = inout_zval[j];
+                ++i;
+                ++p;
+            }
+        } else {
+            Pos(p)[0] = inout_xval[j];
+            Pos(p)[1] = inout_yval[j];
+            Pos(p)[2] = inout_zval[j];
+            ++i;
+            ++p;
+        }
+    }
+
+// Reading velocities
+    inout_InputData_4c_jump_header(namebuf, 4, 5, 6, 8, 8, nbody);
+    fprintf(stdout,"Read velocities of %d particles\n", *nbody);
+    i = 0;
+    p = bodytab;
+    for (j=0; j<*nbody; j++){
+        if (mrangeflag==1) {
+            if (mmin<inout_wval[j] && inout_wval[j]<mmax) {
+                Vel(p)[0] = inout_xval[j];
+                Vel(p)[1] = inout_yval[j];
+                Vel(p)[2] = inout_zval[j];
+                ++p;
+                ++i;
+            }
+        } else {
+            Vel(p)[0] = inout_xval[j];
+            Vel(p)[1] = inout_yval[j];
+            Vel(p)[2] = inout_zval[j];
+            ++i;
+            ++p;
+        }
+    }
+
+// Reading Id, num_p
+    inout_InputData_3c_jump_header(namebuf, 12, 14, 8, 8, nbody);
+    fprintf(stdout,"Read Id and Nbodies of %d particles\n", *nbody);
+    i = 0;
+    p = bodytab;
+    for (j=0; j<*nbody; j++){
+        if (mrangeflag==1) {
+            if (mmin<inout_zval[j] && inout_zval[j]<mmax) {
+                Id(p) = inout_xval[j];
+                NBodies(p) = inout_yval[j];
+                ++i;
+                ++p;
+            }
+        } else {
+            Id(p) = (int)inout_xval[j];
+            NBodies(p) = (int)inout_yval[j];
+            ++i;
+            ++p;
+        }
+    }
+
+    DO_BODY(p, bodytab, bodytab+nbodyTotal) {
+        Type(p) = BODY;
+    }
+    
+    *nbody = nbodyTotal;
+
+    fprintf(stdout,"\nDone reading %d bodies.\n", *nbody);
+    fflush(stdout);
+}
+
 // Rockstar format are in columns:
 //
 // id num_p mvir mbound_vir rvir vmax rvmax vrms                (8)
@@ -3076,7 +3254,7 @@ local void readin_header_reducido(FILE *fd)
 // Rs Rs_Klypin T/|U| M_pe_Behroozi M_pe_Diemer Halfmass_Radius
 // idx i_so i_ph num_cp mmetric
 //
-// Tiene 16 lineas de header
+// Tiene 20 lineas de header
 //
 local void inputdata_rockstar_ascii(char *file, int step, int *nbody, int *ndim,
     realptr tnow, bool *exist_snap, char *options)
@@ -3085,7 +3263,15 @@ local void inputdata_rockstar_ascii(char *file, int step, int *nbody, int *ndim,
     struct stat buf;
     bodyptr p;
     int tmpmem;
-    int i;
+    int i, j;
+    real mmin=0.0, mmax;
+    real massmin, massmax;
+    short mrangeflag=0;
+    int nbodyTotal;
+    char optionstmp[200];
+    int ntokens;
+    char *tokenname[3];
+    char *pch;
 
     sprintf(namebuf, file, step);
     if (stat(namebuf, &buf) != 0) {
@@ -3093,67 +3279,179 @@ local void inputdata_rockstar_ascii(char *file, int step, int *nbody, int *ndim,
         return;
     } else {
         *exist_snap = TRUE;
-        fprintf(stdout,"\n\nReading snap from file %s...",namebuf);
+        fprintf(stdout,"\nReading snap from file %s...",namebuf);
         inout_InputData(namebuf, 1, 2, nbody);
     }
 
     if (*nbody < 1)
         error("inputdata_rockstar_ascii: nbody = %d is absurd\n", *nbody);
+// Splitting options string in tokens::
+    strcpy(optionstmp,options);
+    fprintf(stdout,"\nSplitting string \"%s\" in tokens:\n",optionstmp);
+    ntokens=0;
+    pch = strtok(optionstmp," :");
+    while (pch != NULL) {
+        tokenname[ntokens] = (string) malloc(100);
+        strcpy(tokenname[ntokens],pch);
+        ++ntokens;
+        fprintf(stdout,"%s\n",tokenname[ntokens-1]);
+        pch = strtok (NULL, " :");
+    }
+    fprintf(stdout,"num. of tokens in options %s =%d\n",options,ntokens);
+    if (ntokens!=3) {
+        fprintf(stdout,"\nNot mass range given.\n");
+        mrangeflag=0;
+    } else {
+//        fprintf(stdout,"\nMass range given: %s\n",options);
+        if (!strcmp(tokenname[0],"mr") || !strcmp(tokenname[0],"massrange")) {
+            mrangeflag=1;
+            mmin = atof(tokenname[1]);
+            mmax = atof(tokenname[2]);
+            fprintf(stdout,"\nMass range given (%s): %g, %g\n",tokenname[0],mmin,mmax);
+        }
+    }
 
-    tmpmem = *nbody * sizeof(body);
-    fprintf(stdout,"\n\nSize of body struct %ld; and total bytes reserved %ld\n",
-            sizeof(body),tmpmem);
-    printf("Allocating %ld bytes of memory for %d particles\n",
-        tmpmem, *nbody);
+//
+//    if (!(sscanf(options, "%s:%lf:%lf", string1, &mmin, &mmax) == 3)) {
+//        fprintf(stdout,"\nNot mass range given.\n");
+//        mrangeflag=0;
+//    } else {
+//        fprintf(stdout,"\nMass range given (%s): %g, %g\n",string1,mmin,mmax);
+//        mrangeflag=1;
+//    }
 
+// 12.5 < log10 M < 13 :: 3.16228e12 < log10 M < 1e13
+    fprintf(stdout,"\nFiltering (%d) bodies: %d\n", mrangeflag, *nbody);
+//    inout_InputData_1c(namebuf, 28, nbody);
+    inout_InputData_1c_jump_header(namebuf, 28, 20, nbody);
+//    fprintf(stdout,"\nReading nbody: %d\n", *nbody);
+    i=0;
+    massmin=inout_yval[i];
+    massmax=inout_yval[i];
+    for (j=0; j<*nbody; j++){
+        if (massmin>inout_yval[j]) massmin=inout_yval[j];
+        if (massmax<inout_yval[j]) massmax=inout_yval[j];
+        if (mrangeflag==1) {
+            if (mmin<inout_yval[j] && inout_yval[j]<mmax) {
+                ++i;
+            }
+        }else{
+            ++i;
+        }
+    }
+    
+    if (mrangeflag==1 && i==0)
+        error("\nNo particles to read. Exiting... range of masses in file: %g %g\n",massmin,massmax);
+        
+    fprintf(stdout,"\nAllocating memory for nbody: %d\n", i);
+    nbodyTotal = i;
+    tmpmem = i * sizeof(body);
     bodytab = (bodyptr) allocate(tmpmem);
 
-    fprintf(stdout,"\nbodytab, bodytab+nbody: %ld %ld\n", bodytab, bodytab + *nbody);
+// Reading masses as type m200c column 28
+//    inout_InputData_1c(namebuf, 28, nbody);
+    inout_InputData_1c_jump_header(namebuf, 28, 20, nbody);
+    fprintf(stdout,"Read mass of %d particles\n", *nbody);
+    i = 0;
+    p = bodytab;
+    for (j=0; j<*nbody; j++){
+        if (mrangeflag==1) {
+            if (mmin<inout_yval[j] && inout_yval[j]<mmax) {
+                Mass(p) = inout_yval[j];
+                ++i;
+                ++p;
+            }
+        } else {
+            Mass(p) = inout_yval[i];
+            ++i;
+            ++p;
+        }
+    }
 
 // Reading positions
-    inout_InputData_3c(namebuf, 9, 10, 11, nbody);
-    fprintf(stdout,"Read %d particles\n", *nbody);
-    fprintf(stdout,"Positions first particle: %g %g %g\n", inout_xval[1],inout_yval[1],inout_zval[1]);
-    fflush(stdout);
+//    inout_InputData_4c(namebuf, 9, 10, 11, 28, nbody);
+    inout_InputData_4c_jump_header(namebuf, 9, 10, 11, 28, 20, nbody);
+    fprintf(stdout,"Read positions of %d particles\n", *nbody);
+//    fprintf(stdout,"Positions first particle: %g %g %g\n", inout_xval[1],inout_yval[1],inout_zval[1]);
+//    fflush(stdout);
     i = 0;
-    DO_BODY(p, bodytab, bodytab+*nbody) {
-        Pos(p)[0] = inout_xval[i];
-        Pos(p)[1] = inout_yval[i];
-        Pos(p)[2] = inout_zval[i];
-        ++i;
+    p = bodytab;
+    for (j=0; j<*nbody; j++){
+        if (mrangeflag==1){
+            if (mmin<inout_wval[j] && inout_wval[j]<mmax) {
+                Pos(p)[0] = inout_xval[j];
+                Pos(p)[1] = inout_yval[j];
+                Pos(p)[2] = inout_zval[j];
+                ++i;
+                ++p;
+            }
+        } else {
+            Pos(p)[0] = inout_xval[j];
+            Pos(p)[1] = inout_yval[j];
+            Pos(p)[2] = inout_zval[j];
+            ++i;
+            ++p;
+        }
     }
 
 // Reading velocities
-        inout_InputData_3c(namebuf, 12, 13, 14, nbody);
-        i = 0;
-        DO_BODY(p, bodytab, bodytab+*nbody) {
-            Vel(p)[0] = inout_xval[i];
-            Vel(p)[1] = inout_yval[i];
-            Vel(p)[2] = inout_zval[i];
+// Two routines to read data jumping the header lines::
+//    inout_InputData_4c(namebuf, 12, 13, 14, 28, nbody);
+    inout_InputData_4c_jump_header(namebuf, 12, 13, 14, 28, 20, nbody);
+    fprintf(stdout,"Read velocities of %d particles\n", *nbody);
+    i = 0;
+    p = bodytab;
+    for (j=0; j<*nbody; j++){
+        if (mrangeflag==1) {
+            if (mmin<inout_wval[j] && inout_wval[j]<mmax) {
+                Vel(p)[0] = inout_xval[j];
+                Vel(p)[1] = inout_yval[j];
+                Vel(p)[2] = inout_zval[j];
+                ++p;
+                ++i;
+            }
+        } else {
+            Vel(p)[0] = inout_xval[j];
+            Vel(p)[1] = inout_yval[j];
+            Vel(p)[2] = inout_zval[j];
             ++i;
+            ++p;
         }
-        
+    }
+
 // Reading Id, num_p
-    inout_InputData(namebuf, 1, 2, nbody);
+//    inout_InputData_3c(namebuf, 1, 2, 28, nbody);
+    inout_InputData_3c_jump_header(namebuf, 1, 2, 28, 20, nbody);
+    fprintf(stdout,"Read Id and Nbodies of %d particles\n", *nbody);
     i = 0;
-    DO_BODY(p, bodytab, bodytab+*nbody) {
-        Id(p) = (int)inout_xval[i];
-        NBodies(p) = (int)inout_yval[i];
-        ++i;
+    p = bodytab;
+//    fprintf(stdout,"\nFirst Id, NBodies and mass read and total bodies: %g, %g %g %d",inout_xval[i],inout_yval[i],inout_zval[i],nbodyTotal);
+    for (j=0; j<*nbody; j++){
+        if (mrangeflag==1) {
+            if (mmin<inout_zval[j] && inout_zval[j]<mmax) {
+                Id(p) = inout_xval[j];
+                NBodies(p) = inout_yval[j];
+                ++i;
+                ++p;
+            }
+        } else {
+            Id(p) = (int)inout_xval[j];
+            NBodies(p) = (int)inout_yval[j];
+            ++i;
+            ++p;
+        }
     }
 
-// Reading masses as type m200c column 28
-    inout_InputData_1c(namebuf, 28, nbody);
-    i = 0;
-    DO_BODY(p, bodytab, bodytab+*nbody) {
-        Mass(p) = inout_xval[i];
-        ++i;
-    }
-
-    fprintf(stdout,"\nRead %d total particles, last Id %d\n",p-bodytab, Id(p-1));
-
-    DO_BODY(p, bodytab, bodytab+*nbody)
+//    fprintf(stdout,"\nRead %d total particles, last Id %g %d\n",p-bodytab, inout_xval[i-1], i-1);
+//    fflush(stdout);
+    DO_BODY(p, bodytab, bodytab+nbodyTotal) {
         Type(p) = BODY;
+    }
+    
+    *nbody = nbodyTotal;
+
+    fprintf(stdout,"\nDone reading %d bodies.\n", *nbody);
+    fflush(stdout);
 }
 
 
@@ -4108,12 +4406,15 @@ local void outputpvdata(char *file, int snapcount,
 
 
     sprintf(namebuf, file, snapcount);
-    outstr = stropen(namebuf, "w!");         
+    outstr = stropen(namebuf, "w!");
+    fprintf(outstr,"# %d %d %g\n", nbody, NDIM, tnow);
     for (p = bodytab; p < bodytab+nbody; p++) {
-		out_int_mar(outstr, (p-bodytab+1));
+//        out_int_mar(outstr, (p-bodytab+1));
+        out_int_mar(outstr, Id(p));
 
         out_vector_mar(outstr, Pos(p));
         out_vector_mar(outstr, Vel(p));
+        out_real_mar(outstr, Mass(p));      // Added column of masses
 
         if (scanopt(options, "out-phi"))
             out_real_mar(outstr, Phi(p));
@@ -4231,11 +4532,46 @@ local void outputdata_powmes_ascii(char *file, int snapcount,
     stream outstr;
     bodyptr p;
     int k;
-    real BoxSize;
+    real BoxSize=1.0;
+    char optionstmp[200];
+    int ntokens;
+    char *tokenname[3];
+    char *pch;
 
-// Given in the option: options=512
-    BoxSize=atof(options);
-    fprintf(stdout,"\n\tSize of the box is %f\n",BoxSize);
+// Given in the option: options=boxsize:512
+// Splitting options string in tokens::
+    strcpy(optionstmp,options);
+    fprintf(stdout,"\nSplitting string \"%s\" in tokens:\n",optionstmp);
+    ntokens=0;
+    pch = strtok(optionstmp," :");
+    while (pch != NULL) {
+        tokenname[ntokens] = (string) malloc(100);
+        strcpy(tokenname[ntokens],pch);
+        ++ntokens;
+        fprintf(stdout,"%s\n",tokenname[ntokens-1]);
+        pch = strtok (NULL, " :");
+    }
+    fprintf(stdout,"num. of tokens in options %s =%d\n",options,ntokens);
+    if (ntokens!=2) {
+        fprintf(stdout,"\nNo box size was given.\n");
+//        mrangeflag=0;
+    } else {
+        if (!strcmp(tokenname[0],"bs") || !strcmp(tokenname[0],"boxsize")) {
+//            mrangeflag=1;
+            BoxSize = atof(tokenname[1]);
+//            mmax = atof(tokenname[2]);
+            fprintf(stdout,"\nBox size given (%s): %g\n",tokenname[0],BoxSize);
+        }
+    }
+//
+//    if (strcmp(options,"") == 0) {
+    if (strnull(options)) {
+        BoxSize = 1.0;
+        fprintf(stdout,"\n\tWarning: BoxSize not given in the options option command line. Using BoxSize = %f\n",BoxSize);
+    } else {
+//        BoxSize=atof(options);
+        fprintf(stdout,"\n\tSize of the box is %f\n",BoxSize);
+    }
 
     sprintf(namebuf, file, snapcount);
     outstr = stropen(namebuf, "w!");

@@ -10,9 +10,13 @@
 //long idum;				// Seed for random generators
                             // Defined in globaldefs.h
 
+// NULL is defined as: 0, 0L and  ( (void *) 0)
+// NULL char is defined as: '0' or '\0'
 #if !defined(NULL)
 #define NULL 0L
 #endif
+#define CHARNULL    '\0'
+#define INTNULL     '\0'
 
 #define local     static
 

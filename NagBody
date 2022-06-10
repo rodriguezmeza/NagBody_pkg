@@ -1205,33 +1205,6 @@ clean_gnu_nplot2d:
 
 
 # ==================================================================
-# nxls code:
-
-MAKENXLS = NagBody_sources/nagbody_plplots/nxls
-
-install_nxls:
-	(cd $(MAKENXLS); $(MAKE) -f NagBody install_all)
-
-clean_nxls:
-	(cd $(MAKENXLS); $(MAKE) -f NagBody clean)
-
-packing_nxls:
-	(cd $(MAKENXLS); $(MAKE) -f NagBody packing_sources_no_nagbody)
-
-packing_nagbody_nxls:
-	(cd $(MAKENXLS); $(MAKE) -f NagBody packing_sources)
-
-packing_gnu_nxls:
-	(cd $(MAKENXLS); $(MAKE) -f NagBody packing_gnu_sources)
-
-install_gnu_dirs_nxls:
-	(cd $(MAKENXLS); $(MAKE) -f NagBody install_gnu_dirs)
-
-clean_gnu_nxls:
-	(cd $(MAKENXLS); $(MAKE) -f NagBody clean_nagbody_gnu)
-
-
-# ==================================================================
 # PERTURBATIONS: COSMO MGPT
 # ==================================================================
 # mgpt code:

@@ -196,6 +196,7 @@
 #define IO_PVIDTYPE_FMT                     40
 #define IO_ROCKSTAR_FMT_ASCII               41
 #define IO_CUTE_BOX_FMT_ASCII               42
+#define IO_BDMHALOCATALOG_FMT_ASCII         43
 
 // -----------------------------------------------------------------------------
 

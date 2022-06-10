@@ -20,7 +20,8 @@
 
 #ifdef VISUALC
 #include <io.h>						    // dup is defined here
-#endif			
+#endif
+#include <unistd.h>                     // dup is defined here
 
 #include <sys/stat.h>
 #include <stdarg.h>
@@ -58,11 +59,13 @@ int *AllocVecINormal(int size)			// Define array of size
 	return (v);
 }
 
+// Vector v have to be alloc with AllocVecR
 void FreeVecR(real *v)
 {
 	free(v+1);
 }
 
+// Vector v have to be alloc with AllocVecI
 void FreeVecI(int *v)
 {
 	free(v+1);
@@ -178,6 +181,18 @@ bool scanopt(string opt, string key)
     char *op, *kp;
 
     op = (char *) opt; 
+
+// Debug:: Clean after solved
+//    fprintf(stdout,"\n\n -> scanopt: %s %s %s \n\n", *opt, *key, *op);
+//    fprintf(stdout,"\n\n -> scanopt: (%d) %d (%d) (%d)", opt, key, op, CHARNULL);
+//    fprintf(stdout,"\n -> scanopt: (%s) %s (%s) (%s) (%s)", opt, key, op, CHARNULL, NULL);
+    fprintf(stdout,"\n -> scanopt: (%s) %s (%s)", opt, key, op);
+    fprintf(stdout,"\n -> scanopt: %d %d %d %d %d\n\n", *opt, *key, *op, NULL, CHARNULL);
+    fflush(stdout);
+//
+
+// Original lines:
+/*
     while (*op != (char)NULL) {
         kp = key;		
         while ((*op != ',' ? *op : (char) NULL) == *kp) {
@@ -189,6 +204,20 @@ bool scanopt(string opt, string key)
 
 	    continue;
     }
+*/
+//
+    while (*op != CHARNULL) {
+        kp = key;
+        while ((*op != ',' ? *op : CHARNULL) == *kp) {
+            if (*kp++ == CHARNULL)
+                return (TRUE);
+            op++;
+        }
+        while (*op != CHARNULL && *op++ != ',')
+
+        continue;
+    }
+//
     return (FALSE);
 }
 

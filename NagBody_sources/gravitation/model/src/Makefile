@@ -15,7 +15,7 @@ LDFLAGS += $(OPTIMIZE) $(OMPFLAG) $(LIBS)
 
 EXEC   = model
 
-H_PATH = ./general_libs/
+H_PATH = ./general_libs
 
 OBJS   = main.o models_io.o models.o \
 	startrun.o galaxy.o \
@@ -31,17 +31,17 @@ OBJS   = main.o models_io.o models.o \
 
 INCL   = cmdline_defs.h \
 	protodefs.h switches.h globaldefs.h models.h \
-	$(H_PATH)NagBody/nagbody.h \
-	$(H_PATH)NagBody/nagbody_struct.h \
-	$(H_PATH)NagBody/nagbody_proto.h \
-	$(H_PATH)general/constant.h \
-	$(H_PATH)general/getparam.h \
-	$(H_PATH)general/machines.h \
-	$(H_PATH)general/param.h \
-	$(H_PATH)general/precision.h \
-	$(H_PATH)general/stdinc.h \
-	$(H_PATH)general/strings.h \
-	$(H_PATH)general/switchs.h \
+	$(H_PATH)/NagBody/nagbody.h \
+	$(H_PATH)/NagBody/nagbody_struct.h \
+	$(H_PATH)/NagBody/nagbody_proto.h \
+	$(H_PATH)/general/constant.h \
+	$(H_PATH)/general/getparam.h \
+	$(H_PATH)/general/machines.h \
+	$(H_PATH)/general/param.h \
+	$(H_PATH)/general/precision.h \
+	$(H_PATH)/general/stdinc.h \
+	$(H_PATH)/general/strings.h \
+	$(H_PATH)/general/switchs.h \
 	$(H_PATH)/io/inout.h \
 	$(H_PATH)/physics/physconstants.h \
 	$(H_PATH)/math/mathfns.h \
